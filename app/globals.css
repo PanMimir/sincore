@@ -2,26 +2,233 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== ZMIENNE CSS – CYBERPUNK THEME ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0f;
+  --foreground: #e2e8f0;
+
+  /* Kolory akcentów – używane przez shadcn/ui */
+  --card: #0f0f1a;
+  --card-foreground: #e2e8f0;
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
+  --secondary: #1a1a2e;
+  --secondary-foreground: #e2e8f0;
+  --muted: #1a1a2e;
+  --muted-foreground: #64748b;
+  --accent: #8b5cf6;
+  --accent-foreground: #ffffff;
+  --border: #1a1a2e;
+  --input: #1a1a2e;
+  --ring: #8b5cf6;
+  --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ===== GLOBALNE STYLE BAZOWE ===== */
+@layer base {
+  body {
+    /* Główny kolor tła i tekstu z naszego motywu */
+    @apply bg-cyber-black text-cyber-text;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  /* Scrollbar w stylu terminala */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f0f1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4c1d95;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
+/* ===== UTILITY CLASSES – wielokrotnego użytku ===== */
 @layer utilities {
+  /* Siatka w tle – efekt "cyberpunk grid" */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Subtelny gradient od góry ekranu */
+  .bg-gradient-cyber {
+    background: radial-gradient(
+      ellipse at top,
+      rgba(139, 92, 246, 0.08) 0%,
+      transparent 60%
+    );
+  }
+
+  /* Efekt glow na tekście */
+  .text-glow-purple {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  }
+
+  /* Linia z gradientem – separator */
+  .border-gradient {
+    border-image: linear-gradient(90deg, transparent, #8b5cf6, transparent) 1;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ===== STYLE ARTYKUŁÓW MARKDOWN ===== */
+/*
+  Klasa .article-content opakowuje HTML wygenerowany przez remark.
+  Stylujemy wszystkie elementy które Markdown może wygenerować.
+*/
+.article-content {
+  color: #e2e8f0;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.article-content h2 {
+  font-family: var(--font-mono), monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a78bfa;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #1a1a2e;
+}
+
+.article-content h3 {
+  font-family: var(--font-mono), monospace;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  color: #cbd5e1;
+}
+
+.article-content a {
+  color: #8b5cf6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-content a:hover {
+  color: #a78bfa;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  color: #cbd5e1;
+}
+
+.article-content ul {
+  list-style-type: disc;
+}
+
+.article-content ol {
+  list-style-type: decimal;
+}
+
+.article-content li {
+  margin-bottom: 0.4rem;
+}
+
+/* Kod inline – np. `git commit` */
+.article-content code:not(pre code) {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85em;
+  background: #1a1a2e;
+  color: #a78bfa;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid #2d2d4a;
+}
+
+/* Bloki kodu – ```python ... ``` */
+.article-content pre {
+  background: #0f0f1a;
+  border: 1px solid #1a1a2e;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.article-content pre code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+/* Tabele (GFM) */
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.article-content th {
+  font-family: var(--font-mono), monospace;
+  background: #13131f;
+  color: #8b5cf6;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border: 1px solid #1a1a2e;
+}
+
+.article-content td {
+  padding: 0.6rem 1rem;
+  border: 1px solid #1a1a2e;
+  color: #cbd5e1;
+}
+
+.article-content tr:hover td {
+  background: #0f0f1a;
+}
+
+/* Blok cytatu */
+.article-content blockquote {
+  border-left: 3px solid #8b5cf6;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Linia pozioma */
+.article-content hr {
+  border: none;
+  border-top: 1px solid #1a1a2e;
+  margin: 2rem 0;
+}
+
+/* Pogrubienie i kursywa */
+.article-content strong {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.article-content em {
+  color: #94a3b8;
 }

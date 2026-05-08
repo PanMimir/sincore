@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Start",
+    "projects": "Projekty",
+    "knowledge": "Baza wiedzy",
+    "stack": "Stack",
+    "about": "O mnie",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "greeting": "Cześć, jestem",
+    "name": "nullSec",
+    "tagline": "Backend · Automatyka · Cybersecurity · Industrial Systems",
+    "description": "Projekty, narzędzia i wiedza techniczna w jednym miejscu.",
+    "cta_projects": "Zobacz projekty",
+    "cta_knowledge": "Baza wiedzy",
+    "terminal_line1": "$ whoami",
+    "terminal_line2": "nullSec // backend_dev & automation_eng",
+    "terminal_line3": "$ ls -la /projects",
+    "terminal_line4": "drwxr-xr-x  projects/ tools/ docs/ research/"
+  },
+  "projects": {
+    "title": "Projekty",
+    "subtitle": "Rzeczy które zbudowałem",
+    "status_active": "Aktywny",
+    "status_wip": "W trakcie",
+    "status_archived": "Archiwum",
+    "github": "GitHub",
+    "docs": "Dokumentacja",
+    "download": "Pobierz",
+    "no_projects": "Brak projektów w tej kategorii.",
+    "all": "Wszystkie"
+  },
+  "knowledge": {
+    "title": "Baza wiedzy",
+    "subtitle": "Artykuły, dokumentacje i notatki techniczne",
+    "read_more": "Czytaj więcej",
+    "no_articles": "Brak artykułów.",
+    "all": "Wszystkie"
+  },
+  "stack": {
+    "title": "Stack technologiczny",
+    "subtitle": "Technologie których używam na co dzień",
+    "level_expert": "biegły",
+    "level_advanced": "zaawansowany",
+    "level_intermediate": "średniozaawansowany"
+  },
+  "about": {
+    "title": "O mnie",
+    "subtitle": "Kim jestem",
+    "bio_1": "Inżynier systemów automatyki i programista skupiony na backendie, cybersecurity i systemach przemysłowych.",
+    "bio_2": "Buduję narzędzia które działają w realnym świecie — od skryptów do komunikacji z PLC, przez skanery sieci, po aplikacje webowe. Preferuję kod który jest prosty, czytelny i robi dokładnie to co powinien.",
+    "bio_3": "Aktualnie rozwijam się w kierunku bezpieczeństwa systemów przemysłowych (OT/ICS security) i architektury aplikacji backendowych.",
+    "skills_title": "Specjalizacje",
+    "skills": [
+      "Backend development (Python, FastAPI, Spring Boot)",
+      "Automatyka przemysłowa (PLC Siemens S7, Modbus)",
+      "Cybersecurity (sieci, systemy Linux, OT/ICS)",
+      "Protokoły przemysłowe (Modbus TCP/RTU, S7comm, OPC-UA)",
+      "Administracja Linux i sieci"
+    ],
+    "approach_title": "Podejście",
+    "approach": "Wolę rozumieć system od fundamentów zanim zacznę pisać kod. Dokumentacja, testy i czysty interfejs to nie opcje — to wymagania."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Masz pytanie? Chcesz porozmawiać o projekcie? Napisz.",
+    "email_label": "E-mail",
+    "github_label": "GitHub",
+    "linkedin_label": "LinkedIn",
+    "linkedin_placeholder": "wkrótce",
+    "copy_email": "Skopiuj adres",
+    "copied": "Skopiowano!"
+  },
+  "common": {
+    "loading": "Ładowanie...",
+    "error": "Coś poszło nie tak.",
+    "back": "Wróć",
+    "all": "Wszystkie"
+  },
+  "footer": {
+    "built_with": "Zbudowane z",
+    "rights": "Wszelkie prawa zastrzeżone"
+  }
+}

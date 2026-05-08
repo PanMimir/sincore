@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "knowledge": "Knowledge Base",
+    "stack": "Stack",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hey, I'm",
+    "name": "nullSec",
+    "tagline": "Backend · Automation · Cybersecurity · Industrial Systems",
+    "description": "Projects, tools and technical knowledge in one place.",
+    "cta_projects": "View projects",
+    "cta_knowledge": "Knowledge base",
+    "terminal_line1": "$ whoami",
+    "terminal_line2": "nullSec // backend_dev & automation_eng",
+    "terminal_line3": "$ ls -la /projects",
+    "terminal_line4": "drwxr-xr-x  projects/ tools/ docs/ research/"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Things I've built",
+    "status_active": "Active",
+    "status_wip": "In progress",
+    "status_archived": "Archived",
+    "github": "GitHub",
+    "docs": "Documentation",
+    "download": "Download",
+    "no_projects": "No projects in this category.",
+    "all": "All"
+  },
+  "knowledge": {
+    "title": "Knowledge Base",
+    "subtitle": "Articles, documentation and technical notes",
+    "read_more": "Read more",
+    "no_articles": "No articles yet.",
+    "all": "All"
+  },
+  "stack": {
+    "title": "Tech Stack",
+    "subtitle": "Technologies I use on a daily basis",
+    "level_expert": "expert",
+    "level_advanced": "advanced",
+    "level_intermediate": "intermediate"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Who I am",
+    "bio_1": "Automation systems engineer and developer focused on backend, cybersecurity and industrial systems.",
+    "bio_2": "I build tools that work in the real world — from scripts communicating with PLCs, through network scanners, to web applications. I prefer code that is simple, readable and does exactly what it should.",
+    "bio_3": "Currently developing in the direction of industrial system security (OT/ICS security) and backend application architecture.",
+    "skills_title": "Specializations",
+    "skills": [
+      "Backend development (Python, FastAPI, Spring Boot)",
+      "Industrial automation (Siemens S7 PLC, Modbus)",
+      "Cybersecurity (networks, Linux systems, OT/ICS)",
+      "Industrial protocols (Modbus TCP/RTU, S7comm, OPC-UA)",
+      "Linux and network administration"
+    ],
+    "approach_title": "Approach",
+    "approach": "I prefer to understand the system from the ground up before writing code. Documentation, tests and a clean interface are not options — they are requirements."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have a question? Want to talk about a project? Write.",
+    "email_label": "E-mail",
+    "github_label": "GitHub",
+    "linkedin_label": "LinkedIn",
+    "linkedin_placeholder": "coming soon",
+    "copy_email": "Copy address",
+    "copied": "Copied!"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "back": "Back",
+    "all": "All"
+  },
+  "footer": {
+    "built_with": "Built with",
+    "rights": "All rights reserved"
+  }
+}

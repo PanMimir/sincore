@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "nullsec-portfolio",
+    "title": "nullSec Portfolio",
+    "description": {
+      "pl": "Publiczne portfolio technologiczne – projekty, baza wiedzy, narzędzia. Zbudowane na Next.js z motywem cyberpunk.",
+      "en": "Public tech portfolio – projects, knowledge base, tools. Built on Next.js with a cyberpunk theme."
+    },
+    "stack": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
+    "tags": ["frontend", "portfolio", "open-source"],
+    "status": "active",
+    "githubUrl": "https://github.com/yourusername/nullsec",
+    "docsUrl": null,
+    "downloadUrl": null,
+    "featured": true,
+    "thumbnail": null
+  },
+  {
+    "slug": "modbus-monitor",
+    "title": "Modbus Monitor",
+    "description": {
+      "pl": "Narzędzie do monitorowania urządzeń przemysłowych przez protokół Modbus TCP/RTU. Odczyt rejestrów, logowanie, alerty.",
+      "en": "Tool for monitoring industrial devices via Modbus TCP/RTU protocol. Register reading, logging, alerts."
+    },
+    "stack": ["Python", "Modbus", "SQLite", "Rich CLI"],
+    "tags": ["industrial", "automation", "cli", "monitoring"],
+    "status": "active",
+    "githubUrl": "https://github.com/yourusername/modbus-monitor",
+    "docsUrl": null,
+    "downloadUrl": null,
+    "featured": true,
+    "thumbnail": null
+  },
+  {
+    "slug": "network-scanner",
+    "title": "Net Scanner",
+    "description": {
+      "pl": "Skaner sieci lokalnej – wykrywanie hostów, otwarte porty, fingerprinting usług. Wyniki eksportowane do JSON/CSV.",
+      "en": "Local network scanner – host discovery, open ports, service fingerprinting. Results exported to JSON/CSV."
+    },
+    "stack": ["Python", "Nmap", "Scapy"],
+    "tags": ["cybersecurity", "networking", "cli"],
+    "status": "wip",
+    "githubUrl": null,
+    "docsUrl": null,
+    "downloadUrl": null,
+    "featured": false,
+    "thumbnail": null
+  },
+  {
+    "slug": "plc-data-logger",
+    "title": "PLC Data Logger",
+    "description": {
+      "pl": "Logger danych z sterowników PLC Siemens S7. Zapis do bazy danych, wizualizacja trendów, eksport do CSV.",
+      "en": "Data logger for Siemens S7 PLC controllers. Database storage, trend visualization, CSV export."
+    },
+    "stack": ["Python", "Snap7", "PostgreSQL", "Matplotlib"],
+    "tags": ["industrial", "automation", "plc", "siemens"],
+    "status": "archived",
+    "githubUrl": "https://github.com/yourusername/plc-logger",
+    "docsUrl": null,
+    "downloadUrl": null,
+    "featured": false,
+    "thumbnail": null
+  }
+]

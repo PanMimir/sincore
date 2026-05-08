@@ -1,0 +1,97 @@
+import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { getAllArticles, getArticleBySlug } from "@/services/articleService";
+
+export async function generateStaticParams({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const articles = await getAllArticles(params.locale);
+  return articles.map((a) => ({ slug: a.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string; slug: string };
+}): Promise<Metadata> {
+  const article = await getArticleBySlug(params.slug, params.locale);
+  if (!article) return {};
+  return { title: article.title, description: article.description };
+}
+
+export default async function ArticlePage({
+  params,
+}: {
+  params: { locale: string; slug: string };
+}) {
+  const [article, tCommon] = await Promise.all([
+    getArticleBySlug(params.slug, params.locale),
+    getTranslations({ locale: params.locale, namespace: "common" }),
+  ]);
+
+  if (!article) notFound();
+
+  const formattedDate = article.date
+    ? new Date(article.date).toLocaleDateString(
+        params.locale === "pl" ? "pl-PL" : "en-US",
+        { year: "numeric", month: "long", day: "numeric" }
+      )
+    : null;
+
+  return (
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      {/* Powrót */}
+      <Link
+        href={`/${params.locale}/knowledge`}
+        className="inline-flex items-center gap-2 font-mono text-sm text-cyber-muted hover:text-cyber-purple transition-colors mb-10"
+      >
+        <ArrowLeft size={14} />
+        {tCommon("back")}
+      </Link>
+
+      {/* Nagłówek artykułu */}
+      <header className="mb-10 pb-8 border-b border-cyber-gray">
+        {formattedDate && (
+          <div className="flex items-center gap-1.5 text-cyber-muted font-mono text-xs mb-4">
+            <Calendar size={12} />
+            {formattedDate}
+          </div>
+        )}
+        <h1 className="font-mono font-bold text-3xl sm:text-4xl text-cyber-text mb-4 leading-tight">
+          {article.title}
+        </h1>
+        <p className="text-cyber-muted text-base leading-relaxed mb-5">
+          {article.description}
+        </p>
+        {article.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {article.tags.map((tag) => (
+              <span
+                key={tag}
+                className="flex items-center gap-1 font-mono text-xs px-2 py-1 bg-cyber-gray/50 text-cyber-muted rounded"
+              >
+                <Tag size={10} />
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/*
+        Treść artykułu z Markdown → HTML.
+        "prose" to klasa z Tailwind Typography (tu styled ręcznie przez globals.css).
+        dangerouslySetInnerHTML bo remark zwraca gotowy HTML string.
+      */}
+      <div
+        className="article-content"
+        dangerouslySetInnerHTML={{ __html: article.content ?? "" }}
+      />
+    </div>
+  );
+}
