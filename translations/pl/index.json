@@ -15,9 +15,13 @@
     "cta_projects": "Zobacz projekty",
     "cta_knowledge": "Baza wiedzy",
     "terminal_line1": "$ whoami",
-    "terminal_line2": "sincore // backend_dev & automation_eng",
-    "terminal_line3": "$ ls -la /projects",
-    "terminal_line4": "drwxr-xr-x  projects/ tools/ docs/ research/"
+    "terminal_line2": "Mimir — developer & problem solver",
+    "terminal_line3": "$ cat services.txt",
+    "terminal_line_services": "automatyka · backend · integracje · narzędzia",
+    "terminal_line4": "$ echo $STATUS",
+    "terminal_line5": "otwarty na projekty",
+    "terminal_line6": "$ ./contact.sh",
+    "terminal_line7": "→ sincore.pan@gmail.com"
   },
   "projects": {
     "title": "Projekty",

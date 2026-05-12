@@ -33,8 +33,8 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-mono font-bold text-6xl sm:text-7xl mb-4 text-glow-purple"
             >
-              <span className="text-cyber-text">null</span>
-              <span className="text-cyber-purple">Sec</span>
+              <span className="text-cyber-text">Mi</span>
+              <span className="text-cyber-purple">mir</span>
             </motion.h1>
 
             <motion.p
@@ -92,7 +92,13 @@ export default function HeroSection() {
                 { text: t("terminal_line2"), type: "output" },
                 { text: "", type: "output" },
                 { text: t("terminal_line3"), type: "command" },
-                { text: t("terminal_line4"), type: "output" },
+                { text: t("terminal_line_services"), type: "output" },
+                { text: "", type: "output" },
+                { text: t("terminal_line4"), type: "command" },
+                { text: t("terminal_line5"), type: "output" },
+                { text: "", type: "output" },
+                { text: t("terminal_line6"), type: "command" },
+                { text: t("terminal_line7"), type: "output" },
               ]}
             />
           </motion.div>
