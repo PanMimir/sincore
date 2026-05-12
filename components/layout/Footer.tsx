@@ -24,20 +24,20 @@ export default function Footer() {
           {/* Linki społecznościowe */}
           <div className="flex items-center gap-4">
             <Link
-              href="https://github.com/yourusername"
+              href="https://github.com/PanMimir"
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyber-muted hover:text-cyber-purple transition-colors"
               aria-label="GitHub"
             >
-              <GitBranch size={18} />
+              <GitBranch size={22} />
             </Link>
             <Link
-              href="mailto:ace.panczyk@gmail.com"
+              href="mailto:contact@sincore.io"
               className="text-cyber-muted hover:text-cyber-purple transition-colors"
               aria-label="Email"
             >
-              <Mail size={18} />
+              <Mail size={22} />
             </Link>
           </div>
 

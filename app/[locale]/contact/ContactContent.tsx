@@ -150,22 +150,32 @@ export default function ContactContent() {
         </div>
       </ScrollReveal>
 
-      {/* Hidden access */}
-      <div className="mt-24">
+      {/* Private access */}
+      <ScrollReveal delay={0.5} className="mt-16">
         <form onSubmit={handleAccess}>
-          <div className={`flex items-center gap-2 font-mono text-xs transition-colors ${accessDenied ? "text-red-600" : "text-cyber-gray"}`}>
-            <span>$</span>
-            <input
-              type="password"
-              value={accessInput}
-              onChange={(e) => setAccessInput(e.target.value)}
-              className="bg-transparent outline-none border-none text-cyber-gray placeholder-cyber-gray/30 w-24 focus:text-cyber-muted transition-colors"
-              autoComplete="off"
-              spellCheck={false}
-            />
+          <div className={`p-4 border rounded-lg font-mono text-sm transition-colors ${accessDenied ? "border-red-800/60 bg-red-950/20" : "border-cyber-gray/40 bg-cyber-dark/50"}`}>
+            <p className="text-cyber-muted/50 text-xs mb-3">
+              <span className="text-cyber-purple/50">{"// "}</span>
+              private access
+            </p>
+            <div className="flex items-center gap-3">
+              <span className={accessDenied ? "text-red-600" : "text-cyber-purple/60"}>$</span>
+              <input
+                type="password"
+                value={accessInput}
+                onChange={(e) => setAccessInput(e.target.value)}
+                placeholder="access --private"
+                className={`bg-transparent outline-none border-none flex-1 placeholder-cyber-muted/30 transition-colors ${accessDenied ? "text-red-500" : "text-cyber-muted"}`}
+                autoComplete="off"
+                spellCheck={false}
+              />
+              {accessDenied && (
+                <span className="text-red-600 text-xs">access denied</span>
+              )}
+            </div>
           </div>
         </form>
-      </div>
+      </ScrollReveal>
     </div>
   );
 }
