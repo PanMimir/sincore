@@ -22,7 +22,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-mono text-cyber-muted text-sm mb-3"
+              className="font-mono font-bold text-cyber-text text-lg mb-3"
             >
               {t("greeting")}
             </motion.p>
@@ -49,7 +49,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="text-cyber-text/80 text-base mb-8 max-w-md leading-relaxed"
+              className="font-mono text-cyber-text/80 text-base mb-8 max-w-md leading-relaxed"
             >
               {t("description")}
             </motion.p>
@@ -97,7 +97,7 @@ export default function HeroSection() {
                 { text: t("terminal_line5"), type: "output" },
                 { text: "", type: "output" },
                 { text: t("terminal_line6"), type: "command" },
-                { text: t("terminal_line7"), type: "output" },
+                { text: t("terminal_line7"), type: "output", href: "mailto:contact@sincore.io" },
               ]}
             />
           </motion.div>

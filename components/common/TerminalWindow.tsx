@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface TerminalLine {
   text: string;
   type: "command" | "output";
+  href?: string;
 }
 
 interface TerminalWindowProps {
@@ -66,7 +67,11 @@ export default function TerminalWindow({
               </p>
             ) : (
               <p className={cn("text-cyber-text/80 pl-4", !line.text && "h-2")}>
-                {line.text}
+                {line.href ? (
+                  <a href={line.href} className="text-cyber-purple hover:underline">
+                    {line.text}
+                  </a>
+                ) : line.text}
               </p>
             )}
           </div>
