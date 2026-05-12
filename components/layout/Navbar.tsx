@@ -63,7 +63,7 @@ export default function Navbar() {
               className="text-cyber-purple group-hover:text-cyber-purple-bright transition-colors"
             />
             <span className="font-mono font-bold text-lg text-cyber-text group-hover:text-cyber-purple transition-colors">
-              null<span className="text-cyber-purple">Sec</span>
+              sin<span className="text-cyber-purple">core</span>
             </span>
           </Link>
 
@@ -102,7 +102,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden border-t border-cyber-gray py-3">
+          <div className="md:hidden border-t border-cyber-gray py-3 bg-cyber-black/95 backdrop-blur-md">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.key}
