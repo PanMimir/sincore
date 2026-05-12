@@ -27,14 +27,19 @@ export default function HeroSection() {
               {t("greeting")}
             </motion.p>
 
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-mono font-bold text-4xl sm:text-5xl mb-4 text-cyber-purple"
+              className="flex items-baseline gap-5 mb-4 flex-wrap"
             >
-              Mimir
-            </motion.h1>
+              <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-purple">
+                Mimir
+              </h1>
+              <p className="font-mono text-cyber-purple/55 text-sm italic border-l border-cyber-purple/25 pl-4">
+                {t("motto")}
+              </p>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -49,18 +54,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="font-mono text-cyber-text/80 text-base mb-6 max-w-md leading-relaxed"
+              className="font-mono text-cyber-text/80 text-base mb-8 max-w-md leading-relaxed"
             >
               {t("description")}
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.38 }}
-              className="font-mono text-cyber-purple/70 text-sm mb-8 italic"
-            >
-              {t("motto")}
             </motion.p>
 
             {/* CTA buttons */}
