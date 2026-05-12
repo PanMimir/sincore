@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const tHero = useTranslations("hero");
   const year = new Date().getFullYear();
 
   return (
@@ -14,11 +15,16 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
 
           {/* Logo + copyright */}
-          <div className="flex items-center gap-2 font-mono text-sm text-cyber-muted">
-            <Terminal size={16} className="text-cyber-purple" />
-            <span>
-              sincore © {year} — {t("rights")}
-            </span>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2 font-mono text-sm text-cyber-muted">
+              <Terminal size={16} className="text-cyber-purple" />
+              <span>
+                sincore © {year} — {t("rights")}
+              </span>
+            </div>
+            <p className="font-mono text-xs text-cyber-purple/50 italic pl-6">
+              {tHero("motto")}
+            </p>
           </div>
 
           {/* Linki społecznościowe */}

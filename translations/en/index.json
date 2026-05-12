@@ -21,7 +21,8 @@
     "terminal_line4": "$ echo $STATUS",
     "terminal_line5": "open for projects",
     "terminal_line6": "$ ./contact.sh",
-    "terminal_line7": "→ contact@sincore.io"
+    "terminal_line7": "→ contact@sincore.io",
+    "motto": "It works. That's the point."
   },
   "projects": {
     "title": "Projects",
@@ -37,7 +38,7 @@
   },
   "knowledge": {
     "title": "Knowledge Base",
-    "subtitle": "Articles, documentation and technical notes",
+    "subtitle": "Stay awhile and listen",
     "read_more": "Read more",
     "no_articles": "No articles yet.",
     "all": "All"

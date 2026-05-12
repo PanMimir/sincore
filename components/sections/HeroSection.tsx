@@ -49,9 +49,18 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="font-mono text-cyber-text/80 text-base mb-8 max-w-md leading-relaxed"
+              className="font-mono text-cyber-text/80 text-base mb-6 max-w-md leading-relaxed"
             >
               {t("description")}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.38 }}
+              className="font-mono text-cyber-purple/70 text-sm mb-8 italic"
+            >
+              {t("motto")}
             </motion.p>
 
             {/* CTA buttons */}
