@@ -15,15 +15,15 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://nullsec.dev";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sincore.io";
 
 export const metadata: Metadata = {
-  title: { template: "%s | nullSec", default: "nullSec" },
+  title: { template: "%s | sincore", default: "sincore" },
   description: "Publiczne portfolio technologiczne – projekty, baza wiedzy, narzędzia.",
   metadataBase: new URL(BASE_URL),
   openGraph: {
     type: "website",
-    siteName: "nullSec",
+    siteName: "sincore",
     images: [{ url: "/og-default.png", width: 1200, height: 630 }],
   },
   twitter: {

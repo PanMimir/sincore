@@ -7,7 +7,7 @@ import { Mail, GitBranch, Link2, Copy, Check, ExternalLink } from "lucide-react"
 import ScrollReveal from "@/components/common/ScrollReveal";
 
 const EMAIL = "ace.panczyk@gmail.com";
-const GITHUB_URL = "https://github.com/yourusername";
+const GITHUB_URL = "https://github.com/PanMimir";
 
 interface ContactLink {
   icon: React.ElementType;
@@ -56,7 +56,7 @@ export default function ContactContent() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       {/* Nagłówek */}
       <ScrollReveal>
-        <p className="font-mono text-cyber-purple text-sm mb-2">{"$ ping nullsec"}</p>
+        <p className="font-mono text-cyber-purple text-sm mb-2">{"$ ping sincore"}</p>
         <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
           {t("title")}
         </h1>

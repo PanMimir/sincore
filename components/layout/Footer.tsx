@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="flex items-center gap-2 font-mono text-sm text-cyber-muted">
             <Terminal size={16} className="text-cyber-purple" />
             <span>
-              nullSec © {year} — {t("rights")}
+              sincore © {year} — {t("rights")}
             </span>
           </div>
 

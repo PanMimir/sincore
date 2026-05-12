@@ -9,13 +9,13 @@
   },
   "hero": {
     "greeting": "Cześć, jestem",
-    "name": "nullSec",
+    "name": "sincore",
     "tagline": "Backend · Automatyka · Cybersecurity · Industrial Systems",
     "description": "Projekty, narzędzia i wiedza techniczna w jednym miejscu.",
     "cta_projects": "Zobacz projekty",
     "cta_knowledge": "Baza wiedzy",
     "terminal_line1": "$ whoami",
-    "terminal_line2": "nullSec // backend_dev & automation_eng",
+    "terminal_line2": "sincore // backend_dev & automation_eng",
     "terminal_line3": "$ ls -la /projects",
     "terminal_line4": "drwxr-xr-x  projects/ tools/ docs/ research/"
   },

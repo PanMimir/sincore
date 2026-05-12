@@ -1,4 +1,4 @@
-# ===== DOCKERFILE – nullSec =====
+# ===== DOCKERFILE – sincore =====
 # Multi-stage build: buduje aplikację i tworzy lekki obraz produkcyjny
 
 # --- ETAP 1: Instalacja zależności ---

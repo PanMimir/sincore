@@ -19,7 +19,7 @@ interface TerminalWindowProps {
  */
 export default function TerminalWindow({
   lines,
-  title = "nullsec@terminal:~",
+  title = "sincore@terminal:~",
 }: TerminalWindowProps) {
   // Ile linii już "wpisano"
   const [visibleLines, setVisibleLines] = useState(0);

@@ -6,7 +6,7 @@
  * Ten komponent jest serwerowy (brak "use client") — dane trafiają do HTML przy SSG.
  */
 export default function JsonLd() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://nullsec.dev";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sincore.io";
 
   const schema = {
     "@context": "https://schema.org",
@@ -16,7 +16,7 @@ export default function JsonLd() {
         "@type": "WebSite",
         "@id": `${baseUrl}/#website`,
         url: baseUrl,
-        name: "nullSec",
+        name: "sincore",
         description:
           "Publiczne portfolio technologiczne — projekty, baza wiedzy, narzędzia.",
         inLanguage: ["pl", "en"],
@@ -25,7 +25,7 @@ export default function JsonLd() {
       {
         "@type": "Person",
         "@id": `${baseUrl}/#author`,
-        name: "nullSec",
+        name: "sincore",
         url: baseUrl,
         jobTitle: "Backend Developer & Automation Engineer",
         knowsAbout: [
@@ -38,7 +38,7 @@ export default function JsonLd() {
           "Next.js",
         ],
         sameAs: [
-          "https://github.com/yourusername", // zmień na swój URL
+          "https://github.com/PanMimir",
         ],
       },
     ],

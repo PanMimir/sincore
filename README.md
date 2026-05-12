@@ -1,4 +1,4 @@
-# nullSec
+# sincore
 
 Publiczne portfolio technologiczne — projekty, baza wiedzy, narzędzia.
 
@@ -10,8 +10,8 @@ Publiczne portfolio technologiczne — projekty, baza wiedzy, narzędzia.
 
 ```bash
 # 1. Sklonuj repozytorium
-git clone https://github.com/yourusername/nullsec.git
-cd nullsec
+git clone https://github.com/PanMimir/sincore.git
+cd sincore
 
 # 2. Zainstaluj zależności
 npm install
@@ -100,8 +100,8 @@ Plik pojawi się automatycznie na `/pl/knowledge` — zero zmian w kodzie.
 
 ### Docker
 ```bash
-docker build -t nullsec .
-docker run -p 3000:3000 -e NEXT_PUBLIC_BASE_URL=https://twoja-domena.pl nullsec
+docker build -t sincore .
+docker run -p 3000:3000 -e NEXT_PUBLIC_BASE_URL=https://sincore.io sincore
 ```
 
 ### VPS bez Dockera

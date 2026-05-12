@@ -31,7 +31,7 @@ export default function AboutContent() {
         <div>
           <ScrollReveal delay={0.1}>
             <TerminalWindow
-              title="nullsec@workstation:~"
+              title="sincore@workstation:~"
               lines={[
                 { text: "cat about.txt", type: "command" },
                 { text: t("bio_1"), type: "output" },

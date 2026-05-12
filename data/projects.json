@@ -1,7 +1,7 @@
 [
   {
-    "slug": "nullsec-portfolio",
-    "title": "nullSec Portfolio",
+    "slug": "sincore-portfolio",
+    "title": "sincore Portfolio",
     "description": {
       "pl": "Publiczne portfolio technologiczne – projekty, baza wiedzy, narzędzia. Zbudowane na Next.js z motywem cyberpunk.",
       "en": "Public tech portfolio – projects, knowledge base, tools. Built on Next.js with a cyberpunk theme."
@@ -9,7 +9,7 @@
     "stack": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
     "tags": ["frontend", "portfolio", "open-source"],
     "status": "active",
-    "githubUrl": "https://github.com/yourusername/nullsec",
+    "githubUrl": "https://github.com/PanMimir/sincore",
     "docsUrl": null,
     "downloadUrl": null,
     "featured": true,

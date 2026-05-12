@@ -12,7 +12,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
 
-        // Cyberpunk palette – główne kolory projektu nullSec
+        // Cyberpunk palette – główne kolory projektu sincore
         cyber: {
           black: "#0a0a0f",       // tło aplikacji
           dark: "#0f0f1a",        // karty, panele
