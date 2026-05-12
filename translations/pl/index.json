@@ -11,7 +11,7 @@
     "greeting": "Cześć, jestem",
     "name": "sincore",
     "tagline": "Backend · Automatyka · Cybersecurity · Industrial Systems",
-    "description": "Projekty, narzędzia i wiedza techniczna w jednym miejscu.",
+    "description": "Buduję narzędzia które rozwiązują realne problemy techniczne — od automatyki przemysłowej po aplikacje webowe.",
     "cta_projects": "Zobacz projekty",
     "cta_knowledge": "Baza wiedzy",
     "terminal_line1": "$ whoami",
@@ -85,5 +85,25 @@
   "footer": {
     "built_with": "Zbudowane z",
     "rights": "Wszelkie prawa zastrzeżone"
+  },
+  "home": {
+    "stats_projects": "projektów",
+    "stats_experience": "lat w środowisku technicznym",
+    "stats_sep_label": "SEP G1 / G2 / G3",
+    "stats_sep_sub": "eksploatacja i dozór",
+    "featured_title": "Wybrane projekty",
+    "featured_cta": "Zobacz wszystkie",
+    "about_title": "Kim jestem",
+    "about_bio": "Technik z 10-letnim doświadczeniem w środowisku przemysłowym. Buduję narzędzia które rozwiązują realne problemy — od automatyki po aplikacje webowe.",
+    "about_highlights": [
+      "10 lat w Instytucie Technologii Paliw i Energii",
+      "Badania energetyczno-emisyjne urządzeń grzewczych",
+      "Automatyzacja procesów i narzędzia deweloperskie",
+      "Uprawnienia SEP G1/G2/G3 — eksploatacja i dozór"
+    ],
+    "about_cta": "Więcej o mnie",
+    "cta_title": "Masz projekt lub pytanie?",
+    "cta_subtitle": "Chętnie porozmawiam o tym co można zautomatyzować, zoptymalizować lub po prostu zbudować.",
+    "cta_button": "Napisz do mnie"
   }
 }

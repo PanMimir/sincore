@@ -11,7 +11,7 @@
     "greeting": "Hey, I'm",
     "name": "sincore",
     "tagline": "Backend · Automation · Cybersecurity · Industrial Systems",
-    "description": "Projects, tools and technical knowledge in one place.",
+    "description": "I build tools that solve real technical problems — from industrial automation to web applications.",
     "cta_projects": "View projects",
     "cta_knowledge": "Knowledge base",
     "terminal_line1": "$ whoami",
@@ -85,5 +85,25 @@
   "footer": {
     "built_with": "Built with",
     "rights": "All rights reserved"
+  },
+  "home": {
+    "stats_projects": "projects",
+    "stats_experience": "years in technical field",
+    "stats_sep_label": "SEP G1 / G2 / G3",
+    "stats_sep_sub": "operation & supervision",
+    "featured_title": "Featured projects",
+    "featured_cta": "View all",
+    "about_title": "Who I am",
+    "about_bio": "Technician with 10 years of experience in an industrial environment. I build tools that solve real problems — from automation to web applications.",
+    "about_highlights": [
+      "10 years at the Institute of Energy and Fuel Processing Technology",
+      "Energy and emissions research on solid fuel heating devices",
+      "Process automation and developer tooling",
+      "SEP G1/G2/G3 certifications — operation & supervision"
+    ],
+    "about_cta": "More about me",
+    "cta_title": "Have a project or a question?",
+    "cta_subtitle": "Let's talk about what can be automated, optimized, or simply built.",
+    "cta_button": "Write to me"
   }
 }
