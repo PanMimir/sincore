@@ -22,7 +22,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-mono font-bold text-cyber-text text-lg mb-3"
+              className="font-mono text-cyber-text text-lg mb-3"
             >
               {t("greeting")}
             </motion.p>
@@ -36,7 +36,7 @@ export default function HeroSection() {
               <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-purple">
                 Mimir
               </h1>
-              <p className="font-mono text-cyber-purple/55 text-sm italic border-l border-cyber-purple/25 pl-4">
+              <p className="font-mono text-cyber-purple/100 text-sm italic border-l border-cyber-purple/80 pl-4">
                 {t("motto")}
               </p>
             </motion.div>
