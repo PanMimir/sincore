@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Mail, GitBranch, Link2, Copy, Check, ExternalLink } from "lucide-react";
 import ScrollReveal from "@/components/common/ScrollReveal";
 
-const EMAIL = "sincore.pan@gmail.com";
+const EMAIL = "contact@sincore.io";
 const GITHUB_URL = "https://github.com/PanMimir";
 
 interface ContactLink {

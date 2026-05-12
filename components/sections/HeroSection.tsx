@@ -31,10 +31,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-mono font-bold text-6xl sm:text-7xl mb-4 text-glow-purple"
+              className="font-mono font-bold text-4xl sm:text-5xl mb-4 text-cyber-purple"
             >
-              <span className="text-cyber-text">Mi</span>
-              <span className="text-cyber-purple">mir</span>
+              Mimir
             </motion.h1>
 
             <motion.p
