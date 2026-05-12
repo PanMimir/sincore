@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Mail, GitBranch, Link2, Copy, Check, ExternalLink } from "lucide-react";
 import ScrollReveal from "@/components/common/ScrollReveal";
@@ -20,7 +21,23 @@ interface ContactLink {
 
 export default function ContactContent() {
   const t = useTranslations("contact");
+  const locale = useLocale();
+  const router = useRouter();
   const [copied, setCopied] = useState(false);
+  const [accessInput, setAccessInput] = useState("");
+  const [accessDenied, setAccessDenied] = useState(false);
+
+  const handleAccess = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (accessInput === "sin") {
+      sessionStorage.setItem("sincore_special_access", "1");
+      router.push(`/${locale}/special`);
+    } else {
+      setAccessDenied(true);
+      setAccessInput("");
+      setTimeout(() => setAccessDenied(false), 1500);
+    }
+  };
 
   const copyEmail = async () => {
     await navigator.clipboard.writeText(EMAIL);
@@ -132,6 +149,23 @@ export default function ContactContent() {
           <p className="text-cyber-text pl-4">{"PL | EN"}</p>
         </div>
       </ScrollReveal>
+
+      {/* Hidden access */}
+      <div className="mt-24">
+        <form onSubmit={handleAccess}>
+          <div className={`flex items-center gap-2 font-mono text-xs transition-colors ${accessDenied ? "text-red-600" : "text-cyber-gray"}`}>
+            <span>$</span>
+            <input
+              type="password"
+              value={accessInput}
+              onChange={(e) => setAccessInput(e.target.value)}
+              className="bg-transparent outline-none border-none text-cyber-gray placeholder-cyber-gray/30 w-24 focus:text-cyber-muted transition-colors"
+              autoComplete="off"
+              spellCheck={false}
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
