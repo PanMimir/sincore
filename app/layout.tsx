@@ -19,7 +19,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sincore.io";
 
 export const metadata: Metadata = {
   title: { template: "%s | sincore", default: "sincore" },
-  description: "Publiczne portfolio technologiczne – projekty, baza wiedzy, narzędzia.",
+  description: "Naprawiam procesy i buduję oprogramowanie które działa. Dedykowane narzędzia, automatyzacja, systemy przemysłowe.",
   metadataBase: new URL(BASE_URL),
   openGraph: {
     type: "website",

@@ -35,11 +35,10 @@ export default async function ServicesPage({
 
       {/* Header */}
       <div className="mb-16">
-        <p className="font-mono text-cyber-purple text-sm mb-2">{"$ ./sincore --services"}</p>
         <h1 className="font-mono font-bold text-4xl text-cyber-text mb-4">
           {t("title")}
         </h1>
-        <p className="font-mono text-cyber-muted text-lg">{t("subtitle")}</p>
+        <p className="text-cyber-muted text-lg">{t("subtitle")}</p>
       </div>
 
       {/* Service cards */}
@@ -59,10 +58,10 @@ export default async function ServicesPage({
                   {t(`${key}_tag`)}
                 </span>
               </div>
-              <h2 className="font-mono font-bold text-xl text-cyber-text mb-3">
+              <h2 className="font-bold text-xl text-cyber-text mb-3">
                 {t(`${key}_title`)}
               </h2>
-              <p className="font-mono text-sm text-cyber-muted leading-relaxed flex-1">
+              <p className="text-sm text-cyber-muted leading-relaxed flex-1">
                 {t(`${key}_desc`)}
               </p>
             </div>
@@ -75,7 +74,7 @@ export default async function ServicesPage({
         <h2 className="font-mono font-bold text-2xl text-cyber-text mb-3">
           {t("cta_title")}
         </h2>
-        <p className="font-mono text-cyber-muted mb-6 max-w-lg mx-auto">
+        <p className="text-cyber-muted mb-6 max-w-lg mx-auto">
           {t("cta_subtitle")}
         </p>
         <Link

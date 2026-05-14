@@ -16,11 +16,10 @@ export default function AboutPreviewSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           <ScrollReveal>
-            <p className="font-mono text-cyber-purple text-sm mb-2">{"$ ./sincore --info"}</p>
             <h2 className="font-mono font-bold text-3xl text-cyber-text mb-6">
               {t("about_title")}
             </h2>
-            <p className="font-mono text-cyber-muted leading-relaxed mb-8">
+            <p className="text-cyber-muted leading-relaxed mb-8">
               {t("about_bio")}
             </p>
             <Link
@@ -39,7 +38,7 @@ export default function AboutPreviewSection() {
                   className="flex items-start gap-3 p-4 bg-cyber-dark border border-cyber-gray rounded-lg hover:border-cyber-purple/40 transition-colors"
                 >
                   <span className="text-cyber-purple font-mono text-sm mt-0.5 shrink-0">▸</span>
-                  <span className="font-mono text-sm text-cyber-muted">{item}</span>
+                  <span className="text-sm text-cyber-muted">{item}</span>
                 </div>
               ))}
             </div>

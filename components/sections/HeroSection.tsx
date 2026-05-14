@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import TerminalWindow from "@/components/common/TerminalWindow";
 
 export default function HeroSection() {
@@ -67,19 +67,19 @@ export default function HeroSection() {
               className="flex flex-wrap gap-4"
             >
               <Link
-                href={`/${locale}/projects`}
+                href={`/${locale}/services`}
                 className="flex items-center gap-2 px-6 py-3 bg-cyber-purple hover:bg-cyber-purple-bright text-white font-mono text-sm rounded transition-all duration-200 shadow-glow-purple-sm hover:shadow-glow-purple"
               >
-                {t("cta_projects")}
+                {t("cta_services")}
                 <ArrowRight size={16} />
               </Link>
 
               <Link
-                href={`/${locale}/knowledge`}
+                href={`/${locale}/contact`}
                 className="flex items-center gap-2 px-6 py-3 border border-cyber-purple/50 hover:border-cyber-purple text-cyber-purple hover:bg-cyber-purple/10 font-mono text-sm rounded transition-all duration-200"
               >
-                <BookOpen size={16} />
-                {t("cta_knowledge")}
+                <Mail size={16} />
+                {t("cta_contact")}
               </Link>
             </motion.div>
           </div>

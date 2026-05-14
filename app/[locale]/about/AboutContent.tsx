@@ -19,7 +19,6 @@ export default function AboutContent() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       {/* Nagłówek */}
       <ScrollReveal>
-        <p className="font-mono text-cyber-purple text-sm mb-2">{"$ ./whoami --verbose"}</p>
         <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-text mb-16">
           {t("title")}
         </h1>
