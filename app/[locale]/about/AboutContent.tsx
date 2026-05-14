@@ -2,12 +2,11 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Terminal, Shield, Cpu, Network, Code2 } from "lucide-react";
+import { Terminal, Cpu, Code2, Monitor, Database } from "lucide-react";
 import ScrollReveal from "@/components/common/ScrollReveal";
 import TerminalWindow from "@/components/common/TerminalWindow";
 
-// Ikony per specjalizacja — kolejność odpowiada tablicy skills w tłumaczeniach
-const SKILL_ICONS = [Code2, Cpu, Shield, Network, Terminal];
+const SKILL_ICONS = [Terminal, Cpu, Database, Monitor, Code2];
 
 export default function AboutContent() {
   const t = useTranslations("about");
@@ -37,7 +36,7 @@ export default function AboutContent() {
                 { text: t("bio_1"), type: "output" },
                 { text: "", type: "output" },
                 { text: "echo $FOCUS", type: "command" },
-                { text: "OT/ICS Security + Backend Architecture", type: "output" },
+                { text: "custom software · industrial systems · automation", type: "output" },
               ]}
             />
           </ScrollReveal>

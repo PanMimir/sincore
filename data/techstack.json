@@ -3,71 +3,50 @@
     "category": "backend",
     "label": { "pl": "Backend", "en": "Backend" },
     "items": [
-      { "name": "Python",      "level": "expert" },
-      { "name": "FastAPI",     "level": "advanced" },
-      { "name": "Spring Boot", "level": "intermediate" },
-      { "name": "Node.js",     "level": "intermediate" },
-      { "name": "PostgreSQL",  "level": "advanced" },
-      { "name": "SQLite",      "level": "expert" },
-      { "name": "REST API",    "level": "advanced" }
+      { "name": "Python",     "level": "expert" },
+      { "name": "FastAPI",    "level": "advanced" },
+      { "name": "SQLite",     "level": "expert" },
+      { "name": "PostgreSQL", "level": "advanced" },
+      { "name": "REST API",   "level": "advanced" }
+    ]
+  },
+  {
+    "category": "desktop",
+    "label": { "pl": "Aplikacje desktopowe", "en": "Desktop Apps" },
+    "items": [
+      { "name": "PySide6",      "level": "advanced" },
+      { "name": "PySerial",     "level": "expert" },
+      { "name": "PyInstaller",  "level": "advanced" }
     ]
   },
   {
     "category": "frontend",
     "label": { "pl": "Frontend", "en": "Frontend" },
     "items": [
-      { "name": "Next.js",     "level": "advanced" },
-      { "name": "React",       "level": "advanced" },
-      { "name": "TypeScript",  "level": "advanced" },
-      { "name": "TailwindCSS", "level": "advanced" },
-      { "name": "HTML/CSS",    "level": "expert" }
-    ]
-  },
-  {
-    "category": "cybersecurity",
-    "label": { "pl": "Cybersecurity", "en": "Cybersecurity" },
-    "items": [
-      { "name": "Nmap",        "level": "advanced" },
-      { "name": "Wireshark",   "level": "advanced" },
-      { "name": "Burp Suite",  "level": "intermediate" },
-      { "name": "Kali Linux",  "level": "advanced" },
-      { "name": "Metasploit",  "level": "intermediate" },
-      { "name": "OSINT",       "level": "intermediate" }
+      { "name": "Next.js",    "level": "advanced" },
+      { "name": "React",      "level": "advanced" },
+      { "name": "TypeScript", "level": "advanced" },
+      { "name": "TailwindCSS","level": "advanced" }
     ]
   },
   {
     "category": "automation",
     "label": { "pl": "Automatyka", "en": "Automation" },
     "items": [
-      { "name": "Snap7",       "level": "advanced" },
       { "name": "pyModbus",    "level": "expert" },
-      { "name": "SCADA",       "level": "intermediate" },
-      { "name": "HMI",         "level": "intermediate" },
+      { "name": "Snap7",       "level": "advanced" },
       { "name": "PLC Siemens", "level": "advanced" }
-    ]
-  },
-  {
-    "category": "networking",
-    "label": { "pl": "Sieci", "en": "Networking" },
-    "items": [
-      { "name": "TCP/IP",      "level": "advanced" },
-      { "name": "VPN",         "level": "intermediate" },
-      { "name": "pfSense",     "level": "intermediate" },
-      { "name": "VLAN",        "level": "intermediate" },
-      { "name": "DNS",         "level": "advanced" },
-      { "name": "Wireshark",   "level": "advanced" }
     ]
   },
   {
     "category": "industrial",
     "label": { "pl": "Protokoły przemysłowe", "en": "Industrial Protocols" },
     "items": [
-      { "name": "Modbus TCP",  "level": "expert" },
-      { "name": "Modbus RTU",  "level": "expert" },
-      { "name": "S7comm",      "level": "advanced" },
-      { "name": "OPC-UA",      "level": "intermediate" },
-      { "name": "PROFINET",    "level": "intermediate" },
-      { "name": "RS-485",      "level": "advanced" }
+      { "name": "Modbus RTU", "level": "expert" },
+      { "name": "Modbus TCP", "level": "expert" },
+      { "name": "RS-485",     "level": "advanced" },
+      { "name": "S7comm",     "level": "advanced" },
+      { "name": "OPC-UA",     "level": "intermediate" }
     ]
   }
 ]

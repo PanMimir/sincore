@@ -96,6 +96,23 @@ export default async function ProjectPage({
         </div>
       </div>
 
+      {/* Screenshots */}
+      {project.screenshots && project.screenshots.length > 0 && (
+        <div className="mb-8">
+          <p className="font-mono text-xs text-cyber-muted mb-3">{"// screenshots"}</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {project.screenshots.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`${project.title} screenshot ${i + 1}`}
+                className="rounded border border-cyber-gray w-full object-cover"
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Linki */}
       <div className="flex flex-wrap gap-4 pt-8 border-t border-cyber-gray">
         {project.githubUrl && (

@@ -29,7 +29,7 @@ export default function ContactContent() {
 
   const handleAccess = (e: React.FormEvent) => {
     e.preventDefault();
-    if (accessInput === "sin") {
+    if (accessInput === (process.env.NEXT_PUBLIC_SPECIAL_KEY ?? "")) {
       sessionStorage.setItem("sincore_special_access", "1");
       router.push(`/${locale}/special`);
     } else {

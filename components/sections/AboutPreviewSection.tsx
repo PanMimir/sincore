@@ -16,7 +16,7 @@ export default function AboutPreviewSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           <ScrollReveal>
-            <p className="font-mono text-cyber-purple text-sm mb-2">{"$ ./whoami"}</p>
+            <p className="font-mono text-cyber-purple text-sm mb-2">{"$ ./sincore --info"}</p>
             <h2 className="font-mono font-bold text-3xl text-cyber-text mb-6">
               {t("about_title")}
             </h2>

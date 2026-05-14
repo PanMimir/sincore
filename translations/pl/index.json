@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Start",
+    "services": "Usługi",
     "projects": "Projekty",
     "knowledge": "Baza wiedzy",
     "stack": "Stack",
@@ -10,14 +11,14 @@
   "hero": {
     "greeting": "Cześć, jestem",
     "name": "sincore",
-    "tagline": "Backend · Automatyka · Cybersecurity · Industrial Systems",
-    "description": "Buduję narzędzia które rozwiązują realne problemy techniczne — od automatyki przemysłowej po aplikacje webowe.",
+    "tagline": "Naprawiam procesy. Buduję narzędzia. To działa.",
+    "description": "Tanie zamienniki drogich narzędzi. Automatyzacja tego co da się zautomatyzować. Oprogramowanie które rozwiązuje konkretny problem.",
     "cta_projects": "Zobacz projekty",
     "cta_knowledge": "Baza wiedzy",
     "terminal_line1": "$ whoami",
     "terminal_line2": "Mimir — developer & problem solver",
     "terminal_line3": "$ cat services.txt",
-    "terminal_line_services": "automatyka · backend · integracje · narzędzia",
+    "terminal_line_services": "custom software · automatyzacja · integracje · industrial",
     "terminal_line4": "$ echo $STATUS",
     "terminal_line5": "otwarty na projekty",
     "terminal_line6": "$ ./contact.sh",
@@ -53,19 +54,19 @@
   "about": {
     "title": "O mnie",
     "subtitle": "Kim jestem",
-    "bio_1": "Inżynier systemów automatyki i programista skupiony na backendie, cybersecurity i systemach przemysłowych.",
-    "bio_2": "Buduję narzędzia które działają w realnym świecie — od skryptów do komunikacji z PLC, przez skanery sieci, po aplikacje webowe. Preferuję kod który jest prosty, czytelny i robi dokładnie to co powinien.",
-    "bio_3": "Aktualnie rozwijam się w kierunku bezpieczeństwa systemów przemysłowych (OT/ICS security) i architektury aplikacji backendowych.",
-    "skills_title": "Specjalizacje",
+    "bio_1": "10 lat w środowisku przemysłowym. Zaczynałem od badań energetycznych urządzeń grzewczych w ITPE Zabrze. Skończyłem na pisaniu softu bo zauważyłem, że większość problemów to brak narzędzi — nie brak wiedzy.",
+    "bio_2": "Mam uprawnienia SEP G1/G2/G3. Znam sprzęt od strony elektrycznej i od strony kodu. Kiedy piszę aplikację do odczytu z wagi laboratoryjnej, wiem jak waga działa — nie tylko jak działa protokół COM.",
+    "bio_3": "sincore to nie startup. To imię pod którym robię konkretne rzeczy dla konkretnych ludzi. Jeśli masz problem który da się rozwiązać softem — napisz.",
+    "skills_title": "Co potrafię",
     "skills": [
-      "Backend development (Python, FastAPI, Spring Boot)",
-      "Automatyka przemysłowa (PLC Siemens S7, Modbus)",
-      "Cybersecurity (sieci, systemy Linux, OT/ICS)",
-      "Protokoły przemysłowe (Modbus TCP/RTU, S7comm, OPC-UA)",
-      "Administracja Linux i sieci"
+      "Dedykowane aplikacje desktopowe (Python, PySide6)",
+      "Systemy przemysłowe i protokoły (Modbus, RS-485, PLC Siemens)",
+      "Backend i integracje (Python, FastAPI, SQLite, REST)",
+      "Frontend i aplikacje webowe (Next.js, TypeScript, React)",
+      "10 lat badań w środowisku energetycznym i przemysłowym"
     ],
     "approach_title": "Podejście",
-    "approach": "Wolę rozumieć system od fundamentów zanim zacznę pisać kod. Dokumentacja, testy i czysty interfejs to nie opcje — to wymagania."
+    "approach": "Rozumiem system zanim napiszę kod. Nie sprzedaję rozwiązań które znam — szukam rozwiązań które działają dla konkretnego problemu."
   },
   "contact": {
     "title": "Kontakt",
@@ -87,6 +88,25 @@
     "built_with": "Zbudowane z",
     "rights": "Wszelkie prawa zastrzeżone"
   },
+  "services": {
+    "title": "Usługi",
+    "subtitle": "Co naprawiam. Co buduję.",
+    "cta_title": "Masz konkretny problem?",
+    "cta_subtitle": "Napisz dwa zdania o tym co nie działa albo czego potrzebujesz — resztę ogarniemy.",
+    "cta_button": "Napisz do mnie",
+    "service_1_title": "Dedykowane oprogramowanie",
+    "service_1_desc": "Istniejące narzędzie kosztuje 500 zł/miesiąc i ma 80% funkcji których nie potrzebujesz? Buduję dokładnie to czego potrzebujesz — raz, za stałą kwotę, bez subskrypcji.",
+    "service_1_tag": "custom software",
+    "service_2_title": "Automatyzacja procesów",
+    "service_2_desc": "Raporty robione ręcznie, dane przepisywane między systemami, powtarzalne zadania które zjadają godziny tygodniowo. To da się zautomatyzować.",
+    "service_2_tag": "automatyzacja",
+    "service_3_title": "Systemy przemysłowe",
+    "service_3_desc": "Sprzęt działa, ale brak oprogramowania do obsługi? Piszę aplikacje komunikujące się przez Modbus, RS-485, port COM — od odczytu danych po sterowanie.",
+    "service_3_tag": "industrial",
+    "service_4_title": "Narzędzia wewnętrzne",
+    "service_4_desc": "Zamówienia w Excelu, statusy w głowie szefa, raporty robione w piątek. Buduję proste systemy do zarządzania zamówieniami, statusami i raportowaniem — bez korporacyjnego ERP.",
+    "service_4_tag": "internal tools"
+  },
   "home": {
     "stats_projects": "projektów",
     "stats_experience": "lat w środowisku technicznym",
@@ -94,15 +114,15 @@
     "stats_sep_sub": "eksploatacja i dozór",
     "featured_title": "Wybrane projekty",
     "featured_cta": "Zobacz wszystkie",
-    "about_title": "Kim jestem",
-    "about_bio": "Technik z 10-letnim doświadczeniem w środowisku przemysłowym. Buduję narzędzia które rozwiązują realne problemy — od automatyki po aplikacje webowe.",
+    "about_title": "Co robimy",
+    "about_bio": "Naprawiamy zepsute procesy i budujemy oprogramowanie które działa. Bez korporacyjnych budżetów, bez niepotrzebnej złożoności.",
     "about_highlights": [
-      "10 lat w Instytucie Technologii Paliw i Energii",
-      "Badania energetyczno-emisyjne urządzeń grzewczych",
-      "Automatyzacja procesów i narzędzia deweloperskie",
-      "Uprawnienia SEP G1/G2/G3 — eksploatacja i dozór"
+      "Dedykowane aplikacje zamiast drogich narzędzi SaaS",
+      "Automatyzacja powtarzalnych procesów i integracja systemów",
+      "Oprogramowanie dla urządzeń przemysłowych i sprzętu pomiarowego",
+      "Proste narzędzia do zamówień, raportowania i statusów"
     ],
-    "about_cta": "Więcej o mnie",
+    "about_cta": "Kim stoi za sincore",
     "cta_title": "Masz projekt lub pytanie?",
     "cta_subtitle": "Chętnie porozmawiam o tym co można zautomatyzować, zoptymalizować lub po prostu zbudować.",
     "cta_button": "Napisz do mnie"

@@ -14,6 +14,7 @@ export interface Project {
   downloadUrl: string | null;
   featured: boolean;
   thumbnail: string | null;
+  screenshots: string[];
 }
 
 /**

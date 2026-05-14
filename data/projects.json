@@ -13,54 +13,58 @@
     "docsUrl": null,
     "downloadUrl": null,
     "featured": true,
-    "thumbnail": null
+    "thumbnail": null,
+    "screenshots": []
   },
   {
-    "slug": "modbus-monitor",
-    "title": "Modbus Monitor",
+    "slug": "radwag-rejestrator",
+    "title": "RADWAG WLC X2 — Rejestrator",
     "description": {
-      "pl": "Narzędzie do monitorowania urządzeń przemysłowych przez protokół Modbus TCP/RTU. Odczyt rejestrów, logowanie, alerty.",
-      "en": "Tool for monitoring industrial devices via Modbus TCP/RTU protocol. Register reading, logging, alerts."
+      "pl": "Dedykowana aplikacja desktopowa do obsługi wagi laboratoryjnej RADWAG WLC X2. Zastępuje drogi dedykowany software producenta — odczyt pomiarów przez COM, zapis do SQLite, eksport do CSV.",
+      "en": "Desktop application for RADWAG WLC X2 laboratory scale. Replaces expensive vendor software — reads measurements via COM port, stores in SQLite, exports to CSV."
     },
-    "stack": ["Python", "Modbus", "SQLite", "Rich CLI"],
-    "tags": ["industrial", "automation", "cli", "monitoring"],
+    "stack": ["Python", "PySide6", "SQLite", "PySerial"],
+    "tags": ["desktop", "industrial", "serial", "laboratory"],
     "status": "active",
-    "githubUrl": "https://github.com/yourusername/modbus-monitor",
+    "githubUrl": "https://github.com/PanMimir/radwag_rejestrator",
     "docsUrl": null,
     "downloadUrl": null,
     "featured": true,
-    "thumbnail": null
+    "thumbnail": null,
+    "screenshots": []
   },
   {
-    "slug": "network-scanner",
-    "title": "Net Scanner",
+    "slug": "mb-tc-configurator",
+    "title": "F&F MB-TC-1 — Konfigurator",
     "description": {
-      "pl": "Skaner sieci lokalnej – wykrywanie hostów, otwarte porty, fingerprinting usług. Wyniki eksportowane do JSON/CSV.",
-      "en": "Local network scanner – host discovery, open ports, service fingerprinting. Results exported to JSON/CSV."
+      "pl": "Aplikacja do konfiguracji i odczytu modułu termometru Modbus F&F MB-TC-1. Komunikacja przez RS-485, odczyt temperatur z 8 kanałów termopary, konfiguracja rejestrów.",
+      "en": "Configuration and readout application for F&F MB-TC-1 Modbus thermocouple module. RS-485 communication, 8-channel thermocouple readout, register configuration."
     },
-    "stack": ["Python", "Nmap", "Scapy"],
-    "tags": ["cybersecurity", "networking", "cli"],
+    "stack": ["Python", "PySide6", "Modbus RTU", "PySerial"],
+    "tags": ["desktop", "modbus", "industrial", "rs485"],
+    "status": "active",
+    "githubUrl": "https://github.com/PanMimir/mb_tc_configurator",
+    "docsUrl": null,
+    "downloadUrl": null,
+    "featured": false,
+    "thumbnail": null,
+    "screenshots": []
+  },
+  {
+    "slug": "bronkhorst-controller",
+    "title": "Bronkhorst MFC/MFM Controller",
+    "description": {
+      "pl": "Aplikacja do sterowania i monitorowania przepływomierzy/kontrolerów przepływu masy Bronkhorst przez RS-485. Projekt wstrzymany — brak dostępu do sprzętu.",
+      "en": "Application for controlling and monitoring Bronkhorst mass flow controllers/meters via RS-485. Project on hold — no hardware access."
+    },
+    "stack": ["Python", "PySide6", "RS-485", "PySerial"],
+    "tags": ["desktop", "industrial", "rs485", "flow-control"],
     "status": "wip",
-    "githubUrl": null,
+    "githubUrl": "https://github.com/PanMimir/bronkhorst",
     "docsUrl": null,
     "downloadUrl": null,
     "featured": false,
-    "thumbnail": null
-  },
-  {
-    "slug": "plc-data-logger",
-    "title": "PLC Data Logger",
-    "description": {
-      "pl": "Logger danych z sterowników PLC Siemens S7. Zapis do bazy danych, wizualizacja trendów, eksport do CSV.",
-      "en": "Data logger for Siemens S7 PLC controllers. Database storage, trend visualization, CSV export."
-    },
-    "stack": ["Python", "Snap7", "PostgreSQL", "Matplotlib"],
-    "tags": ["industrial", "automation", "plc", "siemens"],
-    "status": "archived",
-    "githubUrl": "https://github.com/yourusername/plc-logger",
-    "docsUrl": null,
-    "downloadUrl": null,
-    "featured": false,
-    "thumbnail": null
+    "thumbnail": null,
+    "screenshots": []
   }
 ]
