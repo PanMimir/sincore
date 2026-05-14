@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 
@@ -59,10 +59,27 @@ export default function Navbar() {
             href={`/${locale}`}
             className="flex items-center gap-2 group"
           >
-            <Terminal
-              size={20}
-              className="text-cyber-purple group-hover:text-cyber-purple-bright transition-colors"
-            />
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 32 32"
+              fill="none"
+              className="shrink-0 transition-all duration-200 group-hover:[&_rect:last-of-type]:stroke-[#a78bfa]"
+            >
+              <rect width="32" height="32" rx="4" fill="#0a0a0f" />
+              <rect x="1.5" y="1.5" width="29" height="29" rx="3" stroke="#8b5cf6" strokeWidth="1.5" />
+              <text
+                x="16"
+                y="22"
+                fontFamily="var(--font-mono), 'Courier New', monospace"
+                fontSize="14"
+                fontWeight="700"
+                textAnchor="middle"
+              >
+                <tspan fill="#e2e8f0">s</tspan>
+                <tspan fill="#8b5cf6">c</tspan>
+              </text>
+            </svg>
             <span className="font-mono font-bold text-lg text-cyber-text group-hover:text-cyber-purple transition-colors">
               sin<span className="text-cyber-purple">core</span>
             </span>
