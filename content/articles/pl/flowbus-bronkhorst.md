@@ -2,8 +2,13 @@
 title: "Protokół Flowbus — komunikacja z urządzeniami Bronkhorst"
 description: "Jak działa protokół Flowbus używany przez kontrolery przepływu masy Bronkhorst, struktura wiadomości, adresowanie parametrów i pierwsze połączenie."
 date: "2026-05-14"
-tags: ["flowbus", "bronkhorst", "industrial", "rs485", "python"]
+tags: ["flowbus", "bronkhorst"]
 featured: true
+references:
+  - title: "bronkhorst-propar — biblioteka Python (GitHub)"
+    url: "https://github.com/bronkhorst-developer/bronkhorst-propar"
+  - title: "Bronkhorst — RS232 Interface and Flowbus Commands (dokumentacja)"
+    url: "https://www.bronkhorst.com/getmedia/7b3cce19-2fd1-4734-b2d4-a28ec0c38f5f/917027-manual-rs232-interface-and-flowbus-commands.pdf"
 ---
 
 ## Czym jest Flowbus

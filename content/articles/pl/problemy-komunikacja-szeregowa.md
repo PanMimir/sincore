@@ -2,8 +2,13 @@
 title: "Napotkane problemy — komunikacja szeregowa RS-485 / COM"
 description: "Zbiór realnych problemów z komunikacją szeregową w środowisku przemysłowym — co się dzieje, dlaczego i jak to naprawić."
 date: "2026-05-14"
-tags: ["troubleshooting", "rs485", "serial", "modbus", "windows"]
+tags: ["rs485", "troubleshooting"]
 featured: false
+references:
+  - title: "pymodbus — troubleshooting guide"
+    url: "https://pymodbus.readthedocs.io/en/latest/source/lib/pymodbus.rst"
+  - title: "pyserial — dokumentacja"
+    url: "https://pyserial.readthedocs.io/en/latest/"
 ---
 
 ## O tym artykule

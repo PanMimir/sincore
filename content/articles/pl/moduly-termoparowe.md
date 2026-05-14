@@ -2,8 +2,13 @@
 title: "Moduły termoparowe — przetworniki temperatury z Modbus"
 description: "Czym są moduły termoparowe, typy termopar, jak odczytywać temperatury przez Modbus RTU i co oznaczają rejestry w typowym module wielokanałowym."
 date: "2026-05-14"
-tags: ["temperature", "modbus", "industrial", "rs485", "hardware"]
+tags: ["temperature", "modbus"]
 featured: false
+references:
+  - title: "F&F Filipowski — moduł MB-TC (dokumentacja)"
+    url: "https://www.fif.com.pl/termometry/mb-tc-1"
+  - title: "IEC 60584 — termopary, typy i zakresy (Wikipedia)"
+    url: "https://en.wikipedia.org/wiki/Thermocouple#Types"
 ---
 
 ## Czym jest moduł termoparowy

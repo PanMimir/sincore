@@ -2,30 +2,53 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import KnowledgeCard from "@/components/common/KnowledgeCard";
 import type { Article } from "@/services/articleService";
 
 export default function KnowledgeClient({ articles }: { articles: Article[] }) {
   const t = useTranslations("knowledge");
+  const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
-  // Wszystkie unikalne tagi z wszystkich artykułów
   const allTags = Array.from(new Set(articles.flatMap((a) => a.tags))).sort();
 
-  const filtered = activeTag
-    ? articles.filter((a) => a.tags.includes(activeTag))
-    : articles;
+  const filtered = articles.filter((a) => {
+    const matchesTag = !activeTag || a.tags.includes(activeTag);
+    if (!matchesTag) return false;
+    if (!query.trim()) return true;
+    const q = query.toLowerCase();
+    return (
+      a.title.toLowerCase().includes(q) ||
+      a.description.toLowerCase().includes(q) ||
+      a.tags.some((tag) => tag.toLowerCase().includes(q))
+    );
+  });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       {/* Nagłówek */}
       <div className="mb-12">
-        <p className="font-mono text-cyber-purple text-sm mb-2">{"$ cat ./knowledge/**/*.md"}</p>
         <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
           {t("title")}
         </h1>
         <p className="text-cyber-muted text-base">{t("subtitle")}</p>
+      </div>
+
+      {/* Wyszukiwarka */}
+      <div className="relative mb-6">
+        <Search
+          size={16}
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-cyber-muted pointer-events-none"
+        />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={t("search_placeholder")}
+          className="w-full max-w-md pl-9 pr-4 py-2 bg-transparent border border-cyber-gray rounded font-mono text-sm text-cyber-text placeholder:text-cyber-muted focus:outline-none focus:border-cyber-purple transition-colors"
+        />
       </div>
 
       {/* Filtry tagów */}

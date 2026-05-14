@@ -44,7 +44,9 @@
     "subtitle": "Stay awhile and listen",
     "read_more": "Czytaj więcej",
     "no_articles": "Brak artykułów.",
-    "all": "Wszystkie"
+    "all": "Wszystkie",
+    "search_placeholder": "Szukaj artykułu...",
+    "sources": "Źródła"
   },
   "stack": {
     "title": "Stack technologiczny",

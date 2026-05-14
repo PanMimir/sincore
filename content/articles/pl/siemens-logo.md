@@ -2,8 +2,13 @@
 title: "Siemens LOGO! — mały PLC, komunikacja i programowanie"
 description: "Czym jest LOGO!, jak się go programuje, jak komunikować się z nim przez Modbus TCP i sieć Ethernet oraz kiedy warto go użyć zamiast większego PLC."
 date: "2026-05-14"
-tags: ["siemens", "plc", "industrial", "modbus", "ethernet"]
+tags: ["siemens", "modbus"]
 featured: false
+references:
+  - title: "Siemens LOGO! 8 — System Manual (Siemens Industry Support)"
+    url: "https://support.industry.siemens.com/cs/document/109741041"
+  - title: "LOGO! Soft Comfort — strona produktu"
+    url: "https://www.siemens.com/global/en/products/automation/systems/industrial/plc/logo.html"
 ---
 
 ## Czym jest Siemens LOGO!

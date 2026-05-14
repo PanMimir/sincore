@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, ExternalLink, Tag } from "lucide-react";
 import { getAllArticles, getArticleBySlug } from "@/services/articleService";
 
 export async function generateStaticParams({
@@ -29,9 +29,10 @@ export default async function ArticlePage({
 }: {
   params: { locale: string; slug: string };
 }) {
-  const [article, tCommon] = await Promise.all([
+  const [article, tCommon, tKnowledge] = await Promise.all([
     getArticleBySlug(params.slug, params.locale),
     getTranslations({ locale: params.locale, namespace: "common" }),
+    getTranslations({ locale: params.locale, namespace: "knowledge" }),
   ]);
 
   if (!article) notFound();
@@ -83,15 +84,34 @@ export default async function ArticlePage({
         )}
       </header>
 
-      {/*
-        Treść artykułu z Markdown → HTML.
-        "prose" to klasa z Tailwind Typography (tu styled ręcznie przez globals.css).
-        dangerouslySetInnerHTML bo remark zwraca gotowy HTML string.
-      */}
       <div
         className="article-content"
         dangerouslySetInnerHTML={{ __html: article.content ?? "" }}
       />
+
+      {/* Źródła */}
+      {article.references && article.references.length > 0 && (
+        <footer className="mt-12 pt-8 border-t border-cyber-gray">
+          <h2 className="font-mono text-sm font-semibold text-cyber-muted uppercase tracking-wider mb-4">
+            {tKnowledge("sources")}
+          </h2>
+          <ul className="space-y-2">
+            {article.references.map((ref) => (
+              <li key={ref.url}>
+                <a
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-mono text-sm text-cyber-purple hover:text-cyber-text transition-colors"
+                >
+                  <ExternalLink size={12} />
+                  {ref.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </footer>
+      )}
     </div>
   );
 }

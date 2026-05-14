@@ -44,7 +44,9 @@
     "subtitle": "Stay awhile and listen",
     "read_more": "Read more",
     "no_articles": "No articles yet.",
-    "all": "All"
+    "all": "All",
+    "search_placeholder": "Search articles...",
+    "sources": "References"
   },
   "stack": {
     "title": "Tech Stack",

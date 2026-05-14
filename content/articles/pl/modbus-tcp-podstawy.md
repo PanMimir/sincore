@@ -2,8 +2,13 @@
 title: "Modbus TCP — podstawy protokołu"
 description: "Jak działa Modbus TCP, struktura ramki, typy rejestrów i pierwsze połączenie z urządzeniem przemysłowym."
 date: "2026-05-01"
-tags: ["modbus", "industrial", "networking", "python"]
+tags: ["modbus", "python"]
 featured: true
+references:
+  - title: "Modbus Application Protocol Specification v1.1b3"
+    url: "https://modbus.org/docs/Modbus_Application_Protocol_V1_1b3.pdf"
+  - title: "pymodbus — dokumentacja"
+    url: "https://pymodbus.readthedocs.io/en/latest/"
 ---
 
 ## Co to jest Modbus?

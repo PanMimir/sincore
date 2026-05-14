@@ -7,6 +7,11 @@ import remarkHtml from "remark-html";
 
 const ARTICLES_DIR = path.join(process.cwd(), "content/articles");
 
+export interface Reference {
+  title: string;
+  url: string;
+}
+
 export interface Article {
   slug: string;
   title: string;
@@ -14,7 +19,8 @@ export interface Article {
   date: string;
   tags: string[];
   featured: boolean;
-  content?: string; // HTML – tylko gdy pobieramy pełny artykuł
+  references?: Reference[];
+  content?: string;
 }
 
 /**
@@ -43,6 +49,7 @@ export async function getAllArticles(locale: string): Promise<Article[]> {
       date: data.date ?? "",
       tags: data.tags ?? [],
       featured: data.featured ?? false,
+      references: data.references ?? [],
     } satisfies Article;
   });
 
@@ -82,6 +89,7 @@ export async function getArticleBySlug(
     date: data.date ?? "",
     tags: data.tags ?? [],
     featured: data.featured ?? false,
+    references: data.references ?? [],
     content: processed.toString(),
   };
 }

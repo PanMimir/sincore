@@ -2,8 +2,13 @@
 title: "Modbus RTU — RS-485 i różnice względem TCP"
 description: "Jak działa Modbus RTU przez RS-485, struktura ramki z CRC, adresowanie urządzeń i typowe problemy z timing."
 date: "2026-05-14"
-tags: ["modbus", "rs485", "industrial", "python"]
+tags: ["modbus", "rs485"]
 featured: true
+references:
+  - title: "Modbus over Serial Line Specification v1.02"
+    url: "https://modbus.org/docs/Modbus_over_serial_line_V1_02.pdf"
+  - title: "pymodbus — ModbusSerialClient"
+    url: "https://pymodbus.readthedocs.io/en/latest/source/client.html"
 ---
 
 ## Modbus RTU vs TCP — co jest co

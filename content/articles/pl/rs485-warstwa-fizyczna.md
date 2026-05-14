@@ -2,8 +2,13 @@
 title: "RS-485 — warstwa fizyczna od podstaw"
 description: "Czym jest RS-485, jak wygląda magistrala, terminator, uziemienie, konwertery USB i typowe błędy okablowania."
 date: "2026-05-14"
-tags: ["rs485", "industrial", "hardware", "serial"]
+tags: ["rs485", "hardware"]
 featured: false
+references:
+  - title: "TIA-485-A Standard (Wikipedia)"
+    url: "https://en.wikipedia.org/wiki/RS-485"
+  - title: "Texas Instruments — RS-485/RS-422 Circuit Implementation Guide"
+    url: "https://www.ti.com/lit/an/slla272d/slla272d.pdf"
 ---
 
 ## Czym jest RS-485

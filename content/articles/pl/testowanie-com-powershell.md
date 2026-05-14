@@ -2,8 +2,11 @@
 title: "Testowanie portów COM i RS-485 z PowerShell"
 description: "Jak sprawdzić dostępne porty COM, wysłać i odebrać surowe bajty przez port szeregowy oraz przetestować komunikację z urządzeniem przemysłowym bez żadnych dodatkowych narzędzi."
 date: "2026-05-14"
-tags: ["powershell", "serial", "rs485", "troubleshooting", "windows"]
+tags: ["powershell", "rs485"]
 featured: true
+references:
+  - title: "Microsoft Docs — System.IO.Ports.SerialPort"
+    url: "https://learn.microsoft.com/en-us/dotnet/api/system.io.ports.serialport"
 ---
 
 ## Po co testować z PowerShell
