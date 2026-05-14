@@ -25,10 +25,7 @@ export default async function ServicesPage({
 }: {
   params: { locale: string };
 }) {
-  const [t, tContact] = await Promise.all([
-    getTranslations({ locale: params.locale, namespace: "services" }),
-    getTranslations({ locale: params.locale, namespace: "contact" }),
-  ]);
+  const t = await getTranslations({ locale: params.locale, namespace: "services" });
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
