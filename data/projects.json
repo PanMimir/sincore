@@ -20,8 +20,8 @@
     "slug": "radwag-rejestrator",
     "title": "RADWAG WLC X2 — Rejestrator pomiarów",
     "description": {
-      "pl": "Waga laboratoryjna RADWAG kosztuje kilkanaście tysięcy złotych, a software producenta — drugie tyle. Napisałem aplikację która robi to samo: pokazuje pomiary na bieżąco, zapisuje historię i pozwala wyeksportować dane do CSV. Działa przez kabel COM, bez żadnych dodatkowych licencji.",
-      "en": "The RADWAG lab scale costs a fortune, and the vendor software costs almost as much again. I wrote an app that does the same thing: shows live readings, stores history and exports data to CSV. Works via COM cable, no additional licenses needed."
+      "pl": "Ktoś z działu przyszedł z problemem: skończyła się licencja demo softu do rejestracji pomiarów z wagi i nie wiadomo było co dalej. Napisałem zamiennik od zera — pokazuje pomiary na żywo, zapisuje historię w bazie i eksportuje do CSV. Działa na Windows 11, bez licencji i bez czekania na support producenta.",
+      "en": "Someone from another department came with a problem: the demo license for their scale registration software had expired and they didn't know what to do. I wrote a replacement from scratch — shows live readings, stores history in a database and exports to CSV. Works on Windows 11, no license fees, no waiting for vendor support."
     },
     "stack": ["Python", "PySide6", "SQLite", "PySerial"],
     "tags": ["desktop", "industrial", "serial", "laboratory"],
