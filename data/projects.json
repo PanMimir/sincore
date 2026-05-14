@@ -1,15 +1,15 @@
 [
   {
     "slug": "sincore-portfolio",
-    "title": "sincore Portfolio",
+    "title": "sincore.io — strona i portfolio",
     "description": {
-      "pl": "Publiczne portfolio technologiczne – projekty, baza wiedzy, narzędzia. Zbudowane na Next.js z motywem cyberpunk.",
-      "en": "Public tech portfolio – projects, knowledge base, tools. Built on Next.js with a cyberpunk theme."
+      "pl": "Ta strona. Zbudowana od zera na Next.js z obsługą dwóch języków, dynamicznym OG image i motywem cyberpunk. Projekt otwarty — pokazuje jak podchodzę do frontendu.",
+      "en": "This website. Built from scratch on Next.js with two-language support, dynamic OG image and a cyberpunk theme. Open project — shows how I approach frontend work."
     },
     "stack": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
-    "tags": ["frontend", "portfolio", "open-source"],
+    "tags": ["frontend", "portfolio"],
     "status": "active",
-    "githubUrl": "https://github.com/PanMimir/sincore",
+    "githubUrl": null,
     "docsUrl": null,
     "downloadUrl": null,
     "featured": true,
@@ -18,15 +18,15 @@
   },
   {
     "slug": "radwag-rejestrator",
-    "title": "RADWAG WLC X2 — Rejestrator",
+    "title": "RADWAG WLC X2 — Rejestrator pomiarów",
     "description": {
-      "pl": "Dedykowana aplikacja desktopowa do obsługi wagi laboratoryjnej RADWAG WLC X2. Zastępuje drogi dedykowany software producenta — odczyt pomiarów przez COM, zapis do SQLite, eksport do CSV.",
-      "en": "Desktop application for RADWAG WLC X2 laboratory scale. Replaces expensive vendor software — reads measurements via COM port, stores in SQLite, exports to CSV."
+      "pl": "Waga laboratoryjna RADWAG kosztuje kilkanaście tysięcy złotych, a software producenta — drugie tyle. Napisałem aplikację która robi to samo: pokazuje pomiary na bieżąco, zapisuje historię i pozwala wyeksportować dane do CSV. Działa przez kabel COM, bez żadnych dodatkowych licencji.",
+      "en": "The RADWAG lab scale costs a fortune, and the vendor software costs almost as much again. I wrote an app that does the same thing: shows live readings, stores history and exports data to CSV. Works via COM cable, no additional licenses needed."
     },
     "stack": ["Python", "PySide6", "SQLite", "PySerial"],
     "tags": ["desktop", "industrial", "serial", "laboratory"],
     "status": "active",
-    "githubUrl": "https://github.com/PanMimir/radwag_rejestrator",
+    "githubUrl": null,
     "docsUrl": null,
     "downloadUrl": null,
     "featured": true,
@@ -35,15 +35,15 @@
   },
   {
     "slug": "mb-tc-configurator",
-    "title": "F&F MB-TC-1 — Konfigurator",
+    "title": "F&F MB-TC-1 — Konfigurator temperatur",
     "description": {
-      "pl": "Aplikacja do konfiguracji i odczytu modułu termometru Modbus F&F MB-TC-1. Komunikacja przez RS-485, odczyt temperatur z 8 kanałów termopary, konfiguracja rejestrów.",
-      "en": "Configuration and readout application for F&F MB-TC-1 Modbus thermocouple module. RS-485 communication, 8-channel thermocouple readout, register configuration."
+      "pl": "Moduł F&F MB-TC-1 mierzy temperatury w 8 punktach jednocześnie, ale bez własnego oprogramowania trzeba się z nim komunikować przez terminal — wpisując kody ręcznie. Napisałem aplikację z normalnym interfejsem: podłączasz kabel RS-485, klikasz, widzisz temperatury ze wszystkich kanałów.",
+      "en": "The F&F MB-TC-1 module measures temperatures at 8 points simultaneously, but without software you have to communicate with it via terminal — entering codes manually. I wrote an app with a normal interface: plug in the RS-485 cable, click, see temperatures from all channels."
     },
     "stack": ["Python", "PySide6", "Modbus RTU", "PySerial"],
     "tags": ["desktop", "modbus", "industrial", "rs485"],
     "status": "active",
-    "githubUrl": "https://github.com/PanMimir/mb_tc_configurator",
+    "githubUrl": null,
     "docsUrl": null,
     "downloadUrl": null,
     "featured": false,
@@ -52,15 +52,15 @@
   },
   {
     "slug": "bronkhorst-controller",
-    "title": "Bronkhorst MFC/MFM Controller",
+    "title": "Bronkhorst MFC — Sterownik przepływu",
     "description": {
-      "pl": "Aplikacja do sterowania i monitorowania przepływomierzy/kontrolerów przepływu masy Bronkhorst przez RS-485. Projekt wstrzymany — brak dostępu do sprzętu.",
-      "en": "Application for controlling and monitoring Bronkhorst mass flow controllers/meters via RS-485. Project on hold — no hardware access."
+      "pl": "Przepływomierze Bronkhorst to sprzęt z górnej półki do precyzyjnego dozowania gazów w laboratoriach. Zacząłem pisać aplikację do ich obsługi i logowania danych przez RS-485 — projekt czeka na wznowienie bo aktualnie brak dostępu do sprzętu.",
+      "en": "Bronkhorst flow controllers are high-end equipment for precise gas dosing in laboratories. I started writing an app to operate them and log data via RS-485 — project is on hold due to lack of hardware access."
     },
     "stack": ["Python", "PySide6", "RS-485", "PySerial"],
     "tags": ["desktop", "industrial", "rs485", "flow-control"],
     "status": "wip",
-    "githubUrl": "https://github.com/PanMimir/bronkhorst",
+    "githubUrl": null,
     "docsUrl": null,
     "downloadUrl": null,
     "featured": false,
