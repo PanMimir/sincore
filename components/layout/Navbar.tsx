@@ -60,8 +60,8 @@ export default function Navbar() {
             className="flex items-center gap-2 group"
           >
             <svg
-              width="22"
-              height="22"
+              width="28"
+              height="28"
               viewBox="0 0 32 32"
               fill="none"
               className="shrink-0 transition-all duration-200 group-hover:[&_rect:last-of-type]:stroke-[#a78bfa]"
@@ -80,9 +80,6 @@ export default function Navbar() {
                 <tspan fill="#8b5cf6">c</tspan>
               </text>
             </svg>
-            <span className="font-mono font-bold text-lg text-cyber-text group-hover:text-cyber-purple transition-colors">
-              sin<span className="text-cyber-purple">core</span>
-            </span>
           </Link>
 
           {/* Desktop nav */}

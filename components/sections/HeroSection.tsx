@@ -18,23 +18,14 @@ export default function HeroSection() {
           {/* Lewa strona – tekst */}
           <div>
             {/* Animacja fadeIn z opóźnieniem – każdy element pojawia się po kolei */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="font-mono text-cyber-text text-lg mb-3"
-            >
-              {t("greeting")}
-            </motion.p>
-
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.5 }}
               className="flex items-baseline gap-5 mb-4 flex-wrap"
             >
               <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-purple">
-                Mimir
+                sincore
               </h1>
               <p className="font-mono text-cyber-purple/100 text-sm italic border-l border-cyber-purple/80 pl-4">
                 {t("motto")}
