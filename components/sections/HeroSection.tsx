@@ -24,8 +24,8 @@ export default function HeroSection() {
               transition={{ duration: 0.5 }}
               className="flex items-baseline gap-5 mb-4 flex-wrap"
             >
-              <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-purple">
-                sincore
+              <h1 className="font-mono font-bold text-4xl sm:text-5xl">
+                <span className="text-cyber-text">sin</span><span className="text-cyber-purple">core</span>
               </h1>
               <p className="font-mono text-cyber-purple/100 text-sm italic border-l border-cyber-purple/80 pl-4">
                 {t("motto")}

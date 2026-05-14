@@ -60,8 +60,8 @@ export default function Navbar() {
             className="flex items-center gap-2 group"
           >
             <svg
-              width="28"
-              height="28"
+              width="32"
+              height="32"
               viewBox="0 0 32 32"
               fill="none"
               className="shrink-0 transition-all duration-200 group-hover:[&_rect:last-of-type]:stroke-[#a78bfa]"

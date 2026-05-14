@@ -18,7 +18,7 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-1 font-mono text-xs">
+    <div className="flex items-center gap-1 font-mono text-sm">
       {routing.locales.map((loc, i) => (
         <span key={loc} className="flex items-center">
           {i > 0 && <span className="text-cyber-gray mx-1">/</span>}
