@@ -1,4 +1,5 @@
 ---
+id: siemens-logo
 title: "Siemens LOGO! — mały PLC, komunikacja i programowanie"
 description: "Czym jest LOGO!, jak się go programuje, jak komunikować się z nim przez Modbus TCP i sieć Ethernet oraz kiedy warto go użyć zamiast większego PLC."
 date: "2026-05-14"

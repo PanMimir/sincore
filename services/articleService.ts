@@ -13,6 +13,7 @@ export interface Reference {
 }
 
 export interface Article {
+  id: string;
   slug: string;
   title: string;
   description: string;
@@ -43,6 +44,7 @@ export async function getAllArticles(locale: string): Promise<Article[]> {
     const { data } = matter(raw);
 
     return {
+      id: data.id ?? slug,
       slug,
       title: data.title ?? slug,
       description: data.description ?? "",
@@ -83,6 +85,7 @@ export async function getArticleBySlug(
     .process(markdown);
 
   return {
+    id: data.id ?? slug,
     slug,
     title: data.title ?? slug,
     description: data.description ?? "",
@@ -92,4 +95,30 @@ export async function getArticleBySlug(
     references: data.references ?? [],
     content: processed.toString(),
   };
+}
+
+/**
+ * Buduje mapę id → { pl?: slug, en?: slug } skanując oba foldery.
+ * Używane przez LanguageSwitcher do znalezienia ekwiwalentu artykułu w drugim języku.
+ */
+export async function getArticleSlugMap(): Promise<Record<string, Record<string, string>>> {
+  const locales = ["pl", "en"];
+  const map: Record<string, Record<string, string>> = {};
+
+  for (const locale of locales) {
+    const dir = path.join(ARTICLES_DIR, locale);
+    if (!fs.existsSync(dir)) continue;
+
+    const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
+    for (const filename of files) {
+      const slug = filename.replace(/\.md$/, "");
+      const raw = fs.readFileSync(path.join(dir, filename), "utf-8");
+      const { data } = matter(raw);
+      const id = data.id ?? slug;
+      if (!map[id]) map[id] = {};
+      map[id][locale] = slug;
+    }
+  }
+
+  return map;
 }

@@ -1,4 +1,5 @@
 ---
+id: rs485-physical
 title: "RS-485 — warstwa fizyczna od podstaw"
 description: "Czym jest RS-485, jak wygląda magistrala, terminator, uziemienie, konwertery USB i typowe błędy okablowania."
 date: "2026-05-14"

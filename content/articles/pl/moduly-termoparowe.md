@@ -1,4 +1,5 @@
 ---
+id: thermocouple-modules
 title: "Moduły termoparowe — przetworniki temperatury z Modbus"
 description: "Czym są moduły termoparowe, typy termopar, jak odczytywać temperatury przez Modbus RTU i co oznaczają rejestry w typowym module wielokanałowym."
 date: "2026-05-14"

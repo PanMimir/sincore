@@ -1,4 +1,5 @@
 ---
+id: com-port-testing
 title: "Testowanie portów COM i RS-485 z PowerShell"
 description: "Jak sprawdzić dostępne porty COM, wysłać i odebrać surowe bajty przez port szeregowy oraz przetestować komunikację z urządzeniem przemysłowym bez żadnych dodatkowych narzędzi."
 date: "2026-05-14"

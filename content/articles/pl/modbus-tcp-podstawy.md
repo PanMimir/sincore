@@ -1,4 +1,5 @@
 ---
+id: modbus-tcp
 title: "Modbus TCP — podstawy protokołu"
 description: "Jak działa Modbus TCP, struktura ramki, typy rejestrów i pierwsze połączenie z urządzeniem przemysłowym."
 date: "2026-05-01"

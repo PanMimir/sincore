@@ -1,4 +1,5 @@
 ---
+id: modbus-tcp
 title: "Modbus TCP — Protocol Basics"
 description: "How Modbus TCP works, frame structure, register types and your first connection to an industrial device."
 date: "2026-05-01"

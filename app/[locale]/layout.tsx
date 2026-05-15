@@ -7,6 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AnimatedBackground from "@/components/common/AnimatedBackground";
 import HtmlLang from "@/components/common/HtmlLang";
+import { getArticleSlugMap } from "@/services/articleService";
 
 export async function generateMetadata({
   params,
@@ -42,13 +43,13 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const articleSlugMap = await getArticleSlugMap();
 
   return (
     <NextIntlClientProvider messages={messages}>
-      {/* Ustawia document.documentElement.lang po stronie klienta */}
       <HtmlLang />
       <AnimatedBackground />
-      <Navbar />
+      <Navbar articleSlugMap={articleSlugMap} />
       <main className="flex-1 relative z-10">{children}</main>
       <Footer />
     </NextIntlClientProvider>

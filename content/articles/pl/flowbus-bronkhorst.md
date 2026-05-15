@@ -1,4 +1,5 @@
 ---
+id: flowbus-bronkhorst
 title: "Protokół Flowbus — komunikacja z urządzeniami Bronkhorst"
 description: "Jak działa protokół Flowbus używany przez kontrolery przepływu masy Bronkhorst, struktura wiadomości, adresowanie parametrów i pierwsze połączenie."
 date: "2026-05-14"

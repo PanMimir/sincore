@@ -1,4 +1,5 @@
 ---
+id: modbus-rtu
 title: "Modbus RTU — RS-485 i różnice względem TCP"
 description: "Jak działa Modbus RTU przez RS-485, struktura ramki z CRC, adresowanie urządzeń i typowe problemy z timing."
 date: "2026-05-14"

@@ -18,7 +18,11 @@ const NAV_LINKS = [
   { key: "contact", href: "/contact" },
 ] as const;
 
-export default function Navbar() {
+interface NavbarProps {
+  articleSlugMap?: Record<string, Record<string, string>>;
+}
+
+export default function Navbar({ articleSlugMap }: NavbarProps) {
   const t = useTranslations("nav");
   const locale = useLocale();
   const pathname = usePathname();
@@ -102,7 +106,7 @@ export default function Navbar() {
 
           {/* Prawa strona: przełącznik języka + hamburger */}
           <div className="flex items-center gap-3">
-            <LanguageSwitcher />
+            <LanguageSwitcher articleSlugMap={articleSlugMap} />
 
             {/* Przycisk menu mobilnego */}
             <button
