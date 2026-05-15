@@ -37,7 +37,10 @@
     "docs": "Dokumentacja",
     "download": "Pobierz",
     "no_projects": "Brak projektów w tej kategorii.",
-    "all": "Wszystkie"
+    "all": "Wszystkie",
+    "tags": "Tagi",
+    "stack_label": "Stack",
+    "screenshots_label": "Zrzuty ekranu"
   },
   "knowledge": {
     "title": "Baza wiedzy",
@@ -70,7 +73,8 @@
       "10 lat badań w środowisku energetycznym i przemysłowym"
     ],
     "approach_title": "Podejście",
-    "approach": "Rozumiem system zanim napiszę kod. Nie sprzedaję rozwiązań które znam — szukam rozwiązań które działają dla konkretnego problemu."
+    "approach": "Rozumiem system zanim napiszę kod. Nie sprzedaję rozwiązań które znam — szukam rozwiązań które działają dla konkretnego problemu.",
+    "focus_label": "Fokus"
   },
   "contact": {
     "title": "Kontakt",
@@ -80,7 +84,9 @@
     "linkedin_label": "LinkedIn",
     "linkedin_placeholder": "wkrótce",
     "copy_email": "Skopiuj adres",
-    "copied": "Skopiowano!"
+    "copied": "Skopiowano!",
+    "response_time_label": "Czas odpowiedzi",
+    "languages_label": "Języki"
   },
   "common": {
     "loading": "Ładowanie...",
@@ -116,6 +122,7 @@
     "stats_experience": "lat w środowisku technicznym",
     "stats_sep_label": "SEP G1 / G2 / G3",
     "stats_sep_sub": "eksploatacja i dozór",
+    "featured_label": "Wybrane",
     "featured_title": "Wybrane projekty",
     "featured_cta": "Zobacz wszystkie",
     "about_title": "Co robimy",

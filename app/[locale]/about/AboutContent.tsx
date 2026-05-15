@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Terminal, Cpu, Code2, Monitor, Database } from "lucide-react";
 import ScrollReveal from "@/components/common/ScrollReveal";
-import TerminalWindow from "@/components/common/TerminalWindow";
 
 const SKILL_ICONS = [Terminal, Cpu, Database, Monitor, Code2];
 
@@ -17,27 +16,18 @@ export default function AboutContent() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      {/* Nagłówek */}
       <ScrollReveal>
-        <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-text mb-16">
+        <h1 className="font-bold text-4xl sm:text-5xl text-cyber-text mb-16">
           {t("title")}
         </h1>
       </ScrollReveal>
 
       <div className="grid lg:grid-cols-2 gap-16 items-start">
-        {/* Lewa — terminal + bio */}
         <div>
-          <ScrollReveal delay={0.1}>
-            <TerminalWindow
-              title="sincore@workstation:~"
-              lines={[
-                { text: "cat about.txt", type: "command" },
-                { text: t("bio_1"), type: "output" },
-                { text: "", type: "output" },
-                { text: "echo $FOCUS", type: "command" },
-                { text: "custom software · industrial systems · automation", type: "output" },
-              ]}
-            />
+          <ScrollReveal delay={0.1} className="space-y-4">
+            <p className="text-cyber-text text-lg leading-relaxed">{t("bio_1")}</p>
+            <p className="text-xs uppercase tracking-wider text-cyber-purple mt-6">{t("focus_label")}</p>
+            <p className="text-cyber-text">custom software · industrial systems · automation</p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2} className="mt-8 space-y-4">
@@ -49,8 +39,7 @@ export default function AboutContent() {
         {/* Prawa — specjalizacje + podejście */}
         <div className="space-y-10">
           <ScrollReveal delay={0.15}>
-            <h2 className="font-mono font-bold text-xl text-cyber-text mb-6">
-              <span className="text-cyber-purple mr-2">{">"}</span>
+            <h2 className="font-bold text-xl text-cyber-text mb-6">
               {t("skills_title")}
             </h2>
             <ul className="space-y-3">
@@ -75,8 +64,8 @@ export default function AboutContent() {
 
           <ScrollReveal delay={0.25}>
             <div className="border-l-2 border-cyber-purple pl-5">
-              <h3 className="font-mono text-sm text-cyber-purple mb-3">
-                {"// "}{t("approach_title")}
+              <h3 className="text-xs uppercase tracking-wider text-cyber-purple mb-3">
+                {t("approach_title")}
               </h3>
               <p className="text-cyber-muted text-sm leading-relaxed italic">
                 {t("approach")}

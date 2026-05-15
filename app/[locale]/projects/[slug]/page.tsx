@@ -69,9 +69,8 @@ export default async function ProjectPage({
         <p className="text-cyber-muted text-base leading-relaxed">{description}</p>
       </div>
 
-      {/* Stack */}
       <div className="mb-8">
-        <p className="font-mono text-xs text-cyber-muted mb-3">{"// stack"}</p>
+        <p className="text-xs uppercase tracking-wider text-cyber-muted mb-3">{t("stack_label")}</p>
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <span
@@ -84,9 +83,8 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      {/* Tagi */}
       <div className="mb-8">
-        <p className="font-mono text-xs text-cyber-muted mb-3">{"// tagi"}</p>
+        <p className="text-xs uppercase tracking-wider text-cyber-muted mb-3">{t("tags")}</p>
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span key={tag} className="font-mono text-sm text-cyber-muted">
@@ -96,10 +94,9 @@ export default async function ProjectPage({
         </div>
       </div>
 
-      {/* Screenshots */}
       {project.screenshots && project.screenshots.length > 0 && (
         <div className="mb-8">
-          <p className="font-mono text-xs text-cyber-muted mb-3">{"// screenshots"}</p>
+          <p className="text-xs uppercase tracking-wider text-cyber-muted mb-3">{t("screenshots_label")}</p>
           <div className="grid gap-4 sm:grid-cols-2">
             {project.screenshots.map((src, i) => (
               <img

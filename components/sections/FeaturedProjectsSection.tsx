@@ -21,8 +21,8 @@ export default function FeaturedProjectsSection({ projects }: FeaturedProjectsSe
         <ScrollReveal>
           <div className="flex items-end justify-between mb-12">
             <div>
-              <p className="font-mono text-cyber-purple text-sm mb-2">{"// featured"}</p>
-              <h2 className="font-mono font-bold text-3xl text-cyber-text">
+              <p className="text-xs uppercase tracking-wider text-cyber-purple mb-2">{t("featured_label")}</p>
+              <h2 className="font-bold text-3xl text-cyber-text">
                 {t("featured_title")}
               </h2>
             </div>

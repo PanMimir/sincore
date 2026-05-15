@@ -23,10 +23,8 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      {/* Nagłówek sekcji */}
       <div className="mb-12">
-        <p className="font-mono text-cyber-purple text-sm mb-2">$ ls ./projects</p>
-        <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
+        <h1 className="font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
           {t("title")}
         </h1>
         <p className="text-cyber-muted text-base">{t("subtitle")}</p>
@@ -64,10 +62,9 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
         </div>
       )}
 
-      {/* Tagi – helper do nawigacji */}
       {allTags.length > 0 && (
         <div className="mt-16 pt-8 border-t border-cyber-gray">
-          <p className="font-mono text-xs text-cyber-muted mb-3">{"// tagi"}</p>
+          <p className="text-xs uppercase tracking-wider text-cyber-muted mb-3">{t("tags")}</p>
           <div className="flex flex-wrap gap-2">
             {allTags.map((tag) => (
               <span

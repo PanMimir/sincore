@@ -3,8 +3,8 @@
     "slug": "sincore-portfolio",
     "title": "sincore.io — strona i portfolio",
     "description": {
-      "pl": "Ta strona. Zbudowana od zera na Next.js z obsługą dwóch języków, dynamicznym OG image i motywem cyberpunk. Projekt otwarty — pokazuje jak podchodzę do frontendu.",
-      "en": "This website. Built from scratch on Next.js with two-language support, dynamic OG image and a cyberpunk theme. Open project — shows how I approach frontend work."
+      "pl": "Ta strona. Zbudowana od zera na Next.js z obsługą dwóch języków, dynamicznym OG image i renderowaniem statycznym (SSG). Projekt otwarty — pokazuje jak podchodzę do frontendu.",
+      "en": "This website. Built from scratch on Next.js with two-language support, dynamic OG image and static site generation (SSG). Open project — shows how I approach frontend work."
     },
     "stack": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
     "tags": ["frontend", "portfolio"],

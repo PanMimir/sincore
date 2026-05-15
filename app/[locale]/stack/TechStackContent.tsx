@@ -34,10 +34,8 @@ export default function TechStackContent({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      {/* Nagłówek */}
       <ScrollReveal>
-        <p className="font-mono text-cyber-purple text-sm mb-2">{"$ cat /etc/tech-stack.conf"}</p>
-        <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
+        <h1 className="font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
           {t("title")}
         </h1>
         <p className="text-cyber-muted text-base mb-16">{t("subtitle")}</p>
@@ -48,10 +46,8 @@ export default function TechStackContent({
         {data.map((category, catIndex) => (
           <ScrollReveal key={category.category} delay={catIndex * 0.08}>
             <div className="bg-cyber-dark border border-cyber-gray rounded-lg p-6 h-full">
-              {/* Nagłówek kategorii */}
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-cyber-gray">
-                <span className="font-mono text-cyber-purple text-xs">{"///"}</span>
-                <h2 className="font-mono font-bold text-lg text-cyber-text">
+                <h2 className="font-bold text-lg text-cyber-text">
                   {category.label[locale] ?? category.label["en"]}
                 </h2>
               </div>

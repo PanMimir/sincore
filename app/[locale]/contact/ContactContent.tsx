@@ -54,9 +54,8 @@ export default function ContactContent() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      {/* Nagłówek */}
       <ScrollReveal>
-        <h1 className="font-mono font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
+        <h1 className="font-bold text-4xl sm:text-5xl text-cyber-text mb-4">
           {t("title")}
         </h1>
         <p className="text-cyber-muted text-base mb-16">{t("subtitle")}</p>
@@ -116,19 +115,16 @@ export default function ContactContent() {
         })}
       </div>
 
-      {/* Terminal-style outro */}
       <ScrollReveal delay={0.35} className="mt-16">
-        <div className="p-5 bg-cyber-dark border border-cyber-gray rounded-lg font-mono text-sm space-y-2">
-          <p className="text-cyber-muted">
-            <span className="text-cyber-purple">❯ </span>
-            {"echo $RESPONSE_TIME"}
-          </p>
-          <p className="text-cyber-text pl-4">{"< 24h"}</p>
-          <p className="text-cyber-muted">
-            <span className="text-cyber-purple">❯ </span>
-            {"echo $PREFERRED_LANG"}
-          </p>
-          <p className="text-cyber-text pl-4">{"PL | EN"}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="p-5 bg-cyber-dark border border-cyber-gray rounded-lg">
+            <p className="text-xs uppercase tracking-wider text-cyber-muted mb-1">{t("response_time_label")}</p>
+            <p className="text-cyber-text text-lg">&lt; 24h</p>
+          </div>
+          <div className="p-5 bg-cyber-dark border border-cyber-gray rounded-lg">
+            <p className="text-xs uppercase tracking-wider text-cyber-muted mb-1">{t("languages_label")}</p>
+            <p className="text-cyber-text text-lg">PL · EN</p>
+          </div>
         </div>
       </ScrollReveal>
 

@@ -37,7 +37,10 @@
     "docs": "Documentation",
     "download": "Download",
     "no_projects": "No projects in this category.",
-    "all": "All"
+    "all": "All",
+    "tags": "Tags",
+    "stack_label": "Stack",
+    "screenshots_label": "Screenshots"
   },
   "knowledge": {
     "title": "Knowledge Base",
@@ -70,7 +73,8 @@
       "10 years of research in energy and industrial environments"
     ],
     "approach_title": "Approach",
-    "approach": "I understand the system before I write code. I don't sell solutions I know — I find solutions that work for the specific problem."
+    "approach": "I understand the system before I write code. I don't sell solutions I know — I find solutions that work for the specific problem.",
+    "focus_label": "Focus"
   },
   "contact": {
     "title": "Contact",
@@ -80,7 +84,9 @@
     "linkedin_label": "LinkedIn",
     "linkedin_placeholder": "coming soon",
     "copy_email": "Copy address",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "response_time_label": "Response time",
+    "languages_label": "Languages"
   },
   "common": {
     "loading": "Loading...",
@@ -116,6 +122,7 @@
     "stats_experience": "years in technical field",
     "stats_sep_label": "SEP G1 / G2 / G3",
     "stats_sep_sub": "operation & supervision",
+    "featured_label": "Featured",
     "featured_title": "Featured projects",
     "featured_cta": "View all",
     "about_title": "What we do",
