@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Mail, GitBranch, Link2, Copy, Check, ExternalLink } from "lucide-react";
 import ScrollReveal from "@/components/common/ScrollReveal";
@@ -21,23 +20,7 @@ interface ContactLink {
 
 export default function ContactContent() {
   const t = useTranslations("contact");
-  const locale = useLocale();
-  const router = useRouter();
   const [copied, setCopied] = useState(false);
-  const [accessInput, setAccessInput] = useState("");
-  const [accessDenied, setAccessDenied] = useState(false);
-
-  const handleAccess = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (accessInput === (process.env.NEXT_PUBLIC_SPECIAL_KEY ?? "")) {
-      sessionStorage.setItem("sincore_special_access", "1");
-      router.push(`/${locale}/special`);
-    } else {
-      setAccessDenied(true);
-      setAccessInput("");
-      setTimeout(() => setAccessDenied(false), 1500);
-    }
-  };
 
   const copyEmail = async () => {
     await navigator.clipboard.writeText(EMAIL);
@@ -149,32 +132,6 @@ export default function ContactContent() {
         </div>
       </ScrollReveal>
 
-      {/* Private access */}
-      <ScrollReveal delay={0.5} className="mt-16">
-        <form onSubmit={handleAccess}>
-          <div className={`p-4 border rounded-lg font-mono text-sm transition-colors ${accessDenied ? "border-red-800/60 bg-red-950/20" : "border-cyber-gray/40 bg-cyber-dark/50"}`}>
-            <p className="text-cyber-muted/50 text-xs mb-3">
-              <span className="text-cyber-purple/50">{"// "}</span>
-              private access
-            </p>
-            <div className="flex items-center gap-3">
-              <span className={accessDenied ? "text-red-600" : "text-cyber-purple/60"}>$</span>
-              <input
-                type="password"
-                value={accessInput}
-                onChange={(e) => setAccessInput(e.target.value)}
-                placeholder="access --private"
-                className={`bg-transparent outline-none border-none flex-1 placeholder-cyber-muted/30 transition-colors ${accessDenied ? "text-red-500" : "text-cyber-muted"}`}
-                autoComplete="off"
-                spellCheck={false}
-              />
-              {accessDenied && (
-                <span className="text-red-600 text-xs">access denied</span>
-              )}
-            </div>
-          </div>
-        </form>
-      </ScrollReveal>
     </div>
   );
 }
