@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Renderuje animowane tło – statyczna siatka CSS + subtelne "cząsteczki" na canvas.
- * Canvas jest oddzielony od DOM siatki, więc nie wpływa na layout strony.
+ * Respektuje prefers-reduced-motion i pauzuje przy ukrytym tabie.
  */
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -16,7 +16,10 @@ export default function AnimatedBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Rozmiar canvas = rozmiar okna
+    // Jeśli user wymaga reduced motion — pomijamy animację cząsteczek
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -24,7 +27,6 @@ export default function AnimatedBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    // Każda cząsteczka to małe kółko które dryfuje powoli
     const particles: {
       x: number;
       y: number;
@@ -47,16 +49,17 @@ export default function AnimatedBackground() {
       });
     }
 
-    let animationId: number;
+    let animationId: number | null = null;
+    let running = true;
 
     const animate = () => {
+      if (!running) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((p) => {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        // Zawijanie – cząsteczka wychodząca za ekran pojawia się po drugiej stronie
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
@@ -64,18 +67,32 @@ export default function AnimatedBackground() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(139, 92, 246, ${p.opacity})`; // cyber-purple
+        ctx.fillStyle = `rgba(139, 92, 246, ${p.opacity})`;
         ctx.fill();
       });
 
       animationId = requestAnimationFrame(animate);
     };
 
+    // Pauza gdy tab ukryty — oszczędza CPU/baterię
+    const handleVisibility = () => {
+      if (document.hidden) {
+        running = false;
+        if (animationId !== null) cancelAnimationFrame(animationId);
+      } else if (!running) {
+        running = true;
+        animate();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
     animate();
 
     return () => {
-      cancelAnimationFrame(animationId);
+      running = false;
+      if (animationId !== null) cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
 

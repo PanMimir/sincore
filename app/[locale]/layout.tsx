@@ -18,6 +18,14 @@ export async function generateMetadata({
   return {
     title: { template: `%s | ${t("name")}`, default: t("name") },
     description: t("description"),
+    alternates: {
+      canonical: `/${params.locale}`,
+      languages: {
+        pl: "/pl",
+        en: "/en",
+        "x-default": "/en",
+      },
+    },
     openGraph: {
       title: t("name"),
       description: t("description"),

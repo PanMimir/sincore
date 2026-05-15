@@ -180,11 +180,16 @@
   border: none;
 }
 
-/* Tabele (GFM) */
+/* Tabele (GFM) — wrapper umożliwia scroll horyzontalny na mobile */
+.article-content .table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
 .article-content table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1.5rem;
   font-size: 0.9rem;
 }
 

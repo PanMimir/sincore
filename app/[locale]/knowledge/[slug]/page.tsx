@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Calendar, ExternalLink, Tag } from "lucide-react";
-import { getAllArticles, getArticleBySlug } from "@/services/articleService";
+import { getAllArticles, getArticleBySlug, getArticleSlugMap } from "@/services/articleService";
 
 export async function generateStaticParams({
   params,
@@ -21,7 +21,23 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug, params.locale);
   if (!article) return {};
-  return { title: article.title, description: article.description };
+
+  // Hreflang: znajdź ekwiwalent w drugim języku przez id-mapę
+  const slugMap = await getArticleSlugMap();
+  const entry = slugMap[article.id];
+  const languages: Record<string, string> = {};
+  if (entry?.pl) languages.pl = `/pl/knowledge/${entry.pl}`;
+  if (entry?.en) languages.en = `/en/knowledge/${entry.en}`;
+  if (entry?.en) languages["x-default"] = `/en/knowledge/${entry.en}`;
+
+  return {
+    title: article.title,
+    description: article.description,
+    alternates: {
+      canonical: `/${params.locale}/knowledge/${params.slug}`,
+      languages,
+    },
+  };
 }
 
 export default async function ArticlePage({

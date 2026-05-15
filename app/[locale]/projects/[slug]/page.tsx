@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, GitBranch, BookOpen, Download } from "lucide-react";
 import { getAllProjects, getProjectBySlug } from "@/services/projectService";
 import { cn } from "@/lib/utils";
@@ -20,7 +21,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);
   if (!project) return {};
-  return { title: project.title };
+  return {
+    title: project.title,
+    alternates: {
+      canonical: `/${params.locale}/projects/${params.slug}`,
+      languages: {
+        pl: `/pl/projects/${params.slug}`,
+        en: `/en/projects/${params.slug}`,
+        "x-default": `/en/projects/${params.slug}`,
+      },
+    },
+  };
 }
 
 const STATUS_CONFIG = {
@@ -99,11 +110,14 @@ export default async function ProjectPage({
           <p className="text-xs uppercase tracking-wider text-cyber-muted mb-3">{t("screenshots_label")}</p>
           <div className="grid gap-4 sm:grid-cols-2">
             {project.screenshots.map((src, i) => (
-              <img
+              <Image
                 key={i}
                 src={src}
                 alt={`${project.title} screenshot ${i + 1}`}
-                className="rounded border border-cyber-gray w-full object-cover"
+                width={800}
+                height={500}
+                className="rounded border border-cyber-gray w-full h-auto object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
               />
             ))}
           </div>

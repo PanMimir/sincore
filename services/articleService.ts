@@ -84,6 +84,12 @@ export async function getArticleBySlug(
     .use(remarkHtml, { sanitize: false }) // sanitize: false = zezwól na własne HTML tagi w md
     .process(markdown);
 
+  // Owijamy tabele żeby na mobile dostały overflow-x zamiast wypychać layout
+  const html = processed.toString().replace(
+    /<table>/g,
+    '<div class="table-wrapper"><table>'
+  ).replace(/<\/table>/g, "</table></div>");
+
   return {
     id: data.id ?? slug,
     slug,
@@ -93,7 +99,7 @@ export async function getArticleBySlug(
     tags: data.tags ?? [],
     featured: data.featured ?? false,
     references: data.references ?? [],
-    content: processed.toString(),
+    content: html,
   };
 }
 

@@ -119,7 +119,6 @@ export default function Navbar({ articleSlugMap }: NavbarProps) {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden border-t border-cyber-gray py-3 bg-cyber-black/95 backdrop-blur-md">
             {NAV_LINKS.map((link) => (
@@ -127,13 +126,12 @@ export default function Navbar({ articleSlugMap }: NavbarProps) {
                 key={link.key}
                 href={`/${locale}${link.href === "/" ? "" : link.href}`}
                 className={cn(
-                  "block px-4 py-3 font-mono text-sm transition-colors",
+                  "block px-4 py-3 text-base transition-colors",
                   isActive(link.href)
                     ? "text-cyber-purple"
                     : "text-cyber-muted hover:text-cyber-text"
                 )}
               >
-                <span className="text-cyber-purple mr-2">$</span>
                 {t(link.key)}
               </Link>
             ))}
