@@ -66,5 +66,22 @@
     "featured": false,
     "thumbnail": null,
     "screenshots": []
+  },
+  {
+    "slug": "sep-kurs",
+    "title": "SEP — kurs i baza wiedzy",
+    "description": {
+      "pl": "Platforma edukacyjna do przygotowania do uprawnień SEP G1/G2/G3 — kurs przygotowawczy, symulator pytań i baza wiedzy w jednym miejscu. Backend w Javie (Spring Boot). Aktualnie w fazie analizy rynku firm wydających uprawnienia i projektowania architektury — pierwszy projekt łączący kompetencje Java z 10 latami doświadczenia w energetyce i uprawnieniami SEP.",
+      "en": "Educational platform for SEP G1/G2/G3 certification preparation — preparatory course, question simulator and knowledge base in one place. Java/Spring Boot backend. Currently in market research phase and architecture design — first project combining Java skills with 10 years of energy industry experience and SEP certifications."
+    },
+    "stack": ["Java", "Spring Boot", "PostgreSQL"],
+    "tags": ["sep", "education", "java", "wip"],
+    "status": "wip",
+    "githubUrl": null,
+    "docsUrl": null,
+    "downloadUrl": null,
+    "featured": false,
+    "thumbnail": null,
+    "screenshots": []
   }
 ]
