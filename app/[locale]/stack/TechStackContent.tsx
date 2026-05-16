@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/common/ScrollReveal";
 
 export interface TechItem {
   name: string;
-  level: "expert" | "advanced" | "intermediate";
+  level: "expert" | "advanced" | "intermediate" | "basic";
 }
 
 export interface TechCategory {
@@ -21,6 +21,7 @@ const LEVEL_COLORS = {
   expert:       "bg-cyber-purple border-cyber-purple/50",
   advanced:     "bg-cyber-cyan border-cyber-cyan/50",
   intermediate: "bg-cyber-muted border-cyber-muted/30",
+  basic:        "bg-cyber-muted/50 border-cyber-muted/20",
 } as const;
 
 export default function TechStackContent({
@@ -77,7 +78,11 @@ export default function TechStackContent({
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: catIndex * 0.05 + itemIndex * 0.06, ease: "easeOut" }}
                         style={{
-                          width: item.level === "expert" ? "100%" : item.level === "advanced" ? "75%" : "50%",
+                          width:
+                            item.level === "expert" ? "100%"
+                            : item.level === "advanced" ? "75%"
+                            : item.level === "intermediate" ? "50%"
+                            : "25%",
                         }}
                       />
                     </div>
@@ -92,7 +97,7 @@ export default function TechStackContent({
       {/* Legenda */}
       <ScrollReveal delay={0.3} className="mt-12 pt-8 border-t border-cyber-gray">
         <div className="flex flex-wrap gap-6 justify-center">
-          {(["expert", "advanced", "intermediate"] as const).map((level) => (
+          {(["expert", "advanced", "intermediate", "basic"] as const).map((level) => (
             <div key={level} className="flex items-center gap-2">
               <div className={cn("w-8 h-1 rounded-full", LEVEL_COLORS[level].split(" ")[0])} />
               <span className="font-mono text-xs text-cyber-muted">{t(`level_${level}`)}</span>

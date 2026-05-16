@@ -53,16 +53,17 @@
   },
   "stack": {
     "title": "Tech Stack",
-    "subtitle": "Technologies I use on a daily basis",
+    "subtitle": "What I know, what I'm learning",
     "level_expert": "expert",
     "level_advanced": "advanced",
-    "level_intermediate": "intermediate"
+    "level_intermediate": "intermediate",
+    "level_basic": "basic"
   },
   "about": {
     "title": "About",
     "subtitle": "Who I am",
     "bio_1": "10 years in an industrial environment. Started with energy research on heating devices at ITPE Zabrze. Ended up writing software because I noticed most problems come from missing tools — not missing knowledge.",
-    "bio_2": "I hold SEP G1/G2/G3 certifications. I know hardware from both the electrical and code side. When I write an app to read from a lab scale, I know how the scale works — not just how the COM protocol works.",
+    "bio_2": "I hold SEP G1/G2/G3 certifications. I know hardware from both the electrical and code side.",
     "bio_3": "sincore is not a startup. It's a name under which I do concrete things for concrete people. If you have a problem that can be solved with software — write.",
     "skills_title": "What I do",
     "skills": [

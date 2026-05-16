@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { ExternalLink, BookOpen, Download, GitBranch, Star } from "lucide-react";
+import { ExternalLink, BookOpen, Download, GitBranch } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/services/projectService";
@@ -35,14 +35,6 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       transition={{ duration: 0.4, delay: index * 0.08 }}
       className="group relative flex flex-col bg-cyber-dark border border-cyber-gray rounded-lg p-6 hover:border-cyber-purple/50 transition-all duration-300 hover:shadow-glow-purple-sm"
     >
-      {/* Badge "featured" */}
-      {project.featured && (
-        <div className="absolute top-4 right-4 flex items-center gap-1 text-cyber-purple">
-          <Star size={12} fill="currentColor" />
-          <span className="font-mono text-xs">featured</span>
-        </div>
-      )}
-
       {/* Nagłówek */}
       <div className="mb-3">
         <div className="flex items-start gap-3 mb-2">
