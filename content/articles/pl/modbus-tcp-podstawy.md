@@ -6,8 +6,8 @@ date: "2026-05-01"
 tags: ["modbus", "python"]
 featured: true
 references:
-  - title: "Modbus Application Protocol Specification v1.1b3"
-    url: "https://modbus.org/docs/Modbus_Application_Protocol_V1_1b3.pdf"
+  - title: "Simply Modbus — opis protokołu i typów rejestrów"
+    url: "https://www.simplymodbus.ca/FAQ.htm"
   - title: "pymodbus — dokumentacja"
     url: "https://pymodbus.readthedocs.io/en/latest/"
 ---

@@ -53,16 +53,17 @@
   },
   "stack": {
     "title": "Stack technologiczny",
-    "subtitle": "Technologie których używam na co dzień",
+    "subtitle": "Co znam, czego się uczę",
     "level_expert": "biegły",
     "level_advanced": "zaawansowany",
-    "level_intermediate": "średniozaawansowany"
+    "level_intermediate": "średniozaawansowany",
+    "level_basic": "podstawowy"
   },
   "about": {
     "title": "O mnie",
     "subtitle": "Kim jestem",
     "bio_1": "10 lat w środowisku przemysłowym. Zaczynałem od badań energetycznych urządzeń grzewczych w ITPE Zabrze. Skończyłem na pisaniu softu bo zauważyłem, że większość problemów to brak narzędzi — nie brak wiedzy.",
-    "bio_2": "Mam uprawnienia SEP G1/G2/G3. Znam sprzęt od strony elektrycznej i od strony kodu. Kiedy piszę aplikację do odczytu z wagi laboratoryjnej, wiem jak waga działa — nie tylko jak działa protokół COM.",
+    "bio_2": "Mam uprawnienia SEP G1/G2/G3. Znam sprzęt od strony elektrycznej i od strony kodu.",
     "bio_3": "sincore to nie startup. To imię pod którym robię konkretne rzeczy dla konkretnych ludzi. Jeśli masz problem który da się rozwiązać softem — napisz.",
     "skills_title": "Co potrafię",
     "skills": [
@@ -73,7 +74,7 @@
       "10 lat badań w środowisku energetycznym i przemysłowym"
     ],
     "approach_title": "Podejście",
-    "approach": "Rozumiem system zanim napiszę kod. Nie sprzedaję rozwiązań które znam — szukam rozwiązań które działają dla konkretnego problemu.",
+    "approach": "Rozumiem system, zanim napiszę kod. Nie sprzedaję rozwiązań, które znam — szukam rozwiązań, które działają dla konkretnego problemu.",
     "focus_label": "Fokus"
   },
   "contact": {
@@ -102,13 +103,13 @@
     "title": "Usługi",
     "subtitle": "Co naprawiam. Co buduję.",
     "cta_title": "Masz konkretny problem?",
-    "cta_subtitle": "Napisz dwa zdania o tym co nie działa albo czego potrzebujesz — resztę ogarniemy.",
+    "cta_subtitle": "Napisz dwa zdania o tym, co nie działa albo czego potrzebujesz — resztę ogarniemy.",
     "cta_button": "Napisz do mnie",
     "service_1_title": "Dedykowane oprogramowanie",
-    "service_1_desc": "Istniejące narzędzie kosztuje 500 zł/miesiąc i ma 80% funkcji których nie potrzebujesz? Buduję dokładnie to czego potrzebujesz — raz, za stałą kwotę, bez subskrypcji.",
+    "service_1_desc": "Istniejące narzędzie kosztuje 500 zł/miesiąc i ma 80% funkcji, których nie potrzebujesz? Buduję dokładnie to, czego potrzebujesz — raz, za stałą kwotę, bez subskrypcji.",
     "service_1_tag": "custom software",
     "service_2_title": "Automatyzacja procesów",
-    "service_2_desc": "Raporty robione ręcznie, dane przepisywane między systemami, powtarzalne zadania które zjadają godziny tygodniowo. To da się zautomatyzować.",
+    "service_2_desc": "Raporty robione ręcznie, dane przepisywane między systemami, powtarzalne zadania, które zjadają godziny tygodniowo. To da się zautomatyzować.",
     "service_2_tag": "automatyzacja",
     "service_3_title": "Systemy przemysłowe",
     "service_3_desc": "Sprzęt działa, ale brak oprogramowania do obsługi? Piszę aplikacje komunikujące się przez Modbus, RS-485, port COM — od odczytu danych po sterowanie.",
@@ -126,16 +127,16 @@
     "featured_title": "Wybrane projekty",
     "featured_cta": "Zobacz wszystkie",
     "about_title": "Co robimy",
-    "about_bio": "Naprawiamy zepsute procesy i budujemy oprogramowanie które działa. Bez korporacyjnych budżetów, bez niepotrzebnej złożoności.",
+    "about_bio": "Naprawiamy zepsute procesy i budujemy oprogramowanie, które działa. Bez korporacyjnych budżetów, bez niepotrzebnej złożoności.",
     "about_highlights": [
       "Dedykowane aplikacje zamiast drogich narzędzi SaaS",
       "Automatyzacja powtarzalnych procesów i integracja systemów",
       "Oprogramowanie dla urządzeń przemysłowych i sprzętu pomiarowego",
       "Proste narzędzia do zamówień, raportowania i statusów"
     ],
-    "about_cta": "Kim stoi za sincore",
+    "about_cta": "Kto stoi za sincore",
     "cta_title": "Masz projekt lub pytanie?",
-    "cta_subtitle": "Chętnie porozmawiam o tym co można zautomatyzować, zoptymalizować lub po prostu zbudować.",
+    "cta_subtitle": "Chętnie porozmawiam o tym, co można zautomatyzować, zoptymalizować lub po prostu zbudować.",
     "cta_button": "Napisz do mnie"
   }
 }

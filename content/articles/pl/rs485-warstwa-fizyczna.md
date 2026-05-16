@@ -14,7 +14,7 @@ references:
 
 ## Czym jest RS-485
 
-RS-485 (znany też jako EIA-485) to standard elektryczny dla transmisji szeregowej. Sam w sobie nie definiuje protokołu — definiuje tylko jak sygnał wygląda na przewodzie. Po RS-485 jeździ Modbus RTU, Flowbus, PROFIBUS i wiele innych protokołów przemysłowych.
+RS-485 (znany też jako EIA-485) to standard elektryczny dla transmisji szeregowej. Sam w sobie nie definiuje protokołu — definiuje tylko, jak sygnał wygląda na przewodzie. Po RS-485 jeździ Modbus RTU, Flowbus, PROFIBUS i wiele innych protokołów przemysłowych.
 
 Kluczowa cecha: **transmisja różnicowa**. Zamiast jednej linii sygnałowej względem masy, RS-485 używa pary przewodów A i B. Odbiornik mierzy różnicę napięć między nimi. To sprawia, że zakłócenia wspólne (np. od falowników, silników) są skutecznie tłumione.
 
@@ -33,7 +33,7 @@ Master ──┬── Slave 1 ──┬── Slave 2 ──┬── [Terminat
 
 ## Terminator
 
-Na **obu końcach** magistrali musi być rezystor 120 Ω między liniami A i B. Brak terminatora to najczęstszy powód niestabilnej komunikacji — wszystko działa na krótkim kablu ale sypie się przy dłuższym lub większej liczbie urządzeń.
+Na **obu końcach** magistrali musi być rezystor 120 Ω między liniami A i B. Brak terminatora to najczęstszy powód niestabilnej komunikacji — wszystko działa na krótkim kablu, ale sypie się przy dłuższym lub większej liczbie urządzeń.
 
 Wiele urządzeń ma wbudowany przełącznik terminatora (jumper lub DIP switch). Terminator włącz tylko w urządzeniach na **końcach** linii, nie w środku.
 

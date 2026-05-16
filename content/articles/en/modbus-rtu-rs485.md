@@ -6,8 +6,8 @@ date: "2026-05-14"
 tags: ["modbus", "rs485"]
 featured: true
 references:
-  - title: "Modbus over Serial Line Specification v1.02"
-    url: "https://modbus.org/docs/Modbus_over_serial_line_V1_02.pdf"
+  - title: "Simply Modbus — protocol overview (FAQ)"
+    url: "https://www.simplymodbus.ca/FAQ.htm"
   - title: "pymodbus — ModbusSerialClient"
     url: "https://pymodbus.readthedocs.io/en/latest/source/client.html"
 ---

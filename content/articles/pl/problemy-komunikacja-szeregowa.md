@@ -6,15 +6,15 @@ date: "2026-05-14"
 tags: ["rs485", "troubleshooting"]
 featured: false
 references:
-  - title: "pymodbus — troubleshooting guide"
-    url: "https://pymodbus.readthedocs.io/en/latest/source/lib/pymodbus.rst"
+  - title: "pymodbus — dokumentacja"
+    url: "https://pymodbus.readthedocs.io/en/latest/"
   - title: "pyserial — dokumentacja"
     url: "https://pyserial.readthedocs.io/en/latest/"
 ---
 
 ## O tym artykule
 
-Zebrałem tutaj problemy które faktycznie napotkałem przy pracy z urządzeniami przemysłowymi przez RS-485 i porty COM. Nie teoria — konkretne sytuacje, objawy i rozwiązania.
+Zebrałem tutaj problemy, które faktycznie napotkałem przy pracy z urządzeniami przemysłowymi przez RS-485 i porty COM. Nie teoria — konkretne sytuacje, objawy i rozwiązania.
 
 ---
 
@@ -73,7 +73,7 @@ serial_port.reset_input_buffer()
 serial_port.reset_output_buffer()
 ```
 
-**Fragmentacja ramki na Windows:** Windows grupuje bajty w buforze co może powodować że `read()` zwraca nie całą ramkę. Rozwiązanie: czytaj w pętli do momentu zebrania oczekiwanej liczby bajtów lub implementuj timeout między bajtami.
+**Fragmentacja ramki na Windows:** Windows grupuje bajty w buforze, co może powodować, że `read()` zwraca nie całą ramkę. Rozwiązanie: czytaj w pętli do momentu zebrania oczekiwanej liczby bajtów lub implementuj timeout między bajtami.
 
 ---
 
@@ -89,7 +89,7 @@ serial_port.reset_output_buffer()
 
 3. **Antywirus blokuje port** — niektóre AV (szczególnie korporacyjne) mogą blokować dostęp do portów COM. Sprawdź logi AV lub wyłącz tymczasowo.
 
-4. **Uprawnenia** — na Linux: `sudo usermod -a -G dialout $USER` — bez tego normalny użytkownik nie ma dostępu do `/dev/ttyUSB*`.
+4. **Uprawnienia** — na Linux: `sudo usermod -a -G dialout $USER` — bez tego normalny użytkownik nie ma dostępu do `/dev/ttyUSB*`.
 
 ---
 
@@ -123,13 +123,16 @@ serial_port.reset_output_buffer()
 **Objaw:** `Serial Exception: [Errno 16] Device or resource busy` (Linux) lub `Access is denied` (Windows).
 
 **Windows — znajdź który proces zajął port:**
-```powershell
-# Wyszukaj procesy używające konkretnego portu COM
-Get-Process | Where-Object {
-    $_.Modules.FileName -like "*serialport*"
-}
 
-# Albo prościej — sprawdź Menedżer zadań → szczegóły → kolumna "Opis"
+Windows nie ma wbudowanego sposobu na pokazanie który proces trzyma port COM. Najszybciej — `handle.exe` z pakietu [Sysinternals](https://learn.microsoft.com/sysinternals/downloads/handle):
+
+```powershell
+# Numer urządzenia = numer portu COM minus 1
+handle.exe \Device\Serial0    # COM1
+handle.exe \Device\Serial7    # COM8
+
+# Albo zbiorczo wszystkie porty:
+handle.exe -a Serial
 ```
 
 Najczęstsi sprawcy: Modbus Poll, inne instancje Python, LOGO! Soft Comfort, sterowniki drukarek z wbudowanym portem COM.

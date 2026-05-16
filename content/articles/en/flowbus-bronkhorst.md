@@ -8,8 +8,8 @@ featured: true
 references:
   - title: "bronkhorst-propar — Python library (GitHub)"
     url: "https://github.com/bronkhorst-developer/bronkhorst-propar"
-  - title: "Bronkhorst — RS232 Interface and Flowbus Commands (manual)"
-    url: "https://www.bronkhorst.com/getmedia/7b3cce19-2fd1-4734-b2d4-a28ec0c38f5f/917027-manual-rs232-interface-and-flowbus-commands.pdf"
+  - title: "Bronkhorst — manuals and downloads"
+    url: "https://www.bronkhorst.com/en-us/downloads-en/manuals/"
 ---
 
 ## What is Flowbus
@@ -71,7 +71,7 @@ The device responds with a value in a format that depends on the parameter (floa
 Bronkhorst provides the `bronkhorst-propar` library for Python, which implements Flowbus:
 
 ```python
-import bronkhorst.propar as propar
+import propar
 
 instrument = propar.instrument(
     "/dev/ttyUSB0",   # or "COM8" on Windows

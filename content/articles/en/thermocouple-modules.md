@@ -6,8 +6,8 @@ date: "2026-05-14"
 tags: ["temperature", "modbus"]
 featured: false
 references:
-  - title: "F&F Filipowski — MB-TC module (documentation)"
-    url: "https://www.fif.com.pl/termometry/mb-tc-1"
+  - title: "F&F Filipowski — search MB-TC-1"
+    url: "https://www.fif.com.pl/pl/szukaj?q=mb-tc-1"
   - title: "IEC 60584 — thermocouples, types and ranges (Wikipedia)"
     url: "https://en.wikipedia.org/wiki/Thermocouple#Types"
 ---

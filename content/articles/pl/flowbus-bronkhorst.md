@@ -8,8 +8,8 @@ featured: true
 references:
   - title: "bronkhorst-propar — biblioteka Python (GitHub)"
     url: "https://github.com/bronkhorst-developer/bronkhorst-propar"
-  - title: "Bronkhorst — RS232 Interface and Flowbus Commands (dokumentacja)"
-    url: "https://www.bronkhorst.com/getmedia/7b3cce19-2fd1-4734-b2d4-a28ec0c38f5f/917027-manual-rs232-interface-and-flowbus-commands.pdf"
+  - title: "Bronkhorst — baza manuali i instrukcji"
+    url: "https://www.bronkhorst.com/en-us/downloads-en/manuals/"
 ---
 
 ## Czym jest Flowbus
@@ -71,7 +71,7 @@ Urządzenie odpowiada wartością w formacie zależnym od parametru (float jako 
 Bronkhorst dostarcza bibliotekę `bronkhorst-propar` dla Python, która implementuje Flowbus:
 
 ```python
-import bronkhorst.propar as propar
+import propar
 
 instrument = propar.instrument(
     "/dev/ttyUSB0",   # lub "COM8" na Windows
@@ -105,7 +105,7 @@ firmware      = instrument.readParameter(propar.FIRMWARE_VERSION)
 print(f"{device_type} | S/N: {serial_number} | FW: {firmware}")
 ```
 
-Pozwala to zweryfikować czy podłączyłeś się do właściwego urządzenia i poznać jego typ przed odczytem wartości procesowych.
+Pozwala to zweryfikować, czy podłączyłeś się do właściwego urządzenia, i poznać jego typ przed odczytem wartości procesowych.
 
 ## Pułapki
 

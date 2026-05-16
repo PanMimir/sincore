@@ -12,7 +12,7 @@ references:
 
 ## Po co testować z PowerShell
 
-Zanim zaczniesz pisać kod w Pythonie albo konfigurować bibliotekę — warto sprawdzić czy port COM w ogóle działa i czy urządzenie odpowiada. PowerShell ma wbudowaną klasę `System.IO.Ports.SerialPort` która daje bezpośredni dostęp do portu szeregowego bez żadnych dodatkowych instalacji.
+Zanim zaczniesz pisać kod w Pythonie albo konfigurować bibliotekę — warto sprawdzić, czy port COM w ogóle działa i czy urządzenie odpowiada. PowerShell ma wbudowaną klasę `System.IO.Ports.SerialPort`, która daje bezpośredni dostęp do portu szeregowego bez żadnych dodatkowych instalacji.
 
 Przydatne gdy:
 - Nie masz pewności który port COM to twoje urządzenie
@@ -31,7 +31,7 @@ Get-WMIObject Win32_PnPEntity |
     Select-Object Name, DeviceID
 ```
 
-Drugi sposób pokazuje nazwy urządzeń (np. "USB-SERIAL CH340 (COM8)") co ułatwia identyfikację właściwego portu.
+Drugi sposób pokazuje nazwy urządzeń (np. "USB-SERIAL CH340 (COM8)"), co ułatwia identyfikację właściwego portu.
 
 ## Otwieranie portu i wysyłanie danych
 
@@ -73,7 +73,7 @@ Write-Host "Odpowiedź: $hex"
 
 ## Skanowanie urządzeń Modbus na magistrali
 
-Jeśli nie wiesz pod jakim adresem slave siedzi urządzenie:
+Jeśli nie wiesz, pod jakim adresem slave siedzi urządzenie:
 
 ```powershell
 function Get-ModbusCRC {
@@ -136,7 +136,7 @@ $port.Close()
 $port.Dispose()
 ```
 
-Niezamknięty port zostaje zajęty przez proces PowerShell — inne programy (Python, LOGO!, Modbus Poll) nie będą mogły go otworzyć dopóki nie zamkniesz sesji lub nie zwolnisz zasobu.
+Niezamknięty port zostaje zajęty przez proces PowerShell — inne programy (Python, LOGO!, Modbus Poll) nie będą mogły go otworzyć, dopóki nie zamkniesz sesji lub nie zwolnisz zasobu.
 
 ## Pułapki
 

@@ -6,9 +6,7 @@ date: "2026-05-14"
 tags: ["siemens", "modbus"]
 featured: false
 references:
-  - title: "Siemens LOGO! 8 — System Manual (Siemens Industry Support)"
-    url: "https://support.industry.siemens.com/cs/document/109741041"
-  - title: "LOGO! Soft Comfort — strona produktu"
+  - title: "Siemens LOGO! — strona produktu i dokumentacja"
     url: "https://www.siemens.com/global/en/products/automation/systems/industrial/plc/logo.html"
 ---
 
@@ -16,7 +14,7 @@ references:
 
 LOGO! to seria małych sterowników logicznych (mikro-PLC) firmy Siemens, przeznaczonych do prostych zadań automatyki: sterowanie oświetleniem, wentylacją, pompami, bramami, systemami nawadniania i podobnymi.
 
-Nie jest to pełnoprawne PLC klasy S7-300/400 — brak modułów rozszerzających komunikację przemysłowej, język programowania jest uproszczony. Ale w swojej klasie jest bardzo popularny ze względu na niską cenę, prostotę konfiguracji i możliwość pracy bez dodatkowego oprogramowania (wersje z wyświetlaczem).
+Nie jest to pełnoprawne PLC klasy S7-300/400 — brak modułów rozszerzających komunikację przemysłową, język programowania jest uproszczony. Ale w swojej klasie jest bardzo popularny ze względu na niską cenę, prostotę konfiguracji i możliwość pracy bez dodatkowego oprogramowania (wersje z wyświetlaczem).
 
 Aktualna generacja to **LOGO! 8** — dodano Ethernet (port RJ-45), serwer webowy, komunikację Modbus TCP oraz możliwość tworzenia własnych stron HMI dostępnych przez przeglądarkę.
 

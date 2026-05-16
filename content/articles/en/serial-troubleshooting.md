@@ -6,8 +6,8 @@ date: "2026-05-14"
 tags: ["rs485", "troubleshooting"]
 featured: false
 references:
-  - title: "pymodbus — troubleshooting guide"
-    url: "https://pymodbus.readthedocs.io/en/latest/source/lib/pymodbus.rst"
+  - title: "pymodbus — documentation"
+    url: "https://pymodbus.readthedocs.io/en/latest/"
   - title: "pyserial — documentation"
     url: "https://pyserial.readthedocs.io/en/latest/"
 ---
@@ -123,13 +123,16 @@ serial_port.reset_output_buffer()
 **Symptom:** `Serial Exception: [Errno 16] Device or resource busy` (Linux) or `Access is denied` (Windows).
 
 **Windows — find which process took the port:**
-```powershell
-# Find processes using serial ports
-Get-Process | Where-Object {
-    $_.Modules.FileName -like "*serialport*"
-}
 
-# Or simpler — check Task Manager → Details → "Description" column
+Windows has no built-in way to show which process holds a COM port. Quickest fix — `handle.exe` from [Sysinternals](https://learn.microsoft.com/sysinternals/downloads/handle):
+
+```powershell
+# Device number = COM number minus 1
+handle.exe \Device\Serial0    # COM1
+handle.exe \Device\Serial7    # COM8
+
+# Or all serial devices at once:
+handle.exe -a Serial
 ```
 
 The usual suspects: Modbus Poll, other Python instances, LOGO! Soft Comfort, printer drivers with a built-in COM port.

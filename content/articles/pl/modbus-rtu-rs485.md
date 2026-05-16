@@ -6,8 +6,8 @@ date: "2026-05-14"
 tags: ["modbus", "rs485"]
 featured: true
 references:
-  - title: "Modbus over Serial Line Specification v1.02"
-    url: "https://modbus.org/docs/Modbus_over_serial_line_V1_02.pdf"
+  - title: "Simply Modbus — opis protokołu (FAQ)"
+    url: "https://www.simplymodbus.ca/FAQ.htm"
   - title: "pymodbus — ModbusSerialClient"
     url: "https://pymodbus.readthedocs.io/en/latest/source/client.html"
 ---
@@ -16,7 +16,7 @@ references:
 
 Modbus TCP to Modbus opakowany w Ethernet i TCP/IP. Modbus RTU to oryginalna wersja — komunikacja szeregowa po RS-485 lub RS-232, bajty przesyłane binarnie bez żadnego nagłówka sieciowego.
 
-W praktyce przemysłowej RTU nadal dominuje w urządzeniach polowych — czujniki, przetworniki, liczniki, moduły I/O. TCP znajdziesz głównie tam gdzie jest już sieć Ethernet: sterowniki, panele HMI, systemy SCADA.
+W praktyce przemysłowej RTU nadal dominuje w urządzeniach polowych — czujniki, przetworniki, liczniki, moduły I/O. TCP znajdziesz głównie tam, gdzie jest już sieć Ethernet: sterowniki, panele HMI, systemy SCADA.
 
 ## Struktura ramki RTU
 
@@ -91,6 +91,6 @@ Parametry (baudrate, parity, stopbits) muszą być identyczne po obu stronach. S
 
 2. **Kierunek transmisji** — konwertery USB-RS485 wymagają przełączenia kierunku (RTS). Tanie konwertery robią to automatycznie z opóźnieniem — jeśli ramka się urywa, wypróbuj `rtscts=True` lub inny konwerter.
 
-3. **Adres 0** — broadcast, slave nie odpowiada. Jeśli dostajesz timeout przy adresie 0, sprawdź czy nie wysyłasz broadcastu zamiast odczytu.
+3. **Adres 0** — broadcast, slave nie odpowiada. Jeśli dostajesz timeout przy adresie 0, sprawdź, czy nie wysyłasz broadcastu zamiast odczytu.
 
 4. **Interbajt gap** — RTU wymaga ciszy między bajtami nie dłuższej niż 1.5 czasu znaku. Wolne systemy PC mogą mieć problem z zachowaniem timingu przy wysokich baudrate.

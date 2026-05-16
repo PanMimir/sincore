@@ -6,15 +6,15 @@ date: "2026-05-14"
 tags: ["temperature", "modbus"]
 featured: false
 references:
-  - title: "F&F Filipowski — moduł MB-TC (dokumentacja)"
-    url: "https://www.fif.com.pl/termometry/mb-tc-1"
+  - title: "F&F Filipowski — wyszukaj MB-TC-1"
+    url: "https://www.fif.com.pl/pl/szukaj?q=mb-tc-1"
   - title: "IEC 60584 — termopary, typy i zakresy (Wikipedia)"
     url: "https://en.wikipedia.org/wiki/Thermocouple#Types"
 ---
 
 ## Czym jest moduł termoparowy
 
-Moduł termoparowy (przetwornik temperatury) to urządzenie które:
+Moduł termoparowy (przetwornik temperatury) to urządzenie, które:
 1. Podłącza termopary (czujniki temperatury)
 2. Mierzy ich napięcie (mV)
 3. Przelicza je na temperaturę z uwzględnieniem kompensacji zimnego końca
@@ -110,6 +110,6 @@ Zawsze sprawdzaj te wartości przed wyświetleniem lub zapisem do bazy — brak 
 
 2. **Typ termopary** — moduł musi być skonfigurowany na ten sam typ co podłączona termopara. Błędna konfiguracja daje wyniki bez błędu, ale z zupełnie złą wartością.
 
-3. **Kompensacja zimnego końca** — dla precyzyjnych pomiarów w zmiennych warunkach otoczenia sprawdź gdzie fizycznie mierzony jest cold junction i czy moduł nie jest w miejscu z dużymi wahaniami temperatury.
+3. **Kompensacja zimnego końca** — dla precyzyjnych pomiarów w zmiennych warunkach otoczenia sprawdź, gdzie fizycznie mierzony jest cold junction i czy moduł nie jest w miejscu z dużymi wahaniami temperatury.
 
 4. **Kabel termoparowy** — przedłużanie termopary zwykłym kablem miedzianym wprowadza błąd w miejscu połączenia. Używaj kabla kompensacyjnego odpowiedniego dla danego typu termopary.
