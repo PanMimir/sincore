@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { GitBranch, Mail } from "lucide-react";
+import { GitBranch, Mail, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -43,6 +43,15 @@ export default function Footer() {
               aria-label="GitHub"
             >
               <GitBranch size={22} />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/michal-panczyk-mp01/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyber-muted hover:text-cyber-purple transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={22} />
             </Link>
             <Link
               href="mailto:contact@sincore.io"

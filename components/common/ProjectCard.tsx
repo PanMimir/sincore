@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { ExternalLink, BookOpen, Download, GitBranch } from "lucide-react";
+import { ExternalLink, BookOpen, Download, GitBranch, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/services/projectService";
@@ -71,7 +71,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
       {/* Linki */}
       <div className="flex items-center gap-3 mt-auto pt-4 border-t border-cyber-gray">
-        {project.githubUrl && (
+        {project.githubUrl ? (
           <a
             href={project.githubUrl}
             target="_blank"
@@ -81,6 +81,14 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             <GitBranch size={14} />
             {t("github")}
           </a>
+        ) : (
+          <span
+            className="flex items-center gap-1.5 font-mono text-xs text-cyber-muted/60 italic"
+            title={t("private_repo")}
+          >
+            <Lock size={12} />
+            {t("private_repo")}
+          </span>
         )}
         {project.docsUrl && (
           <a

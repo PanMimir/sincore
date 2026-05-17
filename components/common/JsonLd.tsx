@@ -41,6 +41,7 @@ export default function JsonLd() {
         ],
         sameAs: [
           "https://github.com/PanMimir",
+          "https://www.linkedin.com/in/michal-panczyk-mp01/",
         ],
       },
     ],

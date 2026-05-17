@@ -9,7 +9,7 @@
     "stack": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
     "tags": ["frontend", "portfolio"],
     "status": "active",
-    "githubUrl": null,
+    "githubUrl": "https://github.com/PanMimir/sincore",
     "docsUrl": null,
     "downloadUrl": null,
     "featured": true,

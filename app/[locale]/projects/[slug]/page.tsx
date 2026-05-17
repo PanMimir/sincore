@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, GitBranch, BookOpen, Download } from "lucide-react";
+import { ArrowLeft, GitBranch, BookOpen, Download, Lock } from "lucide-react";
 import { getAllProjects, getProjectBySlug } from "@/services/projectService";
 import { cn } from "@/lib/utils";
 
@@ -126,7 +126,7 @@ export default async function ProjectPage({
 
       {/* Linki */}
       <div className="flex flex-wrap gap-4 pt-8 border-t border-cyber-gray">
-        {project.githubUrl && (
+        {project.githubUrl ? (
           <a
             href={project.githubUrl}
             target="_blank"
@@ -136,6 +136,11 @@ export default async function ProjectPage({
             <GitBranch size={16} />
             {t("github")}
           </a>
+        ) : (
+          <span className="flex items-center gap-2 px-5 py-2.5 border border-cyber-gray text-cyber-muted/70 italic font-mono text-sm rounded">
+            <Lock size={14} />
+            {t("private_repo")}
+          </span>
         )}
         {project.docsUrl && (
           <a

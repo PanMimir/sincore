@@ -18,7 +18,7 @@
     "cta_services": "Sprawdź usługi",
     "cta_contact": "Napisz do mnie",
     "terminal_line1": "$ whoami",
-    "terminal_line2": "Mimir — developer & problem solver",
+    "terminal_line2": "Michał (Mimir) — problem solver",
     "terminal_line3": "$ cat services.txt",
     "terminal_line_services": "custom software · automatyzacja · integracje · industrial",
     "terminal_line4": "$ echo $STATUS",
@@ -29,7 +29,7 @@
   },
   "projects": {
     "title": "Projekty",
-    "subtitle": "Rzeczy które zbudowałem",
+    "subtitle": "Co zbudowałem. Skończone projekty publicznie na GitHub, WIP-y na prośbę.",
     "status_active": "Aktywny",
     "status_wip": "W trakcie",
     "status_archived": "Archiwum",
@@ -40,7 +40,8 @@
     "all": "Wszystkie",
     "tags": "Tagi",
     "stack_label": "Stack",
-    "screenshots_label": "Zrzuty ekranu"
+    "screenshots_label": "Zrzuty ekranu",
+    "private_repo": "private repo"
   },
   "knowledge": {
     "title": "Baza wiedzy",
@@ -83,7 +84,6 @@
     "email_label": "E-mail",
     "github_label": "GitHub",
     "linkedin_label": "LinkedIn",
-    "linkedin_placeholder": "wkrótce",
     "copy_email": "Skopiuj adres",
     "copied": "Skopiowano!",
     "response_time_label": "Czas odpowiedzi",

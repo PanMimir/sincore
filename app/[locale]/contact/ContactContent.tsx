@@ -8,6 +8,7 @@ import ScrollReveal from "@/components/common/ScrollReveal";
 
 const EMAIL = "contact@sincore.io";
 const GITHUB_URL = "https://github.com/PanMimir";
+const LINKEDIN_URL = "https://www.linkedin.com/in/michal-panczyk-mp01/";
 
 interface ContactLink {
   icon: React.ElementType;
@@ -46,9 +47,8 @@ export default function ContactContent() {
     {
       icon: Link2,
       labelKey: "linkedin_label",
-      value: t("linkedin_placeholder"),
-      href: null,
-      placeholder: true,
+      value: LINKEDIN_URL.replace("https://www.", ""),
+      href: LINKEDIN_URL,
     },
   ];
 
@@ -105,7 +105,7 @@ export default function ContactContent() {
                       className="flex items-center gap-1.5 px-3 py-1.5 font-mono text-xs bg-cyber-purple/20 border border-cyber-purple/50 text-cyber-purple hover:bg-cyber-purple/30 rounded transition-all"
                     >
                       <ExternalLink size={12} />
-                      {link.href.startsWith("mailto") ? t("email_label") : t("github_label")}
+                      {t(link.labelKey)}
                     </a>
                   )}
                 </div>
