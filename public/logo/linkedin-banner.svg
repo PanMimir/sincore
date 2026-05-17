@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" role="img" aria-label="sincore — LinkedIn banner">
+  <title>sincore — LinkedIn banner (1584×396)</title>
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#1a0a2e"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#8b5cf6" stroke-width="0.5" opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1584" height="396" fill="url(#bgGrad)"/>
+  <rect width="1584" height="396" fill="url(#grid)"/>
+
+  <!-- Subtle vertical purple accent at left edge -->
+  <rect x="0" y="0" width="6" height="396" fill="#8b5cf6"/>
+
+  <!-- Avatar safe-zone marker: LinkedIn avatar sits roughly at x=88..240, y=232..384.
+       We keep this region soft / empty so the avatar overlay does not clash. -->
+
+  <!-- Main content: starts after avatar safe zone, around x=520 -->
+  <g transform="translate(520 100)">
+    <text font-family="'Courier New', ui-monospace, monospace" font-size="120" font-weight="700" letter-spacing="-2">
+      <tspan x="0" y="100" fill="#e2e8f0">sin</tspan><tspan fill="#8b5cf6">core</tspan>
+    </text>
+
+    <text font-family="'Courier New', ui-monospace, monospace" font-size="26" fill="#a78bfa" font-style="italic" x="6" y="160">
+      It works. That's the point.
+    </text>
+
+    <text font-family="'Courier New', ui-monospace, monospace" font-size="20" fill="#64748b" x="6" y="210">
+      custom software · automation · integrations · industrial
+    </text>
+  </g>
+
+  <!-- URL at bottom-right -->
+  <text font-family="'Courier New', ui-monospace, monospace" font-size="22" fill="#7c3aed" opacity="0.8" x="1490" y="360" text-anchor="end">
+    sincore.io
+  </text>
+
+  <!-- Terminal cursor accent top-right -->
+  <text font-family="'Courier New', ui-monospace, monospace" font-size="22" fill="#7c3aed" x="1490" y="60" text-anchor="end" opacity="0.6">
+    $ whoami
+  </text>
+  <text font-family="'Courier New', ui-monospace, monospace" font-size="22" fill="#e2e8f0" x="1490" y="95" text-anchor="end" opacity="0.8">
+    Michał (Mimir)
+  </text>
+</svg>

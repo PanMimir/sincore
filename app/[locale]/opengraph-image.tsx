@@ -61,7 +61,7 @@ export default function OgImage() {
           }}
         >
           <span style={{ color: "#64748b", fontSize: 18 }}>
-            Backend · Automatyka · Cybersecurity · Industrial Systems
+            custom software · automation · integrations · industrial
           </span>
           <span style={{ color: "#7c3aed", fontSize: 18, opacity: 0.7 }}>sincore.io</span>
         </div>
