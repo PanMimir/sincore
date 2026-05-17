@@ -3,8 +3,8 @@
     "slug": "sincore-portfolio",
     "title": "sincore.io — strona i portfolio",
     "description": {
-      "pl": "Ta strona. Zbudowana od zera na Next.js z obsługą dwóch języków, dynamicznym OG image i renderowaniem statycznym (SSG). Projekt otwarty — pokazuje jak podchodzę do frontendu.",
-      "en": "This website. Built from scratch on Next.js with two-language support, dynamic OG image and static site generation (SSG). Open project — shows how I approach frontend work."
+      "pl": "Ta strona. Zbudowana od zera na Next.js z obsługą dwóch języków, dynamicznym OG image i renderowaniem statycznym (SSG). Projekt otwarty — to mój mały plac zabaw z frontendem.",
+      "en": "This website. Built from scratch on Next.js with two-language support, dynamic OG image and static site generation (SSG). Open source — my little frontend playground."
     },
     "stack": ["Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
     "tags": ["frontend", "portfolio"],
@@ -20,8 +20,8 @@
     "slug": "radwag-rejestrator",
     "title": "RADWAG WLC X2 — Rejestrator pomiarów",
     "description": {
-      "pl": "Ktoś z działu przyszedł z problemem: skończyła się licencja demo softu do rejestracji pomiarów z wagi i nie wiadomo było, co dalej. Napisałem zamiennik od zera — pokazuje pomiary na żywo, zapisuje historię w bazie i eksportuje do CSV. Działa na Windows 11, bez licencji i bez czekania na support producenta.",
-      "en": "Someone from another department came with a problem: the demo license for their scale registration software had expired and they didn't know what to do. I wrote a replacement from scratch — shows live readings, stores history in a database and exports to CSV. Works on Windows 11, no license fees, no waiting for vendor support."
+      "pl": "Problemem była kończąca się licencja demo softu do rejestracji pomiarów z wagi i nie wiadomo było, co dalej. Napisałem zamiennik od zera — pokazuje pomiary na żywo, zapisuje historię w bazie i eksportuje do CSV. Działa na Windows 11, bez licencji i bez czekania na support producenta.",
+      "en": "The problem: a demo license for scale measurement registration software was running out and there was no clear next step. I wrote a replacement from scratch — live readings, history stored in a database, CSV export. Runs on Windows 11, no license fees, no waiting for vendor support."
     },
     "stack": ["Python", "PySide6", "SQLite", "PySerial"],
     "tags": ["desktop", "industrial", "serial", "laboratory"],
@@ -35,10 +35,10 @@
   },
   {
     "slug": "mb-tc-configurator",
-    "title": "F&F MB-TC-1 — Konfigurator temperatur",
+    "title": "F&F MB-TC-1 — Konfigurator dla przetwornika",
     "description": {
-      "pl": "Moduł F&F MB-TC-1 mierzy temperatury w 8 punktach jednocześnie, ale bez własnego oprogramowania trzeba się z nim komunikować przez terminal — wpisując kody ręcznie. Napisałem aplikację z normalnym interfejsem: podłączasz kabel RS-485, klikasz, widzisz temperatury ze wszystkich kanałów.",
-      "en": "The F&F MB-TC-1 module measures temperatures at 8 points simultaneously, but without software you have to communicate with it via terminal — entering codes manually. I wrote an app with a normal interface: plug in the RS-485 cable, click, see temperatures from all channels."
+      "pl": "Sam przetwornik mierzy aktualną temperaturę złącza gorącego (termopary) oraz złącza zimnego (temperatura w miejscu podłączenia termopary). Dzięki temu można podać temperaturę względną oraz bezwzględną dla obiektu, na którym dokonujemy pomiaru. Podłączając przetwornik na nowym stanowisku, trzeba ustawić mu odpowiednią komunikację i typ termopary, jaka będzie do niego podłączona. A jeśli chcemy go przenieść w nowe miejsce, gdzie będzie pracował w innych warunkach? Tu pierwsze skrzypce odgrywa konfigurator — umożliwia szybkie ustawienie wartości takich jak typ termopary, port, baudrate itp.",
+      "en": "The transmitter measures the temperature of the hot junction (the thermocouple itself) and the cold junction (temperature at the point where the thermocouple is connected). Together those readings give the relative and absolute temperature of the measured object. When you install the transmitter at a new site you have to configure its communication settings and the thermocouple type it will be wired to. And when you want to move it to another location with different conditions? That's where this configurator comes in — quickly sets parameters like thermocouple type, COM port, baud rate and others."
     },
     "stack": ["Python", "PySide6", "Modbus RTU", "PySerial"],
     "tags": ["desktop", "modbus", "industrial", "rs485"],
@@ -54,8 +54,8 @@
     "slug": "bronkhorst-controller",
     "title": "Bronkhorst MFC — Sterownik przepływu",
     "description": {
-      "pl": "Przepływomierze Bronkhorst to sprzęt z górnej półki do precyzyjnego dozowania gazów w laboratoriach. Zacząłem pisać aplikację do ich obsługi i logowania danych przez RS-485 — projekt czeka na wznowienie, bo aktualnie brak dostępu do sprzętu.",
-      "en": "Bronkhorst flow controllers are high-end equipment for precise gas dosing in laboratories. I started writing an app to operate them and log data via RS-485 — project is on hold due to lack of hardware access."
+      "pl": "Przepływomierze Bronkhorst to sprzęt z górnej półki do precyzyjnego dozowania gazów w laboratoriach. Zacząłem pisać aplikację do ich obsługi i logowania danych przez RS-485 — projekt w aktywnej budowie.",
+      "en": "Bronkhorst flow controllers are high-end equipment for precise gas dosing in laboratories. I started writing an app to operate them and log data via RS-485 — currently in active development."
     },
     "stack": ["Python", "PySide6", "RS-485", "PySerial"],
     "tags": ["desktop", "industrial", "rs485", "flow-control"],
@@ -71,8 +71,8 @@
     "slug": "sep-kurs",
     "title": "SEP — kurs i baza wiedzy",
     "description": {
-      "pl": "Platforma edukacyjna do przygotowania do uprawnień SEP G1/G2/G3 — kurs przygotowawczy, symulator pytań i baza wiedzy w jednym miejscu. Backend w Javie (Spring Boot). Aktualnie w fazie analizy rynku firm wydających uprawnienia i projektowania architektury — pierwszy projekt łączący kompetencje Java z 10 latami doświadczenia w energetyce i uprawnieniami SEP.",
-      "en": "Educational platform for SEP G1/G2/G3 certification preparation — preparatory course, question simulator and knowledge base in one place. Java/Spring Boot backend. Currently in market research phase and architecture design — first project combining Java skills with 10 years of energy industry experience and SEP certifications."
+      "pl": "Platforma edukacyjna do uprawnień SEP G1/G2/G3 — kurs przygotowawczy, symulator pytań i baza wiedzy w jednym miejscu. Napisana tak, żeby temat faktycznie zrozumieć, a nie po raz tysięczny czytać definicje wyjęte z książki. Uprawnienia SEP w Polsce to trochę śmiech na sali: większość firm zapewnia je swoim pracownikom jako tzw. dupochron. Jeśli chcesz się przy okazji czegoś nauczyć o elektryce, gazownictwie czy energetyce — to platforma dla ciebie.",
+      "en": "Educational platform for SEP G1/G2/G3 electrical certifications — preparatory course, question simulator and knowledge base in one place. Written to actually understand the topic, not read the same textbook definitions for the hundredth time. SEP certifications in Poland are a bit of a joke: most companies hand them out to employees as paperwork insurance. If you also want to pick up something real about electrical engineering, gas systems or energy along the way — this platform is for you."
     },
     "stack": ["Java", "Spring Boot", "PostgreSQL"],
     "tags": ["sep", "education", "java", "wip"],
