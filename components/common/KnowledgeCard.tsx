@@ -25,40 +25,35 @@ export default function KnowledgeCard({ article, index = 0 }: KnowledgeCardProps
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="group flex flex-col bg-cyber-dark border border-cyber-gray rounded-lg p-6 hover:border-cyber-purple/50 transition-all duration-300 hover:shadow-glow-purple-sm"
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      className="group flex flex-col bg-surface border border-border-subtle rounded-sincore-xl p-6 hover:border-border-strong transition-colors duration-normal"
     >
-      {/* Data */}
       {formattedDate && (
-        <div className="flex items-center gap-1.5 text-cyber-muted font-mono text-xs mb-3">
+        <div className="flex items-center gap-1.5 text-text-muted font-mono text-xs mb-3">
           <Calendar size={12} />
           {formattedDate}
         </div>
       )}
 
-      {/* Tytuł */}
       <Link
         href={`/${locale}/knowledge/${article.slug}`}
-        className="font-mono font-bold text-lg text-cyber-text hover:text-cyber-purple transition-colors leading-snug mb-2"
+        className="font-bold text-lg tracking-tight text-text-primary hover:text-accent-primary transition-colors duration-fast leading-snug mb-2"
       >
         {article.title}
       </Link>
 
-      {/* Opis */}
-      <p className="text-cyber-muted text-sm leading-relaxed mb-4 flex-1">
+      <p className="text-text-secondary text-sm leading-relaxed mb-4 flex-1">
         {article.description}
       </p>
 
-      {/* Tagi */}
       {article.tags.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mb-4">
           {article.tags.map((tag) => (
             <span
               key={tag}
-              className="flex items-center gap-1 font-mono text-xs px-2 py-0.5 bg-cyber-gray/50 text-cyber-muted rounded"
+              className="flex items-center gap-1 font-mono text-xs px-2 py-0.5 bg-surface-elevated text-text-muted rounded"
             >
               <Tag size={10} />
               {tag}
@@ -67,10 +62,9 @@ export default function KnowledgeCard({ article, index = 0 }: KnowledgeCardProps
         </div>
       )}
 
-      {/* Link do artykułu */}
       <Link
         href={`/${locale}/knowledge/${article.slug}`}
-        className="flex items-center gap-1.5 font-mono text-xs text-cyber-purple hover:text-cyber-purple-bright transition-colors mt-auto"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-accent-primary hover:text-accent-hover transition-colors duration-fast mt-auto"
       >
         {t("read_more")}
         <ArrowRight size={12} />

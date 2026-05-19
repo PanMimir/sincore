@@ -21,14 +21,14 @@ export default function FeaturedProjectsSection({ projects }: FeaturedProjectsSe
         <ScrollReveal>
           <div className="flex items-end justify-between mb-12">
             <div>
-              <p className="text-xs uppercase tracking-wider text-cyber-purple mb-2">{t("featured_label")}</p>
-              <h2 className="font-bold text-3xl text-cyber-text">
+              <p className="text-xs uppercase tracking-wider text-accent-primary mb-2">{t("featured_label")}</p>
+              <h2 className="font-bold text-3xl tracking-tight text-text-primary">
                 {t("featured_title")}
               </h2>
             </div>
             <Link
               href={`/${locale}/projects`}
-              className="flex items-center gap-2 font-mono text-sm text-cyber-muted hover:text-cyber-purple transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary hover:text-accent-primary transition-colors duration-fast"
             >
               {t("featured_cta")} <ArrowRight size={14} />
             </Link>

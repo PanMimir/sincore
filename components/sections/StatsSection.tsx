@@ -17,21 +17,20 @@ export default function StatsSection({ projectCount }: StatsSectionProps) {
   ];
 
   return (
-    <section className="py-16 border-y border-cyber-gray">
+    <section className="py-16 border-y border-border-subtle">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-3 gap-8 text-center">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="font-mono font-bold text-3xl sm:text-4xl text-cyber-purple mb-1">
+              <p className="font-bold text-3xl sm:text-4xl tracking-tight text-accent-primary mb-1">
                 {stat.value}
               </p>
-              <p className="font-mono text-xs sm:text-sm text-cyber-muted">
+              <p className="text-xs sm:text-sm uppercase tracking-wider text-text-muted">
                 {stat.label}
               </p>
             </motion.div>

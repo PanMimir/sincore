@@ -2,10 +2,6 @@
 
 import { useEffect, useRef } from "react";
 
-/**
- * Renderuje animowane tło – statyczna siatka CSS + subtelne "cząsteczki" na canvas.
- * Respektuje prefers-reduced-motion i pauzuje przy ukrytym tabie.
- */
 export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -16,7 +12,6 @@ export default function AnimatedBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Jeśli user wymaga reduced motion — pomijamy animację cząsteczek
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
@@ -36,16 +31,16 @@ export default function AnimatedBackground() {
       opacity: number;
     }[] = [];
 
-    const PARTICLE_COUNT = 40;
+    const PARTICLE_COUNT = 24;
 
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        size: Math.random() * 1.5 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.4 + 0.1,
+        size: Math.random() * 1.4 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.2,
+        speedY: (Math.random() - 0.5) * 0.2,
+        opacity: Math.random() * 0.25 + 0.15,
       });
     }
 
@@ -67,14 +62,13 @@ export default function AnimatedBackground() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(139, 92, 246, ${p.opacity})`;
+        ctx.fillStyle = `rgba(0, 112, 140, ${p.opacity})`;
         ctx.fill();
       });
 
       animationId = requestAnimationFrame(animate);
     };
 
-    // Pauza gdy tab ukryty — oszczędza CPU/baterię
     const handleVisibility = () => {
       if (document.hidden) {
         running = false;
@@ -98,15 +92,12 @@ export default function AnimatedBackground() {
 
   return (
     <>
-      {/* Siatka – czysto CSS, bez JS */}
-      <div className="fixed inset-0 bg-grid pointer-events-none z-0" />
-      {/* Gradient od góry */}
-      <div className="fixed inset-0 bg-gradient-cyber pointer-events-none z-0" />
-      {/* Canvas z cząsteczkami */}
+      <div className="fixed inset-0 bg-dot-grid pointer-events-none z-0 opacity-50" />
+      <div className="fixed inset-x-0 top-0 h-[60vh] bg-hero-ambient pointer-events-none z-0" />
       <canvas
         ref={canvasRef}
         className="fixed inset-0 pointer-events-none z-0"
-        style={{ opacity: 0.6 }}
+        style={{ opacity: 0.8 }}
       />
     </>
   );

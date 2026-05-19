@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Manrope, JetBrains_Mono } from "next/font/google";
 import JsonLd from "@/components/common/JsonLd";
 import "./globals.css";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -29,17 +29,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  // Wyłącz indeksowanie w środowisku lokalnym/staging
   robots: process.env.NODE_ENV === "production" ? "index, follow" : "noindex, nofollow",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      suppressHydrationWarning
+      data-theme="dark"
+      className={`${manrope.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <JsonLd />
       </head>
-      <body className="bg-cyber-black text-cyber-text antialiased flex flex-col min-h-screen">
+      <body className="bg-background text-text-primary antialiased flex flex-col min-h-screen">
         {children}
       </body>
     </html>

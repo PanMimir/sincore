@@ -1,9 +1,9 @@
-import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
-import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft, Calendar, ExternalLink, Tag } from "lucide-react";
-import { getAllArticles, getArticleBySlug, getArticleSlugMap } from "@/services/articleService";
+import { notFound } from"next/navigation";
+import { getTranslations } from"next-intl/server";
+import type { Metadata } from"next";
+import Link from"next/link";
+import { ArrowLeft, Calendar, ExternalLink, Tag } from"lucide-react";
+import { getAllArticles, getArticleBySlug, getArticleSlugMap } from"@/services/articleService";
 
 export async function generateStaticParams({
   params,
@@ -47,16 +47,16 @@ export default async function ArticlePage({
 }) {
   const [article, tCommon, tKnowledge] = await Promise.all([
     getArticleBySlug(params.slug, params.locale),
-    getTranslations({ locale: params.locale, namespace: "common" }),
-    getTranslations({ locale: params.locale, namespace: "knowledge" }),
+    getTranslations({ locale: params.locale, namespace:"common" }),
+    getTranslations({ locale: params.locale, namespace:"knowledge" }),
   ]);
 
   if (!article) notFound();
 
   const formattedDate = article.date
     ? new Date(article.date).toLocaleDateString(
-        params.locale === "pl" ? "pl-PL" : "en-US",
-        { year: "numeric", month: "long", day: "numeric" }
+        params.locale ==="pl" ?"pl-PL" :"en-US",
+        { year:"numeric", month:"long", day:"numeric" }
       )
     : null;
 
@@ -65,24 +65,24 @@ export default async function ArticlePage({
       {/* Powrót */}
       <Link
         href={`/${params.locale}/knowledge`}
-        className="inline-flex items-center gap-2 font-mono text-sm text-cyber-muted hover:text-cyber-purple transition-colors mb-10"
+        className="inline-flex items-center gap-2 font-mono text-sm text-text-muted hover:text-accent-primary transition-colors mb-10"
       >
         <ArrowLeft size={14} />
         {tCommon("back")}
       </Link>
 
       {/* Nagłówek artykułu */}
-      <header className="mb-10 pb-8 border-b border-cyber-gray">
+      <header className="mb-10 pb-8 border-b border-border-subtle">
         {formattedDate && (
-          <div className="flex items-center gap-1.5 text-cyber-muted font-mono text-xs mb-4">
+          <div className="flex items-center gap-1.5 text-text-muted font-mono text-xs mb-4">
             <Calendar size={12} />
             {formattedDate}
           </div>
         )}
-        <h1 className="font-mono font-bold text-3xl sm:text-4xl text-cyber-text mb-4 leading-tight">
+        <h1 className="font-bold tracking-tight text-3xl sm:text-4xl text-text-primary mb-4 leading-tight">
           {article.title}
         </h1>
-        <p className="text-cyber-muted text-base leading-relaxed mb-5">
+        <p className="text-text-muted text-base leading-relaxed mb-5">
           {article.description}
         </p>
         {article.tags.length > 0 && (
@@ -90,7 +90,7 @@ export default async function ArticlePage({
             {article.tags.map((tag) => (
               <span
                 key={tag}
-                className="flex items-center gap-1 font-mono text-xs px-2 py-1 bg-cyber-gray/50 text-cyber-muted rounded"
+                className="flex items-center gap-1 font-mono text-xs px-2 py-1 bg-surface-elevated/50 text-text-muted rounded"
               >
                 <Tag size={10} />
                 {tag}
@@ -102,13 +102,13 @@ export default async function ArticlePage({
 
       <div
         className="article-content"
-        dangerouslySetInnerHTML={{ __html: article.content ?? "" }}
+        dangerouslySetInnerHTML={{ __html: article.content ??"" }}
       />
 
       {/* Źródła */}
       {article.references && article.references.length > 0 && (
-        <footer className="mt-12 pt-8 border-t border-cyber-gray">
-          <h2 className="font-mono text-sm font-semibold text-cyber-muted uppercase tracking-wider mb-4">
+        <footer className="mt-12 pt-8 border-t border-border-subtle">
+          <h2 className="font-mono text-sm font-semibold text-text-muted uppercase tracking-wider mb-4">
             {tKnowledge("sources")}
           </h2>
           <ul className="space-y-2">
@@ -118,7 +118,7 @@ export default async function ArticlePage({
                   href={ref.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-mono text-sm text-cyber-purple hover:text-cyber-text transition-colors"
+                  className="inline-flex items-center gap-1.5 font-mono text-sm text-accent-primary hover:text-text-primary transition-colors"
                 >
                   <ExternalLink size={12} />
                   {ref.title}

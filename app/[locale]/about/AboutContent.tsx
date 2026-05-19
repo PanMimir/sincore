@@ -1,9 +1,9 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
-import { Terminal, Cpu, Code2, Monitor, Database } from "lucide-react";
-import ScrollReveal from "@/components/common/ScrollReveal";
+import { useTranslations } from"next-intl";
+import { motion } from"framer-motion";
+import { Terminal, Cpu, Code2, Monitor, Database } from"lucide-react";
+import ScrollReveal from"@/components/common/ScrollReveal";
 
 const SKILL_ICONS = [Terminal, Cpu, Database, Monitor, Code2];
 
@@ -17,7 +17,7 @@ export default function AboutContent() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
       <ScrollReveal>
-        <h1 className="font-bold text-4xl sm:text-5xl text-cyber-text mb-16">
+        <h1 className="font-bold text-4xl sm:text-5xl text-text-primary mb-16">
           {t("title")}
         </h1>
       </ScrollReveal>
@@ -25,21 +25,21 @@ export default function AboutContent() {
       <div className="grid lg:grid-cols-2 gap-16 items-start">
         <div>
           <ScrollReveal delay={0.1} className="space-y-4">
-            <p className="text-cyber-text text-lg leading-relaxed">{t("bio_1")}</p>
-            <p className="text-xs uppercase tracking-wider text-cyber-purple mt-6">{t("focus_label")}</p>
-            <p className="text-cyber-text">custom software · industrial systems · automation</p>
+            <p className="text-text-primary text-lg leading-relaxed">{t("bio_1")}</p>
+            <p className="text-xs uppercase tracking-wider text-accent-primary mt-6">{t("focus_label")}</p>
+            <p className="text-text-primary">custom software · industrial systems · automation</p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2} className="mt-8 space-y-4">
-            <p className="text-cyber-muted leading-relaxed">{t("bio_2")}</p>
-            <p className="text-cyber-muted leading-relaxed">{t("bio_3")}</p>
+            <p className="text-text-muted leading-relaxed">{t("bio_2")}</p>
+            <p className="text-text-muted leading-relaxed">{t("bio_3")}</p>
           </ScrollReveal>
         </div>
 
         {/* Prawa — specjalizacje + podejście */}
         <div className="space-y-10">
           <ScrollReveal delay={0.15}>
-            <h2 className="font-bold text-xl text-cyber-text mb-6">
+            <h2 className="font-bold text-xl text-text-primary mb-6">
               {t("skills_title")}
             </h2>
             <ul className="space-y-3">
@@ -48,14 +48,13 @@ export default function AboutContent() {
                 return (
                   <motion.li
                     key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.35, delay: i * 0.07 }}
-                    className="flex items-start gap-3 p-3 bg-cyber-dark border border-cyber-gray rounded-lg hover:border-cyber-purple/40 transition-colors"
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.35, delay: 0.2 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-start gap-3 p-3 bg-surface border border-border-subtle rounded-sincore-md hover:border-border-strong transition-colors duration-fast"
                   >
-                    <Icon size={16} className="text-cyber-purple mt-0.5 shrink-0" />
-                    <span className="text-cyber-text text-sm">{skill}</span>
+                    <Icon size={16} className="text-accent-primary mt-0.5 shrink-0" />
+                    <span className="text-text-primary text-sm">{skill}</span>
                   </motion.li>
                 );
               })}
@@ -63,11 +62,11 @@ export default function AboutContent() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.25}>
-            <div className="border-l-2 border-cyber-purple pl-5">
-              <h3 className="text-xs uppercase tracking-wider text-cyber-purple mb-3">
+            <div className="border-l-2 border-accent-primary pl-5">
+              <h3 className="text-xs uppercase tracking-wider text-accent-primary mb-3">
                 {t("approach_title")}
               </h3>
-              <p className="text-cyber-muted text-sm leading-relaxed italic">
+              <p className="text-text-muted text-sm leading-relaxed italic">
                 {t("approach")}
               </p>
             </div>

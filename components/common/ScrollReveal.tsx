@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 interface ScrollRevealProps {
@@ -9,24 +9,28 @@ interface ScrollRevealProps {
   className?: string;
 }
 
-/**
- * Wrapper który animuje dzieci gdy wejdą w viewport podczas scrollowania.
- * once: true — animacja odpala się tylko raz, nie resetuje przy scroll w górę.
- */
 export default function ScrollReveal({
   children,
   delay = 0,
   className,
 }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+  const [fallbackShow, setFallbackShow] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setFallbackShow(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const visible = isInView || fallbackShow;
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 32 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 24 }}
+      animate={visible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}

@@ -16,8 +16,6 @@ export default function LanguageSwitcher({ articleSlugMap }: LanguageSwitcherPro
   const switchLocale = (newLocale: string) => {
     const segments = pathname.split("/");
 
-    // Specjalny przypadek: artykuł knowledge — slugi PL/EN są różne, parujemy po id.
-    // Jeśli artykuł nie istnieje w docelowym języku — fallback na listę.
     if (segments[2] === "knowledge" && segments[3] && articleSlugMap) {
       const currentSlug = segments[3];
       const entry = Object.values(articleSlugMap).find((m) => m[locale] === currentSlug);
@@ -38,13 +36,13 @@ export default function LanguageSwitcher({ articleSlugMap }: LanguageSwitcherPro
     <div className="flex items-center gap-1 font-mono text-sm">
       {routing.locales.map((loc, i) => (
         <span key={loc} className="flex items-center">
-          {i > 0 && <span className="text-cyber-gray mx-1">/</span>}
+          {i > 0 && <span className="text-border-strong mx-1">/</span>}
           <button
             onClick={() => switchLocale(loc)}
             className={
               locale === loc
-                ? "text-cyber-purple font-bold"
-                : "text-cyber-muted hover:text-cyber-text transition-colors"
+                ? "text-accent-primary font-bold"
+                : "text-text-muted hover:text-text-primary transition-colors duration-fast"
             }
           >
             {loc.toUpperCase()}
