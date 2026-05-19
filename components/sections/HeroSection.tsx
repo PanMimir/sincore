@@ -15,51 +15,48 @@ export default function HeroSection() {
       <div className="max-w-5xl mx-auto w-full z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-          {/* Lewa strona – tekst */}
           <div>
-            {/* Animacja fadeIn z opóźnieniem – każdy element pojawia się po kolei */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="flex items-baseline gap-5 mb-4 flex-wrap"
             >
               <h1 className="font-mono font-bold text-4xl sm:text-5xl">
-                <span className="text-cyber-text">sin</span><span className="text-cyber-purple">core</span>
+                <span className="text-text-secondary">sin</span><span className="text-accent-primary">core</span>
               </h1>
-              <p className="font-mono text-cyber-purple/100 text-sm italic border-l border-cyber-purple/80 pl-4">
+              <p className="font-mono text-accent-primary text-sm italic border-l border-accent-primary/60 pl-4">
                 {t("motto")}
               </p>
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="font-mono text-cyber-muted text-sm sm:text-base mb-6 leading-relaxed"
+              transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="font-mono text-text-muted text-sm sm:text-base mb-6 leading-relaxed"
             >
               {t("tagline")}
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="font-mono text-cyber-text/80 text-base mb-8 max-w-md leading-relaxed"
+              transition={{ duration: 0.5, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="font-mono text-text-primary/85 text-base mb-8 max-w-md leading-relaxed"
             >
               {t("description")}
             </motion.p>
 
-            {/* CTA buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex flex-wrap gap-4"
+              transition={{ duration: 0.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap gap-3"
             >
               <Link
                 href={`/${locale}/services`}
-                className="flex items-center gap-2 px-6 py-3 bg-cyber-purple hover:bg-cyber-purple-bright text-white font-mono text-sm rounded transition-all duration-200 shadow-glow-purple-sm hover:shadow-glow-purple"
+                className="inline-flex items-center gap-2 h-12 px-6 bg-accent-400 hover:bg-accent-300 active:bg-accent-500 text-neutral-950 font-mono font-bold text-sm rounded-sincore-md transition-all duration-fast ease-sincore-out hover:-translate-y-px"
               >
                 {t("cta_services")}
                 <ArrowRight size={16} />
@@ -67,7 +64,7 @@ export default function HeroSection() {
 
               <Link
                 href={`/${locale}/contact`}
-                className="flex items-center gap-2 px-6 py-3 border border-cyber-purple/50 hover:border-cyber-purple text-cyber-purple hover:bg-cyber-purple/10 font-mono text-sm rounded transition-all duration-200"
+                className="inline-flex items-center gap-2 h-12 px-6 border border-border-strong hover:bg-surface-elevated text-text-primary font-mono font-semibold text-sm rounded-sincore-md transition-colors duration-fast"
               >
                 <Mail size={16} />
                 {t("cta_contact")}
@@ -75,11 +72,10 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Prawa strona – okno terminala */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <TerminalWindow
               lines={[
@@ -100,9 +96,6 @@ export default function HeroSection() {
 
         </div>
       </div>
-
-      {/* Gradient przejście na dół strony */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-cyber-black to-transparent pointer-events-none" />
     </section>
   );
 }

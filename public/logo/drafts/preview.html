@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>sincore — sygnet drafts</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; background: #16181B; color: #E8E8E6; padding: 48px 32px; }
+  h1 { font-weight: 600; font-size: 24px; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .subtitle { color: #72777E; font-size: 14px; margin-bottom: 48px; }
+  .row { display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 24px; align-items: center; margin-bottom: 32px; }
+  .label { font-size: 14px; color: #72777E; }
+  .label strong { color: #E8E8E6; display: block; font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+  .cell svg { width: 70%; height: 70%; }
+  .light { background: #E8E8E6; color: #0B0B0C; }
+  .dark { background: #0B0B0C; color: #E8E8E6; }
+  .accent { background: #4A5C73; color: #E8E8E6; }
+  .meta { font-size: 11px; color: #4B5057; margin-top: 8px; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; }
+  .scale-row { display: flex; gap: 16px; align-items: center; margin-top: 16px; padding: 16px; background: #0B0B0C; border-radius: 4px; }
+  .scale-row svg { color: #E8E8E6; }
+  .scale-row .s16 { width: 16px; height: 16px; }
+  .scale-row .s24 { width: 24px; height: 24px; }
+  .scale-row .s48 { width: 48px; height: 48px; }
+  .scale-row .s96 { width: 96px; height: 96px; }
+  .header { border-bottom: 1px solid #2a2d31; padding-bottom: 32px; margin-bottom: 48px; }
+  section { margin-bottom: 64px; }
+  .scale-label { font-size: 11px; color: #4B5057; margin-left: 8px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>sincore — sygnet drafts</h1>
+  <p class="subtitle">3 kierunki geometryczne · monochrome · Inter · do wyboru</p>
+</div>
+
+<section>
+  <div class="row">
+    <div class="label"><strong>C1 — Stacked Bars</strong>5 bloków, ostre rogi, klasyczny brutalist S</div>
+    <div class="cell light"><object data="sygnet-c1-stacked.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+    <div class="cell dark"><object data="sygnet-c1-stacked.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+    <div class="cell accent"><object data="sygnet-c1-stacked.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+  </div>
+  <div class="scale-row">
+    <object data="sygnet-c1-stacked.svg" type="image/svg+xml" class="s16"></object><span class="scale-label">16px</span>
+    <object data="sygnet-c1-stacked.svg" type="image/svg+xml" class="s24"></object><span class="scale-label">24px</span>
+    <object data="sygnet-c1-stacked.svg" type="image/svg+xml" class="s48"></object><span class="scale-label">48px</span>
+    <object data="sygnet-c1-stacked.svg" type="image/svg+xml" class="s96"></object><span class="scale-label">96px (favicon test)</span>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="label"><strong>C2 — Diagonal S</strong>2 belki + skos, ostre, dynamiczne</div>
+    <div class="cell light"><object data="sygnet-c2-diagonal.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+    <div class="cell dark"><object data="sygnet-c2-diagonal.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+    <div class="cell accent"><object data="sygnet-c2-diagonal.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+  </div>
+  <div class="scale-row">
+    <object data="sygnet-c2-diagonal.svg" type="image/svg+xml" class="s16"></object><span class="scale-label">16px</span>
+    <object data="sygnet-c2-diagonal.svg" type="image/svg+xml" class="s24"></object><span class="scale-label">24px</span>
+    <object data="sygnet-c2-diagonal.svg" type="image/svg+xml" class="s48"></object><span class="scale-label">48px</span>
+    <object data="sygnet-c2-diagonal.svg" type="image/svg+xml" class="s96"></object><span class="scale-label">96px (favicon test)</span>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="label"><strong>C3 — Soft S</strong>5 bloków z rx=6, łagodniejsze, lokal-friendly</div>
+    <div class="cell light"><object data="sygnet-c3-soft.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+    <div class="cell dark"><object data="sygnet-c3-soft.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+    <div class="cell accent"><object data="sygnet-c3-soft.svg" type="image/svg+xml" style="width:70%;height:70%"></object></div>
+  </div>
+  <div class="scale-row">
+    <object data="sygnet-c3-soft.svg" type="image/svg+xml" class="s16"></object><span class="scale-label">16px</span>
+    <object data="sygnet-c3-soft.svg" type="image/svg+xml" class="s24"></object><span class="scale-label">24px</span>
+    <object data="sygnet-c3-soft.svg" type="image/svg+xml" class="s48"></object><span class="scale-label">48px</span>
+    <object data="sygnet-c3-soft.svg" type="image/svg+xml" class="s96"></object><span class="scale-label">96px (favicon test)</span>
+  </div>
+</section>
+
+</body>
+</html>

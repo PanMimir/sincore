@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Code2, Zap, Cpu, LayoutDashboard, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import BrandIcon from "@/components/common/BrandIcon";
 
 export async function generateMetadata({
   params,
@@ -12,7 +13,7 @@ export async function generateMetadata({
   return { title: t("title") };
 }
 
-const SERVICE_ICONS = [Code2, Zap, Cpu, LayoutDashboard];
+const SERVICE_ICONS = ["deployment", "data-flow", "protocol", "monitoring"] as const;
 const SERVICE_KEYS = [
   "service_1",
   "service_2",
@@ -30,53 +31,47 @@ export default async function ServicesPage({
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
 
-      {/* Header */}
       <div className="mb-16">
-        <h1 className="font-mono font-bold text-4xl text-cyber-text mb-4">
+        <h1 className="font-bold tracking-tight text-4xl text-text-primary mb-4">
           {t("title")}
         </h1>
-        <p className="text-cyber-muted text-lg">{t("subtitle")}</p>
+        <p className="text-text-muted text-lg">{t("subtitle")}</p>
       </div>
 
-      {/* Service cards */}
       <div className="grid md:grid-cols-2 gap-6 mb-20">
-        {SERVICE_KEYS.map((key, i) => {
-          const Icon = SERVICE_ICONS[i];
-          return (
-            <div
-              key={key}
-              className="flex flex-col bg-cyber-dark border border-cyber-gray rounded-lg p-6 hover:border-cyber-purple/50 transition-all duration-300 hover:shadow-glow-purple-sm"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-cyber-purple/10 border border-cyber-purple/20 rounded">
-                  <Icon size={18} className="text-cyber-purple" />
-                </div>
-                <span className="font-mono text-xs text-cyber-purple border border-cyber-purple/30 px-2 py-0.5 rounded bg-cyber-purple/5">
-                  {t(`${key}_tag`)}
-                </span>
+        {SERVICE_KEYS.map((key, i) => (
+          <div
+            key={key}
+            className="flex flex-col bg-surface border border-border-subtle rounded-sincore-xl p-6 hover:border-border-strong transition-colors duration-normal"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2.5 bg-accent-primary/10 border border-accent-primary/20 rounded-sincore-md">
+                <BrandIcon name={SERVICE_ICONS[i]} className="text-accent-primary" />
               </div>
-              <h2 className="font-bold text-xl text-cyber-text mb-3">
-                {t(`${key}_title`)}
-              </h2>
-              <p className="text-sm text-cyber-muted leading-relaxed flex-1">
-                {t(`${key}_desc`)}
-              </p>
+              <span className="font-mono text-xs text-accent-primary border border-accent-primary/30 px-2 py-0.5 rounded bg-accent-primary/5">
+                {t(`${key}_tag`)}
+              </span>
             </div>
-          );
-        })}
+            <h2 className="font-bold tracking-tight text-xl text-text-primary mb-3">
+              {t(`${key}_title`)}
+            </h2>
+            <p className="text-sm text-text-secondary leading-relaxed flex-1">
+              {t(`${key}_desc`)}
+            </p>
+          </div>
+        ))}
       </div>
 
-      {/* CTA */}
-      <div className="border border-cyber-purple/30 rounded-lg p-8 bg-cyber-purple/5 text-center">
-        <h2 className="font-mono font-bold text-2xl text-cyber-text mb-3">
+      <div className="border border-accent-primary/30 rounded-sincore-xl p-8 bg-accent-primary/5 text-center">
+        <h2 className="font-bold tracking-tight text-2xl text-text-primary mb-3">
           {t("cta_title")}
         </h2>
-        <p className="text-cyber-muted mb-6 max-w-lg mx-auto">
+        <p className="text-text-secondary mb-6 max-w-lg mx-auto">
           {t("cta_subtitle")}
         </p>
         <Link
           href={`/${params.locale}/contact`}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-cyber-purple hover:bg-cyber-purple-bright text-white font-mono text-sm rounded transition-colors duration-200"
+          className="inline-flex items-center gap-2 h-12 px-8 bg-accent-400 hover:bg-accent-300 active:bg-accent-500 text-neutral-950 font-mono font-bold text-sm rounded-sincore-md transition-all duration-fast ease-sincore-out hover:-translate-y-px"
         >
           {t("cta_button")}
           <ArrowRight size={16} />

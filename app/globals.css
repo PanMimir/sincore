@@ -2,189 +2,293 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== ZMIENNE CSS – CYBERPUNK THEME ===== */
 :root {
-  --background: #0a0a0f;
-  --foreground: #e2e8f0;
+  --neutral-950: #0B0D10;
+  --neutral-900: #121418;
+  --neutral-800: #1F2328;
+  --neutral-700: #2D3138;
+  --neutral-600: #444B55;
+  --neutral-500: #68707A;
+  --neutral-400: #AEB4BA;
+  --neutral-300: #C9CED3;
+  --neutral-200: #DCE1E6;
+  --neutral-100: #F2F4F7;
+  --neutral-50: #FAFBFC;
 
-  /* Kolory akcentów – używane przez shadcn/ui */
-  --card: #0f0f1a;
-  --card-foreground: #e2e8f0;
-  --primary: #8b5cf6;
-  --primary-foreground: #ffffff;
-  --secondary: #1a1a2e;
-  --secondary-foreground: #e2e8f0;
-  --muted: #1a1a2e;
-  --muted-foreground: #64748b;
-  --accent: #8b5cf6;
-  --accent-foreground: #ffffff;
-  --border: #1a1a2e;
-  --input: #1a1a2e;
-  --ring: #8b5cf6;
-  --radius: 0.5rem;
+  --accent-50: #E8FCFF;
+  --accent-100: #C8F7FF;
+  --accent-200: #95EEFF;
+  --accent-300: #5EE0FF;
+  --accent-400: #29D1FF;
+  --accent-500: #00BFEF;
+  --accent-600: #0098BF;
+  --accent-700: #00708C;
+  --accent-800: #004B5E;
+  --accent-900: #002831;
+
+  --success-500: #18B777;
+  --warning-500: #D9A441;
+  --error-500: #D14B5A;
+  --info-500: #3E7BFA;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --duration-instant: 50ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --spring-soft: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* ===== GLOBALNE STYLE BAZOWE ===== */
+:root,
+[data-theme="dark"] {
+  --background: var(--neutral-950);
+  --foreground: var(--neutral-100);
+  --surface: var(--neutral-900);
+  --surface-elevated: var(--neutral-800);
+  --border-subtle: var(--neutral-800);
+  --border-strong: var(--neutral-700);
+  --text-primary: var(--neutral-100);
+  --text-secondary: var(--neutral-400);
+  --text-muted: var(--neutral-500);
+  --accent-primary: var(--accent-500);
+  --accent-hover: var(--accent-400);
+  --accent-active: var(--accent-600);
+  --button-primary-bg: var(--accent-400);
+  --button-primary-text: var(--neutral-950);
+}
+
+[data-theme="light"] {
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-950);
+  --surface: #FFFFFF;
+  --surface-elevated: var(--neutral-100);
+  --border-subtle: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+  --text-primary: var(--neutral-950);
+  --text-secondary: var(--neutral-700);
+  --text-muted: var(--neutral-500);
+  --accent-primary: var(--accent-600);
+  --accent-hover: var(--accent-500);
+  --accent-active: var(--accent-700);
+  --button-primary-bg: var(--accent-700);
+  --button-primary-text: #FFFFFF;
+}
+
 @layer base {
   body {
-    /* Główny kolor tła i tekstu z naszego motywu */
-    @apply bg-cyber-black text-cyber-text;
-    font-family: "Inter", system-ui, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-manrope), "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Scrollbar w stylu terminala */
+  ::selection {
+    background: var(--accent-500);
+    color: var(--neutral-950);
+  }
+
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
+    height: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0f0f1a;
+    background: var(--surface);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #4c1d95;
-    border-radius: 3px;
+    background: var(--border-strong);
+    border-radius: 999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #8b5cf6;
+    background: var(--neutral-600);
   }
 }
 
-/* ===== UTILITY CLASSES – wielokrotnego użytku ===== */
+@layer components {
+  .button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding-inline: 24px;
+    border: 0;
+    border-radius: var(--radius-md);
+    background: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
+  }
+
+  .button-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+  }
+
+  .button-primary:active {
+    background: var(--accent-active);
+    transform: translateY(0);
+  }
+
+  .button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding-inline: 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .button-secondary:hover {
+    background: var(--neutral-800);
+  }
+
+  .input {
+    height: 44px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
+    color: var(--text-primary);
+    padding-inline: 14px;
+  }
+
+  .input:focus {
+    outline: 2px solid color-mix(in srgb, var(--accent-primary) 24%, transparent);
+    border-color: var(--accent-primary);
+  }
+}
+
 @layer utilities {
-  /* Siatka w tle – efekt "cyberpunk grid" */
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  /* Subtelny gradient od góry ekranu */
-  .bg-gradient-cyber {
-    background: radial-gradient(
-      ellipse at top,
-      rgba(139, 92, 246, 0.08) 0%,
-      transparent 60%
-    );
-  }
-
-  /* Efekt glow na tekście */
-  .text-glow-purple {
-    text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
-  }
-
-  /* Linia z gradientem – separator */
-  .border-gradient {
-    border-image: linear-gradient(90deg, transparent, #8b5cf6, transparent) 1;
-  }
-
   .text-balance {
     text-wrap: balance;
   }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .bg-dot-grid {
+    background-image: radial-gradient(circle, var(--neutral-800) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: 0 0;
+  }
+
+  .bg-hero-ambient {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      color-mix(in srgb, var(--accent-900) 60%, transparent) 0%,
+      transparent 70%
+    );
+  }
 }
 
-/* ===== STYLE ARTYKUŁÓW MARKDOWN ===== */
-/*
-  Klasa .article-content opakowuje HTML wygenerowany przez remark.
-  Stylujemy wszystkie elementy które Markdown może wygenerować.
-*/
 .article-content {
-  color: #e2e8f0;
+  color: var(--text-primary);
   line-height: 1.75;
   font-size: 1rem;
 }
 
 .article-content h2 {
-  font-family: var(--font-mono), monospace;
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   font-weight: 700;
-  color: #a78bfa;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #1a1a2e;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .article-content h3 {
-  font-family: var(--font-mono), monospace;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #e2e8f0;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
 }
 
 .article-content p {
   margin-bottom: 1.25rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
 .article-content a {
-  color: #8b5cf6;
+  color: var(--accent-primary);
   text-decoration: underline;
   text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
 .article-content a:hover {
-  color: #a78bfa;
+  color: var(--accent-hover);
 }
 
 .article-content ul,
 .article-content ol {
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
-.article-content ul {
-  list-style-type: disc;
-}
-
-.article-content ol {
-  list-style-type: decimal;
-}
+.article-content ul { list-style-type: disc; }
+.article-content ol { list-style-type: decimal; }
 
 .article-content li {
   margin-bottom: 0.4rem;
 }
 
-/* Kod inline – np. `git commit` */
 .article-content code:not(pre code) {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
   font-size: 0.85em;
-  background: #1a1a2e;
-  color: #a78bfa;
+  background: var(--surface-elevated);
+  color: var(--accent-primary);
   padding: 0.15em 0.4em;
-  border-radius: 4px;
-  border: 1px solid #2d2d4a;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
 }
 
-/* Bloki kodu – ```python ... ``` */
 .article-content pre {
-  background: #0f0f1a;
-  border: 1px solid #1a1a2e;
-  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
   padding: 1.25rem;
   margin-bottom: 1.5rem;
   overflow-x: auto;
 }
 
 .article-content pre code {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
   font-size: 0.875rem;
-  color: #e2e8f0;
+  color: var(--text-primary);
   background: none;
   padding: 0;
   border: none;
 }
 
-/* Tabele (GFM) — wrapper umożliwia scroll horyzontalny na mobile */
 .article-content .table-wrapper {
   overflow-x: auto;
   margin-bottom: 1.5rem;
-  border-radius: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
 }
 
 .article-content table {
@@ -194,46 +298,47 @@
 }
 
 .article-content th {
-  font-family: var(--font-mono), monospace;
-  background: #13131f;
-  color: #8b5cf6;
-  padding: 0.6rem 1rem;
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
   text-align: left;
-  border: 1px solid #1a1a2e;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .article-content td {
-  padding: 0.6rem 1rem;
-  border: 1px solid #1a1a2e;
-  color: #cbd5e1;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.article-content tr:last-child td {
+  border-bottom: none;
 }
 
 .article-content tr:hover td {
-  background: #0f0f1a;
+  background: var(--surface);
 }
 
-/* Blok cytatu */
 .article-content blockquote {
-  border-left: 3px solid #8b5cf6;
+  border-left: 3px solid var(--accent-primary);
   padding-left: 1rem;
   margin: 1.5rem 0;
-  color: #64748b;
+  color: var(--text-muted);
   font-style: italic;
 }
 
-/* Linia pozioma */
 .article-content hr {
   border: none;
-  border-top: 1px solid #1a1a2e;
+  border-top: 1px solid var(--border-subtle);
   margin: 2rem 0;
 }
 
-/* Pogrubienie i kursywa */
 .article-content strong {
-  color: #e2e8f0;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .article-content em {
-  color: #94a3b8;
+  color: var(--text-secondary);
 }

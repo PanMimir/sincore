@@ -14,30 +14,21 @@ interface TerminalWindowProps {
   title?: string;
 }
 
-/**
- * Symuluje okno terminala z efektem typowania.
- * Każda linia pojawia się po poprzedniej z opóźnieniem.
- */
 export default function TerminalWindow({
   lines,
   title = "sincore@terminal:~",
 }: TerminalWindowProps) {
-  // Ile linii już "wpisano"
   const [visibleLines, setVisibleLines] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
     if (visibleLines >= lines.length) return;
-
-    // Co 600ms pojawia się kolejna linia
     const timer = setTimeout(() => {
       setVisibleLines((v) => v + 1);
     }, 600);
-
     return () => clearTimeout(timer);
   }, [visibleLines, lines.length]);
 
-  // Migający kursor – zmienia widoczność co 500ms
   useEffect(() => {
     const cursor = setInterval(() => {
       setShowCursor((v) => !v);
@@ -46,29 +37,26 @@ export default function TerminalWindow({
   }, []);
 
   return (
-    <div className="rounded-lg border border-cyber-gray bg-cyber-dark overflow-hidden shadow-glow-purple-sm">
-      {/* Pasek tytułu – jak w prawdziwym terminalu */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-cyber-darker border-b border-cyber-gray">
-        {/* Przyciski okna (dekoracyjne) */}
-        <div className="w-3 h-3 rounded-full bg-red-500/70" />
-        <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-        <div className="w-3 h-3 rounded-full bg-green-500/70" />
-        <span className="ml-2 font-mono text-xs text-cyber-muted">{title}</span>
+    <div className="rounded-sincore-lg border border-border-subtle bg-surface overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-3 bg-surface-elevated border-b border-border-subtle">
+        <div className="w-2.5 h-2.5 rounded-full bg-error-500/70" />
+        <div className="w-2.5 h-2.5 rounded-full bg-warning-500/70" />
+        <div className="w-2.5 h-2.5 rounded-full bg-success-500/70" />
+        <span className="ml-2 font-mono text-xs text-text-muted">{title}</span>
       </div>
 
-      {/* Treść terminala */}
       <div className="p-5 font-mono text-sm space-y-2 min-h-[180px]">
         {lines.slice(0, visibleLines).map((line, i) => (
           <div key={i}>
             {line.type === "command" ? (
-              <p className="text-cyber-purple">
-                <span className="text-cyber-muted">❯ </span>
+              <p className="text-accent-primary">
+                <span className="text-text-muted">❯ </span>
                 {line.text}
               </p>
             ) : (
-              <p className={cn("text-cyber-text/80 pl-4", !line.text && "h-2")}>
+              <p className={cn("text-text-secondary pl-4", !line.text && "h-2")}>
                 {line.href ? (
-                  <a href={line.href} className="text-cyber-purple hover:underline">
+                  <a href={line.href} className="text-accent-primary hover:text-accent-hover hover:underline transition-colors duration-fast">
                     {line.text}
                   </a>
                 ) : line.text}
@@ -77,13 +65,12 @@ export default function TerminalWindow({
           </div>
         ))}
 
-        {/* Kursor miga na końcu */}
         {visibleLines <= lines.length && (
-          <div className="text-cyber-purple">
-            <span className="text-cyber-muted">❯ </span>
+          <div className="text-accent-primary">
+            <span className="text-text-muted">❯ </span>
             <span
               className={cn(
-                "inline-block w-2 h-4 bg-cyber-purple align-middle",
+                "inline-block w-2 h-4 bg-accent-primary align-middle transition-opacity duration-instant",
                 showCursor ? "opacity-100" : "opacity-0"
               )}
             />
