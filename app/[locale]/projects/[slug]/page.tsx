@@ -3,8 +3,9 @@ import { getTranslations } from"next-intl/server";
 import type { Metadata } from"next";
 import Link from"next/link";
 import Image from"next/image";
-import { ArrowLeft, GitBranch, BookOpen, Download, Lock } from"lucide-react";
+import { ArrowLeft, GitBranch, BookOpen, Lock } from"lucide-react";
 import { getAllProjects, getProjectBySlug } from"@/services/projectService";
+import ReleaseDownload from"@/components/common/ReleaseDownload";
 import { cn } from"@/lib/utils";
 
 // Generuje statyczne ścieżki dla wszystkich projektów przy build time
@@ -80,6 +81,9 @@ export default async function ProjectPage({
         <p className="text-text-muted text-base leading-relaxed">{description}</p>
       </div>
 
+      {/* Dynamiczny przycisk pobierania — pobiera najnowszy release z GitHuba */}
+      <ReleaseDownload githubUrl={project.githubUrl} locale={params.locale} />
+
       <div className="mb-8">
         <p className="text-xs uppercase tracking-wider text-text-muted mb-3">{t("stack_label")}</p>
         <div className="flex flex-wrap gap-2">
@@ -151,15 +155,6 @@ export default async function ProjectPage({
           >
             <BookOpen size={16} />
             {t("docs")}
-          </a>
-        )}
-        {project.downloadUrl && (
-          <a
-            href={project.downloadUrl}
-            className="flex items-center gap-2 px-5 py-2.5 border border-border-subtle hover:border-accent-primary/50 text-text-muted hover:text-text-primary font-mono text-sm rounded transition-all duration-fast"
-          >
-            <Download size={16} />
-            {t("download")}
           </a>
         )}
       </div>
