@@ -1,62 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import { Download, ShieldAlert, ExternalLink } from "lucide-react";
+import { fetchLatestRelease, pickAsset } from "@/lib/releases";
 
 /**
  * ReleaseDownload — dynamiczny przycisk pobierania aplikacji.
  *
- * Pobiera najnowszy release projektu prosto z GitHub API. Dzięki temu po
- * wydaniu nowej wersji na GitHubie strona zaktualizuje się sama — bez edycji
- * kodu i bez ponownego deployu. Jeśli projekt nie ma żadnego release'u z
- * plikiem .exe/.zip, komponent nie renderuje nic.
+ * Pobiera najnowszy release projektu prosto z GitHub API (logika w
+ * lib/releases.ts). Po wydaniu nowej wersji na GitHubie strona zaktualizuje
+ * się sama — bez edycji kodu i bez redeployu. Jeśli projekt nie ma release'u
+ * z plikiem .exe/.zip, komponent nie renderuje nic.
  */
-
-// Pola z odpowiedzi GitHub API, których faktycznie używamy.
-interface GithubAsset {
-  name: string;
-  browser_download_url: string;
-  size: number;
-}
-
-interface GithubRelease {
-  tag_name: string;
-  html_url: string;
-  published_at: string;
-  assets: GithubAsset[];
-}
-
-// Wyciąga "owner/repo" z pełnego URL-a GitHuba. null = nie da się ustalić.
-function parseRepo(githubUrl: string | null): string | null {
-  if (!githubUrl) return null;
-  const match = githubUrl.match(/github\.com\/([^/]+\/[^/]+?)(?:\.git)?\/?$/);
-  return match ? match[1] : null;
-}
-
-// Pobiera najnowszy release. revalidate: 1h — nowa wersja pojawi się na
-// stronie w ciągu godziny od publikacji na GitHubie, bez redeployu.
-async function fetchLatestRelease(repo: string): Promise<GithubRelease | null> {
-  try {
-    const res = await fetch(
-      `https://api.github.com/repos/${repo}/releases/latest`,
-      {
-        headers: { Accept: "application/vnd.github+json" },
-        next: { revalidate: 3600 },
-      },
-    );
-    if (!res.ok) return null;
-    return (await res.json()) as GithubRelease;
-  } catch {
-    return null;
-  }
-}
-
-// Wybiera plik do pobrania: najpierw instalowalny .exe, w razie braku .zip.
-function pickAsset(assets: GithubAsset[]): GithubAsset | null {
-  return (
-    assets.find((a) => a.name.toLowerCase().endsWith(".exe")) ??
-    assets.find((a) => a.name.toLowerCase().endsWith(".zip")) ??
-    null
-  );
-}
 
 function formatSize(bytes: number): string {
   return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
@@ -69,10 +22,7 @@ export default async function ReleaseDownload({
   githubUrl: string | null;
   locale: string;
 }) {
-  const repo = parseRepo(githubUrl);
-  if (!repo) return null;
-
-  const release = await fetchLatestRelease(repo);
+  const release = await fetchLatestRelease(githubUrl);
   if (!release) return null;
 
   const asset = pickAsset(release.assets ?? []);

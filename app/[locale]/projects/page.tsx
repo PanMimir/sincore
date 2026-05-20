@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
 import { getAllProjects } from "@/services/projectService";
+import { hasDownload } from "@/lib/releases";
 import ProjectsClient from "./ProjectsClient";
 
 // Metadata generowane po stronie serwera – SEO-friendly
@@ -18,5 +19,17 @@ export async function generateMetadata({
 export default async function ProjectsPage() {
   const projects = await getAllProjects();
 
-  return <ProjectsClient projects={projects} />;
+  // Które projekty mają gotowy plik do pobrania (GitHub Releases) — na tej
+  // podstawie karty dostają badge "do pobrania".
+  const checks = await Promise.all(
+    projects.map(async (p) => ({
+      slug: p.slug,
+      ok: await hasDownload(p.githubUrl),
+    })),
+  );
+  const downloadableSlugs = checks.filter((c) => c.ok).map((c) => c.slug);
+
+  return (
+    <ProjectsClient projects={projects} downloadableSlugs={downloadableSlugs} />
+  );
 }

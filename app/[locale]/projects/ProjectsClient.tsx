@@ -9,7 +9,13 @@ import type { Project } from"@/services/projectService";
 const STATUS_FILTERS = ["all","active","wip","archived"] as const;
 type StatusFilter = (typeof STATUS_FILTERS)[number];
 
-export default function ProjectsClient({ projects }: { projects: Project[] }) {
+export default function ProjectsClient({
+  projects,
+  downloadableSlugs,
+}: {
+  projects: Project[];
+  downloadableSlugs: string[];
+}) {
   const t = useTranslations("projects");
   const [activeFilter, setActiveFilter] = useState<StatusFilter>("all");
 
@@ -57,7 +63,12 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              index={i}
+              downloadable={downloadableSlugs.includes(project.slug)}
+            />
           ))}
         </div>
       )}

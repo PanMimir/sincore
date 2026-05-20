@@ -10,6 +10,7 @@ import type { Project } from "@/services/projectService";
 interface ProjectCardProps {
   project: Project;
   index?: number;
+  downloadable?: boolean;
 }
 
 const STATUS_CONFIG = {
@@ -18,7 +19,7 @@ const STATUS_CONFIG = {
   archived: { label: "status_archived", className: "text-text-muted border-border-subtle bg-surface-elevated" },
 } as const;
 
-export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+export default function ProjectCard({ project, index = 0, downloadable = false }: ProjectCardProps) {
   const t = useTranslations("projects");
   const locale = useLocale();
 
@@ -42,9 +43,17 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </Link>
         </div>
 
-        <span className={cn("inline-block font-mono text-xs px-2 py-0.5 rounded border", status.className)}>
-          {t(status.label)}
-        </span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className={cn("inline-block font-mono text-xs px-2 py-0.5 rounded border", status.className)}>
+            {t(status.label)}
+          </span>
+          {downloadable && (
+            <span className="inline-flex items-center gap-1 font-mono text-xs px-2 py-0.5 rounded border border-accent-primary/40 bg-accent-primary/10 text-accent-primary">
+              <Download size={11} />
+              {t("download_badge")}
+            </span>
+          )}
+        </div>
       </div>
 
       <p className="text-text-secondary text-sm leading-relaxed mb-4 flex-1">

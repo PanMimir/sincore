@@ -9,9 +9,10 @@ import type { Project } from "@/services/projectService";
 
 interface FeaturedProjectsSectionProps {
   projects: Project[];
+  downloadableSlugs: string[];
 }
 
-export default function FeaturedProjectsSection({ projects }: FeaturedProjectsSectionProps) {
+export default function FeaturedProjectsSection({ projects, downloadableSlugs }: FeaturedProjectsSectionProps) {
   const t = useTranslations("home");
   const locale = useLocale();
 
@@ -37,7 +38,12 @@ export default function FeaturedProjectsSection({ projects }: FeaturedProjectsSe
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              index={i}
+              downloadable={downloadableSlugs.includes(project.slug)}
+            />
           ))}
         </div>
       </div>
