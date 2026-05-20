@@ -37,46 +37,46 @@ export default async function ReleaseDownload({
   return (
     <div className="mb-8 rounded-sincore-lg border border-accent-primary/30 bg-accent-primary/5 p-6">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
-        <h2 className="flex items-center gap-2 font-bold text-lg text-text-primary">
-          <Download size={18} className="text-accent-primary" />
+        <h2 className="flex items-center gap-2 font-bold text-xl text-text-primary">
+          <Download size={20} className="text-accent-primary" />
           {t("download_title")}
         </h2>
-        <span className="font-mono text-xs px-2 py-1 rounded border border-accent-primary/40 bg-accent-primary/10 text-accent-primary">
+        <span className="font-mono text-sm px-2 py-1 rounded border border-accent-primary/40 bg-accent-primary/10 text-accent-primary">
           {release.tag_name}
         </span>
       </div>
 
-      <p className="text-text-muted text-sm leading-relaxed mb-5">
+      <p className="text-text-muted text-base leading-relaxed mb-5">
         {t("download_desc")}
       </p>
 
       <a
         href={asset.browser_download_url}
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-sincore-md bg-accent-primary text-neutral-950 font-mono text-sm font-semibold hover:bg-accent-hover transition-colors duration-fast"
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-sincore-md bg-accent-primary text-neutral-950 font-mono text-base font-semibold hover:bg-accent-hover transition-colors duration-fast"
       >
-        <Download size={16} />
+        <Download size={18} />
         {t("download_cta")}
       </a>
 
-      <p className="mt-3 font-mono text-xs text-text-muted">
+      <p className="mt-3 font-mono text-sm text-text-muted">
         {asset.name} · {formatSize(asset.size)}
       </p>
 
       <div className="mt-5 pt-4 border-t border-border-subtle space-y-2">
-        <p className="font-mono text-xs text-text-muted">
+        <p className="font-mono text-sm text-text-muted">
           {t("download_platform")} · {t("download_released")} {publishedDate}
         </p>
-        <p className="flex items-start gap-2 text-xs text-text-muted/80 leading-relaxed">
-          <ShieldAlert size={14} className="mt-0.5 shrink-0 text-warning-400" />
+        <p className="flex items-start gap-2 text-sm text-text-muted/80 leading-relaxed">
+          <ShieldAlert size={16} className="mt-0.5 shrink-0 text-warning-400" />
           {t("download_smartscreen")}
         </p>
         <a
           href={release.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 font-mono text-xs text-text-muted hover:text-accent-primary transition-colors duration-fast"
+          className="inline-flex items-center gap-1.5 font-mono text-sm text-text-muted hover:text-accent-primary transition-colors duration-fast"
         >
-          <ExternalLink size={12} />
+          <ExternalLink size={14} />
           {t("download_all_releases")}
         </a>
       </div>
