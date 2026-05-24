@@ -38,6 +38,7 @@ export async function generateMetadata({
 const STATUS_CONFIG = {
   active:   { label:"status_active",   className:"text-success-400 border-success-500/40 bg-success-500/10" },
   wip:      { label:"status_wip",      className:"text-warning-400 border-warning-400/40 bg-yellow-400/10" },
+  paused:   { label:"status_paused",   className:"text-text-muted border-text-muted/40 bg-text-muted/10 italic" },
   archived: { label:"status_archived", className:"text-text-muted border-text-muted/40 bg-text-muted/10" },
 } as const;
 

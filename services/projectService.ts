@@ -8,7 +8,7 @@ export interface Project {
   description: Record<Locale, string>;
   stack: string[];
   tags: string[];
-  status: "active" | "wip" | "archived";
+  status: "active" | "wip" | "paused" | "archived";
   githubUrl: string | null;
   docsUrl: string | null;
   downloadUrl: string | null;

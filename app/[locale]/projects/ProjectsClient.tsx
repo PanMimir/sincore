@@ -6,8 +6,15 @@ import { cn } from"@/lib/utils";
 import ProjectCard from"@/components/common/ProjectCard";
 import type { Project } from"@/services/projectService";
 
-const STATUS_FILTERS = ["all","active","wip","archived"] as const;
+const STATUS_FILTERS = ["all","active","wip","paused","archived"] as const;
 type StatusFilter = (typeof STATUS_FILTERS)[number];
+
+const STATUS_LABEL_KEYS: Record<Exclude<StatusFilter, "all">, string> = {
+  active: "status_active",
+  wip: "status_wip",
+  paused: "status_paused",
+  archived: "status_archived",
+};
 
 export default function ProjectsClient({
   projects,
@@ -49,7 +56,7 @@ export default function ProjectsClient({
                 :"border-border-subtle text-text-muted hover:border-accent-primary/50 hover:text-text-primary"
             )}
           >
-            {filter ==="all" ? t("all") : t(filter ==="wip" ?"status_wip" : filter ==="active" ?"status_active" :"status_archived")}
+            {filter ==="all" ? t("all") : t(STATUS_LABEL_KEYS[filter])}
             <span className="ml-2 text-xs opacity-60">
               ({filter ==="all" ? projects.length : projects.filter((p) => p.status === filter).length})
             </span>

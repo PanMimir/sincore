@@ -32,6 +32,7 @@
     "subtitle": "What I've built. Finished projects open on GitHub, WIPs on request.",
     "status_active": "Active",
     "status_wip": "In progress",
+    "status_paused": "On hold",
     "status_archived": "Archived",
     "github": "GitHub",
     "docs": "Documentation",

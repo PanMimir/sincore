@@ -32,6 +32,7 @@
     "subtitle": "Co zbudowałem. Skończone projekty publicznie na GitHub, WIP-y na prośbę.",
     "status_active": "Aktywny",
     "status_wip": "W trakcie",
+    "status_paused": "Wstrzymany",
     "status_archived": "Archiwum",
     "github": "GitHub",
     "docs": "Dokumentacja",

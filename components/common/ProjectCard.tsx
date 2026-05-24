@@ -14,8 +14,9 @@ interface ProjectCardProps {
 }
 
 const STATUS_CONFIG = {
-  active: { label: "status_active", className: "text-success-400 border-success-500/40 bg-success-500/10" },
-  wip:    { label: "status_wip",    className: "text-warning-400 border-warning-500/40 bg-warning-500/10" },
+  active:   { label: "status_active",   className: "text-success-400 border-success-500/40 bg-success-500/10" },
+  wip:      { label: "status_wip",      className: "text-warning-400 border-warning-500/40 bg-warning-500/10" },
+  paused:   { label: "status_paused",   className: "text-text-muted border-border-subtle bg-surface-elevated italic" },
   archived: { label: "status_archived", className: "text-text-muted border-border-subtle bg-surface-elevated" },
 } as const;
 
