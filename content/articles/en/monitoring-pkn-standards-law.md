@@ -81,7 +81,7 @@ The line is simple: **the file does not become part of our product — it's only
 
 In the project behind this article we went a step further and run diff **fully locally** (PyMuPDF in a desktop app). The PDF never leaves the customer's machine. The backend only sees the list of standard numbers that customer tracks. That dissolves every doubt — and is the architecturally cleanest answer to the legal constraints.
 
-One technical limitation worth naming explicitly: the local diff works on PDFs containing a **text layer**. Some PKN standard editions (especially older ones) are image-only scans — the app sees a page image, not text, and comparison with a newer version isn't possible without prior OCR. This is a product limitation, not a legal workaround — we'd rather name it than pretend we handle everything.
+There's one technical limitation worth naming explicitly: not every standard PDF can be opened for comparison. The most common case is **scans** — older PKN editions in particular are saved as page images rather than as text. The app sees a "picture" of the page and has no way to compare it to a newer version. Some standards are saved as text-based PDFs but in an unusual layout the app doesn't yet recognise. These are product limitations, not legal workarounds — we'd rather name them than pretend we handle everything.
 
 ## CJEU C-588/21 P — an interesting case that (so far) changes nothing
 

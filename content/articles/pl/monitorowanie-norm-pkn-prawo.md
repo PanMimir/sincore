@@ -81,7 +81,7 @@ Granica jest prosta: **plik nie staje się elementem naszego produktu — jest t
 
 W projekcie który stoi za tym artykułem doszliśmy nawet dalej i diff robimy **w pełni lokalnie** (PyMuPDF w aplikacji desktopowej). PDF nigdy nie opuszcza komputera klienta. Backend dostaje tylko listę numerów norm które ten klient śledzi. To rozwiązuje wszystkie wątpliwości — i jest najczystszą architektonicznie odpowiedzią na ograniczenia prawne.
 
-Jest jedna techniczna granica, którą warto wprost zaznaczyć: lokalny diff działa na PDF-ach zawierających **warstwę tekstu**. Część wydań norm PKN (zwłaszcza starszych) to skany bez OCR — aplikacja widzi wtedy obraz strony, nie tekst, i porównanie z nowszą wersją nie jest możliwe bez wcześniejszego OCR. To ograniczenie produktu, nie obejście prawa — i wolimy je nazwać niż udawać, że wszystko obsługujemy.
+Jest jedna techniczna granica, którą warto wprost zaznaczyć: nie każdy PDF z normą da się otworzyć do porównania. Najczęstszy przypadek to **skany** — zwłaszcza starsze wydania PKN są zapisane jako obrazy stron, a nie jako tekst. Aplikacja widzi wtedy "zdjęcie" strony i nie ma jak porównać jej z nowszą wersją. Zdarzają się też normy zapisane jako PDF z tekstem, ale w nietypowym układzie, którego aplikacja jeszcze nie rozpoznaje. To ograniczenia produktu, nie obejście prawa — wolimy je nazwać wprost, niż udawać, że obsługujemy wszystko.
 
 ## Wyrok TSUE C-588/21 P — ciekawostka która (jeszcze) nic nie zmienia
 
