@@ -114,18 +114,126 @@
     "cta_title": "Masz konkretny problem?",
     "cta_subtitle": "Napisz dwa zdania o tym, co nie działa albo czego potrzebujesz — resztę ogarniemy.",
     "cta_button": "Napisz do mnie",
+    "expand_aria": "Rozwiń szczegóły usługi",
+    "collapse_aria": "Zwiń szczegóły usługi",
+    "user_label": "Kto z tej usługi korzysta",
+    "value_label": "Co klient z tego ma",
+    "includes_label": "Co obejmuje",
+    "excludes_label": "Czego nie obejmuje",
+    "status_label": "Status",
+    "status_present": "aktywna",
+    "status_future": "w przygotowaniu",
+    "status_community": "darmowa · społecznościowa",
+    "portfolio_label": "Realne wdrożenia",
+    "card_cta": "Porozmawiajmy o tej usłudze",
     "service_1_title": "Dedykowane oprogramowanie",
-    "service_1_desc": "Istniejące narzędzie kosztuje 500 zł/miesiąc i ma 80% funkcji, których nie potrzebujesz? Buduję dokładnie to, czego potrzebujesz — raz, za stałą kwotę, bez subskrypcji.",
     "service_1_tag": "oprogramowanie",
+    "service_1_desc": "Istniejące narzędzie kosztuje 500 zł/miesiąc i ma 80% funkcji, których nie potrzebujesz? Buduję dokładnie to, czego potrzebujesz — raz, za stałą kwotę, bez subskrypcji.",
+    "service_1_user": "Małe i średnie firmy, dla których standardowy SaaS jest za drogi, niedopasowany lub nie pokrywa specyfiki procesu. Właściciele firm 5-50 osób, kierownicy działów operacyjnych, lab managerowie.",
+    "service_1_value": [
+      "Niższy koszt łączny niż roczny abonament SaaS dla 10+ kont",
+      "Funkcjonalność dopasowana do procesu, nie odwrotnie",
+      "Brak vendor lock-in — kod, dane i infrastruktura w rękach klienta"
+    ],
+    "service_1_includes": [
+      "Sesje discovery i mapowanie procesu",
+      "Projekt aplikacji (architektura, schemat danych, mockupy)",
+      "Implementacja (Next.js, TypeScript, PostgreSQL)",
+      "Wdrożenie na infrastrukturze klienta lub Vercel",
+      "Dokumentacja użytkownika i przekazanie"
+    ],
+    "service_1_excludes": [
+      "Hosting długoterminowy z 24/7 SLA (osobno do uzgodnienia)",
+      "Migracja danych z systemów legacy (jako oddzielny projekt)",
+      "Szkolenia masowe (instruktaż dla 1-2 osób — tak)"
+    ],
+    "service_1_status": "present",
+    "service_1_portfolio": ["sincore.io", "Wzorzec (w budowie)"],
     "service_2_title": "Automatyzacja procesów",
-    "service_2_desc": "Raporty robione ręcznie, dane przepisywane między systemami, powtarzalne zadania, które zjadają godziny tygodniowo. To da się zautomatyzować.",
     "service_2_tag": "automatyzacja",
+    "service_2_desc": "Raporty robione ręcznie, dane przepisywane między systemami, powtarzalne zadania, które zjadają godziny tygodniowo. To da się zautomatyzować.",
+    "service_2_user": "Firmy z istniejącymi systemami (ERP, CRM, urządzenia laboratoryjne, sterowniki PLC), gdzie ręczne przenoszenie danych albo nieobsłużone połączenie kosztuje dziennie czas pracownika.",
+    "service_2_value": [
+      "Eliminacja ręcznych transferów między systemami",
+      "Integracje pod nietypowe protokoły (Modbus, RS-485, OPC UA, własne API)",
+      "Brak miesięcznych limitów typowych dla iPaaS"
+    ],
+    "service_2_includes": [
+      "Mapa istniejących systemów i identyfikacja punktów ręcznej pracy",
+      "Projekt integracji (transport, mapowanie danych, obsługa błędów, monitoring)",
+      "Implementacja (Python, Java, Node — dobór per case)",
+      "Wdrożenie i testy",
+      "Dokumentacja runbook"
+    ],
+    "service_2_excludes": [
+      "Modyfikacja systemów źródłowych po stronie klienta",
+      "Migracja danych historycznych (jako oddzielny projekt)"
+    ],
+    "service_2_status": "present",
+    "service_2_portfolio": ["Norm Monitor", "Modbus ↔ MQTT/REST bridge (planowany)"],
     "service_3_title": "Systemy przemysłowe",
-    "service_3_desc": "Sprzęt działa, ale brak oprogramowania do obsługi? Piszę aplikacje komunikujące się przez Modbus, RS-485, port COM — od odczytu danych po sterowanie.",
     "service_3_tag": "systemy",
+    "service_3_desc": "Sprzęt działa, ale brak oprogramowania do obsługi? Piszę aplikacje komunikujące się przez Modbus, RS-485, port COM — od odczytu danych po sterowanie.",
+    "service_3_user": "Laboratoria, działy R&D, firmy produkcyjne z parkiem urządzeń przemysłowych. Lab managerowie, audytorzy, automatycy — tam, gdzie producent dostarczył urządzenie, ale soft do logowania danych jest archaiczny, brak go w ogóle albo nie pasuje do procedury.",
+    "service_3_value": [
+      "Pobieranie pomiarów zgodne z procedurą laboratoryjną (timestamp, operator, eksport CSV/XLSX)",
+      "Konfiguracja urządzenia z PC bez fizycznego dostępu do panelu",
+      "Wykrywanie problemów na poziomie protokołu (luźny styk termopary, błąd ramki) — alarm zanim pomiar trafi do raportu"
+    ],
+    "service_3_includes": [
+      "Analiza protokołu jeśli producent nie udostępnia dokumentacji",
+      "Implementacja (Python + PySide6, .exe na Windows)",
+      "Configurator, data logger, alarmy",
+      "Wydanie jako GitHub Release",
+      "Dokumentacja użytkownika"
+    ],
+    "service_3_excludes": [
+      "Modyfikacja firmware'u urządzenia",
+      "Konstrukcja sprzętowa, kable, przejściówki"
+    ],
+    "service_3_status": "present",
+    "service_3_portfolio": ["RADWAG WLC X2", "F&F MB-TC-1", "Bronkhorst MFC/MFM"],
     "service_4_title": "Narzędzia wewnętrzne",
+    "service_4_tag": "narzędzia",
     "service_4_desc": "Zamówienia w Excelu, statusy w głowie szefa, raporty robione w piątek. Buduję proste systemy do zarządzania zamówieniami, statusami i raportowaniem — bez korporacyjnego ERP.",
-    "service_4_tag": "narzędzia"
+    "service_4_user": "Mikrofirmy i małe firmy (do około 20 osób), freelancerzy z zespołem, jednoosobowe DG zlecające na zewnątrz. Tam, gdzie pełny ERP/CRM to overkill, ale Excel i skrzynka mailowa to za mało.",
+    "service_4_value": [
+      "Jeden ekran, jeden cel — szybkie wprowadzenie i sprawdzenie statusu",
+      "Generowanie cyklicznych raportów bez ręcznej pracy",
+      "Hostowane na infrastrukturze klienta lub naszej"
+    ],
+    "service_4_includes": [
+      "Discovery (jeden proces — zamówienia, statusy lub raporty)",
+      "Projekt i implementacja jako aplikacja webowa",
+      "Wdrożenie i minimalne szkolenie operatora"
+    ],
+    "service_4_excludes": [
+      "Integracje z księgowością i fakturowaniem (osobno wg Automatyzacji procesów)"
+    ],
+    "service_4_status": "future",
+    "service_4_portfolio": [],
+    "service_5_title": "Otwarte narzędzia dla społeczności",
+    "service_5_tag": "open · free",
+    "service_5_desc": "Darmowe narzędzia dla techników i inżynierów — gotowe do pobrania ze strony, bez logowania, bez subskrypcji, bez telemetrii. Producent oznaczony jako sincore.io w metadanych pliku.",
+    "service_5_user": "Społeczność branżowa: technicy, automatycy, lab managerowie pracujący z urządzeniami przemysłowymi, którzy potrzebują działającego narzędzia bez kosztu i bez formalności.",
+    "service_5_value": [
+      "Działające narzędzie do natychmiastowego użycia (Waga, MB-TC)",
+      "Zero kosztu, zero subskrypcji",
+      "Sygnatura producenta sincore.io w metadanych — identyfikator w środowisku technicznym"
+    ],
+    "service_5_includes": [
+      "Sam plik .exe z metadanymi producenta",
+      "README i dokumentacja w repo na GitHubie",
+      "Wsparcie społecznościowe przez GitHub Issues",
+      "Wydanie nowych wersji co kilka miesięcy"
+    ],
+    "service_5_excludes": [
+      "Wsparcie e-mail/telefoniczne jeden na jeden (to już Systemy przemysłowe)",
+      "Customizacja pod konkretne wdrożenie",
+      "Gwarancja działania na nietypowych konfiguracjach"
+    ],
+    "service_5_status": "community",
+    "service_5_portfolio": ["RADWAG WLC X2 v1.0.1", "F&F MB-TC-1 v1.0.2"]
   },
   "home": {
     "stats_projects": "projektów",

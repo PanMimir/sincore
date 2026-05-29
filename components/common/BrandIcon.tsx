@@ -1,4 +1,4 @@
-type BrandIconName = "deployment" | "data-flow" | "protocol" | "monitoring";
+type BrandIconName = "deployment" | "data-flow" | "protocol" | "monitoring" | "community";
 
 interface BrandIconProps {
   name: BrandIconName;
@@ -33,6 +33,16 @@ const PATHS: Record<BrandIconName, React.ReactNode> = {
     <>
       <path d="M4 14h3l2-5 3 9 2-6h6" />
       <rect x="3" y="4" width="18" height="16" rx="2" />
+    </>
+  ),
+  community: (
+    <>
+      <circle cx="12" cy="5" r="2" />
+      <circle cx="5" cy="18" r="2" />
+      <circle cx="19" cy="18" r="2" />
+      <path d="m10.5 6.5-4 10" />
+      <path d="m13.5 6.5 4 10" />
+      <path d="M7 18h10" />
     </>
   ),
 };
