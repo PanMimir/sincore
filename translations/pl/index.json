@@ -116,6 +116,8 @@
     "cta_button": "Napisz do mnie",
     "expand_aria": "Rozwiń szczegóły usługi",
     "collapse_aria": "Zwiń szczegóły usługi",
+    "format_label": "Format współpracy",
+    "format_text": "Każdy projekt płatny obejmuje umowę o poziomie usług (SLA) dopasowaną do skali — godziny dostępności, czasy reakcji, zasady eskalacji. Wzorzec pokazuję na życzenie po pierwszej rozmowie.",
     "user_label": "Kto z tej usługi korzysta",
     "value_label": "Co klient z tego ma",
     "includes_label": "Co obejmuje",

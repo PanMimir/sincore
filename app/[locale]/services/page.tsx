@@ -70,6 +70,13 @@ export default async function ServicesPage({
         contactHref={`/${params.locale}/contact`}
       />
 
+      <div className="border-l-2 border-accent-primary/40 pl-5 py-3 mb-12 bg-neutral-900/20">
+        <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">
+          {t("format_label")}
+        </h3>
+        <p className="text-sm text-text-secondary leading-relaxed">{t("format_text")}</p>
+      </div>
+
       <div className="border border-accent-primary/30 rounded-sincore-xl p-8 bg-accent-primary/5 text-center">
         <h2 className="font-bold tracking-tight text-2xl text-text-primary mb-3">
           {t("cta_title")}

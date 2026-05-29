@@ -116,6 +116,8 @@
     "cta_button": "Write to me",
     "expand_aria": "Expand service details",
     "collapse_aria": "Collapse service details",
+    "format_label": "How we work together",
+    "format_text": "Every paid project comes with a Service Level Agreement (SLA) tailored to the engagement — service hours, response times, escalation rules. The template is available on request after our first conversation.",
     "user_label": "Who this service is for",
     "value_label": "What the client gets",
     "includes_label": "What's included",
