@@ -81,7 +81,7 @@ export async function getArticleBySlug(
 
   const processed = await remark()
     .use(remarkGfm)      // GitHub Flavored Markdown: tabele, strikethrough, checkboxes
-    .use(remarkHtml, { sanitize: false }) // sanitize: false = zezwól na własne HTML tagi w md
+    .use(remarkHtml)     // sanitize domyślnie ON (hast-util-sanitize, schema GitHub) — surowy HTML/<script> w md jest usuwany
     .process(markdown);
 
   // Owijamy tabele żeby na mobile dostały overflow-x zamiast wypychać layout
