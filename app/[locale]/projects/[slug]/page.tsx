@@ -6,6 +6,7 @@ import Image from"next/image";
 import { ArrowLeft, GitBranch, BookOpen, Lock } from"lucide-react";
 import { getAllProjects, getProjectBySlug } from"@/services/projectService";
 import ReleaseDownload from"@/components/common/ReleaseDownload";
+import ApkDownloadGate from"@/components/common/ApkDownloadGate";
 import { cn } from"@/lib/utils";
 
 // Generuje statyczne ścieżki dla wszystkich projektów przy build time
@@ -82,8 +83,12 @@ export default async function ProjectPage({
         <p className="text-text-muted text-base leading-relaxed">{description}</p>
       </div>
 
-      {/* Dynamiczny przycisk pobierania — pobiera najnowszy release z GitHuba */}
-      <ReleaseDownload githubUrl={project.githubUrl} locale={params.locale} />
+      {/* Pobieranie: APK za bramką hasła (Vercel Blob) albo release z GitHuba */}
+      {project.apkDownload ? (
+        <ApkDownloadGate />
+      ) : (
+        <ReleaseDownload githubUrl={project.githubUrl} locale={params.locale} />
+      )}
 
       <div className="mb-8">
         <p className="text-xs uppercase tracking-wider text-text-muted mb-3">{t("stack_label")}</p>

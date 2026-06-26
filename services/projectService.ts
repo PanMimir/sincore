@@ -12,6 +12,8 @@ export interface Project {
   githubUrl: string | null;
   docsUrl: string | null;
   downloadUrl: string | null;
+  /** Gdy true — projekt udostępnia plik APK do pobrania za bramką hasła (Vercel Blob), nie przez GitHub Releases. */
+  apkDownload?: boolean;
   featured: boolean;
   thumbnail: string | null;
   screenshots: string[];

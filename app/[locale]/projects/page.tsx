@@ -24,7 +24,7 @@ export default async function ProjectsPage() {
   const checks = await Promise.all(
     projects.map(async (p) => ({
       slug: p.slug,
-      ok: await hasDownload(p.githubUrl),
+      ok: p.apkDownload === true || (await hasDownload(p.githubUrl)),
     })),
   );
   const downloadableSlugs = checks.filter((c) => c.ok).map((c) => c.slug);

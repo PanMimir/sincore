@@ -1,5 +1,23 @@
 [
   {
+    "slug": "termopary-its90",
+    "title": "Termopary ITS-90 — kalkulator dla Androida",
+    "description": {
+      "pl": "Aplikacja na Androida dla serwisantów AKPiA, elektryków i metrologów. Przelicza napięcie termopary na temperaturę (i odwrotnie) dla 8 typów (K, J, T, E, N, S, R, B) na podstawie oficjalnych charakterystyk ITS-90 (NIST). Kompensacja zimnego końca, jednostki °C/°F/K, tolerancje wg IEC 60584-2, tablica referencyjna i opis typów. Działa w całości offline, bez kont i bez zbierania danych. Wersja 1 skończona — gotowa do użycia, otwarta na rozbudowę, jeśli pojawi się realna potrzeba.",
+      "en": "Android app for I&C technicians, electricians and metrologists. Converts thermocouple voltage to temperature (and back) for 8 types (K, J, T, E, N, S, R, B) based on the official ITS-90 characteristics (NIST). Cold-junction compensation, °C/°F/K units, IEC 60584-2 tolerances, a reference table and type descriptions. Fully offline, no accounts, no data collection. Version 1 is complete — ready to use, open to extension if a real need appears."
+    },
+    "stack": ["React Native", "Expo", "TypeScript"],
+    "tags": ["android", "mobile", "metrology", "thermocouples", "industrial"],
+    "status": "active",
+    "githubUrl": null,
+    "docsUrl": null,
+    "downloadUrl": null,
+    "apkDownload": true,
+    "featured": true,
+    "thumbnail": null,
+    "screenshots": []
+  },
+  {
     "slug": "sincore-portfolio",
     "title": "sincore.io — strona i portfolio",
     "description": {
