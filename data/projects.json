@@ -72,12 +72,12 @@
     "slug": "bronkhorst-controller",
     "title": "Bronkhorst MFC — Sterownik przepływu",
     "description": {
-      "pl": "Przepływomierze Bronkhorst to sprzęt z górnej półki do precyzyjnego dozowania gazów w laboratoriach. Zacząłem pisać aplikację do ich obsługi i logowania danych przez RS-485 — projekt w aktywnej budowie.",
-      "en": "Bronkhorst flow controllers are high-end equipment for precise gas dosing in laboratories. I started writing an app to operate them and log data via RS-485 — currently in active development."
+      "pl": "Przepływomierze Bronkhorst to sprzęt z górnej półki do precyzyjnego dozowania gazów w laboratoriach. Zacząłem aplikację do ich obsługi i logowania danych przez RS-485, ale bez dostępu do fizycznego sprzętu nie da się jej sensownie dokończyć ani przetestować. Projekt odłożony — kod zostaje jako archiwum i wróci, jeśli pojawi się realny dostęp do urządzeń.",
+      "en": "Bronkhorst flow controllers are high-end equipment for precise gas dosing in laboratories. I started an app to operate them and log data via RS-485, but without access to the physical hardware there's no way to finish or properly test it. Project shelved — the code stays as an archive and will return if real device access appears."
     },
     "stack": ["Python", "PySide6", "RS-485", "PySerial"],
     "tags": ["desktop", "industrial", "rs485", "flow-control"],
-    "status": "wip",
+    "status": "archived",
     "githubUrl": null,
     "docsUrl": null,
     "downloadUrl": null,
