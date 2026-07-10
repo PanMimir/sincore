@@ -38,10 +38,10 @@
     "slug": "radwag-rejestrator",
     "title": "RADWAG WLC X2 — Rejestrator pomiarów",
     "description": {
-      "pl": "Problemem była kończąca się licencja demo softu do rejestracji pomiarów z wagi i nie wiadomo było, co dalej. Napisałem zamiennik od zera — pokazuje pomiary na żywo, zapisuje historię w bazie i eksportuje do CSV. Działa na Windows 11, bez licencji i bez czekania na support producenta.",
-      "en": "The problem: a demo license for scale measurement registration software was running out and there was no clear next step. I wrote a replacement from scratch — live readings, history stored in a database, CSV export. Runs on Windows 11, no license fees, no waiting for vendor support."
+      "pl": "Problemem była kończąca się licencja demo softu do rejestracji pomiarów z wagi i nie wiadomo było, co dalej. Napisałem zamiennik od zera — pokazuje pomiary na żywo i zapisuje je wprost do pliku Excel. Działa na Windows 11, bez licencji i bez czekania na support producenta. Wersja 1.1.0 (lipiec 2026) powstała z opinii z laboratorium: każde uruchomienie rejestracji tworzy osobny plik z datą i numerem serii, więc zmiana próbki nie wymaga ręcznego porządkowania danych, a błędne odczyty transmisji nie trafiają już do wyników.",
+      "en": "The problem: a demo license for scale measurement registration software was running out and there was no clear next step. I wrote a replacement from scratch — live readings saved straight to an Excel file. Runs on Windows 11, no license fees, no waiting for vendor support. Version 1.1.0 (July 2026) came from lab feedback: every recording session gets its own file named with the date and a series number, so switching samples needs no manual file housekeeping, and faulty transmission readings no longer end up in the results."
     },
-    "stack": ["Python", "PySide6", "SQLite", "PySerial"],
+    "stack": ["Python", "PySide6", "openpyxl", "PySerial"],
     "tags": ["desktop", "industrial", "serial", "laboratory"],
     "status": "active",
     "githubUrl": "https://github.com/PanMimir/radwag-rejestrator",
