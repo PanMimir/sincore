@@ -14,9 +14,9 @@ references:
     url: "https://pubs.acs.org/doi/10.1021/sc400145w"
 ---
 
-Plan na poniedziałek był taki: zrobię sobie dzień wolnego od kodu. Programowania mam w tygodniu pod dostatkiem, a jest ta instalacja, którą trzeba uruchomić. Pirolizer, ślimak, trzy strefy grzania, czarne ziarna na końcu. Spokojny, namacalny problem inżynierski. Idealny odpoczynek od TypeScripta.
+Plan na poniedziałek był taki: zrobię sobie dzień wolnego od kodu. Programowania mam w tygodniu pod dostatkiem, a jest ta instalacja, którą trzeba uruchomić. Pirolizer, ślimak, trzy strefy grzania, czarne ziarna na końcu. Spokojny, namacalny problem inżynierski. Idealny odpoczynek od klawiatury.
 
-Pod koniec tygodnia bilans tego „odpoczynku" wyglądał następująco: tysiąc linii Pythona generującego arkusz kalkulacyjny, dopasowane wykładnicze modele kinetyki rozkładu biomasy, przegląd literatury przeprowadzony przez czterech jednocześnie pracujących agentów AI, symulacja szesnastu paliw przy siedmiu temperaturach i stu jeden częstotliwościach falownika. Mniej-więcej dwa razy więcej pracy niż gdybym po prostu siedział na regularnym tasku w JIRA. Sam absurd jest opowieścią, ale po drodze wyszło coś sensownego, więc zanim wrócę do JavaScripta — szybkie podsumowanie tego o czym **naprawdę** trzeba pomyśleć, żeby reaktor pirolityczny robił to czego się od niego oczekuje.
+Pod koniec tygodnia bilans tego „odpoczynku" wyglądał następująco: tysiąc linii Pythona generującego arkusz kalkulacyjny, dopasowane wykładnicze modele kinetyki rozkładu biomasy, przegląd literatury przeprowadzony przez czterech jednocześnie pracujących agentów AI, symulacja szesnastu paliw przy siedmiu temperaturach i stu jeden częstotliwościach falownika. Mniej-więcej dwa razy więcej pracy niż gdybym po prostu siedział na regularnym tasku w JIRA. Sam absurd jest opowieścią, ale po drodze wyszło coś sensownego, więc zanim wrócę do programowania — szybkie podsumowanie tego o czym **naprawdę** trzeba pomyśleć, żeby reaktor pirolityczny robił to czego się od niego oczekuje.
 
 ## 1. Dwóch nieznajomych w równaniu (bilans masy nie wybacza)
 
@@ -93,6 +93,10 @@ Cała ta historia wygląda jakby ją żywcem wyjęto z podręcznika inżynierii 
 
 Tak, można to było załatwić jednym mailem do producenta podajnika. Ale spróbuj dostać odpowiedź jeszcze w tym tygodniu. Tak, można było wziąć tabelę z artykułu Bergmana z 2005 i czytać interpolacje suwakiem. Ale jakoś trudno wytłumaczyć technologowi, że „tak, dla buka mamy dane, dla świerka mamy dane, ale jak chcesz dorzucić kawę to musisz poczekać do przyszłej dekady".
 
-Po tej krótkiej przerwie wracam więc do JavaScripta — z lekkim niedosytem co do całej kinetyki dwustopniowej Batesa, którą obiecywałem sobie zaimplementować „jak będzie czas". Czas, jak wiadomo, nigdy nie będzie. Ale arkusz stoi, działa, można go otworzyć w Google Sheets albo Excelu, i jeśli ktoś kiedyś będzie miał ślimak, rurę, trzpień i biomasę której nie wiadomo jak ugrać — może mu zaoszczędzi tydzień siedzenia przed monitorem.
+Po tej krótkiej przerwie wracam więc do programowania — z lekkim niedosytem co do całej kinetyki dwustopniowej Batesa, którą obiecywałem sobie zaimplementować „jak będzie czas". Czas, jak wiadomo, nigdy nie będzie. Ale arkusz stoi, działa, można go otworzyć w Google Sheets albo Excelu, i jeśli ktoś kiedyś będzie miał ślimak, rurę, trzpień i biomasę której nie wiadomo jak ugrać — może mu zaoszczędzi tydzień siedzenia przed monitorem.
 
 Albo i dwa, jeśli też zechce dorzucić kawę.
+
+---
+
+*Ciąg dalszy: [Kalkulator pirolizera V2](/pl/knowledge/kalkulator-pirolizera-v2-walidacja) — sześć tygodni później arkusz zderzył się z szesnastoma dniami prób ruchowych. Napełnienie, o którym pisałem wyżej, że wynosi zwykle 0,20–0,30, okazało się wynosić 0,49.*

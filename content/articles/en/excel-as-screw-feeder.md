@@ -14,9 +14,9 @@ references:
     url: "https://pubs.acs.org/doi/10.1021/sc400145w"
 ---
 
-The Monday plan was this: I'm taking a day off from code. There's plenty of programming during the week, and there's this installation that needs commissioning. A pyrolyser, a screw, three heating zones, black pellets at the end. A calm, tangible engineering problem. The perfect break from TypeScript.
+The Monday plan was this: I'm taking a day off from code. There's plenty of programming during the week, and there's this installation that needs commissioning. A pyrolyser, a screw, three heating zones, black pellets at the end. A calm, tangible engineering problem. The perfect break from the keyboard.
 
-By the end of the week, the actual bill for this "break" looked like: a thousand lines of Python generating a spreadsheet, fitted exponential models of biomass decomposition kinetics, a literature review run by four AI agents in parallel, and a simulation of sixteen fuels across seven temperatures and one hundred and one inverter frequencies. Roughly twice the workload of staying on a regular JIRA ticket. The absurdity is the story, but something useful came out along the way — so before I go back to JavaScript, a quick summary of what you **actually** need to think about if you want a pyrolytic reactor to do what you're asking of it.
+By the end of the week, the actual bill for this "break" looked like: a thousand lines of Python generating a spreadsheet, fitted exponential models of biomass decomposition kinetics, a literature review run by four AI agents in parallel, and a simulation of sixteen fuels across seven temperatures and one hundred and one inverter frequencies. Roughly twice the workload of staying on a regular JIRA ticket. The absurdity is the story, but something useful came out along the way — so before I go back to programming, a quick summary of what you **actually** need to think about if you want a pyrolytic reactor to do what you're asking of it.
 
 ## 1. Two unknowns in one equation (mass balance does not forgive)
 
@@ -93,6 +93,10 @@ The whole story reads like it came straight out of a process engineering textboo
 
 Yes, this could have been a single email to the feeder manufacturer. But try getting a reply this week. Yes, you could have grabbed a table from Bergman 2005 and read interpolations with a ruler. But it's somehow hard to tell the process engineer that "yes, we have data for beech, we have data for spruce, but if you want to throw in coffee you'll have to wait until the next decade."
 
-After this little break I'm heading back to JavaScript — with a slight regret about Bates's two-step kinetics, which I promised myself I'd implement "when there's time". Time, as we know, will never be there. But the spreadsheet stands, it works, you can open it in Google Sheets or Excel, and if somebody ever has a screw, a tube, a shaft and a piece of biomass they can't quite figure out — it might save them a week of staring at a monitor.
+After this little break I'm heading back to programming — with a slight regret about Bates's two-step kinetics, which I promised myself I'd implement "when there's time". Time, as we know, will never be there. But the spreadsheet stands, it works, you can open it in Google Sheets or Excel, and if somebody ever has a screw, a tube, a shaft and a piece of biomass they can't quite figure out — it might save them a week of staring at a monitor.
 
 Or two, if they also want to throw in coffee.
+
+---
+
+*Part two: [Pyrolyser calculator V2](/en/knowledge/pyrolyser-calculator-v2-validation) — six weeks later the spreadsheet collided with sixteen days of commissioning trials. The fill ratio I described above as "usually 0.20–0.30" turned out to be 0.49.*
