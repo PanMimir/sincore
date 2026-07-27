@@ -16,7 +16,7 @@ references:
 
 The Monday plan was this: I'm taking a day off from code. There's plenty of programming during the week, and there's this installation that needs commissioning. A pyrolyser, a screw, three heating zones, black pellets at the end. A calm, tangible engineering problem. The perfect break from the keyboard.
 
-By the end of the week, the actual bill for this "break" looked like: a thousand lines of Python generating a spreadsheet, fitted exponential models of biomass decomposition kinetics, a literature review run by four AI agents in parallel, and a simulation of sixteen fuels across seven temperatures and one hundred and one inverter frequencies. Roughly twice the workload of staying on a regular JIRA ticket. The absurdity is the story, but something useful came out along the way — so before I go back to programming, a quick summary of what you **actually** need to think about if you want a pyrolytic reactor to do what you're asking of it.
+By the end of the week, the actual bill for this "break" looked like: a thousand lines of Python generating a spreadsheet, fitted exponential models of biomass decomposition kinetics, a dig through the literature, and a simulation of sixteen fuels across seven temperatures and one hundred and one inverter frequencies. Roughly twice the workload of staying on a regular JIRA ticket. The absurdity is the story, but something useful came out along the way — so before I go back to programming, a quick summary of what you **actually** need to think about if you want a pyrolytic reactor to do what you're asking of it.
 
 ## 1. Two unknowns in one equation (mass balance does not forgive)
 

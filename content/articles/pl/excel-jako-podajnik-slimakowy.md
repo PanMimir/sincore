@@ -16,7 +16,7 @@ references:
 
 Plan na poniedziałek był taki: zrobię sobie dzień wolnego od kodu. Programowania mam w tygodniu pod dostatkiem, a jest ta instalacja, którą trzeba uruchomić. Pirolizer, ślimak, trzy strefy grzania, czarne ziarna na końcu. Spokojny, namacalny problem inżynierski. Idealny odpoczynek od klawiatury.
 
-Pod koniec tygodnia bilans tego „odpoczynku" wyglądał następująco: tysiąc linii Pythona generującego arkusz kalkulacyjny, dopasowane wykładnicze modele kinetyki rozkładu biomasy, przegląd literatury przeprowadzony przez czterech jednocześnie pracujących agentów AI, symulacja szesnastu paliw przy siedmiu temperaturach i stu jeden częstotliwościach falownika. Mniej-więcej dwa razy więcej pracy niż gdybym po prostu siedział na regularnym tasku w JIRA. Sam absurd jest opowieścią, ale po drodze wyszło coś sensownego, więc zanim wrócę do programowania — szybkie podsumowanie tego o czym **naprawdę** trzeba pomyśleć, żeby reaktor pirolityczny robił to czego się od niego oczekuje.
+Pod koniec tygodnia bilans tego „odpoczynku" wyglądał następująco: tysiąc linii Pythona generującego arkusz kalkulacyjny, dopasowane wykładnicze modele kinetyki rozkładu biomasy, przekopana literatura przedmiotu, symulacja szesnastu paliw przy siedmiu temperaturach i stu jeden częstotliwościach falownika. Mniej-więcej dwa razy więcej pracy niż gdybym po prostu siedział na regularnym tasku w JIRA. Sam absurd jest opowieścią, ale po drodze wyszło coś sensownego, więc zanim wrócę do programowania — szybkie podsumowanie tego o czym **naprawdę** trzeba pomyśleć, żeby reaktor pirolityczny robił to czego się od niego oczekuje.
 
 ## 1. Dwóch nieznajomych w równaniu (bilans masy nie wybacza)
 
