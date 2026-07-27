@@ -43,7 +43,7 @@ Everyone's first intuition is the same: if the screw has flights, then "fill rat
 
 Material inside a screw conveyor tube does not politely sit only in the flight pockets. It sits in everything that's empty: in the pockets between the flights, in the gap between the spiral and the tube wall, in the space around the central shaft (unless the screw is shaftless, but this one isn't). If the tube has a 1.5 cm gap between the spiral and the wall — which it sometimes does, when your installation is more "a reactor for testing unpredictable feedstocks" than a precision dosing unit — then the material happily moves in there and stays.
 
-That's why we compute "fill" against the **whole annulus** of transport. Annulus = the tube interior MINUS the shaft. If anyone still remembers geometry: the cross-section is π(D² − d²)/4. The volume of the heated zone is that area times the length of the insulated section. The whole philosophy.
+That's why we compute "fill" against the **whole annulus** of transport. Annulus = the tube interior MINUS the shaft. If anyone still remembers geometry: the cross-section is π(D² − d²)/4, where **D** is the inner diameter of the tube and **d** the diameter of the shaft the flights sit on. The volume of the heated zone is that area times the length of the insulated section. The whole philosophy.
 
 What it means in practice: if the panel says fill ratio 25%, then one quarter of the annulus (i.e. the entire available space between the tube and the shaft, across the whole heated zone) is filled with fuel. The rest is air, lightly heated pyrolysis gases and a still-debatable amount of water vapour. That 25% is mild underfeed for a typical pyrolyser — you can push it to around 40-45% before the screw starts choking, jamming, and doing things the SOP doesn't mention.
 
@@ -61,7 +61,18 @@ A better solution comes from thermal decomposition chemistry — the Y(T) curve 
 
 > **Y(T) = Y∞ + A · exp(−k · (T − 300))**
 
-Three parameters per fuel. **Y∞** = the asymptote, how much char always remains. **A** = how much mass "is available to decompose" relative to the asymptote. **k** = how fast it falls with temperature. Everything fitted to measurements from the literature (where they exist) or to your own (where they don't). The curve appears in the spreadsheet in thirty seconds.
+Three parameters per fuel — and since the symbols don't speak for themselves:
+
+| Symbol | What it is | Unit |
+|---|---|---|
+| **Y(T)** | mass yield at temperature T: what fraction of the feed comes out as biochar | % |
+| **T** | temperature in the heated zone | °C |
+| **Y∞** | the asymptote — how much char always remains, however long you heat it | % |
+| **A** | how much mass is "available to decompose" above the asymptote | % |
+| **k** | how fast the yield falls with temperature | 1/°C |
+| **300** | not a physical constant, just where the curve is anchored: the bottom of the range | °C |
+
+Everything fitted to measurements from the literature (where they exist) or to your own (where they don't). The curve appears in the spreadsheet in thirty seconds.
 
 The operational benefit: you swap material from wood to roasted coffee (yes, coffee, we'll get to that) — three numbers refresh, the curve rescales, the settings calculator automatically picks new Hz and T_on/T_off. Instead of eight lookups per material you have three constants. And, more importantly: for **any** T (433°C? 521°C?) you get Y with no manual interpolation.
 

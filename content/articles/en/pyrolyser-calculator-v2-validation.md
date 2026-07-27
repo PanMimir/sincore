@@ -24,7 +24,28 @@ The flow model has a form you can derive on a napkin:
 
 > **ṁ = ρ · ψ · A · S · n · DC**
 
-Density times fill ratio times annulus area times flight pitch times revolutions times duty cycle. Nothing sophisticated. The question was whether that napkin describes **this** machine.
+Density times fill ratio times annulus area times flight pitch times revolutions times duty cycle. Nothing sophisticated.
+
+Since these symbols recur throughout the text, here is what each one is:
+
+| Symbol | What it is | Unit |
+|---|---|---|
+| **ṁ** | how much fuel enters the reactor per hour | kg/h |
+| **ρ** | bulk density of the fuel — what a cubic metre weighs **loose**, air between the grains included | kg/m³ |
+| **ψ** | fill ratio: what fraction of the free cross-section of the tube is actually occupied by material | 0–1 |
+| **A** | the cross-section the material travels through — tube interior minus the screw shaft | m² |
+| **S** | flight pitch: how far the material advances along the tube per one revolution of the screw | m |
+| **n** | revolutions of the **screw**, i.e. after the gearbox — not of the motor | rpm |
+| **DC** | duty cycle: what percentage of the time the feeder is actually running rather than sitting in a pause | 0–1 |
+| **L** | length of the heated zone (here, 1550 mm of insulated section) | m |
+| **V_zone** | volume of the heated zone, i.e. A × L (here, 14.7 litres) | m³ |
+| **t_res** (shortened to **t** in some formulas) | residence time: how many minutes the material spends in the heated zone | min |
+| **feed** | how much fuel must go in per hour to get the amount of biochar you want at the outlet | kg/h |
+| **Y** | mass yield: what fraction of the feed survives the process and comes out as biochar | % |
+
+The 60 floating around these formulas carries no deeper meaning — it converts minutes to hours.
+
+The question was whether that napkin describes **this** machine.
 
 The way to check is brutally simple. For every trial I know how many kilograms went in and how many hours the feeding lasted — so I know the real ṁ. I also know the Hz and the duty cycle. Invert the formula and ask: what would ψ have to be for the model to agree? Do that fifteen times and look at the resulting column.
 

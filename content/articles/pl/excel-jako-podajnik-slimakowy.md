@@ -43,7 +43,7 @@ Pierwsza intuicja każdego ją zna: skoro ślimak ma zwoje, to „napełnienie" 
 
 Materiał w rurze ślimakowej nie siedzi grzecznie tylko w kieszeniach spirali. Siedzi we wszystkim co jest puste: w kieszeniach zwojów, w szczelinie między spiralą a ścianą rury, w przestrzeni dookoła trzpienia centralnego (chyba że ślimak jest bezosiowy, ale nie ten). Jak rura ma luz 1,5 cm między spiralą a ścianą — a tyle czasem ma, jak instalacja jest bardziej „reaktor do testowania nieprzewidywalnych wsadów" niż precyzyjny dozownik — to materiał spokojnie tam wchodzi i zalega.
 
-Dlatego „napełnienie" liczymy w stosunku do **całego pierścienia** transportu. Pierścień = wnętrze rury MINUS trzpień. Jakby ktoś jeszcze pamiętał geometrię: pole pierścienia to π(D² − d²)/4. Pojemność strefy grzanej to to pole razy długość izolowanego odcinka. Cała filozofia.
+Dlatego „napełnienie" liczymy w stosunku do **całego pierścienia** transportu. Pierścień = wnętrze rury MINUS trzpień. Jakby ktoś jeszcze pamiętał geometrię: pole pierścienia to π(D² − d²)/4, gdzie **D** to średnica wewnętrzna rury, a **d** — średnica trzpienia, na którym siedzą zwoje. Pojemność strefy grzanej to to pole razy długość izolowanego odcinka. Cała filozofia.
 
 Co z tego wynika praktycznie: jeśli na panelu masz napełnienie 25%, to czwarta część pierścienia (czyli całej dostępnej przestrzeni między rurą a trzpieniem, na całej strefie grzanej) jest wypełniona paliwem. Reszta to powietrze, lekko podgrzane gazy z pirolizy i wciąż dyskusyjna ilość pary wodnej. Te 25% to dla typowego pirolizera lekki underfeed — bo można upchać do około 40-45% zanim ślimak zacznie się dławić, klinować i robić rzeczy o których w SOP-ie nie pisze.
 
@@ -61,7 +61,18 @@ Lepsze rozwiązanie pochodzi z chemii rozkładu termicznego — krzywa Y(T) ma k
 
 > **Y(T) = Y∞ + A · exp(−k · (T − 300))**
 
-Trzy parametry na paliwo. **Y∞** = asymptota, ile char zostanie zawsze. **A** = ile masy „jest do rozłożenia" względem asymptoty. **k** = jak szybko spada z temperaturą. Wszystko zafitowane do pomiarów z literatury (jak są) albo własnych (jak nie ma). Krzywa wychodzi w ciągu trzydziestu sekund w arkuszu.
+Trzy parametry na paliwo — a że symbole nie mówią same za siebie:
+
+| Symbol | Co to jest | Jednostka |
+|---|---|---|
+| **Y(T)** | uzysk masowy w temperaturze T: jaki ułamek wsadu wychodzi jako karbonizat | % |
+| **T** | temperatura w strefie grzanej | °C |
+| **Y∞** | asymptota — ile char zostanie zawsze, choćbyś grzał w nieskończoność | % |
+| **A** | ile masy jest „do rozłożenia" ponad asymptotą | % |
+| **k** | jak szybko uzysk spada wraz z temperaturą | 1/°C |
+| **300** | nie stała fizyczna, tylko punkt zaczepienia krzywej: dolny kraniec zakresu | °C |
+
+Wszystko zafitowane do pomiarów z literatury (jak są) albo własnych (jak nie ma). Krzywa wychodzi w ciągu trzydziestu sekund w arkuszu.
 
 Korzyść operacyjna: zmieniasz materiał z drewna na kawę prażoną (tak, kawę, do tego dojdziemy) — trzy liczby się aktualizują, krzywa się przeskala, kalkulator nastaw automatycznie liczy nowe Hz i T_on/T_off. Zamiast ośmiu lookupów na materiał masz trzy stałe. I, co ważniejsze: dla **dowolnej** T (433°C? 521°C?) dostajesz Y bez interpolacji ręcznej.
 

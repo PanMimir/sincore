@@ -24,7 +24,28 @@ Model przepływu ma postać, którą można wyprowadzić na serwetce:
 
 > **ṁ = ρ · ψ · A · S · n · DC**
 
-Gęstość razy napełnienie razy pole pierścienia razy skok zwoju razy obroty razy procent czasu pracy. Nic wyrafinowanego. Pytanie brzmiało: czy ta serwetka opisuje **tę** maszynę.
+Gęstość razy napełnienie razy pole pierścienia razy skok zwoju razy obroty razy procent czasu pracy. Nic wyrafinowanego.
+
+Skoro te oznaczenia wracają w całym tekście, to od razu co jest czym:
+
+| Symbol | Co to jest | Jednostka |
+|---|---|---|
+| **ṁ** | ile paliwa wjeżdża do reaktora w ciągu godziny | kg/h |
+| **ρ** | gęstość nasypowa paliwa — ile waży metr sześcienny **luzem**, razem z powietrzem między ziarnami | kg/m³ |
+| **ψ** | napełnienie: jaka część wolnego przekroju rury jest faktycznie zajęta materiałem | 0–1 |
+| **A** | pole przekroju, którym materiał jedzie — wnętrze rury minus trzpień ślimaka | m² |
+| **S** | skok zwoju: o ile materiał przesunie się wzdłuż rury na jeden obrót ślimaka | m |
+| **n** | obroty **ślimaka**, czyli już za przekładnią — nie obroty silnika | obr/min |
+| **DC** | duty cycle: jaki procent czasu podajnik faktycznie pracuje, a nie stoi w przerwie | 0–1 |
+| **L** | długość strefy grzanej (tutaj 1550 mm izolowanego odcinka) | m |
+| **V_strefy** | objętość strefy grzanej, czyli A × L (tutaj 14,7 litra) | m³ |
+| **t_res** (w części wzorów skrótowo **t**) | czas przebywania: ile minut materiał siedzi w strefie grzanej | min |
+| **wsad** | ile paliwa trzeba podać na godzinę, żeby na wyjściu wypadło tyle karbonizatu, ile chcesz | kg/h |
+| **Y** | uzysk masowy: jaki ułamek wsadu przeżywa proces i wychodzi jako karbonizat | % |
+
+Sześćdziesiątka, która krąży po tych wzorach, nie ma głębszego sensu — to przeliczenie minut na godziny.
+
+Pytanie brzmiało: czy ta serwetka opisuje **tę** maszynę.
 
 Metoda sprawdzenia jest brutalnie prosta. Dla każdej próby wiem, ile kilogramów wsypano i ile godzin trwało podawanie — czyli znam rzeczywiste ṁ. Znam też Hz i duty cycle. Odwracam wzór i pytam: jakie musiałoby być ψ, żeby model się zgodził? Robię tak piętnaście razy i patrzę na kolumnę wyników.
 
