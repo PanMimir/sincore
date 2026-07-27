@@ -45,3 +45,6 @@ Thumbs.db
 
 .vercel
 .env*
+
+# Notatka robocza dla Claude Code — repo jest publiczne, kontekst wewnetrzny zostaje lokalnie
+CLAUDE.md
