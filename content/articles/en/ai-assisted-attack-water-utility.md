@@ -4,7 +4,7 @@ title: "An attacker who knew nothing about automation — and found the industri
 description: "Dragos documented an intrusion at a Mexican water utility where language models served as the working tool throughout. What the machine actually did, what it failed to do, and what follows for anyone responsible for an installation."
 date: "2026-08-19"
 tags: ["security", "ot", "ai"]
-featured: false
+featured: true
 references:
   - title: "Dragos — AI in the Breach: How an Adversary Leveraged AI to Target a Water Utility's OT (6 May 2026)"
     url: "https://www.dragos.com/blog/ai-assisted-ics-attack-water-utility"

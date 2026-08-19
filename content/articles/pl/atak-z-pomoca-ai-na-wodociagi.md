@@ -4,7 +4,7 @@ title: "Napastnik bez wiedzy o automatyce, który i tak znalazł bramkę przemys
 description: "Dragos opisał włamanie do meksykańskich wodociągów, w którym modele językowe pełniły rolę narzędzia roboczego. Co dokładnie zrobiła maszyna, czego nie zdołała, i co z tego wynika dla kogoś, kto odpowiada za instalację."
 date: "2026-08-19"
 tags: ["security", "ot", "ai"]
-featured: false
+featured: true
 references:
   - title: "Dragos — AI in the Breach: How an Adversary Leveraged AI to Target a Water Utility's OT (6 maja 2026)"
     url: "https://www.dragos.com/blog/ai-assisted-ics-attack-water-utility"
