@@ -65,6 +65,13 @@
           }
         },
         {
+          "code": "cmd /k \"cd /d D:\\Projekty\\moj-projekt && claude\"",
+          "desc": {
+            "pl": "Ikonka na pulpicie zamiast otwierania terminala i wklepywania ścieżki za każdym razem. Prawy przycisk na pulpicie → Nowy → Skrót, powyższą linijkę wklej jako element docelowy (podmieniając ścieżkę na swoją), nazwij, podmień ikonę. Dwuklik i jesteś w sesji, od razu we właściwym projekcie. Dopisz na końcu -c, jeśli wolisz wskakiwać prosto w ostatnią rozmowę. Tak to u nas działa na co dzień — jeden klik zamiast trzech komend.",
+            "en": "A desktop icon instead of opening a terminal and typing the path every time. Right-click the desktop → New → Shortcut, paste the line above as the target (swapping in your own path), name it, change the icon. Double-click and you're in a session, already in the right project. Add -c at the end if you'd rather drop straight into the last conversation. This is how we run it day to day — one click instead of three commands."
+          }
+        },
+        {
           "code": "/login",
           "desc": {
             "pl": "Logowanie do konta Anthropic. Otwiera przeglądarkę, potwierdzasz, wracasz do terminala.",

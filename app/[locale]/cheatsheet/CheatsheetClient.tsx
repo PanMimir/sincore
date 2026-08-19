@@ -32,7 +32,8 @@ function CopyChip({ code }: { code: string }) {
       aria-label={`${t("copy")}: ${code}`}
       className="group/chip inline-flex items-center gap-2 font-mono text-sm text-accent-primary bg-accent-primary/5 border border-accent-primary/25 rounded px-2.5 py-1 text-left hover:bg-accent-primary/10 hover:border-accent-primary/50 transition-colors duration-fast"
     >
-      <span className="whitespace-pre">{code}</span>
+      {/* pre-wrap, bo dłuższe komendy (np. cel skrótu na pulpicie) muszą się zawinąć w kolumnie */}
+      <span className="whitespace-pre-wrap">{code}</span>
       {copied ? (
         <Check size={12} className="shrink-0 text-success-400" />
       ) : (
