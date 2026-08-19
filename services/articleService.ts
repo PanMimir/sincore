@@ -64,6 +64,12 @@ export async function getFeaturedArticles(locale: string): Promise<Article[]> {
   return all.filter((a) => a.featured);
 }
 
+/** Kilka najnowszych artykułów — na stronę główną. Lista jest już posortowana po dacie. */
+export async function getLatestArticles(locale: string, count = 3): Promise<Article[]> {
+  const all = await getAllArticles(locale);
+  return all.slice(0, count);
+}
+
 /**
  * Pobiera jeden artykuł wraz z treścią przetworzoną do HTML.
  * remark: Markdown → AST → HTML (obsługa tabel, linków, kodu przez GFM)

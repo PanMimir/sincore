@@ -1,15 +1,22 @@
 import HeroSection from "@/components/sections/HeroSection";
 import StatsSection from "@/components/sections/StatsSection";
 import FeaturedProjectsSection from "@/components/sections/FeaturedProjectsSection";
+import LatestArticlesSection from "@/components/sections/LatestArticlesSection";
 import AboutPreviewSection from "@/components/sections/AboutPreviewSection";
 import CtaSection from "@/components/sections/CtaSection";
 import { getAllProjects, getFeaturedProjects } from "@/services/projectService";
+import { getLatestArticles } from "@/services/articleService";
 import { hasDownload } from "@/lib/releases";
 
-export default async function HomePage() {
-  const [allProjects, featuredProjects] = await Promise.all([
+export default async function HomePage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const [allProjects, featuredProjects, latestArticles] = await Promise.all([
     getAllProjects(),
     getFeaturedProjects(),
+    getLatestArticles(params.locale),
   ]);
 
   // Badge "do pobrania" dla wybranych projektów na stronie głównej.
@@ -29,6 +36,7 @@ export default async function HomePage() {
         projects={featuredProjects}
         downloadableSlugs={downloadableSlugs}
       />
+      <LatestArticlesSection articles={latestArticles} />
       <AboutPreviewSection />
       <CtaSection />
     </>

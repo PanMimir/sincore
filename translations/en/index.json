@@ -273,6 +273,9 @@
     "featured_label": "Featured",
     "featured_title": "Featured projects",
     "featured_cta": "View all",
+    "articles_label": "Knowledge base",
+    "articles_title": "Recently written",
+    "articles_cta": "All articles",
     "about_title": "What we do",
     "about_bio": "We fix broken processes and build software that works. No corporate budgets, no unnecessary complexity.",
     "about_highlights": [
