@@ -57,7 +57,10 @@
   --border-strong: var(--neutral-700);
   --text-primary: var(--neutral-100);
   --text-secondary: var(--neutral-400);
-  --text-muted: var(--neutral-500);
+  /* Jaśniejszy niż neutral-500 z palety: ten na ciemnym tle dawał 3,7:1, czyli poniżej
+     progu WCAG AA (4,5:1) dla zwykłego tekstu. Ta wartość daje 4,9:1 na powierzchni kart
+     i 5,2:1 na tle strony, zachowując różnicę wobec --text-secondary. */
+  --text-muted: #7D858F;
   --accent-primary: var(--accent-500);
   --accent-hover: var(--accent-400);
   --accent-active: var(--accent-600);

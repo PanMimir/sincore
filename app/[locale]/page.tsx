@@ -5,7 +5,7 @@ import LatestArticlesSection from "@/components/sections/LatestArticlesSection";
 import AboutPreviewSection from "@/components/sections/AboutPreviewSection";
 import CtaSection from "@/components/sections/CtaSection";
 import { getAllProjects, getFeaturedProjects } from "@/services/projectService";
-import { getLatestArticles } from "@/services/articleService";
+import { getAllArticles, getLatestArticles } from "@/services/articleService";
 import { hasDownload } from "@/lib/releases";
 
 export default async function HomePage({
@@ -13,9 +13,10 @@ export default async function HomePage({
 }: {
   params: { locale: string };
 }) {
-  const [allProjects, featuredProjects, latestArticles] = await Promise.all([
+  const [allProjects, featuredProjects, allArticles, latestArticles] = await Promise.all([
     getAllProjects(),
     getFeaturedProjects(),
+    getAllArticles(params.locale),
     getLatestArticles(params.locale),
   ]);
 
@@ -31,7 +32,7 @@ export default async function HomePage({
   return (
     <>
       <HeroSection />
-      <StatsSection projectCount={allProjects.length} />
+      <StatsSection projectCount={allProjects.length} articleCount={allArticles.length} />
       <FeaturedProjectsSection
         projects={featuredProjects}
         downloadableSlugs={downloadableSlugs}

@@ -55,10 +55,10 @@ export default function HeroSection() {
               className="flex flex-wrap gap-3"
             >
               <Link
-                href={`/${locale}/services`}
+                href={`/${locale}/projects`}
                 className="inline-flex items-center gap-2 h-12 px-6 bg-accent-400 hover:bg-accent-300 active:bg-accent-500 text-neutral-950 font-mono font-bold text-sm rounded-sincore-md transition-all duration-fast ease-sincore-out hover:-translate-y-px"
               >
-                {t("cta_services")}
+                {t("cta_projects")}
                 <ArrowRight size={16} />
               </Link>
 

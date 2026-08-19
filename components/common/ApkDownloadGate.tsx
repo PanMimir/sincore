@@ -79,7 +79,7 @@ export default function ApkDownloadGate() {
             placeholder={t("apk_password_placeholder")}
             aria-label={t("apk_password_placeholder")}
             autoComplete="off"
-            className="w-full rounded-sincore-md border border-border-subtle bg-surface pl-9 pr-3 py-3 font-mono text-base text-text-primary placeholder:text-text-muted/60 outline-none focus:border-accent-primary transition-colors duration-fast"
+            className="w-full rounded-sincore-md border border-border-subtle bg-surface pl-9 pr-3 py-3 font-mono text-base text-text-primary placeholder:text-text-muted/80 outline-none focus:border-accent-primary transition-colors duration-fast"
           />
         </div>
         <button

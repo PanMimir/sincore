@@ -5,15 +5,16 @@ import { useTranslations } from "next-intl";
 
 interface StatsSectionProps {
   projectCount: number;
+  articleCount: number;
 }
 
-export default function StatsSection({ projectCount }: StatsSectionProps) {
+export default function StatsSection({ projectCount, articleCount }: StatsSectionProps) {
   const t = useTranslations("home");
 
   const stats = [
     { value: String(projectCount), label: t("stats_projects") },
     { value: "10", label: t("stats_experience") },
-    { value: t("stats_sep_label"), label: t("stats_sep_sub") },
+    { value: String(articleCount), label: t("stats_articles") },
   ];
 
   return (

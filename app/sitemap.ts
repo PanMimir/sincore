@@ -6,9 +6,10 @@ import { getAllArticles } from "@/services/articleService";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sincore.io";
 
 // Statyczne sekcje serwisu — te same dla wszystkich języków
+// "/services" celowo pominięte — strona istnieje, ale jest tymczasowo ukryta
+// (brak wpisu w nawigacji), więc nie zgłaszamy jej wyszukiwarkom.
 const STATIC_ROUTES = [
   "/",
-  "/services",
   "/projects",
   "/knowledge",
   "/cheatsheet",

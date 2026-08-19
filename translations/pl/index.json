@@ -101,7 +101,7 @@
     "title": "O mnie",
     "subtitle": "Kim jestem",
     "bio_1": "10 lat w środowisku przemysłowym. Zaczynałem od badań energetycznych urządzeń grzewczych w ITPE Zabrze. Skończyłem na pisaniu softu bo zauważyłem, że większość problemów to brak narzędzi — nie brak wiedzy.",
-    "bio_2": "Mam uprawnienia SEP G1/G2/G3. Znam sprzęt od strony elektrycznej i od strony kodu.",
+    "bio_2": "Znam sprzęt od strony elektrycznej i od strony kodu. Rzadko która z tych stron wystarcza sama.",
     "bio_3": "sincore to nie startup. To imię pod którym robię konkretne rzeczy dla konkretnych ludzi. Jeśli masz problem który da się rozwiązać softem — napisz.",
     "skills_title": "Co potrafię",
     "skills": [
@@ -268,8 +268,7 @@
   "home": {
     "stats_projects": "projektów",
     "stats_experience": "lat w środowisku technicznym",
-    "stats_sep_label": "SEP G1 / G2 / G3",
-    "stats_sep_sub": "eksploatacja i dozór",
+    "stats_articles": "artykułów w bazie wiedzy",
     "featured_label": "Wybrane",
     "featured_title": "Wybrane projekty",
     "featured_cta": "Zobacz wszystkie",

@@ -9,9 +9,12 @@ import { cn } from "@/lib/utils";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import SincoreSignet from "@/components/common/SincoreSignet";
 
+// Usługi tymczasowo poza nawigacją — strona /services dalej istnieje i działa,
+// tylko nie prowadzi do niej żaden odnośnik. Żeby ją przywrócić, odkomentuj wpis
+// poniżej i dopisz "/services" z powrotem do STATIC_ROUTES w app/sitemap.ts.
 const NAV_LINKS = [
   { key: "home", href: "/" },
-  { key: "services", href: "/services" },
+  // { key: "services", href: "/services" },
   { key: "projects", href: "/projects" },
   { key: "knowledge", href: "/knowledge" },
   { key: "cheatsheet", href: "/cheatsheet" },

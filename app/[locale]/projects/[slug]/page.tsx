@@ -147,7 +147,7 @@ export default async function ProjectPage({
             {t("github")}
           </a>
         ) : (
-          <span className="flex items-center gap-2 px-5 py-2.5 border border-border-subtle text-text-muted/70 italic font-mono text-sm rounded">
+          <span className="flex items-center gap-2 px-5 py-2.5 border border-border-subtle text-text-muted/85 italic font-mono text-sm rounded">
             <Lock size={14} />
             {t("private_repo")}
           </span>

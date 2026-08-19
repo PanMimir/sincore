@@ -85,7 +85,7 @@ export default function ProjectCard({ project, index = 0, downloadable = false }
           </a>
         ) : (
           <span
-            className="flex items-center gap-1.5 font-mono text-xs text-text-muted/60 italic"
+            className="flex items-center gap-1.5 font-mono text-xs text-text-muted/80 italic"
             title={t("private_repo")}
           >
             <Lock size={12} />

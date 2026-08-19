@@ -37,7 +37,6 @@ export default function JsonLd() {
           "Energy and Emission Research",
           "Industrial Heating Systems",
           "PN-EN Standards",
-          "SEP Electrical Certifications",
         ],
         sameAs: [
           "https://github.com/PanMimir",
