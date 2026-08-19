@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { key: "services", href: "/services" },
   { key: "projects", href: "/projects" },
   { key: "knowledge", href: "/knowledge" },
+  { key: "cheatsheet", href: "/cheatsheet" },
   { key: "stack", href: "/stack" },
   { key: "about", href: "/about" },
   { key: "contact", href: "/contact" },

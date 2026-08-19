@@ -4,6 +4,7 @@
     "services": "Usługi",
     "projects": "Projekty",
     "knowledge": "Baza wiedzy",
+    "cheatsheet": "AI cheatsheet",
     "stack": "Stack",
     "about": "O mnie",
     "contact": "Kontakt"
@@ -69,6 +70,22 @@
     "all": "Wszystkie",
     "search_placeholder": "Szukaj artykułu...",
     "sources": "Źródła"
+  },
+  "cheatsheet": {
+    "title": "AI cheatsheet",
+    "subtitle": "Claude Code po ludzku — komendy, skróty i nawyki, które faktycznie robią różnicę.",
+    "lead": "Ściąga dla kogoś, kto siada do tego pierwszy raz albo używa od miesiąca i podejrzewa, że robi to nieoptymalnie. Bez rozprawy o modelach językowych: co wpisać, co to robi i dlaczego warto. Oficjalna dokumentacja jest dokładniejsza — ta strona jest krótsza i mówi po polsku.",
+    "search_placeholder": "Szukaj komendy albo skrótu...",
+    "contents": "Spis treści",
+    "note": "W praktyce",
+    "copy": "Kopiuj",
+    "copied": "Skopiowane",
+    "total": "{count} pozycji w ściądze",
+    "found": "Znaleziono: {count}",
+    "no_results": "Nic takiego tu nie ma. Spróbuj innego hasła.",
+    "disclaimer_label": "Zastrzeżenie",
+    "disclaimer": "Claude Code zmienia się co tydzień — komendy przybywają, skróty czasem się przesuwają. Stan tej ściągi: {date}. Zawsze aktualną listę masz pod ręką: wpisz /help w sesji.",
+    "docs_link": "Oficjalna dokumentacja Claude Code"
   },
   "stack": {
     "title": "Stack technologiczny",

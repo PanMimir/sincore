@@ -4,6 +4,7 @@
     "services": "Services",
     "projects": "Projects",
     "knowledge": "Knowledge Base",
+    "cheatsheet": "AI cheatsheet",
     "stack": "Stack",
     "about": "About",
     "contact": "Contact"
@@ -69,6 +70,22 @@
     "all": "All",
     "search_placeholder": "Search articles...",
     "sources": "References"
+  },
+  "cheatsheet": {
+    "title": "AI cheatsheet",
+    "subtitle": "Claude Code in plain language — the commands, shortcuts and habits that actually make a difference.",
+    "lead": "A cheatsheet for someone sitting down to this for the first time, or using it for a month and suspecting they're doing it inefficiently. No essay about language models: what to type, what it does, and why it's worth it. The official docs are more precise — this page is shorter.",
+    "search_placeholder": "Search commands and shortcuts...",
+    "contents": "Contents",
+    "note": "In practice",
+    "copy": "Copy",
+    "copied": "Copied",
+    "total": "{count} entries in this cheatsheet",
+    "found": "Found: {count}",
+    "no_results": "Nothing like that here. Try another term.",
+    "disclaimer_label": "Caveat",
+    "disclaimer": "Claude Code changes weekly — commands get added, shortcuts occasionally move. This cheatsheet reflects {date}. The always-current list is one keystroke away: type /help in a session.",
+    "docs_link": "Official Claude Code documentation"
   },
   "stack": {
     "title": "Tech Stack",

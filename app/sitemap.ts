@@ -6,7 +6,16 @@ import { getAllArticles } from "@/services/articleService";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sincore.io";
 
 // Statyczne sekcje serwisu — te same dla wszystkich języków
-const STATIC_ROUTES = ["/", "/projects", "/knowledge", "/stack", "/about", "/contact"];
+const STATIC_ROUTES = [
+  "/",
+  "/services",
+  "/projects",
+  "/knowledge",
+  "/cheatsheet",
+  "/stack",
+  "/about",
+  "/contact",
+];
 
 /**
  * Dynamicznie generuje /sitemap.xml.
