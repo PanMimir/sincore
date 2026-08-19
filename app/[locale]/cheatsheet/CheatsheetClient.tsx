@@ -46,7 +46,8 @@ function CopyChip({ code }: { code: string }) {
   );
 }
 
-function ItemRow({ item }: { item: CheatItem }) {
+/** Krótka pozycja: komenda albo zasada w dwóch kolumnach. */
+function CompactRow({ item }: { item: CheatItem }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,15rem)_1fr] gap-2 sm:gap-6 py-3.5 border-b border-border-subtle last:border-b-0">
       <div className="sm:pt-0.5">
@@ -61,37 +62,94 @@ function ItemRow({ item }: { item: CheatItem }) {
   );
 }
 
+/** Rozbudowana pozycja: technika z cudzego źródła — opis, instrukcja, odnośnik. */
+function TechniqueCard({ item }: { item: CheatItem }) {
+  const t = useTranslations("cheatsheet");
+
+  return (
+    <article className="border border-border-subtle rounded-sincore-lg bg-surface p-6">
+      <h3 className="font-bold tracking-tight text-lg text-text-primary mb-3">{item.term}</h3>
+      <p className="text-sm text-text-secondary leading-relaxed mb-5">{item.desc}</p>
+
+      {item.how && (
+        <div className="border-l-2 border-accent-primary/40 pl-5 py-3 mb-5 bg-neutral-900/20">
+          <h4 className="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">
+            {t("how_label")}
+          </h4>
+          <p className="text-sm text-text-secondary leading-relaxed">{item.how}</p>
+        </div>
+      )}
+
+      {item.source && (
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-4 border-t border-border-subtle">
+          <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+            {t("source_label")}
+          </span>
+          <a
+            href={item.source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm text-accent-primary hover:text-accent-hover transition-colors duration-fast break-all"
+          >
+            {item.source.label}
+            <ExternalLink size={12} className="shrink-0" />
+          </a>
+        </div>
+      )}
+    </article>
+  );
+}
+
 export default function CheatsheetClient({ cheatsheet }: { cheatsheet: Cheatsheet }) {
   const t = useTranslations("cheatsheet");
+  const [activeTabId, setActiveTabId] = useState(cheatsheet.tabs[0].id);
   const [query, setQuery] = useState("");
-  const [activeSection, setActiveSection] = useState(cheatsheet.sections[0]?.id ?? "");
+  const [activeSection, setActiveSection] = useState("");
 
+  const activeTab = cheatsheet.tabs.find((tab) => tab.id === activeTabId) ?? cheatsheet.tabs[0];
   const q = query.trim().toLowerCase();
 
+  // Zakładka da się podlinkować: /cheatsheet?tab=poziom-wyzej
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get("tab");
+    if (fromUrl && cheatsheet.tabs.some((tab) => tab.id === fromUrl)) setActiveTabId(fromUrl);
+  }, [cheatsheet.tabs]);
+
+  const selectTab = (id: string) => {
+    setActiveTabId(id);
+    setQuery("");
+    const url = new URL(window.location.href);
+    if (id === cheatsheet.tabs[0].id) url.searchParams.delete("tab");
+    else url.searchParams.set("tab", id);
+    window.history.replaceState(null, "", url);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const sections = useMemo(() => {
-    if (!q) return cheatsheet.sections;
-    return cheatsheet.sections
+    if (!q) return activeTab.sections;
+    return activeTab.sections
       .map((section) => ({
         ...section,
         items: section.items.filter((item) =>
-          [item.code, item.term, item.desc]
+          [item.code, item.term, item.desc, item.how]
             .filter(Boolean)
             .some((field) => field!.toLowerCase().includes(q))
         ),
       }))
       .filter((section) => section.items.length > 0);
-  }, [cheatsheet.sections, q]);
+  }, [activeTab.sections, q]);
 
-  const itemCount = cheatsheet.sections.reduce((sum, s) => sum + s.items.length, 0);
+  const itemCount = activeTab.sections.reduce((sum, s) => sum + s.items.length, 0);
   const foundCount = sections.reduce((sum, s) => sum + s.items.length, 0);
 
   // Podświetlanie sekcji w spisie treści w miarę przewijania.
   useEffect(() => {
-    const headings = cheatsheet.sections
+    const headings = activeTab.sections
       .map((s) => document.getElementById(s.id))
       .filter((el): el is HTMLElement => el !== null);
     if (headings.length === 0) return;
 
+    setActiveSection(activeTab.sections[0].id);
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.filter((e) => e.isIntersecting);
@@ -102,7 +160,7 @@ export default function CheatsheetClient({ cheatsheet }: { cheatsheet: Cheatshee
 
     headings.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [cheatsheet.sections, sections]);
+  }, [activeTab, sections]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -111,9 +169,32 @@ export default function CheatsheetClient({ cheatsheet }: { cheatsheet: Cheatshee
         <h1 className="font-bold tracking-tight text-4xl sm:text-5xl text-text-primary mb-4">
           {t("title")}
         </h1>
-        <p className="text-text-secondary text-base leading-relaxed mb-4">{t("subtitle")}</p>
-        <p className="text-text-muted text-sm leading-relaxed">{t("lead")}</p>
+        <p className="text-text-secondary text-base leading-relaxed">{t("subtitle")}</p>
       </div>
+
+      {/* Zakładki */}
+      <nav className="flex flex-wrap justify-center gap-2 mb-8" aria-label={t("tabs_aria")}>
+        {cheatsheet.tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => selectTab(tab.id)}
+            aria-current={tab.id === activeTabId ? "page" : undefined}
+            className={cn(
+              "px-5 py-2.5 rounded-sincore-sm text-sm font-medium border transition-all duration-fast",
+              tab.id === activeTabId
+                ? "bg-accent-primary/15 border-accent-primary text-accent-primary"
+                : "border-border-subtle text-text-muted hover:border-accent-primary/50 hover:text-text-primary"
+            )}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </nav>
+
+      {/* Wstęp do zakładki */}
+      <p className="text-text-muted text-sm leading-relaxed max-w-3xl mx-auto text-center mb-10">
+        {activeTab.intro}
+      </p>
 
       {/* Wyszukiwarka */}
       <div className="relative mb-4">
@@ -141,7 +222,7 @@ export default function CheatsheetClient({ cheatsheet }: { cheatsheet: Cheatshee
             {t("contents")}
           </p>
           <ul className="space-y-1 border-l border-border-subtle">
-            {cheatsheet.sections.map((section) => (
+            {activeTab.sections.map((section) => (
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
@@ -164,31 +245,44 @@ export default function CheatsheetClient({ cheatsheet }: { cheatsheet: Cheatshee
           {sections.length === 0 ? (
             <p className="font-mono text-text-muted py-16">{t("no_results")}</p>
           ) : (
-            sections.map((section) => (
-              <section key={section.id} className="mb-16 scroll-mt-24" id={section.id}>
-                <h2 className="font-bold tracking-tight text-2xl text-text-primary mb-3">
-                  {section.label}
-                </h2>
-                <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-3xl">
-                  {section.intro}
-                </p>
+            sections.map((section) => {
+              // Sekcja jest „rozbudowana”, gdy jej pozycje mają źródła — wtedy karty zamiast wierszy.
+              const asCards = section.items.some((item) => item.source);
 
-                <div className="border border-border-subtle rounded-sincore-lg bg-surface px-5">
-                  {section.items.map((item, i) => (
-                    <ItemRow key={item.code ?? item.term ?? i} item={item} />
-                  ))}
-                </div>
+              return (
+                <section key={section.id} className="mb-16 scroll-mt-24" id={section.id}>
+                  <h2 className="font-bold tracking-tight text-2xl text-text-primary mb-3">
+                    {section.label}
+                  </h2>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-3xl">
+                    {section.intro}
+                  </p>
 
-                {section.note && !q && (
-                  <div className="border-l-2 border-accent-primary/40 pl-5 py-3 mt-6 bg-neutral-900/20 max-w-3xl">
-                    <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">
-                      {t("note")}
-                    </h3>
-                    <p className="text-sm text-text-secondary leading-relaxed">{section.note}</p>
-                  </div>
-                )}
-              </section>
-            ))
+                  {asCards ? (
+                    <div className="space-y-4">
+                      {section.items.map((item, i) => (
+                        <TechniqueCard key={item.term ?? i} item={item} />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="border border-border-subtle rounded-sincore-lg bg-surface px-5">
+                      {section.items.map((item, i) => (
+                        <CompactRow key={item.code ?? item.term ?? i} item={item} />
+                      ))}
+                    </div>
+                  )}
+
+                  {section.note && !q && (
+                    <div className="border-l-2 border-accent-primary/40 pl-5 py-3 mt-6 bg-neutral-900/20 max-w-3xl">
+                      <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">
+                        {t("note")}
+                      </h3>
+                      <p className="text-sm text-text-secondary leading-relaxed">{section.note}</p>
+                    </div>
+                  )}
+                </section>
+              );
+            })
           )}
 
           {/* Stopka ściągi */}

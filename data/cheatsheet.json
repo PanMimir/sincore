@@ -3,1138 +3,1811 @@
     "updated": "2026-08-19",
     "sourceUrl": "https://code.claude.com/docs"
   },
-  "sections": [
+  "tabs": [
     {
-      "id": "co-to-jest",
+      "id": "claude-code",
       "label": {
-        "pl": "Co to w ogóle jest",
-        "en": "What this actually is"
+        "pl": "Claude Code",
+        "en": "Claude Code"
       },
       "intro": {
-        "pl": "Claude Code to asystent, który siedzi w oknie terminala i ma dostęp do plików w folderze, w którym go uruchomiłeś. Nie podpowiada linijek jak autouzupełnianie w edytorze — czyta pliki, uruchamia komendy, wprowadza zmiany i pokazuje ci je do zatwierdzenia. Bliżej mu do stażysty z dostępem do twojego komputera niż do wyszukiwarki.",
-        "en": "Claude Code is an assistant that lives in a terminal window and has access to the files in the folder you started it from. It doesn't suggest lines like editor autocomplete — it reads files, runs commands, makes changes and shows them to you for approval. It's closer to an intern with access to your machine than to a search engine."
+        "pl": "Nauka narzędzia od zera: co wpisać, co to robi i dlaczego warto. Każda pozycja sprawdzona w oficjalnej dokumentacji.",
+        "en": "Learning the tool from scratch: what to type, what it does and why it matters. Every entry checked against the official documentation."
       },
-      "items": [
+      "sections": [
         {
-          "term": { "pl": "Sesja = jedna rozmowa", "en": "A session is one conversation" },
-          "desc": {
-            "pl": "W obrębie sesji pamięta wszystko, co powiedzieliście. Zamknięcie okna kończy sesję — ale można do niej wrócić.",
-            "en": "Within a session it remembers everything you both said. Closing the window ends it — but you can come back to it."
+          "id": "co-to-jest",
+          "label": {
+            "pl": "Co to w ogóle jest",
+            "en": "What this actually is"
+          },
+          "intro": {
+            "pl": "Claude Code to asystent, który siedzi w oknie terminala i ma dostęp do plików w folderze, w którym go uruchomiłeś. Nie podpowiada linijek jak autouzupełnianie w edytorze — czyta pliki, uruchamia komendy, wprowadza zmiany i pokazuje ci je do zatwierdzenia. Bliżej mu do stażysty z dostępem do twojego komputera niż do wyszukiwarki.",
+            "en": "Claude Code is an assistant that lives in a terminal window and has access to the files in the folder you started it from. It doesn't suggest lines like editor autocomplete — it reads files, runs commands, makes changes and shows them to you for approval. It's closer to an intern with access to your machine than to a search engine."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Sesja = jedna rozmowa",
+                "en": "A session is one conversation"
+              },
+              "desc": {
+                "pl": "W obrębie sesji pamięta wszystko, co powiedzieliście. Zamknięcie okna kończy sesję — ale można do niej wrócić.",
+                "en": "Within a session it remembers everything you both said. Closing the window ends it — but you can come back to it."
+              }
+            },
+            {
+              "term": {
+                "pl": "Kontekst to zasób, który się kończy",
+                "en": "Context is a resource that runs out"
+              },
+              "desc": {
+                "pl": "Wszystko, co przeczytał i napisał, zajmuje miejsce w jego „pamięci roboczej”. Im dłuższa rozmowa, tym mniej miejsca na nowe rzeczy. Stąd komendy do sprzątania kontekstu.",
+                "en": "Everything it has read and written takes up room in its working memory. The longer the conversation, the less room for new things. Hence the commands for cleaning up context."
+              }
+            },
+            {
+              "term": {
+                "pl": "Ty zatwierdzasz działania",
+                "en": "You approve the actions"
+              },
+              "desc": {
+                "pl": "Zanim coś zmieni w pliku albo uruchomi komendę, pyta o zgodę. To da się poluzować albo zacieśnić — patrz sekcja o trybach uprawnień.",
+                "en": "Before it edits a file or runs a command it asks. You can loosen or tighten that — see the permission modes section."
+              }
+            },
+            {
+              "term": {
+                "pl": "Gdzie to działa",
+                "en": "Where it runs"
+              },
+              "desc": {
+                "pl": "W terminalu, w osobnej aplikacji na Maca i Windowsa, w przeglądarce (claude.ai/code) oraz jako wtyczka do VS Code i JetBrains. To ta sama rzecz w różnych opakowaniach.",
+                "en": "In a terminal, in a desktop app for Mac and Windows, in the browser (claude.ai/code) and as a VS Code and JetBrains extension. The same thing in different wrappers."
+              }
+            }
+          ]
+        },
+        {
+          "id": "pierwsze-minuty",
+          "label": {
+            "pl": "Pierwsze pięć minut",
+            "en": "Your first five minutes"
+          },
+          "intro": {
+            "pl": "Kolejność, która oszczędza późniejszej frustracji. Otwórz terminal w folderze projektu — to ważne, bo katalog startowy wyznacza, do czego Claude ma dostęp.",
+            "en": "The order that saves you frustration later. Open a terminal inside your project folder — that matters, because the starting directory defines what Claude can reach."
+          },
+          "items": [
+            {
+              "code": "claude",
+              "desc": {
+                "pl": "Start sesji w bieżącym folderze. Tyle. Żadnych parametrów nie trzeba.",
+                "en": "Starts a session in the current folder. That's it — no parameters needed."
+              }
+            },
+            {
+              "code": "cmd /k \"cd /d D:\\Projekty\\moj-projekt && claude\"",
+              "desc": {
+                "pl": "Ikonka na pulpicie zamiast otwierania terminala i wklepywania ścieżki za każdym razem. Prawy przycisk na pulpicie → Nowy → Skrót, powyższą linijkę wklej jako element docelowy (podmieniając ścieżkę na swoją), nazwij, podmień ikonę. Dwuklik i jesteś w sesji, od razu we właściwym projekcie. Dopisz na końcu -c, jeśli wolisz wskakiwać prosto w ostatnią rozmowę. Tak to u nas działa na co dzień — jeden klik zamiast trzech komend.",
+                "en": "A desktop icon instead of opening a terminal and typing the path every time. Right-click the desktop → New → Shortcut, paste the line above as the target (swapping in your own path), name it, change the icon. Double-click and you're in a session, already in the right project. Add -c at the end if you'd rather drop straight into the last conversation. This is how we run it day to day — one click instead of three commands."
+              }
+            },
+            {
+              "code": "/login",
+              "desc": {
+                "pl": "Logowanie do konta Anthropic. Otwiera przeglądarkę, potwierdzasz, wracasz do terminala.",
+                "en": "Sign in to your Anthropic account. Opens a browser, you confirm, you come back to the terminal."
+              }
+            },
+            {
+              "code": "/init",
+              "desc": {
+                "pl": "Przegląda projekt i pisze plik CLAUDE.md — notatkę o tym, czym jest ten projekt i jak się go buduje. Robisz to raz, korzystasz w każdej kolejnej sesji.",
+                "en": "Scans the project and writes a CLAUDE.md — a note about what this project is and how it's built. Do it once, benefit in every later session."
+              }
+            },
+            {
+              "code": "/model",
+              "desc": {
+                "pl": "Wybór modelu. Mocniejszy myśli lepiej i kosztuje więcej, lżejszy jest szybszy do prostych rzeczy.",
+                "en": "Pick the model. A stronger one thinks better and costs more; a lighter one is faster for simple things."
+              }
+            },
+            {
+              "code": "/status",
+              "desc": {
+                "pl": "Ściąga z bieżącej sesji: model, katalog, tryb uprawnień, co się załadowało.",
+                "en": "A snapshot of the current session: model, directory, permission mode, what got loaded."
+              }
+            },
+            {
+              "code": "/help",
+              "desc": {
+                "pl": "Lista wszystkiego, co możesz wpisać. Zawsze aktualna — w przeciwieństwie do każdej ściągi w internecie, tej też.",
+                "en": "A list of everything you can type. Always current — unlike any cheatsheet on the internet, this one included."
+              }
+            },
+            {
+              "code": "/powerup",
+              "desc": {
+                "pl": "Interaktywne lekcje funkcji Claude Code. Dobre, gdy wolisz się uczyć klikając niż czytając.",
+                "en": "Interactive lessons about Claude Code's features. Good if you'd rather learn by doing than by reading."
+              }
+            }
+          ],
+          "note": {
+            "pl": "Zacznij od pytania, nie od zadania. „Wytłumacz mi, jak działa ten folder” daje ci obraz sytuacji i jednocześnie pokazuje, czy Claude w ogóle dobrze zrozumiał projekt. Dopiero potem zlecaj zmiany.",
+            "en": "Start with a question, not a task. \"Explain how this folder works\" gives you the lay of the land and shows whether Claude understood the project at all. Only then start assigning changes."
           }
         },
         {
-          "term": { "pl": "Kontekst to zasób, który się kończy", "en": "Context is a resource that runs out" },
-          "desc": {
-            "pl": "Wszystko, co przeczytał i napisał, zajmuje miejsce w jego „pamięci roboczej”. Im dłuższa rozmowa, tym mniej miejsca na nowe rzeczy. Stąd komendy do sprzątania kontekstu.",
-            "en": "Everything it has read and written takes up room in its working memory. The longer the conversation, the less room for new things. Hence the commands for cleaning up context."
+          "id": "komendy-codzienne",
+          "label": {
+            "pl": "Komendy „/” — te codzienne",
+            "en": "Slash commands — the everyday ones"
+          },
+          "intro": {
+            "pl": "Ukośnik na początku wpisu otwiera listę komend. Zacznij pisać, a lista się zawęża. Poniżej garść, których używa się naprawdę często — reszta jest w kolejnych sekcjach.",
+            "en": "A slash at the start of your input opens the command list. Start typing and the list narrows. Below are the ones you'll actually reach for daily — the rest are in the sections that follow."
+          },
+          "items": [
+            {
+              "code": "/clear",
+              "desc": {
+                "pl": "Czyste konto. Nowa rozmowa, pusty kontekst. Najważniejsza komenda na tej liście — używaj jej między niepowiązanymi zadaniami zamiast ciągnąć jedną wielką sesję.",
+                "en": "A clean slate. New conversation, empty context. The most important command on this list — use it between unrelated tasks instead of dragging one giant session along."
+              }
+            },
+            {
+              "code": "/compact",
+              "desc": {
+                "pl": "Streszcza dotychczasową rozmowę i zwalnia miejsce, ale zachowuje wątek. Gdy zadanie trwa, a kontekst się kończy.",
+                "en": "Summarizes the conversation so far and frees up room while keeping the thread. For when a task drags on and context is running out."
+              }
+            },
+            {
+              "code": "/context",
+              "desc": {
+                "pl": "Pokazuje, co i ile zajmuje w kontekście. Tutaj sprawdzisz, czy twój CLAUDE.md w ogóle się załadował.",
+                "en": "Shows what's taking up context and how much. This is where you check whether your CLAUDE.md loaded at all."
+              }
+            },
+            {
+              "code": "/rewind",
+              "desc": {
+                "pl": "Cofa kod i rozmowę do wcześniejszego punktu. Ratunek, gdy zmiany poszły w złą stronę — zamiast ręcznie sprzątać, wracasz do stanu sprzed.",
+                "en": "Rolls code and conversation back to an earlier checkpoint. The escape hatch when changes went the wrong way — instead of cleaning up by hand, you go back."
+              }
+            },
+            {
+              "code": "/resume",
+              "desc": {
+                "pl": "Wraca do wcześniejszej rozmowy z listy. Zamknąłeś okno w środku roboty? Stąd wracasz.",
+                "en": "Return to an earlier conversation from a list. Closed the window mid-task? This is how you get back."
+              }
+            },
+            {
+              "code": "/plan",
+              "desc": {
+                "pl": "Włącza tryb planowania: Claude analizuje i przedstawia plan, ale nie dotyka plików, dopóki nie zaakceptujesz.",
+                "en": "Switches to plan mode: Claude analyses and proposes a plan but touches no files until you accept it."
+              }
+            },
+            {
+              "code": "/diff",
+              "desc": {
+                "pl": "Podgląd zmian w plikach. Strzałki lewo/prawo przełączają między całością a poszczególnymi turami, Enter otwiera plik, Esc wraca.",
+                "en": "An interactive view of file changes. Left/right switches between the whole diff and individual turns, Enter opens a file, Esc goes back."
+              }
+            },
+            {
+              "code": "/effort",
+              "desc": {
+                "pl": "Ile wysiłku ma wkładać w myślenie — od szybko i tanio po powoli i dokładnie.",
+                "en": "How much effort to put into thinking — from quick and cheap to slow and thorough."
+              }
+            },
+            {
+              "code": "/fast",
+              "desc": {
+                "pl": "Tryb szybki: ten sam model, szybsza odpowiedź.",
+                "en": "Fast mode: same model, quicker output."
+              }
+            },
+            {
+              "code": "/memory",
+              "desc": {
+                "pl": "Podgląd i edycja plików pamięci — CLAUDE.md oraz notatek, które Claude prowadzi sam.",
+                "en": "View and edit memory files — CLAUDE.md and the notes Claude keeps on its own."
+              }
+            },
+            {
+              "code": "/copy",
+              "desc": {
+                "pl": "Kopiuje ostatnią odpowiedź do schowka. W okienku wyboru klawisz „w” zapisuje do pliku zamiast do schowka.",
+                "en": "Copies the last response to the clipboard. In the picker, `w` writes it to a file instead."
+              }
+            },
+            {
+              "code": "/usage",
+              "desc": {
+                "pl": "Ile już zużyłeś i ile to kosztuje. Alias: /cost.",
+                "en": "How much you've used and what it costs. Alias: /cost."
+              }
+            },
+            {
+              "code": "/recap",
+              "desc": {
+                "pl": "Jednolinijkowe podsumowanie sesji. Przydaje się do wpisu w dzienniku pracy albo do commita.",
+                "en": "A one-line summary of the session. Handy for a work log entry or a commit message."
+              }
+            },
+            {
+              "code": "/btw",
+              "desc": {
+                "pl": "Pytanie na boku, które nie trafia do głównej rozmowy. Zapytasz o coś, nie zaśmiecając kontekstu zadania.",
+                "en": "A side question that doesn't get added to the main conversation. Ask something without polluting the task's context."
+              }
+            },
+            {
+              "code": "/exit",
+              "desc": {
+                "pl": "Wyjście. Ctrl+D robi to samo szybciej.",
+                "en": "Quit. Ctrl+D does the same, faster."
+              }
+            }
+          ]
+        },
+        {
+          "id": "komendy-kod",
+          "label": {
+            "pl": "Komendy do pracy nad kodem",
+            "en": "Commands for working on code"
+          },
+          "intro": {
+            "pl": "Gotowe procedury, które ktoś już przemyślał za ciebie. Zamiast pisać „przejrzyj te zmiany i powiedz, czy nie ma błędów”, wpisujesz jedną komendę.",
+            "en": "Ready-made procedures somebody already thought through for you. Instead of writing \"look through these changes and tell me if there are bugs\", you type one command."
+          },
+          "items": [
+            {
+              "code": "/code-review",
+              "desc": {
+                "pl": "Przegląd zmian albo pull requesta pod kątem błędów i rzeczy do uproszczenia. Można wskazać poziom dokładności.",
+                "en": "Reviews a diff or a pull request for bugs and things worth simplifying. You can pick how thorough it should be."
+              }
+            },
+            {
+              "code": "/security-review",
+              "desc": {
+                "pl": "To samo, ale pod kątem dziur bezpieczeństwa w tym, co właśnie zmieniłeś.",
+                "en": "The same, but hunting for security holes in what you just changed."
+              }
+            },
+            {
+              "code": "/simplify",
+              "desc": {
+                "pl": "Szuka w zmianach rzeczy zrobionych na okrętkę i upraszcza je. Nie szuka błędów — od tego jest /code-review.",
+                "en": "Finds roundabout constructions in your changes and simplifies them. It doesn't hunt for bugs — that's what /code-review is for."
+              }
+            },
+            {
+              "code": "/verify",
+              "desc": {
+                "pl": "Sprawdza, czy zmiany faktycznie działają — nie tylko czy wyglądają dobrze.",
+                "en": "Checks whether the changes actually work — not just whether they look right."
+              }
+            },
+            {
+              "code": "/debug",
+              "desc": {
+                "pl": "Włącza szczegółowe logowanie i pomaga rozgryźć, co się dzieje pod spodem.",
+                "en": "Turns on detailed logging and helps work out what's happening under the hood."
+              }
+            },
+            {
+              "code": "/goal",
+              "desc": {
+                "pl": "Ustawiasz cel, a Claude pracuje, dopóki go nie osiągnie, zamiast oddawać robotę po pierwszym kroku.",
+                "en": "You set a goal and Claude keeps working until it's met, instead of handing back after the first step."
+              }
+            },
+            {
+              "code": "/batch",
+              "desc": {
+                "pl": "Ta sama zmiana w wielu miejscach naraz — rozbija robotę na równoległe wątki.",
+                "en": "The same change in many places at once — splits the work into parallel threads."
+              }
+            },
+            {
+              "code": "/loop",
+              "desc": {
+                "pl": "Powtarza polecenie co jakiś czas, dopóki sesja jest otwarta. Do pilnowania czegoś, co się zmienia — na przykład statusu wdrożenia.",
+                "en": "Repeats a prompt on an interval while the session stays open. For watching something that changes — a deployment status, say."
+              }
+            },
+            {
+              "code": "/install-github-app",
+              "desc": {
+                "pl": "Podpina Claude'a do repozytorium na GitHubie, żeby mógł reagować na pull requesty.",
+                "en": "Hooks Claude up to a GitHub repository so it can act on pull requests."
+              }
+            }
+          ]
+        },
+        {
+          "id": "komendy-kontekst",
+          "label": {
+            "pl": "Kontekst, pamięć i ustawienia",
+            "en": "Context, memory and settings"
+          },
+          "intro": {
+            "pl": "Komendy, które decydują o tym, co Claude wie i na co ma pozwolenie.",
+            "en": "The commands that decide what Claude knows and what it's allowed to do."
+          },
+          "items": [
+            {
+              "code": "/add-dir",
+              "desc": {
+                "pl": "Dokłada kolejny folder do zasięgu bieżącej sesji. Gdy pracujesz na dwóch projektach naraz.",
+                "en": "Adds another folder to the current session's reach. For when you're working across two projects."
+              }
+            },
+            {
+              "code": "/cd",
+              "desc": {
+                "pl": "Przenosi sesję do innego katalogu roboczego.",
+                "en": "Moves the session to a different working directory."
+              }
+            },
+            {
+              "code": "/permissions",
+              "desc": {
+                "pl": "Reguły „na to pozwalaj, o to pytaj, tego zabraniaj”. Tu się ustawia, żeby nie klikać zgody na to samo dwadzieścia razy dziennie.",
+                "en": "The allow / ask / deny rules. Set them here so you stop approving the same thing twenty times a day."
+              }
+            },
+            {
+              "code": "/fewer-permission-prompts",
+              "desc": {
+                "pl": "Przegląda twoją historię i sam proponuje listę rzeczy, na które warto pozwolić raz na zawsze.",
+                "en": "Scans your history and proposes a list of things worth allowing once and for all."
+              }
+            },
+            {
+              "code": "/config",
+              "desc": {
+                "pl": "Okno ustawień. Tu m.in. włączasz tryb edycji w stylu vima.",
+                "en": "The settings panel. Among other things, this is where you turn on vim-style editing."
+              }
+            },
+            {
+              "code": "/hooks",
+              "desc": {
+                "pl": "Podgląd „haczyków” — komend, które mają się wykonać automatycznie przy określonych zdarzeniach, na przykład przed każdym commitem.",
+                "en": "A view of your hooks — commands set to run automatically at given events, before every commit for instance."
+              }
+            },
+            {
+              "code": "/skills",
+              "desc": {
+                "pl": "Zarządzanie umiejętnościami: własnymi procedurami zapisanymi jako plik, które wywołujesz jak komendę.",
+                "en": "Manage skills: your own procedures saved as a file, invoked like a command."
+              }
+            },
+            {
+              "code": "/mcp",
+              "desc": {
+                "pl": "Podłączanie zewnętrznych narzędzi (baz danych, usług, przeglądarki) przez protokół MCP — Model Context Protocol.",
+                "en": "Connect external tools (databases, services, the browser) over MCP — the Model Context Protocol."
+              }
+            },
+            {
+              "code": "/plugin",
+              "desc": {
+                "pl": "Wtyczki: gotowe paczki komend, umiejętności i integracji.",
+                "en": "Plugins: ready-made bundles of commands, skills and integrations."
+              }
+            },
+            {
+              "code": "/keybindings",
+              "desc": {
+                "pl": "Otwiera plik ze skrótami klawiszowymi, jeśli chcesz je sobie poprzestawiać.",
+                "en": "Opens your keyboard shortcut file if you want to rearrange things."
+              }
+            },
+            {
+              "code": "/theme",
+              "desc": {
+                "pl": "Motyw kolorystyczny. W środku menu klawisz Ctrl+T przełącza kolorowanie kodu.",
+                "en": "Colour theme. Inside the menu, Ctrl+T toggles syntax colouring for code."
+              }
+            },
+            {
+              "code": "/autocompact",
+              "desc": {
+                "pl": "Ustawia, przy jakim zapełnieniu kontekstu ma się włączać automatyczne streszczanie.",
+                "en": "Sets how full the context has to get before automatic summarizing kicks in."
+              }
+            }
+          ]
+        },
+        {
+          "id": "komendy-agenci",
+          "label": {
+            "pl": "Agenci, praca w tle i inne urządzenia",
+            "en": "Agents, background work and other devices"
+          },
+          "intro": {
+            "pl": "Claude może odpalić własnych pomocników do zadań pobocznych albo przenieść robotę w tło. Nie trzeba tego używać od pierwszego dnia — ale warto wiedzieć, że jest.",
+            "en": "Claude can spin up helpers for side tasks or push work into the background. You don't need this on day one — but it's worth knowing it exists."
+          },
+          "items": [
+            {
+              "code": "/agents",
+              "desc": {
+                "pl": "Konfiguracja podagentów — wyspecjalizowanych pomocników z własnym zakresem narzędzi.",
+                "en": "Configure subagents — specialized helpers with their own set of tools."
+              }
+            },
+            {
+              "code": "/subtask",
+              "desc": {
+                "pl": "Zrzuca zadanie poboczne na pomocnika, żeby nie zaśmiecać głównej rozmowy.",
+                "en": "Hands a side task to a helper so it doesn't clutter the main conversation."
+              }
+            },
+            {
+              "code": "/tasks",
+              "desc": {
+                "pl": "Lista tego, co chodzi w tle: komend i pomocników.",
+                "en": "Lists what's running in the background: commands and helpers."
+              }
+            },
+            {
+              "code": "/background",
+              "desc": {
+                "pl": "Odczepia bieżącą sesję i puszcza ją w tle. Zamykasz okno, robota leci dalej.",
+                "en": "Detaches the current session and lets it run in the background. Close the window, the work continues."
+              }
+            },
+            {
+              "code": "/fork",
+              "desc": {
+                "pl": "Kopiuje rozmowę do osobnej sesji w tle — do sprawdzenia „a co, gdyby” bez psucia oryginału.",
+                "en": "Copies the conversation into a separate background session — for trying a what-if without spoiling the original."
+              }
+            },
+            {
+              "code": "/branch",
+              "desc": {
+                "pl": "Rozgałęzia rozmowę: dwa warianty od tego samego punktu.",
+                "en": "Branches the conversation: two variants from the same point."
+              }
+            },
+            {
+              "code": "/web",
+              "desc": {
+                "pl": "Otwiera Claude Code w przeglądarce.",
+                "en": "Opens Claude Code in the browser."
+              }
+            },
+            {
+              "code": "/teleport",
+              "desc": {
+                "pl": "Ściąga sesję z przeglądarki do terminala.",
+                "en": "Pulls a web session down into your terminal."
+              }
+            },
+            {
+              "code": "/desktop",
+              "desc": {
+                "pl": "Przenosi bieżącą sesję do aplikacji desktopowej.",
+                "en": "Continues the current session in the desktop app."
+              }
+            },
+            {
+              "code": "/remote-control",
+              "desc": {
+                "pl": "Pozwala sterować tą sesją z innego urządzenia.",
+                "en": "Lets you drive this session from another device."
+              }
+            },
+            {
+              "code": "/mobile",
+              "desc": {
+                "pl": "Kod QR do pobrania aplikacji mobilnej.",
+                "en": "A QR code for downloading the mobile app."
+              }
+            },
+            {
+              "code": "/chrome",
+              "desc": {
+                "pl": "Ustawienia integracji z przeglądarką Chrome — Claude może wtedy klikać po stronach i czytać konsolę.",
+                "en": "Chrome integration settings — with it, Claude can click around pages and read the console."
+              }
+            }
+          ]
+        },
+        {
+          "id": "komendy-reszta",
+          "label": {
+            "pl": "Reszta komend",
+            "en": "The remaining commands"
+          },
+          "intro": {
+            "pl": "Rzadziej używane, ale dobrze wiedzieć, że istnieją. Pełna, zawsze aktualna lista jest pod /help.",
+            "en": "Less common, but good to know they're there. The full, always-current list is under /help."
+          },
+          "items": [
+            {
+              "code": "/doctor",
+              "desc": {
+                "pl": "Przegląd instalacji: co jest nie tak z konfiguracją i jak to naprawić.",
+                "en": "An install checkup: what's wrong with your configuration and how to fix it."
+              }
+            },
+            {
+              "code": "/bug",
+              "desc": {
+                "pl": "Zgłoszenie błędu razem z przebiegiem rozmowy.",
+                "en": "Report a bug together with the conversation transcript."
+              }
+            },
+            {
+              "code": "/feedback",
+              "desc": {
+                "pl": "Uwagi do produktu, jeśli coś działa głupio, ale nie jest błędem.",
+                "en": "Product feedback, for when something is annoying but isn't a bug."
+              }
+            },
+            {
+              "code": "/export",
+              "desc": {
+                "pl": "Zapisuje rozmowę jako zwykły tekst.",
+                "en": "Saves the conversation as plain text."
+              }
+            },
+            {
+              "code": "/insights",
+              "desc": {
+                "pl": "Raport HTML z analizą twoich ostatnich sesji — na czym schodzi ci czas.",
+                "en": "An HTML report analysing your recent sessions — where your time actually goes."
+              }
+            },
+            {
+              "code": "/release-notes",
+              "desc": {
+                "pl": "Co się zmieniło w kolejnych wersjach. Przy narzędziu, które zmienia się co tydzień, to nie jest fanaberia.",
+                "en": "What changed between versions. With a tool that moves weekly, this isn't a luxury."
+              }
+            },
+            {
+              "code": "/upgrade",
+              "desc": {
+                "pl": "Aktualizacja do najnowszej wersji.",
+                "en": "Update to the latest version."
+              }
+            },
+            {
+              "code": "/import",
+              "desc": {
+                "pl": "Przenosi konfigurację z innych asystentów kodowania.",
+                "en": "Brings configuration over from other coding agents."
+              }
+            },
+            {
+              "code": "/ide",
+              "desc": {
+                "pl": "Połączenie z edytorem — VS Code, JetBrains.",
+                "en": "Connects to your editor — VS Code, JetBrains."
+              }
+            },
+            {
+              "code": "/deep-research",
+              "desc": {
+                "pl": "Rozsyła wyszukiwania po internecie na zadany temat i zbiera wnioski.",
+                "en": "Fans out web searches on a question and pulls the findings together."
+              }
+            },
+            {
+              "code": "/privacy-settings",
+              "desc": {
+                "pl": "Ustawienia prywatności konta.",
+                "en": "Account privacy settings."
+              }
+            },
+            {
+              "code": "/focus",
+              "desc": {
+                "pl": "Widok skupiony — mniej rozpraszaczy na ekranie.",
+                "en": "Focus view — fewer distractions on screen."
+              }
+            },
+            {
+              "code": "/color",
+              "desc": {
+                "pl": "Kolor paska promptu w tej sesji. Bardzo praktyczne, gdy masz otwarte trzy okna i mylisz je ze sobą.",
+                "en": "The prompt bar colour for this session. Genuinely useful when you have three windows open and keep mixing them up."
+              }
+            },
+            {
+              "code": "/radio",
+              "desc": {
+                "pl": "Radio lo-fi. Bez komentarza.",
+                "en": "Lo-fi radio. No further comment."
+              }
+            }
+          ]
+        },
+        {
+          "id": "skroty",
+          "label": {
+            "pl": "Skróty klawiszowe",
+            "en": "Keyboard shortcuts"
+          },
+          "intro": {
+            "pl": "Te, które zmieniają sposób pracy najbardziej. Na Windowsie i Linuksie klawisz Alt robi to, co Option na Macu.",
+            "en": "The ones that change how you work the most. On Windows and Linux, Alt does what Option does on a Mac."
+          },
+          "items": [
+            {
+              "code": "Esc",
+              "desc": {
+                "pl": "Przerwij. Zatrzymuje odpowiedź albo działanie w połowie, zachowując to, co już zrobione. Najważniejszy klawisz w całym narzędziu — jak widzisz, że idzie w złą stronę, nie czekaj do końca.",
+                "en": "Interrupt. Stops the response or tool call mid-flight, keeping the work done so far. The single most important key here — when you see it heading the wrong way, don't wait for it to finish."
+              }
+            },
+            {
+              "code": "Esc Esc",
+              "desc": {
+                "pl": "Dwa razy pod rząd: przy pustym polu otwiera cofanie do wcześniejszego punktu, przy wpisanym tekście czyści go (i zapisuje do historii, więc strzałka w górę go przywróci).",
+                "en": "Twice in a row: on an empty prompt it opens the rewind menu; with text typed it clears the draft (and saves it to history, so Up recalls it)."
+              }
+            },
+            {
+              "code": "Shift+Tab",
+              "desc": {
+                "pl": "Przełącza tryb uprawnień w kółko. Na Windowsie czasem Alt+M, gdy terminal przechwytuje Shift+Tab.",
+                "en": "Cycles permission modes. On Windows sometimes Alt+M, when the terminal swallows Shift+Tab."
+              }
+            },
+            {
+              "code": "Ctrl+C",
+              "desc": {
+                "pl": "Przerywa działanie. Gdy nic nie działa, pierwsze wciśnięcie czyści pole, drugie zamyka program.",
+                "en": "Interrupts a running operation. With nothing running, the first press clears the input and a second exits."
+              }
+            },
+            {
+              "code": "Ctrl+D",
+              "desc": {
+                "pl": "Wyjście z sesji — trzeba wcisnąć dwa razy szybko. Gdy w polu jest tekst, kasuje znak za kursorem.",
+                "en": "Exits the session — press twice quickly. With text in the prompt it deletes the character after the cursor instead."
+              }
+            },
+            {
+              "code": "Ctrl+O",
+              "desc": {
+                "pl": "Pokazuje pełny zapis: każde wywołanie narzędzia, znacznik czasu, użyty model. Tu sprawdzasz, co on właściwie zrobił.",
+                "en": "Shows the full transcript: every tool call, timestamps, which model was used. This is where you check what it actually did."
+              }
+            },
+            {
+              "code": "Ctrl+R",
+              "desc": {
+                "pl": "Przeszukiwanie historii wpisanych poleceń wstecz.",
+                "en": "Reverse search through your command history."
+              }
+            },
+            {
+              "code": "Ctrl+B",
+              "desc": {
+                "pl": "Puszcza bieżące zadanie w tło. Przydaje się przy długim buildzie — nie blokuje ci okna.",
+                "en": "Pushes the running task into the background. Handy during a long build — it stops blocking your window."
+              }
+            },
+            {
+              "code": "Ctrl+T",
+              "desc": {
+                "pl": "Pokazuje albo chowa listę zadań, którą Claude sam sobie prowadzi.",
+                "en": "Shows or hides the checklist Claude keeps for itself."
+              }
+            },
+            {
+              "code": "Ctrl+S",
+              "desc": {
+                "pl": "Odkłada wpisany tekst na bok i czyści pole. Wciśnięte ponownie przy pustym polu — przywraca.",
+                "en": "Stashes what you typed and clears the prompt. Pressed again on an empty prompt, it restores it."
+              }
+            },
+            {
+              "code": "Ctrl+G",
+              "desc": {
+                "pl": "Otwiera twój prompt w normalnym edytorze tekstu. Na długie polecenia dużo wygodniejsze niż pisanie w terminalu.",
+                "en": "Opens your prompt in a real text editor. For long instructions this beats typing into a terminal."
+              }
+            },
+            {
+              "code": "Ctrl+L",
+              "desc": {
+                "pl": "Przerysowuje ekran, gdy się rozjedzie. W trybie pełnoekranowym dwa razy pod rząd robi /clear.",
+                "en": "Redraws the screen when it gets garbled. In fullscreen rendering, twice in a row runs /clear."
+              }
+            },
+            {
+              "code": "Alt+V",
+              "desc": {
+                "pl": "Wkleja obrazek ze schowka (Windows i WSL; gdzie indziej Ctrl+V). Zrzut ekranu z błędem wart jest trzech akapitów opisu.",
+                "en": "Pastes an image from the clipboard (Windows and WSL; Ctrl+V elsewhere). A screenshot of an error beats three paragraphs describing it."
+              }
+            },
+            {
+              "code": "Alt+P",
+              "desc": {
+                "pl": "Zmiana modelu bez czyszczenia tego, co już napisałeś w polu.",
+                "en": "Switch models without clearing what you've already typed."
+              }
+            },
+            {
+              "code": "Alt+T",
+              "desc": {
+                "pl": "Włącza i wyłącza rozszerzone myślenie.",
+                "en": "Toggles extended thinking."
+              }
+            },
+            {
+              "code": "Alt+O",
+              "desc": {
+                "pl": "Włącza i wyłącza tryb szybki.",
+                "en": "Toggles fast mode."
+              }
+            },
+            {
+              "code": "↑ / ↓",
+              "desc": {
+                "pl": "Poruszanie kursorem, a na skraju pola — przeglądanie historii poleceń.",
+                "en": "Move the cursor; at the edge of the input, browse command history."
+              }
+            },
+            {
+              "code": "Ctrl+X Ctrl+K",
+              "desc": {
+                "pl": "Zatrzymuje wszystkich pomocników działających w tle. Dwa razy w ciągu trzech sekund, żeby potwierdzić.",
+                "en": "Stops all background subagents in this session. Press twice within three seconds to confirm."
+              }
+            }
+          ]
+        },
+        {
+          "id": "pisanie",
+          "label": {
+            "pl": "Pisanie w polu promptu",
+            "en": "Typing in the prompt"
+          },
+          "intro": {
+            "pl": "Pole tekstowe zachowuje się jak klasyczny wiersz poleceń w Uniksie. Jeśli nigdy nie używałeś tych skrótów, warto poznać przynajmniej trzy pierwsze — oszczędzają mnóstwo klikania strzałkami.",
+            "en": "The input behaves like a classic Unix command line. If you've never used these, learn at least the first three — they save an enormous amount of arrow-key mashing."
+          },
+          "items": [
+            {
+              "code": "Ctrl+A",
+              "desc": {
+                "pl": "Kursor na początek linii.",
+                "en": "Cursor to the start of the line."
+              }
+            },
+            {
+              "code": "Ctrl+E",
+              "desc": {
+                "pl": "Kursor na koniec linii.",
+                "en": "Cursor to the end of the line."
+              }
+            },
+            {
+              "code": "Ctrl+W",
+              "desc": {
+                "pl": "Kasuje słowo przed kursorem.",
+                "en": "Deletes the word before the cursor."
+              }
+            },
+            {
+              "code": "Ctrl+U",
+              "desc": {
+                "pl": "Kasuje wszystko od kursora do początku linii.",
+                "en": "Deletes from the cursor back to the start of the line."
+              }
+            },
+            {
+              "code": "Ctrl+K",
+              "desc": {
+                "pl": "Kasuje od kursora do końca linii.",
+                "en": "Deletes from the cursor to the end of the line."
+              }
+            },
+            {
+              "code": "Ctrl+Y",
+              "desc": {
+                "pl": "Wkleja to, co skasowałeś powyższymi skrótami.",
+                "en": "Pastes back what those shortcuts deleted."
+              }
+            },
+            {
+              "code": "Alt+B / Alt+F",
+              "desc": {
+                "pl": "Kursor o słowo w tył / w przód.",
+                "en": "Move the cursor back / forward one word."
+              }
+            },
+            {
+              "code": "Ctrl+_",
+              "desc": {
+                "pl": "Cofa ostatnią zmianę w polu tekstowym.",
+                "en": "Undoes the last edit in the input."
+              }
+            },
+            {
+              "code": "\\ + Enter",
+              "desc": {
+                "pl": "Nowa linia bez wysyłania. Działa w każdym terminalu — najpewniejszy sposób na dłuższy wpis.",
+                "en": "A new line without sending. Works in every terminal — the most reliable way to write something longer."
+              }
+            },
+            {
+              "code": "Shift+Enter",
+              "desc": {
+                "pl": "To samo, wygodniej. Działa od ręki m.in. w Windows Terminal, iTerm2, WezTerm, Ghostty, Kitty, Warp.",
+                "en": "The same, but nicer. Works out of the box in Windows Terminal, iTerm2, WezTerm, Ghostty, Kitty, Warp and others."
+              }
+            },
+            {
+              "code": "Ctrl+J",
+              "desc": {
+                "pl": "Nowa linia w terminalach, które nie ogarniają Shift+Enter.",
+                "en": "A new line in terminals that don't handle Shift+Enter."
+              }
+            }
+          ]
+        },
+        {
+          "id": "znaki",
+          "label": {
+            "pl": "Znaki, od których zaczynasz wpis",
+            "en": "Characters that start an input"
+          },
+          "intro": {
+            "pl": "Cztery znaki na początku linii zmieniają znaczenie tego, co piszesz. Znajomość dwóch środkowych oszczędza najwięcej czasu.",
+            "en": "Four characters at the start of a line change what your input means. The middle two save the most time."
+          },
+          "items": [
+            {
+              "code": "/",
+              "desc": {
+                "pl": "Komenda albo umiejętność. Lista filtruje się w miarę pisania.",
+                "en": "A command or a skill. The list filters as you type."
+              }
+            },
+            {
+              "code": "!",
+              "desc": {
+                "pl": "Tryb powłoki: uruchamia komendę w twoim terminalu, a jej wynik trafia do rozmowy. Idealne, gdy Claude potrzebuje zobaczyć wynik czegoś, do czego sam nie ma dostępu — na przykład logowania wymagającego twojego hasła.",
+                "en": "Shell mode: runs a command in your terminal and drops the output into the conversation. Perfect when Claude needs to see the result of something it can't run itself — an interactive login, say."
+              }
+            },
+            {
+              "code": "@",
+              "desc": {
+                "pl": "Podpowiadanie ścieżek do plików. Zamiast opisywać „ten plik od konfiguracji”, wskazujesz go wprost. Oszczędza mu szukania, a tobie kontekstu.",
+                "en": "File path autocomplete. Instead of describing \"that config file\", you point at it. Saves it a search and saves you context."
+              }
+            },
+            {
+              "code": ":",
+              "desc": {
+                "pl": "Emoji po nazwie, np. :rocket:.",
+                "en": "Emoji by shortcode, e.g. :rocket:."
+              }
+            },
+            {
+              "code": "?",
+              "desc": {
+                "pl": "Przy pustym polu pokazuje panel ze skrótami klawiszowymi.",
+                "en": "On an empty prompt, shows the keyboard shortcut panel."
+              }
+            }
+          ]
+        },
+        {
+          "id": "uprawnienia",
+          "label": {
+            "pl": "Tryby uprawnień",
+            "en": "Permission modes"
+          },
+          "intro": {
+            "pl": "Ile Claude może zrobić bez pytania ciebie o zdanie. Przełączasz je klawiszem Shift+Tab, a bieżący tryb widać przy polu wpisywania. To jest suwak między „muszę wszystko klikać” a „niech leci i zobaczymy”.",
+            "en": "How much Claude may do without asking you. Shift+Tab cycles them, and the current mode shows next to the input. This is the dial between \"I approve everything\" and \"just go and we'll see\"."
+          },
+          "items": [
+            {
+              "code": "default",
+              "desc": {
+                "pl": "Ręczny. Pyta przed każdą zmianą pliku i przed każdą komendą. Domyślny i najbezpieczniejszy.",
+                "en": "Manual. Asks before every file change and every command. The default and the safest."
+              }
+            },
+            {
+              "code": "acceptEdits",
+              "desc": {
+                "pl": "Zmiany w plikach przechodzą bez pytania, komendy nadal wymagają zgody. Dobry kompromis, gdy wiesz, że będzie dużo drobnych poprawek.",
+                "en": "File edits go through without asking; commands still need approval. A good middle ground when you know a lot of small edits are coming."
+              }
+            },
+            {
+              "code": "plan",
+              "desc": {
+                "pl": "Tylko czyta i planuje, niczego nie zmienia. Najlepszy tryb na start większego zadania — najpierw ustalcie, co ma powstać, potem niech to robi.",
+                "en": "Reads and plans only, changes nothing. The best mode to open a bigger task with — agree on what should happen, then let it happen."
+              }
+            },
+            {
+              "code": "auto",
+              "desc": {
+                "pl": "Claude sam decyduje, co wymaga twojej zgody, a co nie, według reguł klasyfikatora.",
+                "en": "Claude decides what needs your approval and what doesn't, following classifier rules."
+              }
+            },
+            {
+              "code": "bypassPermissions",
+              "desc": {
+                "pl": "Nie pyta o nic. Używaj tylko tam, gdzie nie ma czego zepsuć — kontener, maszyna wirtualna, katalog jednorazowy. Nie na maszynie z produkcją.",
+                "en": "Asks about nothing. Only use it where there's nothing to break — a container, a VM, a throwaway directory. Not on a machine with production access."
+              }
+            }
+          ],
+          "note": {
+            "pl": "Zamiast na stałe rozluźniać tryb, dopisz konkretne reguły w /permissions. „Zawsze pozwalaj na npm test” jest bezpieczne, „zawsze pozwalaj na wszystko” już nie.",
+            "en": "Rather than permanently loosening the mode, add specific rules in /permissions. \"Always allow npm test\" is safe; \"always allow everything\" is not."
           }
         },
         {
-          "term": { "pl": "Ty zatwierdzasz działania", "en": "You approve the actions" },
-          "desc": {
-            "pl": "Zanim coś zmieni w pliku albo uruchomi komendę, pyta o zgodę. To da się poluzować albo zacieśnić — patrz sekcja o trybach uprawnień.",
-            "en": "Before it edits a file or runs a command it asks. You can loosen or tighten that — see the permission modes section."
-          }
+          "id": "pamiec",
+          "label": {
+            "pl": "Pamięć: CLAUDE.md i notatki",
+            "en": "Memory: CLAUDE.md and notes"
+          },
+          "intro": {
+            "pl": "Każda sesja startuje z pustą głową. Dwie rzeczy przenoszą wiedzę między sesjami: plik CLAUDE.md, który piszesz ty, i notatki, które Claude prowadzi sam. To jest miejsce, w którym narzędzie przestaje być gadżetem, a zaczyna oszczędzać czas.",
+            "en": "Every session starts with an empty head. Two things carry knowledge across sessions: the CLAUDE.md file you write, and the notes Claude keeps on its own. This is where the tool stops being a gadget and starts saving time."
+          },
+          "items": [
+            {
+              "code": "./CLAUDE.md",
+              "desc": {
+                "pl": "Instrukcja projektu, wgrywana na starcie każdej sesji w tym folderze. Wpisuj tu to, co i tak tłumaczysz za każdym razem: jak się to buduje, jakie są konwencje, czego nie ruszać. Celuj poniżej 200 linii — dłuższe pliki są gorzej przestrzegane.",
+                "en": "The project's instructions, loaded at the start of every session in that folder. Write down what you'd explain anyway: how it builds, what the conventions are, what not to touch. Aim for under 200 lines — longer files get followed less reliably."
+              }
+            },
+            {
+              "code": "~/.claude/CLAUDE.md",
+              "desc": {
+                "pl": "To samo, ale twoje osobiste i dla wszystkich projektów. Tu idą preferencje w rodzaju „pisz komentarze po polsku”.",
+                "en": "The same, but personal and applied to every project. Preferences like \"write comments in Polish\" go here."
+              }
+            },
+            {
+              "code": "./CLAUDE.local.md",
+              "desc": {
+                "pl": "Prywatne uwagi do tego projektu, których nie chcesz wrzucać do repozytorium. Dopisz go do .gitignore.",
+                "en": "Private notes for this project that you don't want in the repository. Add it to .gitignore."
+              }
+            },
+            {
+              "code": "@sciezka/do/pliku.md",
+              "desc": {
+                "pl": "Wewnątrz CLAUDE.md możesz doczytywać inne pliki tym zapisem. Uwaga: doczytana treść też zajmuje kontekst, więc to porządkuje, ale nie odchudza.",
+                "en": "Inside CLAUDE.md you can pull in other files with this syntax. Note: imported content still takes up context, so it tidies but doesn't slim down."
+              }
+            },
+            {
+              "code": ".claude/rules/",
+              "desc": {
+                "pl": "Instrukcje rozbite na tematy. Z nagłówkiem paths: wczytują się tylko wtedy, gdy Claude rusza pasujące pliki — reguły dla frontendu nie zajmują miejsca, gdy grzebiesz w bazie.",
+                "en": "Instructions split by topic. With a paths: header they load only when Claude touches matching files — frontend rules take no room while you're in the database."
+              }
+            },
+            {
+              "term": {
+                "pl": "Notatki automatyczne",
+                "en": "Auto memory"
+              },
+              "desc": {
+                "pl": "Claude sam zapisuje, czego się o projekcie i o tobie nauczył, do katalogu ~/.claude/projects/<projekt>/memory/. Plik MEMORY.md działa jak spis treści i wczytuje się na starcie każdej sesji — reszta na żądanie.",
+                "en": "Claude saves what it learned about the project and about you into ~/.claude/projects/<project>/memory/. MEMORY.md acts as an index and loads at the start of every session — the rest on demand."
+              }
+            },
+            {
+              "term": {
+                "pl": "„Zapamiętaj, że…”",
+                "en": "\"Remember that…\""
+              },
+              "desc": {
+                "pl": "Najprostszy sposób dopisania czegoś do pamięci: powiedz to zwykłym zdaniem w rozmowie. Chcesz to w CLAUDE.md, a nie w notatkach — powiedz „dopisz to do CLAUDE.md”.",
+                "en": "The simplest way to add something to memory: just say it in plain words. If you want it in CLAUDE.md instead of the notes, say \"add this to CLAUDE.md\"."
+              }
+            },
+            {
+              "term": {
+                "pl": "Gdy nie stosuje się do instrukcji",
+                "en": "When it ignores your instructions"
+              },
+              "desc": {
+                "pl": "Sprawdź w /context, czy plik w ogóle się załadował, a potem czy instrukcja jest konkretna. „Wcięcia dwiema spacjami” działa, „formatuj ładnie” nie. A jeśli coś ma się wykonać zawsze i bez wyjątku — to nie jest zadanie dla instrukcji, tylko dla haczyka (/hooks).",
+                "en": "Check in /context whether the file loaded at all, then whether the instruction is concrete. \"Two-space indentation\" works, \"format nicely\" doesn't. And if something must happen every single time without exception, that's not a job for an instruction — that's a hook (/hooks)."
+              }
+            }
+          ]
         },
         {
-          "term": { "pl": "Gdzie to działa", "en": "Where it runs" },
-          "desc": {
-            "pl": "W terminalu, w osobnej aplikacji na Maca i Windowsa, w przeglądarce (claude.ai/code) oraz jako wtyczka do VS Code i JetBrains. To ta sama rzecz w różnych opakowaniach.",
-            "en": "In a terminal, in a desktop app for Mac and Windows, in the browser (claude.ai/code) and as a VS Code and JetBrains extension. The same thing in different wrappers."
-          }
+          "id": "terminal",
+          "label": {
+            "pl": "Uruchamianie z terminala",
+            "en": "Starting from the terminal"
+          },
+          "intro": {
+            "pl": "To, co wpisujesz, zanim sesja w ogóle wystartuje. Przydaje się głównie w skryptach i przy wracaniu do przerwanej roboty.",
+            "en": "What you type before a session even starts. Mostly useful in scripts and when picking up interrupted work."
+          },
+          "items": [
+            {
+              "code": "claude",
+              "desc": {
+                "pl": "Sesja interaktywna w bieżącym folderze.",
+                "en": "An interactive session in the current folder."
+              }
+            },
+            {
+              "code": "claude \"...\"",
+              "desc": {
+                "pl": "To samo, ale od razu z pierwszym poleceniem.",
+                "en": "The same, but with your first prompt already typed."
+              }
+            },
+            {
+              "code": "claude -p \"...\"",
+              "desc": {
+                "pl": "Jedno pytanie, jedna odpowiedź, wyjście. Bez trybu interaktywnego — do skryptów i automatyzacji.",
+                "en": "One question, one answer, exit. No interactive mode — for scripts and automation."
+              }
+            },
+            {
+              "code": "claude -c",
+              "desc": {
+                "pl": "Wraca do ostatniej rozmowy w tym folderze. Najczęściej używana flaga w codziennej pracy.",
+                "en": "Resumes the most recent conversation in this folder. The flag you'll use most day to day."
+              }
+            },
+            {
+              "code": "claude -r \"<sesja>\"",
+              "desc": {
+                "pl": "Wraca do konkretnej sesji po nazwie albo identyfikatorze.",
+                "en": "Resumes a specific session by name or id."
+              }
+            },
+            {
+              "code": "--model <nazwa>",
+              "desc": {
+                "pl": "Wybór modelu na start.",
+                "en": "Pick the model up front."
+              }
+            },
+            {
+              "code": "--effort <poziom>",
+              "desc": {
+                "pl": "Poziom wysiłku: low, medium, high, xhigh, max.",
+                "en": "Effort level: low, medium, high, xhigh, max."
+              }
+            },
+            {
+              "code": "--add-dir <ścieżka>",
+              "desc": {
+                "pl": "Dorzuca dodatkowy folder do zasięgu sesji.",
+                "en": "Adds an extra folder to the session's reach."
+              }
+            },
+            {
+              "code": "--permission-mode <tryb>",
+              "desc": {
+                "pl": "Start od razu w wybranym trybie uprawnień.",
+                "en": "Start directly in a chosen permission mode."
+              }
+            },
+            {
+              "code": "--bg",
+              "desc": {
+                "pl": "Odpala sesję w tle i od razu oddaje ci terminal.",
+                "en": "Starts the session in the background and hands the terminal straight back."
+              }
+            },
+            {
+              "code": "claude update",
+              "desc": {
+                "pl": "Aktualizacja do najnowszej wersji.",
+                "en": "Update to the latest version."
+              }
+            },
+            {
+              "code": "claude doctor",
+              "desc": {
+                "pl": "Diagnostyka instalacji i ustawień, bez wchodzenia do sesji.",
+                "en": "Install and settings diagnostics without entering a session."
+              }
+            },
+            {
+              "code": "claude --safe-mode",
+              "desc": {
+                "pl": "Start z wyłączonymi wszystkimi twoimi przeróbkami. Pierwsza rzecz, gdy coś przestało działać po zmianie konfiguracji.",
+                "en": "Starts with all your customizations disabled. The first thing to try when something broke after a config change."
+              }
+            },
+            {
+              "code": "claude mcp",
+              "desc": {
+                "pl": "Konfiguracja serwerów MCP z linii poleceń.",
+                "en": "Configure MCP servers from the command line."
+              }
+            }
+          ]
+        },
+        {
+          "id": "praktyka",
+          "label": {
+            "pl": "Jak z tym pracować, żeby miało sens",
+            "en": "How to work with it so it pays off"
+          },
+          "intro": {
+            "pl": "Komendy są proste do zapamiętania. Trudniejsze jest to, co niżej — nawyki, które robią różnicę między „fajny gadżet” a realną oszczędnością czasu.",
+            "en": "The commands are easy to memorize. What's below is harder — the habits that separate \"neat gadget\" from an actual saving of time."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Najpierw plan, potem kod",
+                "en": "Plan first, code second"
+              },
+              "desc": {
+                "pl": "Przy czymkolwiek większym niż drobna poprawka wejdź w tryb planowania. Przeczytanie planu zajmuje minutę, a wyłapiesz nieporozumienie zanim powstanie z niego trzysta linijek do wyrzucenia.",
+                "en": "For anything bigger than a small fix, switch to plan mode. Reading the plan takes a minute and catches the misunderstanding before it becomes three hundred lines you have to throw away."
+              }
+            },
+            {
+              "term": {
+                "pl": "Jedna rzecz na raz",
+                "en": "One thing at a time"
+              },
+              "desc": {
+                "pl": "Trzy zadania w jednym poleceniu dają trzy połowicznie zrobione rzeczy. Rozbij na kroki i sprawdzaj po każdym.",
+                "en": "Three tasks in one prompt gets you three half-done things. Break it into steps and check after each one."
+              }
+            },
+            {
+              "term": {
+                "pl": "/clear częściej, niż ci się wydaje",
+                "en": "/clear more often than feels natural"
+              },
+              "desc": {
+                "pl": "Nowe zadanie = nowa sesja. Ciągnięcie jednej rozmowy przez cały dzień pogarsza odpowiedzi i podnosi koszt, bo wszystko z rana wciąż siedzi w kontekście.",
+                "en": "New task, new session. Dragging one conversation through the whole day makes answers worse and costs more, because the morning is still sitting in context."
+              }
+            },
+            {
+              "term": {
+                "pl": "Daj mu sposób na sprawdzenie siebie",
+                "en": "Give it a way to check itself"
+              },
+              "desc": {
+                "pl": "Testy, komenda uruchamiająca aplikację, skrypt sprawdzający — cokolwiek, co da odpowiedź „działa / nie działa” bez ciebie. Z takim narzędziem poprawia się sam; bez niego zgaduje i oddaje ci kod do sprawdzenia.",
+                "en": "Tests, a command that runs the app, a check script — anything that answers \"works / doesn't\" without you. With one it corrects itself; without one it guesses and hands you the checking."
+              }
+            },
+            {
+              "term": {
+                "pl": "Wklej błąd, nie opisuj go",
+                "en": "Paste the error, don't describe it"
+              },
+              "desc": {
+                "pl": "Pełna treść komunikatu albo zrzut ekranu jest wart więcej niż akapit „coś nie działa przy zapisie”. Obrazek wklejasz przez Alt+V (Windows) lub Ctrl+V.",
+                "en": "The full message or a screenshot beats a paragraph of \"something breaks on save\". Paste an image with Alt+V (Windows) or Ctrl+V."
+              }
+            },
+            {
+              "term": {
+                "pl": "Wskazuj pliki przez @",
+                "en": "Point at files with @"
+              },
+              "desc": {
+                "pl": "Podanie ścieżki oszczędza mu przeszukiwania projektu, a tobie kontekstu, który to przeszukiwanie by zjadło.",
+                "en": "Giving a path saves it a search through the project — and saves you the context that search would eat."
+              }
+            },
+            {
+              "term": {
+                "pl": "Przerywaj wcześnie",
+                "en": "Interrupt early"
+              },
+              "desc": {
+                "pl": "Esc, gdy widzisz, że idzie w złą stronę. Nie ma sensu czekać z uprzejmości, aż skończy coś, czego i tak nie użyjesz.",
+                "en": "Hit Esc when you see it heading the wrong way. There's no point politely waiting for it to finish something you won't use."
+              }
+            },
+            {
+              "term": {
+                "pl": "Powtarzasz się? To materiał do CLAUDE.md",
+                "en": "Repeating yourself? That belongs in CLAUDE.md"
+              },
+              "desc": {
+                "pl": "Jeśli tłumaczysz to samo drugi raz w tym tygodniu, przenieś to do pliku. Zasada praktyczna: druga poprawka tego samego błędu to sygnał do zapisania.",
+                "en": "If you're explaining the same thing twice in a week, move it into the file. Rule of thumb: correcting the same mistake a second time is the signal to write it down."
+              }
+            },
+            {
+              "term": {
+                "pl": "Czytaj zmiany, zanim je zatwierdzisz",
+                "en": "Read the changes before you accept them"
+              },
+              "desc": {
+                "pl": "/diff i Ctrl+O są po to, żebyś wiedział, co weszło. Zgadza się na wszystko bez patrzenia tylko ten, kto lubi niespodzianki tydzień później.",
+                "en": "/diff and Ctrl+O exist so you know what landed. Approving without looking only works for people who enjoy surprises a week later."
+              }
+            },
+            {
+              "term": {
+                "pl": "Nie wklejaj sekretów",
+                "en": "Don't paste secrets"
+              },
+              "desc": {
+                "pl": "Hasła, klucze API, dane osobowe z produkcji — nic z tego nie powinno trafić do rozmowy. Jeśli Claude potrzebuje czegoś zalogowanego, użyj trybu powłoki (!) i zaloguj się sam.",
+                "en": "Passwords, API keys, production personal data — none of it should end up in the conversation. If Claude needs something behind a login, use shell mode (!) and log in yourself."
+              }
+            },
+            {
+              "term": {
+                "pl": "Traktuj to jak stażystę, nie jak wyrocznię",
+                "en": "Treat it like an intern, not an oracle"
+              },
+              "desc": {
+                "pl": "Szybki, oczytany, pracowity — i czasem pewnym głosem mówi rzeczy nieprawdziwe. Odpowiedzialność za to, co wejdzie do projektu, zostaje po twojej stronie.",
+                "en": "Fast, well-read, hard-working — and occasionally confidently wrong. Responsibility for what lands in the project stays on your side."
+              }
+            }
+          ]
+        },
+        {
+          "id": "awarie",
+          "label": {
+            "pl": "Kiedy coś nie działa",
+            "en": "When something breaks"
+          },
+          "intro": {
+            "pl": "Krótka lista pierwszej pomocy, mniej więcej w kolejności, w jakiej warto próbować.",
+            "en": "A short first-aid list, roughly in the order worth trying."
+          },
+          "items": [
+            {
+              "code": "/doctor",
+              "desc": {
+                "pl": "Automatyczna diagnoza instalacji i ustawień. Zawsze pierwszy krok.",
+                "en": "Automatic diagnosis of your install and settings. Always the first step."
+              }
+            },
+            {
+              "code": "/context",
+              "desc": {
+                "pl": "Gdy „nie stosuje się do instrukcji” — sprawdź, czy plik z instrukcjami w ogóle się wczytał.",
+                "en": "When it \"ignores instructions\" — check whether the instructions file loaded at all."
+              }
+            },
+            {
+              "code": "/rewind",
+              "desc": {
+                "pl": "Gdy zmiany zepsuły projekt. Cofa kod i rozmowę do wcześniejszego punktu.",
+                "en": "When changes broke the project. Rolls code and conversation back."
+              }
+            },
+            {
+              "code": "claude --safe-mode",
+              "desc": {
+                "pl": "Gdy zaczęło szwankować po zmianie konfiguracji — start z wyłączonymi przeróbkami.",
+                "en": "When it started misbehaving after a config change — start with customizations off."
+              }
+            },
+            {
+              "code": "/reload-plugins",
+              "desc": {
+                "pl": "Gdy wtyczka albo umiejętność nie widać po dodaniu.",
+                "en": "When a plugin or skill doesn't show up after you added it."
+              }
+            },
+            {
+              "code": "Ctrl+L",
+              "desc": {
+                "pl": "Gdy ekran się rozjechał — przerysowanie bez utraty rozmowy.",
+                "en": "When the display goes garbled — redraw without losing the conversation."
+              }
+            },
+            {
+              "code": "/release-notes",
+              "desc": {
+                "pl": "Gdy coś działało wczoraj, a dziś nie. Bywa, że po prostu się zmieniło.",
+                "en": "When something worked yesterday and doesn't today. Sometimes it simply changed."
+              }
+            },
+            {
+              "code": "/bug",
+              "desc": {
+                "pl": "Gdy to naprawdę błąd — zgłoszenie razem z przebiegiem rozmowy.",
+                "en": "When it really is a bug — a report with the transcript attached."
+              }
+            }
+          ]
         }
       ]
     },
-
     {
-      "id": "pierwsze-minuty",
+      "id": "zastosowania",
       "label": {
-        "pl": "Pierwsze pięć minut",
-        "en": "Your first five minutes"
+        "pl": "Zastosowania AI",
+        "en": "What people do with AI"
       },
       "intro": {
-        "pl": "Kolejność, która oszczędza późniejszej frustracji. Otwórz terminal w folderze projektu — to ważne, bo katalog startowy wyznacza, do czego Claude ma dostęp.",
-        "en": "The order that saves you frustration later. Open a terminal inside your project folder — that matters, because the starting directory defines what Claude can reach."
+        "pl": "Rzeczy, które ludzie na świecie robią z Claude'em i innymi modelami — często daleko poza pisaniem kodu. Zebrane z cudzych blogów, repozytoriów i oficjalnych stron producentów. Nic z tego nie jest naszym projektem ani naszą usługą: to ciekawostki z drugiej ręki, przy każdej podajemy źródło, żebyś mógł sprawdzić sam. Każdy odnośnik został otwarty i przeczytany przed umieszczeniem tutaj.",
+        "en": "Things people around the world do with Claude and other models — often far away from writing code. Collected from other people's blogs, repositories and vendors' own pages. None of this is our project or our service: these are second-hand curiosities, each with its source so you can check for yourself. Every link here was opened and read before it was published."
       },
-      "items": [
+      "sections": [
         {
-          "code": "claude",
-          "desc": {
-            "pl": "Start sesji w bieżącym folderze. Tyle. Żadnych parametrów nie trzeba.",
-            "en": "Starts a session in the current folder. That's it — no parameters needed."
+          "id": "poza-kodem",
+          "label": {
+            "pl": "Poza kodem, wciąż w terminalu",
+            "en": "Beyond code, still in the terminal"
+          },
+          "intro": {
+            "pl": "Claude Code nie jest przywiązany do projektów programistycznych. Uruchomiony w dowolnym folderze traktuje pliki jak pliki — a jeśli są to notatki, umowy albo dokumentacja, pracuje na nich tak samo.",
+            "en": "Claude Code isn't tied to software projects. Started in any folder it treats files as files — and if those files are notes, contracts or documentation, it works on them just the same."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Folder z notatkami zamiast repozytorium",
+                "en": "A notes folder instead of a repository"
+              },
+              "desc": {
+                "pl": "Producent wprost dokumentuje, że narzędzie działa w dowolnym katalogu: magazynie notatek, folderze dokumentacji, zbiorze plików Markdown. Przeszukuje je, edytuje i porządkuje tak samo jak kod. Katalog .claude i plik CLAUDE.md nie kolidują z konfiguracją innych programów, a pliki są czytane na nowo przy każdym odwołaniu — więc jeśli zmienisz coś w innej aplikacji, przy następnym odczycie zobaczy zmianę.",
+                "en": "The vendor explicitly documents that the tool works in any directory: a notes vault, a documentation folder, a pile of Markdown files. It searches, edits and reorganizes them exactly as it would code. The .claude directory and CLAUDE.md sit alongside other tools' config without conflict, and files are read fresh on every call — so a change you make in another application shows up the next time it reads that file."
+              },
+              "how": {
+                "pl": "Otwórz terminal w folderze z notatkami i wpisz claude. Nic więcej nie trzeba. Warto założyć tam CLAUDE.md z opisem, jak nazywasz pliki i jak je układasz — inaczej będzie zgadywał twoją konwencję.",
+                "en": "Open a terminal in your notes folder and type claude. Nothing else is required. It's worth putting a CLAUDE.md there describing how you name and organize files — otherwise it will guess at your convention."
+              },
+              "source": {
+                "label": "Claude Code — Common workflows (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/common-workflows"
+              }
+            },
+            {
+              "term": {
+                "pl": "Obsidian jako samoporządkujący się drugi mózg",
+                "en": "Obsidian as a self-organizing second brain"
+              },
+              "desc": {
+                "pl": "Repozytorium kepano/obsidian-skills to zestaw pięciu umiejętności uczących agenta obsługi Obsidiana: dialektu Markdown z linkami wiki i osadzeniami, plików Bases z widokami i filtrami, formatu JSON Canvas, wiersza poleceń Obsidiana oraz wyciągania czystego tekstu ze stron internetowych. Napisane zgodnie ze specyfikacją Agent Skills, więc działają nie tylko z Claude Code, ale też z Codeksem i OpenCode. Sens całości: notatki zostają zwykłym Markdownem na twoim dysku, a agent dokłada linkowanie i porządek.",
+                "en": "The kepano/obsidian-skills repository is a set of five skills teaching an agent to handle Obsidian: its Markdown dialect with wikilinks and embeds, Bases files with views and filters, the JSON Canvas format, the Obsidian command line, and extracting clean text from web pages. Written to the Agent Skills specification, so they work not just with Claude Code but with Codex and OpenCode too. The point: your notes stay plain Markdown on your own disk while the agent adds the linking and the order."
+              },
+              "how": {
+                "pl": "Repozytorium podaje trzy drogi instalacji: przez marketplace, przez npx skills albo ręcznie, w zależności od agenta. Umiejętność obsługi wiersza poleceń wymaga doinstalowania narzędzia Obsidian CLI; pozostałe operują na otwartych formatach plików i same w sobie Obsidiana nie potrzebują.",
+                "en": "The repository documents three installation routes: via marketplace, via npx skills, or manually, depending on your agent. The command-line skill needs the Obsidian CLI tool installed; the others work on open file formats and don't strictly require Obsidian itself."
+              },
+              "source": {
+                "label": "github.com/kepano/obsidian-skills",
+                "url": "https://github.com/kepano/obsidian-skills"
+              }
+            },
+            {
+              "term": {
+                "pl": "Przegląd umów według taksonomii ryzyka prawnego",
+                "en": "Contract review against a legal risk taxonomy"
+              },
+              "desc": {
+                "pl": "Umiejętność społecznościowa, która zamiast ogólnego „streść mi tę umowę” stosuje konkretną metodykę: 41 kategorii ryzyka prawnego z bazy CUAD projektu Atticus, zbudowanej na 510 rzeczywistych umowach. Na wyjściu dostajesz ocenę ryzyka z oznaczeniem wagi, tabelę kluczowych warunków, porównanie z rynkowym standardem, ocenę tego, co realnie da się wynegocjować, propozycje konkretnych zapisów zastępczych oraz wykaz postanowień, których w umowie brakuje. Różnica wobec zwykłego promptu polega na tym, że rubryka oceny jest z góry ustalona i ta sama za każdym razem.",
+                "en": "A community skill that, instead of a generic \"summarize this contract\", applies a defined methodology: 41 legal risk categories from the Atticus Project's CUAD dataset, built on 510 real contracts. The output is a severity-rated risk assessment, a key-terms table, a comparison against market standards, a judgement on what is actually negotiable, proposed replacement wording, and a list of provisions the contract is missing. The difference from plain prompting is that the rubric is fixed in advance and identical every time."
+              },
+              "how": {
+                "pl": "Sklonuj repozytorium do katalogu umiejętności swojego agenta — dla Claude Code jest to ~/.claude/skills/. Autor podaje, że działa z Claude Code, Codeksem, Cursorem i kilkudziesięcioma innymi narzędziami zgodnymi ze specyfikacją Agent Skills. Towarzyszące narzędzie legal-redline-tools zamienia wynik na dokument Worda ze śledzonymi zmianami.",
+                "en": "Clone the repository into your agent's skills directory — for Claude Code that is ~/.claude/skills/. The author states it works with Claude Code, Codex, Cursor and dozens of other Agent Skills-compatible tools. A companion tool, legal-redline-tools, turns the output into a Word document with tracked changes."
+              },
+              "source": {
+                "label": "github.com/evolsb/claude-legal-skill",
+                "url": "https://github.com/evolsb/claude-legal-skill"
+              }
+            }
+          ],
+          "note": {
+            "pl": "Umiejętność (skill) to po prostu plik z instrukcją, który wczytuje się dopiero wtedy, gdy jest potrzebny. Dlatego można ich mieć dużo, nie zapychając kontekstu — inaczej niż z CLAUDE.md, które ładuje się zawsze i w całości.",
+            "en": "A skill is simply an instruction file that loads only when it's needed. That's why you can keep many of them without clogging your context — unlike CLAUDE.md, which loads in full every single time."
           }
         },
         {
-          "code": "cmd /k \"cd /d D:\\Projekty\\moj-projekt && claude\"",
-          "desc": {
-            "pl": "Ikonka na pulpicie zamiast otwierania terminala i wklepywania ścieżki za każdym razem. Prawy przycisk na pulpicie → Nowy → Skrót, powyższą linijkę wklej jako element docelowy (podmieniając ścieżkę na swoją), nazwij, podmień ikonę. Dwuklik i jesteś w sesji, od razu we właściwym projekcie. Dopisz na końcu -c, jeśli wolisz wskakiwać prosto w ostatnią rozmowę. Tak to u nas działa na co dzień — jeden klik zamiast trzech komend.",
-            "en": "A desktop icon instead of opening a terminal and typing the path every time. Right-click the desktop → New → Shortcut, paste the line above as the target (swapping in your own path), name it, change the icon. Double-click and you're in a session, already in the right project. Add -c at the end if you'd rather drop straight into the last conversation. This is how we run it day to day — one click instead of three commands."
-          }
+          "id": "anthropic-u-siebie",
+          "label": {
+            "pl": "Jak używa tego Anthropic u siebie",
+            "en": "How Anthropic uses it internally"
+          },
+          "intro": {
+            "pl": "Producent opublikował opis tego, do czego jego własne zespoły używają Claude Code. Trzy przypadki poniżej są ciekawe, bo żaden nie polega na pisaniu aplikacji od zera. Wszystkie pochodzą z tego samego wpisu na firmowym blogu — traktuj je jak materiał od zainteresowanej strony, ale konkretny i podpisany zespołami.",
+            "en": "The vendor published an account of what its own teams use Claude Code for. The three cases below are interesting because none of them is about writing an application from scratch. All come from the same corporate blog post — treat them as material from an interested party, but concrete and attributed to named teams."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Awaria klastra rozwiązana ze zrzutów ekranu",
+                "en": "An outage diagnosed from screenshots"
+              },
+              "desc": {
+                "pl": "Zespół infrastruktury danych miał awarię: kontenery przestały się uruchamiać. Zamiast opisywać sytuację słowami, wrzucili do sesji zrzuty ekranu z paneli Google Cloud. Claude przeprowadził ich przez interfejs chmury menu po menu, aż znaleźli przyczynę — wyczerpanie puli adresów IP — po czym podał gotowe komendy tworzące nową pulę i dokładające ją do klastra. Wpis podaje, że oszczędziło to około 20 minut w trakcie trwającej awarii. Ciekawe jest tu połączenie: model widzi obrazek, ale jednocześnie ma terminal, w którym można od razu wykonać to, co podpowiedział.",
+                "en": "The data infrastructure team had an outage: pods stopped scheduling. Instead of describing the situation in words, they dropped screenshots of Google Cloud dashboards into the session. Claude walked them through the cloud console menu by menu until they found the cause — IP address exhaustion — then gave the exact commands to create a new IP pool and attach it to the cluster. The post states this saved about 20 minutes during a live outage. The interesting part is the combination: the model sees the image, and at the same time has a terminal where its suggestion can be carried out immediately."
+              },
+              "how": {
+                "pl": "Zrzut ekranu wkleja się do sesji skrótem Ctrl+V (na Windowsie i WSL działa też Alt+V) albo przeciąga myszą do okna. Można też podać ścieżkę do pliku graficznego zwykłym zdaniem.",
+                "en": "Paste a screenshot into the session with Ctrl+V (on Windows and WSL, Alt+V also works) or drag it into the window. You can also just give the path to an image file in plain words."
+              },
+              "source": {
+                "label": "How Anthropic teams use Claude Code (blog Anthropic)",
+                "url": "https://claude.com/blog/how-anthropic-teams-use-claude-code"
+              }
+            },
+            {
+              "term": {
+                "pl": "Dział prawny zbudował sobie narzędzie bez programisty",
+                "en": "The legal team built its own tool without a developer"
+              },
+              "desc": {
+                "pl": "Prawnicy Anthropica, ludzie bez wykształcenia programistycznego, zbudowali prototyp systemu kierującego pracowników do właściwego prawnika w firmie — czegoś w rodzaju drzewka wyboru znanego z infolinii. Wpis stawia to jako przykład tego, że dział może sobie zrobić własne narzędzie wewnętrzne, nie prosząc o czas zespołu programistów. To najbliższy realiom mniejszych firm przypadek z całej listy: problem był drobny, ale na tyle uciążliwy, że nikt nigdy nie przydzieliłby na niego etatu.",
+                "en": "Anthropic's lawyers — people with no engineering background — built a prototype system routing employees to the right in-house lawyer, something like the choice tree you get on a phone line. The post frames it as an example of a department building its own internal tool without asking for developer time. It's the case on this list closest to the reality of smaller companies: the problem was small, but annoying enough that nobody would ever have staffed it."
+              },
+              "how": {
+                "pl": "Żadnej specjalnej konfiguracji — zwykła sesja z dostępem do plików i możliwością uruchamiania komend. Cała trudność leży po stronie opisania, co narzędzie ma robić, a nie po stronie narzędzi.",
+                "en": "No special configuration — an ordinary session with file access and the ability to run commands. All the difficulty is in describing what the tool should do, not in the tooling."
+              },
+              "source": {
+                "label": "How Anthropic teams use Claude Code (blog Anthropic)",
+                "url": "https://claude.com/blog/how-anthropic-teams-use-claude-code"
+              }
+            },
+            {
+              "term": {
+                "pl": "Sto wariantów reklamy z wtyczki do Figmy",
+                "en": "A hundred ad variants from a Figma plugin"
+              },
+              "desc": {
+                "pl": "Zespół marketingu wzrostu napisał wtyczkę do Figmy, która rozpoznaje ramki w projekcie i programowo generuje do stu wariantów reklamy, podmieniając nagłówki i opisy. Wpis podaje, że zamieniło to godziny kopiowania i wklejania na pół sekundy na partię. Mechanizm jest ogólny i nie ma nic wspólnego z reklamą: jeśli masz szablon graficzny i listę treści do wstawienia, ktoś może ci napisać wtyczkę, która przemieli jedno przez drugie.",
+                "en": "The growth marketing team wrote a Figma plugin that identifies frames in a design and programmatically generates up to a hundred ad variants by swapping headlines and descriptions. The post states this turned hours of copy-pasting into half a second per batch. The mechanism is general and has nothing to do with advertising: if you have a graphic template and a list of content to drop into it, someone can write you a plugin that grinds one through the other."
+              },
+              "how": {
+                "pl": "To zwykła wtyczka do Figmy, napisana z pomocą Claude Code. Analogicznie działa każde inne narzędzie z API wtyczek — model pisze wtyczkę, a wtyczka wykonuje robotę powtarzalną.",
+                "en": "It's an ordinary Figma plugin, written with Claude Code's help. The same applies to any other tool with a plugin API — the model writes the plugin and the plugin does the repetitive work."
+              },
+              "source": {
+                "label": "How Anthropic teams use Claude Code (blog Anthropic)",
+                "url": "https://claude.com/blog/how-anthropic-teams-use-claude-code"
+              }
+            }
+          ]
         },
         {
-          "code": "/login",
-          "desc": {
-            "pl": "Logowanie do konta Anthropic. Otwiera przeglądarkę, potwierdzasz, wracasz do terminala.",
-            "en": "Sign in to your Anthropic account. Opens a browser, you confirm, you come back to the terminal."
-          }
-        },
-        {
-          "code": "/init",
-          "desc": {
-            "pl": "Przegląda projekt i pisze plik CLAUDE.md — notatkę o tym, czym jest ten projekt i jak się go buduje. Robisz to raz, korzystasz w każdej kolejnej sesji.",
-            "en": "Scans the project and writes a CLAUDE.md — a note about what this project is and how it's built. Do it once, benefit in every later session."
-          }
-        },
-        {
-          "code": "/model",
-          "desc": {
-            "pl": "Wybór modelu. Mocniejszy myśli lepiej i kosztuje więcej, lżejszy jest szybszy do prostych rzeczy.",
-            "en": "Pick the model. A stronger one thinks better and costs more; a lighter one is faster for simple things."
-          }
-        },
-        {
-          "code": "/status",
-          "desc": {
-            "pl": "Ściąga z bieżącej sesji: model, katalog, tryb uprawnień, co się załadowało.",
-            "en": "A snapshot of the current session: model, directory, permission mode, what got loaded."
-          }
-        },
-        {
-          "code": "/help",
-          "desc": {
-            "pl": "Lista wszystkiego, co możesz wpisać. Zawsze aktualna — w przeciwieństwie do każdej ściągi w internecie, tej też.",
-            "en": "A list of everything you can type. Always current — unlike any cheatsheet on the internet, this one included."
-          }
-        },
-        {
-          "code": "/powerup",
-          "desc": {
-            "pl": "Interaktywne lekcje funkcji Claude Code. Dobre, gdy wolisz się uczyć klikając niż czytając.",
-            "en": "Interactive lessons about Claude Code's features. Good if you'd rather learn by doing than by reading."
-          }
-        }
-      ],
-      "note": {
-        "pl": "Zacznij od pytania, nie od zadania. „Wytłumacz mi, jak działa ten folder” daje ci obraz sytuacji i jednocześnie pokazuje, czy Claude w ogóle dobrze zrozumiał projekt. Dopiero potem zlecaj zmiany.",
-        "en": "Start with a question, not a task. \"Explain how this folder works\" gives you the lay of the land and shows whether Claude understood the project at all. Only then start assigning changes."
-      }
-    },
-
-    {
-      "id": "komendy-codzienne",
-      "label": {
-        "pl": "Komendy „/” — te codzienne",
-        "en": "Slash commands — the everyday ones"
-      },
-      "intro": {
-        "pl": "Ukośnik na początku wpisu otwiera listę komend. Zacznij pisać, a lista się zawęża. Poniżej garść, których używa się naprawdę często — reszta jest w kolejnych sekcjach.",
-        "en": "A slash at the start of your input opens the command list. Start typing and the list narrows. Below are the ones you'll actually reach for daily — the rest are in the sections that follow."
-      },
-      "items": [
-        {
-          "code": "/clear",
-          "desc": {
-            "pl": "Czyste konto. Nowa rozmowa, pusty kontekst. Najważniejsza komenda na tej liście — używaj jej między niepowiązanymi zadaniami zamiast ciągnąć jedną wielką sesję.",
-            "en": "A clean slate. New conversation, empty context. The most important command on this list — use it between unrelated tasks instead of dragging one giant session along."
-          }
-        },
-        {
-          "code": "/compact",
-          "desc": {
-            "pl": "Streszcza dotychczasową rozmowę i zwalnia miejsce, ale zachowuje wątek. Gdy zadanie trwa, a kontekst się kończy.",
-            "en": "Summarizes the conversation so far and frees up room while keeping the thread. For when a task drags on and context is running out."
-          }
-        },
-        {
-          "code": "/context",
-          "desc": {
-            "pl": "Pokazuje, co i ile zajmuje w kontekście. Tutaj sprawdzisz, czy twój CLAUDE.md w ogóle się załadował.",
-            "en": "Shows what's taking up context and how much. This is where you check whether your CLAUDE.md loaded at all."
-          }
-        },
-        {
-          "code": "/rewind",
-          "desc": {
-            "pl": "Cofa kod i rozmowę do wcześniejszego punktu. Ratunek, gdy zmiany poszły w złą stronę — zamiast ręcznie sprzątać, wracasz do stanu sprzed.",
-            "en": "Rolls code and conversation back to an earlier checkpoint. The escape hatch when changes went the wrong way — instead of cleaning up by hand, you go back."
-          }
-        },
-        {
-          "code": "/resume",
-          "desc": {
-            "pl": "Wraca do wcześniejszej rozmowy z listy. Zamknąłeś okno w środku roboty? Stąd wracasz.",
-            "en": "Return to an earlier conversation from a list. Closed the window mid-task? This is how you get back."
-          }
-        },
-        {
-          "code": "/plan",
-          "desc": {
-            "pl": "Włącza tryb planowania: Claude analizuje i przedstawia plan, ale nie dotyka plików, dopóki nie zaakceptujesz.",
-            "en": "Switches to plan mode: Claude analyses and proposes a plan but touches no files until you accept it."
-          }
-        },
-        {
-          "code": "/diff",
-          "desc": {
-            "pl": "Podgląd zmian w plikach. Strzałki lewo/prawo przełączają między całością a poszczególnymi turami, Enter otwiera plik, Esc wraca.",
-            "en": "An interactive view of file changes. Left/right switches between the whole diff and individual turns, Enter opens a file, Esc goes back."
-          }
-        },
-        {
-          "code": "/effort",
-          "desc": {
-            "pl": "Ile wysiłku ma wkładać w myślenie — od szybko i tanio po powoli i dokładnie.",
-            "en": "How much effort to put into thinking — from quick and cheap to slow and thorough."
-          }
-        },
-        {
-          "code": "/fast",
-          "desc": {
-            "pl": "Tryb szybki: ten sam model, szybsza odpowiedź.",
-            "en": "Fast mode: same model, quicker output."
-          }
-        },
-        {
-          "code": "/memory",
-          "desc": {
-            "pl": "Podgląd i edycja plików pamięci — CLAUDE.md oraz notatek, które Claude prowadzi sam.",
-            "en": "View and edit memory files — CLAUDE.md and the notes Claude keeps on its own."
-          }
-        },
-        {
-          "code": "/copy",
-          "desc": {
-            "pl": "Kopiuje ostatnią odpowiedź do schowka. W okienku wyboru klawisz „w” zapisuje do pliku zamiast do schowka.",
-            "en": "Copies the last response to the clipboard. In the picker, `w` writes it to a file instead."
-          }
-        },
-        {
-          "code": "/usage",
-          "desc": {
-            "pl": "Ile już zużyłeś i ile to kosztuje. Alias: /cost.",
-            "en": "How much you've used and what it costs. Alias: /cost."
-          }
-        },
-        {
-          "code": "/recap",
-          "desc": {
-            "pl": "Jednolinijkowe podsumowanie sesji. Przydaje się do wpisu w dzienniku pracy albo do commita.",
-            "en": "A one-line summary of the session. Handy for a work log entry or a commit message."
-          }
-        },
-        {
-          "code": "/btw",
-          "desc": {
-            "pl": "Pytanie na boku, które nie trafia do głównej rozmowy. Zapytasz o coś, nie zaśmiecając kontekstu zadania.",
-            "en": "A side question that doesn't get added to the main conversation. Ask something without polluting the task's context."
-          }
-        },
-        {
-          "code": "/exit",
-          "desc": {
-            "pl": "Wyjście. Ctrl+D robi to samo szybciej.",
-            "en": "Quit. Ctrl+D does the same, faster."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "komendy-kod",
-      "label": {
-        "pl": "Komendy do pracy nad kodem",
-        "en": "Commands for working on code"
-      },
-      "intro": {
-        "pl": "Gotowe procedury, które ktoś już przemyślał za ciebie. Zamiast pisać „przejrzyj te zmiany i powiedz, czy nie ma błędów”, wpisujesz jedną komendę.",
-        "en": "Ready-made procedures somebody already thought through for you. Instead of writing \"look through these changes and tell me if there are bugs\", you type one command."
-      },
-      "items": [
-        {
-          "code": "/code-review",
-          "desc": {
-            "pl": "Przegląd zmian albo pull requesta pod kątem błędów i rzeczy do uproszczenia. Można wskazać poziom dokładności.",
-            "en": "Reviews a diff or a pull request for bugs and things worth simplifying. You can pick how thorough it should be."
-          }
-        },
-        {
-          "code": "/security-review",
-          "desc": {
-            "pl": "To samo, ale pod kątem dziur bezpieczeństwa w tym, co właśnie zmieniłeś.",
-            "en": "The same, but hunting for security holes in what you just changed."
-          }
-        },
-        {
-          "code": "/simplify",
-          "desc": {
-            "pl": "Szuka w zmianach rzeczy zrobionych na okrętkę i upraszcza je. Nie szuka błędów — od tego jest /code-review.",
-            "en": "Finds roundabout constructions in your changes and simplifies them. It doesn't hunt for bugs — that's what /code-review is for."
-          }
-        },
-        {
-          "code": "/verify",
-          "desc": {
-            "pl": "Sprawdza, czy zmiany faktycznie działają — nie tylko czy wyglądają dobrze.",
-            "en": "Checks whether the changes actually work — not just whether they look right."
-          }
-        },
-        {
-          "code": "/debug",
-          "desc": {
-            "pl": "Włącza szczegółowe logowanie i pomaga rozgryźć, co się dzieje pod spodem.",
-            "en": "Turns on detailed logging and helps work out what's happening under the hood."
-          }
-        },
-        {
-          "code": "/goal",
-          "desc": {
-            "pl": "Ustawiasz cel, a Claude pracuje, dopóki go nie osiągnie, zamiast oddawać robotę po pierwszym kroku.",
-            "en": "You set a goal and Claude keeps working until it's met, instead of handing back after the first step."
-          }
-        },
-        {
-          "code": "/batch",
-          "desc": {
-            "pl": "Ta sama zmiana w wielu miejscach naraz — rozbija robotę na równoległe wątki.",
-            "en": "The same change in many places at once — splits the work into parallel threads."
-          }
-        },
-        {
-          "code": "/loop",
-          "desc": {
-            "pl": "Powtarza polecenie co jakiś czas, dopóki sesja jest otwarta. Do pilnowania czegoś, co się zmienia — na przykład statusu wdrożenia.",
-            "en": "Repeats a prompt on an interval while the session stays open. For watching something that changes — a deployment status, say."
-          }
-        },
-        {
-          "code": "/install-github-app",
-          "desc": {
-            "pl": "Podpina Claude'a do repozytorium na GitHubie, żeby mógł reagować na pull requesty.",
-            "en": "Hooks Claude up to a GitHub repository so it can act on pull requests."
-          }
+          "id": "poza-terminalem",
+          "label": {
+            "pl": "AI poza terminalem",
+            "en": "AI outside the terminal"
+          },
+          "intro": {
+            "pl": "Dwie rzeczy, które z Claude Code nie mają wiele wspólnego, ale pokazują ten sam pomysł: model dostaje dostęp do czegoś realnego i staje się z tego użyteczny. Obie mają oficjalną dokumentację, więc nie trzeba nikomu wierzyć na słowo.",
+            "en": "Two things that have little to do with Claude Code but show the same idea: give the model access to something real and it becomes useful. Both are officially documented, so nobody has to be taken at their word."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Claude w Excelu",
+                "en": "Claude inside Excel"
+              },
+              "desc": {
+                "pl": "Dodatek do Excela stawiający Claude'a w panelu bocznym arkusza. Czyta, analizuje i modyfikuje skoroszyty, a co ważniejsze — pokazuje, co dokładnie zmienił, i pozwala przeskoczyć wprost do komórek, o których mówi. Można pytać o otwarty skoroszyt, podmieniać założenia bez rozwalania zależności między formułami, tropić błędy w rachunku. Dla kogoś, kto prowadzi serie pomiarowe albo dokumentację wzorcowań w arkuszach, najciekawsza jest funkcja tłumaczenia, skąd wzięła się konkretna liczba — cofa się po komórkach źródłowych zamiast zgadywać.",
+                "en": "An Excel add-in that puts Claude in a sidebar next to your sheet. It reads, analyses and modifies workbooks and — more importantly — shows exactly what it changed and lets you jump straight to the cells it refers to. You can ask questions about an open workbook, change assumptions without breaking the relationships between formulas, and hunt down errors in a calculation. For anyone running measurement series or calibration records in spreadsheets, the most interesting part is being able to trace where a particular number came from — it walks back through the source cells instead of guessing."
+              },
+              "how": {
+                "pl": "Zainstaluj dodatek zgodnie z instrukcją producenta. Dostępny w planach Pro, Max, Team i Enterprise — nie w darmowym. Wymaga desktopowego Excela albo wersji webowej z obsługą dodatków.",
+                "en": "Install the add-in following the vendor's instructions. Available on the Pro, Max, Team and Enterprise plans — not the free one. Requires desktop Excel or a web version that supports add-ins."
+              },
+              "source": {
+                "label": "Use Claude for Excel (dokumentacja Anthropic)",
+                "url": "https://support.claude.com/en/articles/12650343-use-claude-for-excel"
+              }
+            },
+            {
+              "term": {
+                "pl": "Sterowanie domem przez Home Assistant",
+                "en": "Running a house through Home Assistant"
+              },
+              "desc": {
+                "pl": "Home Assistant — otwarte oprogramowanie do automatyki domowej — ma własną, oficjalną integrację wystawiającą instalację przez protokół MCP. Model dostaje dostęp do wybranych przez ciebie urządzeń i encji, widzi stan domu w czasie rzeczywistym i może uruchamiać automatyzacje. Dla kogoś z branży automatyki to najtańszy poligon do zrozumienia, czym w praktyce jest MCP: ten sam mechanizm, którym podłącza się bazę danych albo system zgłoszeń, tylko że tutaj po drugiej stronie są światła i czujniki.",
+                "en": "Home Assistant — the open-source home automation platform — has its own official integration exposing your installation over the MCP protocol. The model gets access to the devices and entities you choose, sees the state of the house in real time and can trigger automations. For anyone from the automation trade it's the cheapest possible sandbox for understanding what MCP actually is: the same mechanism you'd use to plug in a database or a ticketing system, except here the other end is lights and sensors."
+              },
+              "how": {
+                "pl": "Dodaj integrację w ustawieniach Home Assistanta, wskaż, które urządzenia mają być widoczne, i skonfiguruj klienta. Dokumentacja podaje osobne instrukcje między innymi dla Claude Code, aplikacji Claude na komputer, ChatuGPT i Cursora. Uwierzytelnianie: OAuth albo długoterminowy token wygenerowany w profilu użytkownika. Wystawiaj wyłącznie te encje, które faktycznie mają być sterowalne.",
+                "en": "Add the integration in Home Assistant's settings, pick which devices should be visible, then configure your client. The documentation gives separate instructions for Claude Code, the Claude desktop app, ChatGPT and Cursor among others. Authentication is either OAuth or a long-lived token generated in your user profile. Expose only the entities that genuinely need to be controllable."
+              },
+              "source": {
+                "label": "Model Context Protocol Server (dokumentacja Home Assistant)",
+                "url": "https://www.home-assistant.io/integrations/mcp_server/"
+              }
+            }
+          ]
         }
       ]
     },
-
     {
-      "id": "komendy-kontekst",
+      "id": "poziom-wyzej",
       "label": {
-        "pl": "Kontekst, pamięć i ustawienia",
-        "en": "Context, memory and settings"
+        "pl": "Poziom wyżej",
+        "en": "Going deeper"
       },
       "intro": {
-        "pl": "Komendy, które decydują o tym, co Claude wie i na co ma pozwolenie.",
-        "en": "The commands that decide what Claude knows and what it's allowed to do."
+        "pl": "Techniki dla kogoś, kto opanował już podstawy i chce, żeby narzędzie pracowało samo albo równolegle. Część opisana jest w oficjalnej dokumentacji, część to pomysły ludzi z zewnątrz — przy każdej pozycji widać, skąd pochodzi. To nie są nasze rozwiązania: pokazujemy je jako ciekawostki wraz z instrukcją, żeby dało się je odtworzyć u siebie.",
+        "en": "Techniques for someone past the basics who wants the tool to work on its own, or in parallel. Some of it is in the official documentation, some are other people's ideas — each entry shows where it came from. These are not our solutions: we present them as curiosities, with instructions, so they can be reproduced."
       },
-      "items": [
+      "sections": [
         {
-          "code": "/add-dir",
-          "desc": {
-            "pl": "Dokłada kolejny folder do zasięgu bieżącej sesji. Gdy pracujesz na dwóch projektach naraz.",
-            "en": "Adds another folder to the current session's reach. For when you're working across two projects."
+          "id": "haczyki",
+          "label": {
+            "pl": "Haczyki — rzeczy, które dzieją się same",
+            "en": "Hooks — things that happen by themselves"
+          },
+          "intro": {
+            "pl": "Haczyk (hook) to komenda powłoki, którą narzędzie uruchamia samo w określonym momencie: po edycji pliku, przed wykonaniem komendy, gdy czeka na twoją odpowiedź. Różnica wobec instrukcji w CLAUDE.md jest zasadnicza — instrukcję model może zignorować, haczyk wykona się zawsze, bo wykonuje go program, a nie model. Wszystko poniżej konfiguruje się w pliku settings.json, a podgląd masz pod komendą /hooks.",
+            "en": "A hook is a shell command the tool runs by itself at a defined moment: after a file edit, before a command runs, when it's waiting for your answer. The difference from an instruction in CLAUDE.md is fundamental — an instruction can be ignored by the model, a hook always fires, because the program runs it, not the model. Everything below is configured in settings.json, and /hooks shows you what's active."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Powiadomienie, gdy Claude czeka na ciebie",
+                "en": "A notification when Claude is waiting for you"
+              },
+              "desc": {
+                "pl": "Najprostszy sensowny haczyk i dobry pierwszy. Zamiast wpatrywać się w terminal, dostajesz powiadomienie systemowe w chwili, gdy narzędzie potrzebuje twojej decyzji. Wykorzystuje zdarzenie Notification, które odpala się, gdy Claude czeka na wpis albo na zgodę.",
+                "en": "The simplest hook worth having, and a good first one. Instead of staring at the terminal you get a system notification the moment the tool needs a decision from you. It uses the Notification event, which fires when Claude is waiting for input or permission."
+              },
+              "how": {
+                "pl": "Do ~/.claude/settings.json wstaw blok \"hooks\" ze zdarzeniem \"Notification\", pustym polem \"matcher\" i komendą typu \"command\". Wersja dla Windowsa wywołuje powershell.exe wyświetlający okienko MessageBox; dokumentacja podaje gotowe warianty dla Windowsa, macOS i Linuksa. Jeśli masz już klucz \"hooks\", dopisz \"Notification\" obok istniejących zdarzeń, zamiast podmieniać cały obiekt. Możesz też po prostu opisać Claude'owi, czego chcesz, i pozwolić mu napisać ten wpis.",
+                "en": "In ~/.claude/settings.json add a \"hooks\" block with a \"Notification\" event, an empty \"matcher\" and a \"command\" entry. The Windows version calls powershell.exe to show a MessageBox; the documentation gives ready-made variants for Windows, macOS and Linux. If you already have a \"hooks\" key, add \"Notification\" alongside the existing events instead of replacing the whole object. You can also just describe what you want to Claude and let it write the entry."
+              },
+              "source": {
+                "label": "Automate actions with hooks (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/hooks-guide"
+              }
+            },
+            {
+              "term": {
+                "pl": "Formatowanie kodu po każdej edycji",
+                "en": "Formatting after every edit"
+              },
+              "desc": {
+                "pl": "Zdarzenie PostToolUse z dopasowaniem do narzędzi edytujących pliki uruchamia formater na każdym pliku, którego Claude dotknął. Efekt: przestajesz w ogóle rozmawiać o stylu formatowania, bo zajmuje się tym program po fakcie. Ten sam wzorzec nadaje się do wszystkiego, co ma się dziać automatycznie po zmianie pliku — przeliczenia, walidacji schematu, kopii zapasowej.",
+                "en": "A PostToolUse event matched to the file-editing tools runs a formatter on every file Claude touched. The effect: you stop discussing formatting style entirely, because a program handles it afterwards. The same pattern fits anything that should happen automatically after a file changes — a recalculation, a schema validation, a backup."
+              },
+              "how": {
+                "pl": "W bloku \"hooks\" dodaj zdarzenie \"PostToolUse\" z polem \"matcher\" ustawionym na \"Edit|Write\" i komendą wyciągającą ścieżkę zmienionego pliku, a następnie podającą ją formaterowi. Przykład z dokumentacji robi to przez jq i prettier.",
+                "en": "In the \"hooks\" block add a \"PostToolUse\" event with \"matcher\" set to \"Edit|Write\" and a command that extracts the changed file's path and passes it to your formatter. The documented example does this with jq and prettier."
+              },
+              "source": {
+                "label": "Automate actions with hooks (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/hooks-guide"
+              }
+            },
+            {
+              "term": {
+                "pl": "Haczyk, który ocenia sens, a nie składnię",
+                "en": "A hook that judges meaning, not syntax"
+              },
+              "desc": {
+                "pl": "Zwykły haczyk wykonuje komendę i patrzy na kod wyjścia — świetnie do lintera, bezużytecznie do pytania „czy ta zmiana w ogóle trzyma się kupy”. Dokumentacja opisuje osobne rodzaje haczyków opartych na modelu: promptowe i agentowe, które w miejscu warunku stawiają ocenę wykonaną przez model. To pozwala na bramki, których lintera nie da się nauczyć: czy migracja bazy odpowiada zmianie w modelu, czy komunikat commita opisuje to, co faktycznie zaszło.",
+                "en": "An ordinary hook runs a command and looks at the exit code — perfect for a linter, useless for the question \"does this change make any sense at all\". The documentation describes separate model-based hook types: prompt-based and agent-based, which put a model's judgement where the condition would be. That allows gates a linter could never be taught: whether a database migration matches the model change, whether a commit message describes what actually happened."
+              },
+              "how": {
+                "pl": "Zamiast haczyka typu \"command\" użyj wariantu opartego na modelu, opisanego w dokumentacji haczyków. Ostrożnie z bramkami blokującymi — haczyk, który myli się w jedną stronę, potrafi zablokować pracę skuteczniej niż jakikolwiek błąd.",
+                "en": "Instead of a \"command\" hook use the model-based variant described in the hooks documentation. Be careful with blocking gates — a hook that errs in one direction can halt your work more effectively than any bug."
+              },
+              "source": {
+                "label": "Automate actions with hooks (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/hooks-guide"
+              }
+            },
+            {
+              "term": {
+                "pl": "Zgoda klikana z telefonu",
+                "en": "Approving from your phone"
+              },
+              "desc": {
+                "pl": "Pomysł spoza dokumentacji, z niewielkiego repozytorium społecznościowego. Haczyki na zdarzeniach PreToolUse, Notification i Stop przesyłają pytanie o uprawnienia na telefon przez usługę powiadomień ntfy, a ty klikasz Zezwól albo Odmów wprost z powiadomienia. Narzędzie czyta twoje ustawienia uprawnień i wysyła tylko te zapytania, które faktycznie wymagają decyzji — rzeczy dozwolone i zablokowane odfiltrowuje. Sens: możesz zlecić dłuższą robotę i wyjść z pokoju, nie rezygnując z kontroli nad tym, co się dzieje.",
+                "en": "An idea from outside the documentation, from a small community repository. Hooks on the PreToolUse, Notification and Stop events push the permission question to your phone via the ntfy notification service, and you tap Allow or Deny straight from the notification. The tool reads your permission settings and only sends the requests that genuinely need a decision — auto-allowed and denied ones are filtered out. The point: you can set a longer job going and leave the room without giving up control of what happens."
+              },
+              "how": {
+                "pl": "Repozytorium opisuje cztery kroki: uruchamiasz serwer, który sam wykrywa twój adres w sieci Tailscale i generuje unikalny temat ntfy, subskrybujesz ten temat w aplikacji ntfy na telefonie, wklejasz podaną konfigurację haczyków do ~/.claude/settings.json i pracujesz normalnie. To mały projekt jednej osoby — potraktuj go jak przykład techniki, nie jak produkt z gwarancją. Przed wystawieniem czegokolwiek na zewnątrz przemyśl, co dokładnie wychodzi z twojej maszyny w treści powiadomienia.",
+                "en": "The repository describes four steps: run the server, which auto-detects your Tailscale address and generates a unique ntfy topic; subscribe to that topic in the ntfy phone app; paste the provided hook configuration into ~/.claude/settings.json; carry on working. It's one person's small project — treat it as an example of the technique, not a product with a warranty. Before exposing anything outward, think about what exactly leaves your machine inside those notifications."
+              },
+              "source": {
+                "label": "github.com/nickknissen/claude-ntfy-hook",
+                "url": "https://github.com/nickknissen/claude-ntfy-hook"
+              }
+            }
+          ],
+          "note": {
+            "pl": "Menu /hooks jest tylko do odczytu — pokazuje, co masz ustawione, ale nie pozwala tego zmieniać. Zmiany robisz w pliku settings.json albo prosisz o nie Claude'a.",
+            "en": "The /hooks menu is read-only — it shows what you have configured but doesn't let you change it. Edit settings.json yourself, or ask Claude to do it."
           }
         },
         {
-          "code": "/cd",
-          "desc": {
-            "pl": "Przenosi sesję do innego katalogu roboczego.",
-            "en": "Moves the session to a different working directory."
-          }
+          "id": "rownolegle",
+          "label": {
+            "pl": "Kilka sesji naraz",
+            "en": "Several sessions at once"
+          },
+          "intro": {
+            "pl": "Jedna sesja to jedna głowa i jeden zestaw plików. Gdy chcesz robić dwie rzeczy równocześnie, potrzebujesz albo osobnych kopii katalogu, albo pomocników pracujących we własnym kontekście.",
+            "en": "One session is one head and one set of files. To do two things at once you need either separate copies of the working tree, or helpers working in their own context."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Osobny katalog roboczy na każdą sesję",
+                "en": "A separate working tree per session"
+              },
+              "desc": {
+                "pl": "Mechanizm worktree w gicie tworzy drugie wydanie tego samego repozytorium, na własnej gałęzi, obok pierwszego. Claude Code ma to wbudowane jedną flagą: pracujesz nad funkcją w jednym oknie, a w drugim równolegle leci poprawka błędu i edycje nie wchodzą sobie w drogę. To rozwiązuje najbardziej irytujący problem pracy równoległej — dwie sesje zapisujące ten sam plik w tym samym czasie.",
+                "en": "Git's worktree mechanism creates a second checkout of the same repository, on its own branch, next to the first. Claude Code has this built in behind a single flag: you work on a feature in one window while a bug fix runs in another, and the edits never collide. It solves the most irritating problem of parallel work — two sessions writing the same file at the same time."
+              },
+              "how": {
+                "pl": "Uruchom claude --worktree nazwa-galezi, a w drugim terminalu to samo z inną nazwą. Repozytorium musi mieć co najmniej jeden commit — w świeżym, pustym repozytorium komenda zawiedzie. Jeśli wolisz obserwować równoległe sesje z jednego ekranu zamiast z kilku okien, dokumentacja odsyła do widoku agentów w tle.",
+                "en": "Run claude --worktree branch-name, then the same with a different name in a second terminal. The repository needs at least one commit — in a fresh, empty repository the command fails. If you'd rather watch parallel sessions from one screen than several windows, the documentation points to the background agent view."
+              },
+              "source": {
+                "label": "Claude Code — Common workflows (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/common-workflows"
+              }
+            },
+            {
+              "term": {
+                "pl": "Podagent do rozpoznania terenu",
+                "en": "A subagent for reconnaissance"
+              },
+              "desc": {
+                "pl": "Przeszukiwanie dużego projektu zapycha twój kontekst treścią plików, z których większość okaże się nieistotna. Podagent czyta je we własnym, osobnym kontekście i wraca tylko z wnioskiem. Twoja rozmowa zostaje czysta, a ty dostajesz odpowiedź zamiast stosu odczytów.",
+                "en": "Searching a large project fills your context with file contents, most of which turn out to be irrelevant. A subagent reads them in its own separate context and comes back with only the conclusion. Your conversation stays clean and you get an answer instead of a pile of file reads."
+              },
+              "how": {
+                "pl": "Wystarczy poprosić zwykłym zdaniem: „użyj podagenta, żeby sprawdzić, jak działa odświeżanie tokenów”. Nic nie trzeba konfigurować. Własnych podagentów, z odrębnym zestawem narzędzi i instrukcją, definiuje się przez komendę /agents.",
+                "en": "Just ask in plain words: \"use a subagent to investigate how token refresh works\". Nothing needs configuring. Custom subagents, with their own tools and prompts, are defined through the /agents command."
+              },
+              "source": {
+                "label": "Claude Code — Common workflows (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/common-workflows"
+              }
+            },
+            {
+              "term": {
+                "pl": "Dziewięciu recenzentów naraz",
+                "en": "Nine reviewers at once"
+              },
+              "desc": {
+                "pl": "Pomysł z bloga zewnętrznego autora. Zamiast jednego ogólnego recenzenta kodu, jedna komenda rozsyła dziewięciu podagentów, z których każdy patrzy pod jednym kątem: uruchomienie testów, analiza statyczna, przegląd kodu, bezpieczeństwo, styl, jakość testów, wydajność, ryzyko zależności i wdrożenia oraz upraszczanie. Wyniki wracają scalone w jedno podsumowanie z priorytetami i werdyktem: gotowe do scalenia, wymaga uwagi albo wymaga pracy. Autor pisze o swoich wynikach: „I'd peg the suggestions at ~75% useful which is much better than the <50% I saw previously” — to jego własna, subiektywna ocena z jednego projektu, nie pomiar.",
+                "en": "An idea from an outside author's blog. Instead of one generic code reviewer, a single command fans out to nine subagents, each looking through one lens: running tests, static analysis, code review, security, style, test quality, performance, dependency and deployment risk, and simplification. The results come back merged into one prioritized summary with a verdict: ready to merge, needs attention, or needs work. The author reports his own result: \"I'd peg the suggestions at ~75% useful which is much better than the <50% I saw previously\" — his own subjective assessment on one project, not a measurement."
+              },
+              "how": {
+                "pl": "Autor zrealizował to jako własną komendę w katalogu .claude/commands, która sama ustala zakres przeglądu: różnica względem gałęzi, zmiany przygotowane do commita albo ostatni commit. Zanim zbudujesz coś takiego od zera, sprawdź wbudowaną komendę /code-review — robi to samo w prostszej formie i możesz od niej zacząć.",
+                "en": "The author built it as a custom command in the .claude/commands directory that works out its own scope: the branch diff, staged changes, or the latest commit. Before building anything like it from scratch, try the built-in /code-review — it does the same thing in simpler form and is a reasonable starting point."
+              },
+              "source": {
+                "label": "hamy.xyz — 9 Parallel AI Agents That Review My Code (2026.02.20)",
+                "url": "https://hamy.xyz/blog/2026-02_code-reviews-claude-subagents"
+              }
+            }
+          ]
         },
         {
-          "code": "/permissions",
-          "desc": {
-            "pl": "Reguły „na to pozwalaj, o to pytaj, tego zabraniaj”. Tu się ustawia, żeby nie klikać zgody na to samo dwadzieścia razy dziennie.",
-            "en": "The allow / ask / deny rules. Set them here so you stop approving the same thing twenty times a day."
-          }
-        },
-        {
-          "code": "/fewer-permission-prompts",
-          "desc": {
-            "pl": "Przegląda twoją historię i sam proponuje listę rzeczy, na które warto pozwolić raz na zawsze.",
-            "en": "Scans your history and proposes a list of things worth allowing once and for all."
-          }
-        },
-        {
-          "code": "/config",
-          "desc": {
-            "pl": "Okno ustawień. Tu m.in. włączasz tryb edycji w stylu vima.",
-            "en": "The settings panel. Among other things, this is where you turn on vim-style editing."
-          }
-        },
-        {
-          "code": "/hooks",
-          "desc": {
-            "pl": "Podgląd „haczyków” — komend, które mają się wykonać automatycznie przy określonych zdarzeniach, na przykład przed każdym commitem.",
-            "en": "A view of your hooks — commands set to run automatically at given events, before every commit for instance."
-          }
-        },
-        {
-          "code": "/skills",
-          "desc": {
-            "pl": "Zarządzanie umiejętnościami: własnymi procedurami zapisanymi jako plik, które wywołujesz jak komendę.",
-            "en": "Manage skills: your own procedures saved as a file, invoked like a command."
-          }
-        },
-        {
-          "code": "/mcp",
-          "desc": {
-            "pl": "Podłączanie zewnętrznych narzędzi (baz danych, usług, przeglądarki) przez protokół MCP — Model Context Protocol.",
-            "en": "Connect external tools (databases, services, the browser) over MCP — the Model Context Protocol."
-          }
-        },
-        {
-          "code": "/plugin",
-          "desc": {
-            "pl": "Wtyczki: gotowe paczki komend, umiejętności i integracji.",
-            "en": "Plugins: ready-made bundles of commands, skills and integrations."
-          }
-        },
-        {
-          "code": "/keybindings",
-          "desc": {
-            "pl": "Otwiera plik ze skrótami klawiszowymi, jeśli chcesz je sobie poprzestawiać.",
-            "en": "Opens your keyboard shortcut file if you want to rearrange things."
-          }
-        },
-        {
-          "code": "/theme",
-          "desc": {
-            "pl": "Motyw kolorystyczny. W środku menu klawisz Ctrl+T przełącza kolorowanie kodu.",
-            "en": "Colour theme. Inside the menu, Ctrl+T toggles syntax colouring for code."
-          }
-        },
-        {
-          "code": "/autocompact",
-          "desc": {
-            "pl": "Ustawia, przy jakim zapełnieniu kontekstu ma się włączać automatyczne streszczanie.",
-            "en": "Sets how full the context has to get before automatic summarizing kicks in."
+          "id": "bez-czlowieka",
+          "label": {
+            "pl": "Bez człowieka przy klawiaturze",
+            "en": "With nobody at the keyboard"
+          },
+          "intro": {
+            "pl": "Claude Code da się uruchomić jak każdy inny program w potoku poleceń: coś na wejściu, odpowiedź na wyjściu, koniec. Stąd blisko już do zadań cyklicznych i do integracji z systemem, w którym trzymasz kod.",
+            "en": "Claude Code can be run like any other program in a pipeline: something in, an answer out, done. From there it's a short step to recurring jobs and to integrating with wherever your code lives."
+          },
+          "items": [
+            {
+              "term": {
+                "pl": "Potok wejścia i wyjścia",
+                "en": "A pipe in, a pipe out"
+              },
+              "desc": {
+                "pl": "Flaga -p uruchamia jedno pytanie i jedną odpowiedź, bez trybu interaktywnego. Wejście i wyjście zachowują się jak w każdym uniksowym narzędziu, więc można to wstawić w środek istniejącego skryptu. Przykład z dokumentacji: lista ostatnich dwudziestu commitów podana na wejściu z prośbą o streszczenie.",
+                "en": "The -p flag runs one question and one answer with no interactive mode. Standard input and output behave like any Unix tool, so it drops into the middle of an existing script. The documented example: the last twenty commits piped in with a request to summarize them."
+              },
+              "how": {
+                "pl": "git log --oneline -20 | claude -p \"streść te commity\" — i tyle. Dokumentacja trybu nieinteraktywnego opisuje formaty wyjścia (w tym JSON, wygodny do dalszego przetwarzania) oraz flagi uprawnień, bo skrypt nie ma komu zadać pytania o zgodę.",
+                "en": "git log --oneline -20 | claude -p \"summarize these commits\" — that's it. The non-interactive mode documentation covers output formats (including JSON, handy for further processing) and permission flags, since a script has nobody to ask for approval."
+              },
+              "source": {
+                "label": "Claude Code — Common workflows (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/common-workflows"
+              }
+            },
+            {
+              "term": {
+                "pl": "Cztery sposoby na zadanie cykliczne",
+                "en": "Four ways to schedule a recurring job"
+              },
+              "desc": {
+                "pl": "Dokumentacja zestawia je w tabelce i różnią się przede wszystkim tym, gdzie się wykonują. Routines chodzą w chmurze i działają nawet przy wyłączonym komputerze, można je odpalać także zdarzeniem z GitHuba. Zadania zaplanowane w aplikacji desktopowej chodzą na twojej maszynie i mają dostęp do lokalnych plików i niezacommitowanych zmian. GitHub Actions chodzą w twoim potoku CI, przy okazji zdarzeń w repozytorium. Komenda /loop odpytuje coś cyklicznie w otwartej sesji i kończy się razem z nią.",
+                "en": "The documentation lays them out in a table and they differ mainly in where they run. Routines run in the cloud and work even with your computer off; they can also be triggered by a GitHub event. Scheduled tasks in the desktop app run on your own machine with access to local files and uncommitted changes. GitHub Actions run in your CI pipeline, tied to repository events. The /loop command polls something repeatedly inside an open session and ends when the session does."
+              },
+              "how": {
+                "pl": "Wybór zależy od jednego pytania: czy zadanie potrzebuje twoich lokalnych plików. Jeśli tak — desktop. Jeśli ma chodzić przy wyłączonym komputerze — chmura. Jeśli dotyczy repozytorium — GitHub Actions. Dokumentacja radzi, żeby w poleceniu dla zadania cyklicznego napisać wprost, co oznacza sukces i co zrobić z wynikiem, bo takie zadanie nie ma kogo dopytać.",
+                "en": "The choice comes down to one question: does the job need your local files. If yes — desktop. If it must run with the computer off — cloud. If it's about the repository — GitHub Actions. The documentation advises writing explicitly what success looks like and what to do with the result, because such a job has nobody to ask."
+              },
+              "source": {
+                "label": "Claude Code — Common workflows (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/common-workflows"
+              }
+            },
+            {
+              "term": {
+                "pl": "@claude w komentarzu na GitHubie",
+                "en": "@claude in a GitHub comment"
+              },
+              "desc": {
+                "pl": "Oficjalna akcja uruchamiająca Claude Code wewnątrz przepływu GitHub Actions. Wspominasz @claude w komentarzu do zgłoszenia albo do pull requesta, a on analizuje kod, wprowadza zmiany i wypycha commity, odpowiadając w komentarzu pod tym samym wątkiem. Działa też bez wywoływania: jeśli w konfiguracji podasz gotowe polecenie, uruchomi się sam przy dowolnym zdarzeniu w repozytorium.",
+                "en": "The official action running Claude Code inside a GitHub Actions workflow. You mention @claude in a comment on an issue or pull request; it analyses the code, makes changes and pushes commits, replying in a comment on the same thread. It also works without being called: give it a ready prompt in the configuration and it runs on its own on any repository event."
+              },
+              "how": {
+                "pl": "Najprościej: w repozytorium uruchom komendę /install-github-app. Instaluje aplikację GitHuba, zakłada sekret z danymi uwierzytelniającymi i przygotowuje pull requesta z plikami przepływu — zostaje ci go scalić. Potrzebujesz uprawnień administratora do repozytorium i zainstalowanego narzędzia gh. Można też wszystko zrobić ręcznie, jeśli wolisz mieć kontrolę nad plikami przepływu.",
+                "en": "The easy path: run /install-github-app inside the repository. It installs the GitHub App, sets up the authentication secret and prepares a pull request with the workflow files — you just merge it. You need admin access to the repository and the gh CLI installed. Everything can also be done manually if you'd rather control the workflow files yourself."
+              },
+              "source": {
+                "label": "Claude Code GitHub Actions (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/github-actions"
+              }
+            },
+            {
+              "term": {
+                "pl": "Uwagi w konkretnych liniach pull requesta",
+                "en": "Comments on the exact lines of a pull request"
+              },
+              "desc": {
+                "pl": "Wariant przepływu, w którym przegląd uruchamia się przy otwarciu i każdej aktualizacji pull requesta, a uwagi trafiają jako komentarze przy konkretnych liniach kodu, nie jako jeden zbiorczy wpis na końcu. Gdy nic nie znajdzie, zostawia jedno podsumowanie. Pomija szkice, zamknięte pull requesty, rzeczy uznane za trywialne i te, pod którymi już się wypowiedział.",
+                "en": "A workflow variant where the review runs when a pull request is opened and on every update, and the findings land as comments on the specific lines of code rather than one summary post at the end. When it finds nothing it leaves a single summary. It skips drafts, closed pull requests, changes it judges trivial, and ones it has already commented on."
+              },
+              "how": {
+                "pl": "Przy uruchomieniu /install-github-app wybierz przepływ przeglądu — dostaniesz gotowy plik. Jeśli konfigurujesz ręcznie, kluczowe są dwie rzeczy: argument --comment, bez którego uwagi trafiają tylko do logu przebiegu zamiast na pull requesta, oraz zezwolenie na narzędzie komentujące w linii przez --allowedTools. Na publicznych repozytoriach przegląd nie zadziała na pull requestach z forków, bo GitHub nie udostępnia tam sekretów.",
+                "en": "When running /install-github-app, select the review workflow and you get a ready file. Configuring by hand, two things matter: the --comment argument, without which findings go only to the run log instead of the pull request, and allowing the inline-comment tool via --allowedTools. On public repositories the review won't run on pull requests from forks, because GitHub withholds secrets there."
+              },
+              "source": {
+                "label": "Claude Code GitHub Actions (dokumentacja Anthropic)",
+                "url": "https://code.claude.com/docs/en/github-actions"
+              }
+            }
+          ],
+          "note": {
+            "pl": "Każdy z tych mechanizmów kosztuje — minuty w CI i zużycie modelu. Dokumentacja podpowiada praktyczne ograniczniki: --max-turns na liczbę tur, limity czasu na poziomie przepływu i kontrolę równoległych przebiegów. Warto je ustawić od razu, a nie po pierwszym rachunku.",
+            "en": "Each of these costs something — CI minutes and model usage. The documentation suggests practical limits: --max-turns to cap iterations, workflow-level timeouts, and concurrency controls. Worth setting up front rather than after the first bill."
           }
         }
-      ]
-    },
-
-    {
-      "id": "komendy-agenci",
-      "label": {
-        "pl": "Agenci, praca w tle i inne urządzenia",
-        "en": "Agents, background work and other devices"
-      },
-      "intro": {
-        "pl": "Claude może odpalić własnych pomocników do zadań pobocznych albo przenieść robotę w tło. Nie trzeba tego używać od pierwszego dnia — ale warto wiedzieć, że jest.",
-        "en": "Claude can spin up helpers for side tasks or push work into the background. You don't need this on day one — but it's worth knowing it exists."
-      },
-      "items": [
-        {
-          "code": "/agents",
-          "desc": {
-            "pl": "Konfiguracja podagentów — wyspecjalizowanych pomocników z własnym zakresem narzędzi.",
-            "en": "Configure subagents — specialized helpers with their own set of tools."
-          }
-        },
-        {
-          "code": "/subtask",
-          "desc": {
-            "pl": "Zrzuca zadanie poboczne na pomocnika, żeby nie zaśmiecać głównej rozmowy.",
-            "en": "Hands a side task to a helper so it doesn't clutter the main conversation."
-          }
-        },
-        {
-          "code": "/tasks",
-          "desc": {
-            "pl": "Lista tego, co chodzi w tle: komend i pomocników.",
-            "en": "Lists what's running in the background: commands and helpers."
-          }
-        },
-        {
-          "code": "/background",
-          "desc": {
-            "pl": "Odczepia bieżącą sesję i puszcza ją w tle. Zamykasz okno, robota leci dalej.",
-            "en": "Detaches the current session and lets it run in the background. Close the window, the work continues."
-          }
-        },
-        {
-          "code": "/fork",
-          "desc": {
-            "pl": "Kopiuje rozmowę do osobnej sesji w tle — do sprawdzenia „a co, gdyby” bez psucia oryginału.",
-            "en": "Copies the conversation into a separate background session — for trying a what-if without spoiling the original."
-          }
-        },
-        {
-          "code": "/branch",
-          "desc": {
-            "pl": "Rozgałęzia rozmowę: dwa warianty od tego samego punktu.",
-            "en": "Branches the conversation: two variants from the same point."
-          }
-        },
-        {
-          "code": "/web",
-          "desc": {
-            "pl": "Otwiera Claude Code w przeglądarce.",
-            "en": "Opens Claude Code in the browser."
-          }
-        },
-        {
-          "code": "/teleport",
-          "desc": {
-            "pl": "Ściąga sesję z przeglądarki do terminala.",
-            "en": "Pulls a web session down into your terminal."
-          }
-        },
-        {
-          "code": "/desktop",
-          "desc": {
-            "pl": "Przenosi bieżącą sesję do aplikacji desktopowej.",
-            "en": "Continues the current session in the desktop app."
-          }
-        },
-        {
-          "code": "/remote-control",
-          "desc": {
-            "pl": "Pozwala sterować tą sesją z innego urządzenia.",
-            "en": "Lets you drive this session from another device."
-          }
-        },
-        {
-          "code": "/mobile",
-          "desc": {
-            "pl": "Kod QR do pobrania aplikacji mobilnej.",
-            "en": "A QR code for downloading the mobile app."
-          }
-        },
-        {
-          "code": "/chrome",
-          "desc": {
-            "pl": "Ustawienia integracji z przeglądarką Chrome — Claude może wtedy klikać po stronach i czytać konsolę.",
-            "en": "Chrome integration settings — with it, Claude can click around pages and read the console."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "komendy-reszta",
-      "label": {
-        "pl": "Reszta komend",
-        "en": "The remaining commands"
-      },
-      "intro": {
-        "pl": "Rzadziej używane, ale dobrze wiedzieć, że istnieją. Pełna, zawsze aktualna lista jest pod /help.",
-        "en": "Less common, but good to know they're there. The full, always-current list is under /help."
-      },
-      "items": [
-        {
-          "code": "/doctor",
-          "desc": {
-            "pl": "Przegląd instalacji: co jest nie tak z konfiguracją i jak to naprawić.",
-            "en": "An install checkup: what's wrong with your configuration and how to fix it."
-          }
-        },
-        {
-          "code": "/bug",
-          "desc": {
-            "pl": "Zgłoszenie błędu razem z przebiegiem rozmowy.",
-            "en": "Report a bug together with the conversation transcript."
-          }
-        },
-        {
-          "code": "/feedback",
-          "desc": {
-            "pl": "Uwagi do produktu, jeśli coś działa głupio, ale nie jest błędem.",
-            "en": "Product feedback, for when something is annoying but isn't a bug."
-          }
-        },
-        {
-          "code": "/export",
-          "desc": {
-            "pl": "Zapisuje rozmowę jako zwykły tekst.",
-            "en": "Saves the conversation as plain text."
-          }
-        },
-        {
-          "code": "/insights",
-          "desc": {
-            "pl": "Raport HTML z analizą twoich ostatnich sesji — na czym schodzi ci czas.",
-            "en": "An HTML report analysing your recent sessions — where your time actually goes."
-          }
-        },
-        {
-          "code": "/release-notes",
-          "desc": {
-            "pl": "Co się zmieniło w kolejnych wersjach. Przy narzędziu, które zmienia się co tydzień, to nie jest fanaberia.",
-            "en": "What changed between versions. With a tool that moves weekly, this isn't a luxury."
-          }
-        },
-        {
-          "code": "/upgrade",
-          "desc": {
-            "pl": "Aktualizacja do najnowszej wersji.",
-            "en": "Update to the latest version."
-          }
-        },
-        {
-          "code": "/import",
-          "desc": {
-            "pl": "Przenosi konfigurację z innych asystentów kodowania.",
-            "en": "Brings configuration over from other coding agents."
-          }
-        },
-        {
-          "code": "/ide",
-          "desc": {
-            "pl": "Połączenie z edytorem — VS Code, JetBrains.",
-            "en": "Connects to your editor — VS Code, JetBrains."
-          }
-        },
-        {
-          "code": "/deep-research",
-          "desc": {
-            "pl": "Rozsyła wyszukiwania po internecie na zadany temat i zbiera wnioski.",
-            "en": "Fans out web searches on a question and pulls the findings together."
-          }
-        },
-        {
-          "code": "/privacy-settings",
-          "desc": {
-            "pl": "Ustawienia prywatności konta.",
-            "en": "Account privacy settings."
-          }
-        },
-        {
-          "code": "/focus",
-          "desc": {
-            "pl": "Widok skupiony — mniej rozpraszaczy na ekranie.",
-            "en": "Focus view — fewer distractions on screen."
-          }
-        },
-        {
-          "code": "/color",
-          "desc": {
-            "pl": "Kolor paska promptu w tej sesji. Bardzo praktyczne, gdy masz otwarte trzy okna i mylisz je ze sobą.",
-            "en": "The prompt bar colour for this session. Genuinely useful when you have three windows open and keep mixing them up."
-          }
-        },
-        {
-          "code": "/radio",
-          "desc": {
-            "pl": "Radio lo-fi. Bez komentarza.",
-            "en": "Lo-fi radio. No further comment."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "skroty",
-      "label": {
-        "pl": "Skróty klawiszowe",
-        "en": "Keyboard shortcuts"
-      },
-      "intro": {
-        "pl": "Te, które zmieniają sposób pracy najbardziej. Na Windowsie i Linuksie klawisz Alt robi to, co Option na Macu.",
-        "en": "The ones that change how you work the most. On Windows and Linux, Alt does what Option does on a Mac."
-      },
-      "items": [
-        {
-          "code": "Esc",
-          "desc": {
-            "pl": "Przerwij. Zatrzymuje odpowiedź albo działanie w połowie, zachowując to, co już zrobione. Najważniejszy klawisz w całym narzędziu — jak widzisz, że idzie w złą stronę, nie czekaj do końca.",
-            "en": "Interrupt. Stops the response or tool call mid-flight, keeping the work done so far. The single most important key here — when you see it heading the wrong way, don't wait for it to finish."
-          }
-        },
-        {
-          "code": "Esc Esc",
-          "desc": {
-            "pl": "Dwa razy pod rząd: przy pustym polu otwiera cofanie do wcześniejszego punktu, przy wpisanym tekście czyści go (i zapisuje do historii, więc strzałka w górę go przywróci).",
-            "en": "Twice in a row: on an empty prompt it opens the rewind menu; with text typed it clears the draft (and saves it to history, so Up recalls it)."
-          }
-        },
-        {
-          "code": "Shift+Tab",
-          "desc": {
-            "pl": "Przełącza tryb uprawnień w kółko. Na Windowsie czasem Alt+M, gdy terminal przechwytuje Shift+Tab.",
-            "en": "Cycles permission modes. On Windows sometimes Alt+M, when the terminal swallows Shift+Tab."
-          }
-        },
-        {
-          "code": "Ctrl+C",
-          "desc": {
-            "pl": "Przerywa działanie. Gdy nic nie działa, pierwsze wciśnięcie czyści pole, drugie zamyka program.",
-            "en": "Interrupts a running operation. With nothing running, the first press clears the input and a second exits."
-          }
-        },
-        {
-          "code": "Ctrl+D",
-          "desc": {
-            "pl": "Wyjście z sesji — trzeba wcisnąć dwa razy szybko. Gdy w polu jest tekst, kasuje znak za kursorem.",
-            "en": "Exits the session — press twice quickly. With text in the prompt it deletes the character after the cursor instead."
-          }
-        },
-        {
-          "code": "Ctrl+O",
-          "desc": {
-            "pl": "Pokazuje pełny zapis: każde wywołanie narzędzia, znacznik czasu, użyty model. Tu sprawdzasz, co on właściwie zrobił.",
-            "en": "Shows the full transcript: every tool call, timestamps, which model was used. This is where you check what it actually did."
-          }
-        },
-        {
-          "code": "Ctrl+R",
-          "desc": {
-            "pl": "Przeszukiwanie historii wpisanych poleceń wstecz.",
-            "en": "Reverse search through your command history."
-          }
-        },
-        {
-          "code": "Ctrl+B",
-          "desc": {
-            "pl": "Puszcza bieżące zadanie w tło. Przydaje się przy długim buildzie — nie blokuje ci okna.",
-            "en": "Pushes the running task into the background. Handy during a long build — it stops blocking your window."
-          }
-        },
-        {
-          "code": "Ctrl+T",
-          "desc": {
-            "pl": "Pokazuje albo chowa listę zadań, którą Claude sam sobie prowadzi.",
-            "en": "Shows or hides the checklist Claude keeps for itself."
-          }
-        },
-        {
-          "code": "Ctrl+S",
-          "desc": {
-            "pl": "Odkłada wpisany tekst na bok i czyści pole. Wciśnięte ponownie przy pustym polu — przywraca.",
-            "en": "Stashes what you typed and clears the prompt. Pressed again on an empty prompt, it restores it."
-          }
-        },
-        {
-          "code": "Ctrl+G",
-          "desc": {
-            "pl": "Otwiera twój prompt w normalnym edytorze tekstu. Na długie polecenia dużo wygodniejsze niż pisanie w terminalu.",
-            "en": "Opens your prompt in a real text editor. For long instructions this beats typing into a terminal."
-          }
-        },
-        {
-          "code": "Ctrl+L",
-          "desc": {
-            "pl": "Przerysowuje ekran, gdy się rozjedzie. W trybie pełnoekranowym dwa razy pod rząd robi /clear.",
-            "en": "Redraws the screen when it gets garbled. In fullscreen rendering, twice in a row runs /clear."
-          }
-        },
-        {
-          "code": "Alt+V",
-          "desc": {
-            "pl": "Wkleja obrazek ze schowka (Windows i WSL; gdzie indziej Ctrl+V). Zrzut ekranu z błędem wart jest trzech akapitów opisu.",
-            "en": "Pastes an image from the clipboard (Windows and WSL; Ctrl+V elsewhere). A screenshot of an error beats three paragraphs describing it."
-          }
-        },
-        {
-          "code": "Alt+P",
-          "desc": {
-            "pl": "Zmiana modelu bez czyszczenia tego, co już napisałeś w polu.",
-            "en": "Switch models without clearing what you've already typed."
-          }
-        },
-        {
-          "code": "Alt+T",
-          "desc": {
-            "pl": "Włącza i wyłącza rozszerzone myślenie.",
-            "en": "Toggles extended thinking."
-          }
-        },
-        {
-          "code": "Alt+O",
-          "desc": {
-            "pl": "Włącza i wyłącza tryb szybki.",
-            "en": "Toggles fast mode."
-          }
-        },
-        {
-          "code": "↑ / ↓",
-          "desc": {
-            "pl": "Poruszanie kursorem, a na skraju pola — przeglądanie historii poleceń.",
-            "en": "Move the cursor; at the edge of the input, browse command history."
-          }
-        },
-        {
-          "code": "Ctrl+X Ctrl+K",
-          "desc": {
-            "pl": "Zatrzymuje wszystkich pomocników działających w tle. Dwa razy w ciągu trzech sekund, żeby potwierdzić.",
-            "en": "Stops all background subagents in this session. Press twice within three seconds to confirm."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "pisanie",
-      "label": {
-        "pl": "Pisanie w polu promptu",
-        "en": "Typing in the prompt"
-      },
-      "intro": {
-        "pl": "Pole tekstowe zachowuje się jak klasyczny wiersz poleceń w Uniksie. Jeśli nigdy nie używałeś tych skrótów, warto poznać przynajmniej trzy pierwsze — oszczędzają mnóstwo klikania strzałkami.",
-        "en": "The input behaves like a classic Unix command line. If you've never used these, learn at least the first three — they save an enormous amount of arrow-key mashing."
-      },
-      "items": [
-        { "code": "Ctrl+A", "desc": { "pl": "Kursor na początek linii.", "en": "Cursor to the start of the line." } },
-        { "code": "Ctrl+E", "desc": { "pl": "Kursor na koniec linii.", "en": "Cursor to the end of the line." } },
-        { "code": "Ctrl+W", "desc": { "pl": "Kasuje słowo przed kursorem.", "en": "Deletes the word before the cursor." } },
-        { "code": "Ctrl+U", "desc": { "pl": "Kasuje wszystko od kursora do początku linii.", "en": "Deletes from the cursor back to the start of the line." } },
-        { "code": "Ctrl+K", "desc": { "pl": "Kasuje od kursora do końca linii.", "en": "Deletes from the cursor to the end of the line." } },
-        { "code": "Ctrl+Y", "desc": { "pl": "Wkleja to, co skasowałeś powyższymi skrótami.", "en": "Pastes back what those shortcuts deleted." } },
-        { "code": "Alt+B / Alt+F", "desc": { "pl": "Kursor o słowo w tył / w przód.", "en": "Move the cursor back / forward one word." } },
-        { "code": "Ctrl+_", "desc": { "pl": "Cofa ostatnią zmianę w polu tekstowym.", "en": "Undoes the last edit in the input." } },
-        {
-          "code": "\\ + Enter",
-          "desc": {
-            "pl": "Nowa linia bez wysyłania. Działa w każdym terminalu — najpewniejszy sposób na dłuższy wpis.",
-            "en": "A new line without sending. Works in every terminal — the most reliable way to write something longer."
-          }
-        },
-        {
-          "code": "Shift+Enter",
-          "desc": {
-            "pl": "To samo, wygodniej. Działa od ręki m.in. w Windows Terminal, iTerm2, WezTerm, Ghostty, Kitty, Warp.",
-            "en": "The same, but nicer. Works out of the box in Windows Terminal, iTerm2, WezTerm, Ghostty, Kitty, Warp and others."
-          }
-        },
-        {
-          "code": "Ctrl+J",
-          "desc": {
-            "pl": "Nowa linia w terminalach, które nie ogarniają Shift+Enter.",
-            "en": "A new line in terminals that don't handle Shift+Enter."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "znaki",
-      "label": {
-        "pl": "Znaki, od których zaczynasz wpis",
-        "en": "Characters that start an input"
-      },
-      "intro": {
-        "pl": "Cztery znaki na początku linii zmieniają znaczenie tego, co piszesz. Znajomość dwóch środkowych oszczędza najwięcej czasu.",
-        "en": "Four characters at the start of a line change what your input means. The middle two save the most time."
-      },
-      "items": [
-        {
-          "code": "/",
-          "desc": {
-            "pl": "Komenda albo umiejętność. Lista filtruje się w miarę pisania.",
-            "en": "A command or a skill. The list filters as you type."
-          }
-        },
-        {
-          "code": "!",
-          "desc": {
-            "pl": "Tryb powłoki: uruchamia komendę w twoim terminalu, a jej wynik trafia do rozmowy. Idealne, gdy Claude potrzebuje zobaczyć wynik czegoś, do czego sam nie ma dostępu — na przykład logowania wymagającego twojego hasła.",
-            "en": "Shell mode: runs a command in your terminal and drops the output into the conversation. Perfect when Claude needs to see the result of something it can't run itself — an interactive login, say."
-          }
-        },
-        {
-          "code": "@",
-          "desc": {
-            "pl": "Podpowiadanie ścieżek do plików. Zamiast opisywać „ten plik od konfiguracji”, wskazujesz go wprost. Oszczędza mu szukania, a tobie kontekstu.",
-            "en": "File path autocomplete. Instead of describing \"that config file\", you point at it. Saves it a search and saves you context."
-          }
-        },
-        {
-          "code": ":",
-          "desc": {
-            "pl": "Emoji po nazwie, np. :rocket:.",
-            "en": "Emoji by shortcode, e.g. :rocket:."
-          }
-        },
-        {
-          "code": "?",
-          "desc": {
-            "pl": "Przy pustym polu pokazuje panel ze skrótami klawiszowymi.",
-            "en": "On an empty prompt, shows the keyboard shortcut panel."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "uprawnienia",
-      "label": {
-        "pl": "Tryby uprawnień",
-        "en": "Permission modes"
-      },
-      "intro": {
-        "pl": "Ile Claude może zrobić bez pytania ciebie o zdanie. Przełączasz je klawiszem Shift+Tab, a bieżący tryb widać przy polu wpisywania. To jest suwak między „muszę wszystko klikać” a „niech leci i zobaczymy”.",
-        "en": "How much Claude may do without asking you. Shift+Tab cycles them, and the current mode shows next to the input. This is the dial between \"I approve everything\" and \"just go and we'll see\"."
-      },
-      "items": [
-        {
-          "code": "default",
-          "desc": {
-            "pl": "Ręczny. Pyta przed każdą zmianą pliku i przed każdą komendą. Domyślny i najbezpieczniejszy.",
-            "en": "Manual. Asks before every file change and every command. The default and the safest."
-          }
-        },
-        {
-          "code": "acceptEdits",
-          "desc": {
-            "pl": "Zmiany w plikach przechodzą bez pytania, komendy nadal wymagają zgody. Dobry kompromis, gdy wiesz, że będzie dużo drobnych poprawek.",
-            "en": "File edits go through without asking; commands still need approval. A good middle ground when you know a lot of small edits are coming."
-          }
-        },
-        {
-          "code": "plan",
-          "desc": {
-            "pl": "Tylko czyta i planuje, niczego nie zmienia. Najlepszy tryb na start większego zadania — najpierw ustalcie, co ma powstać, potem niech to robi.",
-            "en": "Reads and plans only, changes nothing. The best mode to open a bigger task with — agree on what should happen, then let it happen."
-          }
-        },
-        {
-          "code": "auto",
-          "desc": {
-            "pl": "Claude sam decyduje, co wymaga twojej zgody, a co nie, według reguł klasyfikatora.",
-            "en": "Claude decides what needs your approval and what doesn't, following classifier rules."
-          }
-        },
-        {
-          "code": "bypassPermissions",
-          "desc": {
-            "pl": "Nie pyta o nic. Używaj tylko tam, gdzie nie ma czego zepsuć — kontener, maszyna wirtualna, katalog jednorazowy. Nie na maszynie z produkcją.",
-            "en": "Asks about nothing. Only use it where there's nothing to break — a container, a VM, a throwaway directory. Not on a machine with production access."
-          }
-        }
-      ],
-      "note": {
-        "pl": "Zamiast na stałe rozluźniać tryb, dopisz konkretne reguły w /permissions. „Zawsze pozwalaj na npm test” jest bezpieczne, „zawsze pozwalaj na wszystko” już nie.",
-        "en": "Rather than permanently loosening the mode, add specific rules in /permissions. \"Always allow npm test\" is safe; \"always allow everything\" is not."
-      }
-    },
-
-    {
-      "id": "pamiec",
-      "label": {
-        "pl": "Pamięć: CLAUDE.md i notatki",
-        "en": "Memory: CLAUDE.md and notes"
-      },
-      "intro": {
-        "pl": "Każda sesja startuje z pustą głową. Dwie rzeczy przenoszą wiedzę między sesjami: plik CLAUDE.md, który piszesz ty, i notatki, które Claude prowadzi sam. To jest miejsce, w którym narzędzie przestaje być gadżetem, a zaczyna oszczędzać czas.",
-        "en": "Every session starts with an empty head. Two things carry knowledge across sessions: the CLAUDE.md file you write, and the notes Claude keeps on its own. This is where the tool stops being a gadget and starts saving time."
-      },
-      "items": [
-        {
-          "code": "./CLAUDE.md",
-          "desc": {
-            "pl": "Instrukcja projektu, wgrywana na starcie każdej sesji w tym folderze. Wpisuj tu to, co i tak tłumaczysz za każdym razem: jak się to buduje, jakie są konwencje, czego nie ruszać. Celuj poniżej 200 linii — dłuższe pliki są gorzej przestrzegane.",
-            "en": "The project's instructions, loaded at the start of every session in that folder. Write down what you'd explain anyway: how it builds, what the conventions are, what not to touch. Aim for under 200 lines — longer files get followed less reliably."
-          }
-        },
-        {
-          "code": "~/.claude/CLAUDE.md",
-          "desc": {
-            "pl": "To samo, ale twoje osobiste i dla wszystkich projektów. Tu idą preferencje w rodzaju „pisz komentarze po polsku”.",
-            "en": "The same, but personal and applied to every project. Preferences like \"write comments in Polish\" go here."
-          }
-        },
-        {
-          "code": "./CLAUDE.local.md",
-          "desc": {
-            "pl": "Prywatne uwagi do tego projektu, których nie chcesz wrzucać do repozytorium. Dopisz go do .gitignore.",
-            "en": "Private notes for this project that you don't want in the repository. Add it to .gitignore."
-          }
-        },
-        {
-          "code": "@sciezka/do/pliku.md",
-          "desc": {
-            "pl": "Wewnątrz CLAUDE.md możesz doczytywać inne pliki tym zapisem. Uwaga: doczytana treść też zajmuje kontekst, więc to porządkuje, ale nie odchudza.",
-            "en": "Inside CLAUDE.md you can pull in other files with this syntax. Note: imported content still takes up context, so it tidies but doesn't slim down."
-          }
-        },
-        {
-          "code": ".claude/rules/",
-          "desc": {
-            "pl": "Instrukcje rozbite na tematy. Z nagłówkiem paths: wczytują się tylko wtedy, gdy Claude rusza pasujące pliki — reguły dla frontendu nie zajmują miejsca, gdy grzebiesz w bazie.",
-            "en": "Instructions split by topic. With a paths: header they load only when Claude touches matching files — frontend rules take no room while you're in the database."
-          }
-        },
-        {
-          "term": { "pl": "Notatki automatyczne", "en": "Auto memory" },
-          "desc": {
-            "pl": "Claude sam zapisuje, czego się o projekcie i o tobie nauczył, do katalogu ~/.claude/projects/<projekt>/memory/. Plik MEMORY.md działa jak spis treści i wczytuje się na starcie każdej sesji — reszta na żądanie.",
-            "en": "Claude saves what it learned about the project and about you into ~/.claude/projects/<project>/memory/. MEMORY.md acts as an index and loads at the start of every session — the rest on demand."
-          }
-        },
-        {
-          "term": { "pl": "„Zapamiętaj, że…”", "en": "\"Remember that…\"" },
-          "desc": {
-            "pl": "Najprostszy sposób dopisania czegoś do pamięci: powiedz to zwykłym zdaniem w rozmowie. Chcesz to w CLAUDE.md, a nie w notatkach — powiedz „dopisz to do CLAUDE.md”.",
-            "en": "The simplest way to add something to memory: just say it in plain words. If you want it in CLAUDE.md instead of the notes, say \"add this to CLAUDE.md\"."
-          }
-        },
-        {
-          "term": { "pl": "Gdy nie stosuje się do instrukcji", "en": "When it ignores your instructions" },
-          "desc": {
-            "pl": "Sprawdź w /context, czy plik w ogóle się załadował, a potem czy instrukcja jest konkretna. „Wcięcia dwiema spacjami” działa, „formatuj ładnie” nie. A jeśli coś ma się wykonać zawsze i bez wyjątku — to nie jest zadanie dla instrukcji, tylko dla haczyka (/hooks).",
-            "en": "Check in /context whether the file loaded at all, then whether the instruction is concrete. \"Two-space indentation\" works, \"format nicely\" doesn't. And if something must happen every single time without exception, that's not a job for an instruction — that's a hook (/hooks)."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "terminal",
-      "label": {
-        "pl": "Uruchamianie z terminala",
-        "en": "Starting from the terminal"
-      },
-      "intro": {
-        "pl": "To, co wpisujesz, zanim sesja w ogóle wystartuje. Przydaje się głównie w skryptach i przy wracaniu do przerwanej roboty.",
-        "en": "What you type before a session even starts. Mostly useful in scripts and when picking up interrupted work."
-      },
-      "items": [
-        { "code": "claude", "desc": { "pl": "Sesja interaktywna w bieżącym folderze.", "en": "An interactive session in the current folder." } },
-        { "code": "claude \"...\"", "desc": { "pl": "To samo, ale od razu z pierwszym poleceniem.", "en": "The same, but with your first prompt already typed." } },
-        {
-          "code": "claude -p \"...\"",
-          "desc": {
-            "pl": "Jedno pytanie, jedna odpowiedź, wyjście. Bez trybu interaktywnego — do skryptów i automatyzacji.",
-            "en": "One question, one answer, exit. No interactive mode — for scripts and automation."
-          }
-        },
-        {
-          "code": "claude -c",
-          "desc": {
-            "pl": "Wraca do ostatniej rozmowy w tym folderze. Najczęściej używana flaga w codziennej pracy.",
-            "en": "Resumes the most recent conversation in this folder. The flag you'll use most day to day."
-          }
-        },
-        { "code": "claude -r \"<sesja>\"", "desc": { "pl": "Wraca do konkretnej sesji po nazwie albo identyfikatorze.", "en": "Resumes a specific session by name or id." } },
-        { "code": "--model <nazwa>", "desc": { "pl": "Wybór modelu na start.", "en": "Pick the model up front." } },
-        { "code": "--effort <poziom>", "desc": { "pl": "Poziom wysiłku: low, medium, high, xhigh, max.", "en": "Effort level: low, medium, high, xhigh, max." } },
-        { "code": "--add-dir <ścieżka>", "desc": { "pl": "Dorzuca dodatkowy folder do zasięgu sesji.", "en": "Adds an extra folder to the session's reach." } },
-        { "code": "--permission-mode <tryb>", "desc": { "pl": "Start od razu w wybranym trybie uprawnień.", "en": "Start directly in a chosen permission mode." } },
-        { "code": "--bg", "desc": { "pl": "Odpala sesję w tle i od razu oddaje ci terminal.", "en": "Starts the session in the background and hands the terminal straight back." } },
-        { "code": "claude update", "desc": { "pl": "Aktualizacja do najnowszej wersji.", "en": "Update to the latest version." } },
-        { "code": "claude doctor", "desc": { "pl": "Diagnostyka instalacji i ustawień, bez wchodzenia do sesji.", "en": "Install and settings diagnostics without entering a session." } },
-        {
-          "code": "claude --safe-mode",
-          "desc": {
-            "pl": "Start z wyłączonymi wszystkimi twoimi przeróbkami. Pierwsza rzecz, gdy coś przestało działać po zmianie konfiguracji.",
-            "en": "Starts with all your customizations disabled. The first thing to try when something broke after a config change."
-          }
-        },
-        { "code": "claude mcp", "desc": { "pl": "Konfiguracja serwerów MCP z linii poleceń.", "en": "Configure MCP servers from the command line." } }
-      ]
-    },
-
-    {
-      "id": "praktyka",
-      "label": {
-        "pl": "Jak z tym pracować, żeby miało sens",
-        "en": "How to work with it so it pays off"
-      },
-      "intro": {
-        "pl": "Komendy są proste do zapamiętania. Trudniejsze jest to, co niżej — nawyki, które robią różnicę między „fajny gadżet” a realną oszczędnością czasu.",
-        "en": "The commands are easy to memorize. What's below is harder — the habits that separate \"neat gadget\" from an actual saving of time."
-      },
-      "items": [
-        {
-          "term": { "pl": "Najpierw plan, potem kod", "en": "Plan first, code second" },
-          "desc": {
-            "pl": "Przy czymkolwiek większym niż drobna poprawka wejdź w tryb planowania. Przeczytanie planu zajmuje minutę, a wyłapiesz nieporozumienie zanim powstanie z niego trzysta linijek do wyrzucenia.",
-            "en": "For anything bigger than a small fix, switch to plan mode. Reading the plan takes a minute and catches the misunderstanding before it becomes three hundred lines you have to throw away."
-          }
-        },
-        {
-          "term": { "pl": "Jedna rzecz na raz", "en": "One thing at a time" },
-          "desc": {
-            "pl": "Trzy zadania w jednym poleceniu dają trzy połowicznie zrobione rzeczy. Rozbij na kroki i sprawdzaj po każdym.",
-            "en": "Three tasks in one prompt gets you three half-done things. Break it into steps and check after each one."
-          }
-        },
-        {
-          "term": { "pl": "/clear częściej, niż ci się wydaje", "en": "/clear more often than feels natural" },
-          "desc": {
-            "pl": "Nowe zadanie = nowa sesja. Ciągnięcie jednej rozmowy przez cały dzień pogarsza odpowiedzi i podnosi koszt, bo wszystko z rana wciąż siedzi w kontekście.",
-            "en": "New task, new session. Dragging one conversation through the whole day makes answers worse and costs more, because the morning is still sitting in context."
-          }
-        },
-        {
-          "term": { "pl": "Daj mu sposób na sprawdzenie siebie", "en": "Give it a way to check itself" },
-          "desc": {
-            "pl": "Testy, komenda uruchamiająca aplikację, skrypt sprawdzający — cokolwiek, co da odpowiedź „działa / nie działa” bez ciebie. Z takim narzędziem poprawia się sam; bez niego zgaduje i oddaje ci kod do sprawdzenia.",
-            "en": "Tests, a command that runs the app, a check script — anything that answers \"works / doesn't\" without you. With one it corrects itself; without one it guesses and hands you the checking."
-          }
-        },
-        {
-          "term": { "pl": "Wklej błąd, nie opisuj go", "en": "Paste the error, don't describe it" },
-          "desc": {
-            "pl": "Pełna treść komunikatu albo zrzut ekranu jest wart więcej niż akapit „coś nie działa przy zapisie”. Obrazek wklejasz przez Alt+V (Windows) lub Ctrl+V.",
-            "en": "The full message or a screenshot beats a paragraph of \"something breaks on save\". Paste an image with Alt+V (Windows) or Ctrl+V."
-          }
-        },
-        {
-          "term": { "pl": "Wskazuj pliki przez @", "en": "Point at files with @" },
-          "desc": {
-            "pl": "Podanie ścieżki oszczędza mu przeszukiwania projektu, a tobie kontekstu, który to przeszukiwanie by zjadło.",
-            "en": "Giving a path saves it a search through the project — and saves you the context that search would eat."
-          }
-        },
-        {
-          "term": { "pl": "Przerywaj wcześnie", "en": "Interrupt early" },
-          "desc": {
-            "pl": "Esc, gdy widzisz, że idzie w złą stronę. Nie ma sensu czekać z uprzejmości, aż skończy coś, czego i tak nie użyjesz.",
-            "en": "Hit Esc when you see it heading the wrong way. There's no point politely waiting for it to finish something you won't use."
-          }
-        },
-        {
-          "term": { "pl": "Powtarzasz się? To materiał do CLAUDE.md", "en": "Repeating yourself? That belongs in CLAUDE.md" },
-          "desc": {
-            "pl": "Jeśli tłumaczysz to samo drugi raz w tym tygodniu, przenieś to do pliku. Zasada praktyczna: druga poprawka tego samego błędu to sygnał do zapisania.",
-            "en": "If you're explaining the same thing twice in a week, move it into the file. Rule of thumb: correcting the same mistake a second time is the signal to write it down."
-          }
-        },
-        {
-          "term": { "pl": "Czytaj zmiany, zanim je zatwierdzisz", "en": "Read the changes before you accept them" },
-          "desc": {
-            "pl": "/diff i Ctrl+O są po to, żebyś wiedział, co weszło. Zgadza się na wszystko bez patrzenia tylko ten, kto lubi niespodzianki tydzień później.",
-            "en": "/diff and Ctrl+O exist so you know what landed. Approving without looking only works for people who enjoy surprises a week later."
-          }
-        },
-        {
-          "term": { "pl": "Nie wklejaj sekretów", "en": "Don't paste secrets" },
-          "desc": {
-            "pl": "Hasła, klucze API, dane osobowe z produkcji — nic z tego nie powinno trafić do rozmowy. Jeśli Claude potrzebuje czegoś zalogowanego, użyj trybu powłoki (!) i zaloguj się sam.",
-            "en": "Passwords, API keys, production personal data — none of it should end up in the conversation. If Claude needs something behind a login, use shell mode (!) and log in yourself."
-          }
-        },
-        {
-          "term": { "pl": "Traktuj to jak stażystę, nie jak wyrocznię", "en": "Treat it like an intern, not an oracle" },
-          "desc": {
-            "pl": "Szybki, oczytany, pracowity — i czasem pewnym głosem mówi rzeczy nieprawdziwe. Odpowiedzialność za to, co wejdzie do projektu, zostaje po twojej stronie.",
-            "en": "Fast, well-read, hard-working — and occasionally confidently wrong. Responsibility for what lands in the project stays on your side."
-          }
-        }
-      ]
-    },
-
-    {
-      "id": "awarie",
-      "label": {
-        "pl": "Kiedy coś nie działa",
-        "en": "When something breaks"
-      },
-      "intro": {
-        "pl": "Krótka lista pierwszej pomocy, mniej więcej w kolejności, w jakiej warto próbować.",
-        "en": "A short first-aid list, roughly in the order worth trying."
-      },
-      "items": [
-        { "code": "/doctor", "desc": { "pl": "Automatyczna diagnoza instalacji i ustawień. Zawsze pierwszy krok.", "en": "Automatic diagnosis of your install and settings. Always the first step." } },
-        { "code": "/context", "desc": { "pl": "Gdy „nie stosuje się do instrukcji” — sprawdź, czy plik z instrukcjami w ogóle się wczytał.", "en": "When it \"ignores instructions\" — check whether the instructions file loaded at all." } },
-        { "code": "/rewind", "desc": { "pl": "Gdy zmiany zepsuły projekt. Cofa kod i rozmowę do wcześniejszego punktu.", "en": "When changes broke the project. Rolls code and conversation back." } },
-        { "code": "claude --safe-mode", "desc": { "pl": "Gdy zaczęło szwankować po zmianie konfiguracji — start z wyłączonymi przeróbkami.", "en": "When it started misbehaving after a config change — start with customizations off." } },
-        { "code": "/reload-plugins", "desc": { "pl": "Gdy wtyczka albo umiejętność nie widać po dodaniu.", "en": "When a plugin or skill doesn't show up after you added it." } },
-        { "code": "Ctrl+L", "desc": { "pl": "Gdy ekran się rozjechał — przerysowanie bez utraty rozmowy.", "en": "When the display goes garbled — redraw without losing the conversation." } },
-        { "code": "/release-notes", "desc": { "pl": "Gdy coś działało wczoraj, a dziś nie. Bywa, że po prostu się zmieniło.", "en": "When something worked yesterday and doesn't today. Sometimes it simply changed." } },
-        { "code": "/bug", "desc": { "pl": "Gdy to naprawdę błąd — zgłoszenie razem z przebiegiem rozmowy.", "en": "When it really is a bug — a report with the transcript attached." } }
       ]
     }
   ]
