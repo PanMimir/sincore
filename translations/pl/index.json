@@ -7,7 +7,9 @@
     "cheatsheet": "AI cheatsheet",
     "stack": "Stack",
     "about": "O mnie",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "menu_open": "Otwórz menu",
+    "menu_close": "Zamknij menu"
   },
   "hero": {
     "greeting": "Cześć, jestem",
@@ -26,7 +28,8 @@
     "terminal_line5": "otwarty na projekty",
     "terminal_line6": "$ ./contact.sh",
     "terminal_line7": "→ contact@sincore.io",
-    "motto": "It works. That's the point."
+    "motto": "It works. That's the point.",
+    "seo_home_title": "sincore — automatyzacja i oprogramowanie dla przemysłu"
   },
   "projects": {
     "title": "Projekty",
@@ -60,7 +63,9 @@
     "tags": "Tagi",
     "stack_label": "Stack",
     "screenshots_label": "Zrzuty ekranu",
-    "private_repo": "private repo"
+    "private_repo": "private repo",
+    "seo_description": "Narzędzia, które napisałem do konkretnych problemów z laboratorium i instalacji: rejestratory danych, konfiguratory modułów, monitoring norm.",
+    "apk_rate_limited": "Za dużo prób. Odczekaj minutę i spróbuj ponownie."
   },
   "knowledge": {
     "title": "Baza wiedzy",
@@ -69,7 +74,9 @@
     "no_articles": "Brak artykułów.",
     "all": "Wszystkie",
     "search_placeholder": "Szukaj artykułu...",
-    "sources": "Źródła"
+    "sources": "Źródła",
+    "search_label": "Szukaj w bazie wiedzy",
+    "seo_description": "Notatki z pola: Modbus, RS-485, aparatura pomiarowa i normy PN-EN. Jak to działa naprawdę i co się psuje na instalacji."
   },
   "cheatsheet": {
     "title": "AI cheatsheet",
@@ -87,15 +94,14 @@
     "no_results": "Nic takiego tu nie ma. Spróbuj innego hasła.",
     "disclaimer_label": "Zastrzeżenie",
     "disclaimer": "Claude Code zmienia się co tydzień — komendy przybywają, skróty czasem się przesuwają. Stan tej ściągi: {date}. Zawsze aktualną listę masz pod ręką: wpisz /help w sesji.",
-    "docs_link": "Oficjalna dokumentacja Claude Code"
+    "docs_link": "Oficjalna dokumentacja Claude Code",
+    "seo_description": "Ściąga z Claude Code po ludzku — komendy, skróty i to, co ludzie na świecie faktycznie robią z modelami językowymi."
   },
   "stack": {
     "title": "Stack technologiczny",
-    "subtitle": "Co znam, czego się uczę",
-    "level_expert": "biegły",
-    "level_advanced": "zaawansowany",
-    "level_intermediate": "średniozaawansowany",
-    "level_basic": "podstawowy"
+    "subtitle": "Bez procentów i pasków. Przy każdej pozycji stoi to, co ją potwierdza: wydany projekt albo napisany artykuł.",
+    "seo_description": "Czym się zajmuję i czym to robię — każda pozycja z odnośnikiem do projektu albo artykułu, który ją potwierdza.",
+    "evidence_note": "Kolejność nie jest przypadkowa. Wiedza domenowa idzie pierwsza, bo to jedyna część, której nie da się nadrobić kursem. Rzeczy, przy których jestem uczniem, siedzą na dole i tak są opisane."
   },
   "about": {
     "title": "O mnie",
@@ -113,7 +119,8 @@
     ],
     "approach_title": "Podejście",
     "approach": "Rozumiem system, zanim napiszę kod. Nie sprzedaję rozwiązań, które znam — szukam rozwiązań, które działają dla konkretnego problemu.",
-    "focus_label": "Fokus"
+    "focus_label": "Fokus",
+    "seo_description": "Michał Pańczyk — dziesięć lat badań energetyczno-emisyjnych w laboratorium, dziś piszę narzędzia do problemów, które sam napotkałem."
   },
   "contact": {
     "title": "Kontakt",
@@ -124,13 +131,16 @@
     "copy_email": "Skopiuj adres",
     "copied": "Skopiowano!",
     "response_time_label": "Czas odpowiedzi",
-    "languages_label": "Języki"
+    "languages_label": "Języki",
+    "seo_description": "Masz problem z odczytem danych z aparatury albo powtarzalną robotą do zautomatyzowania? Napisz — odpowiadam w ciągu doby.",
+    "copy_failed": "Przeglądarka nie dała dostępu do schowka. Adres:"
   },
   "common": {
     "loading": "Ładowanie...",
     "error": "Coś poszło nie tak.",
     "back": "Wróć",
-    "all": "Wszystkie"
+    "all": "Wszystkie",
+    "skip_to_content": "Przejdź do treści"
   },
   "footer": {
     "built_with": "Zbudowane z",
@@ -178,7 +188,10 @@
       "Szkolenia masowe (instruktaż dla 1-2 osób — tak)"
     ],
     "service_1_status": "present",
-    "service_1_portfolio": ["sincore.io", "Wzorzec (w budowie)"],
+    "service_1_portfolio": [
+      "sincore.io",
+      "Wzorzec (w budowie)"
+    ],
     "service_2_title": "Automatyzacja procesów",
     "service_2_tag": "automatyzacja",
     "service_2_desc": "Raporty robione ręcznie, dane przepisywane między systemami, powtarzalne zadania, które zjadają godziny tygodniowo. To da się zautomatyzować.",
@@ -200,7 +213,10 @@
       "Migracja danych historycznych (jako oddzielny projekt)"
     ],
     "service_2_status": "present",
-    "service_2_portfolio": ["Norm Monitor", "Modbus ↔ MQTT/REST bridge (planowany)"],
+    "service_2_portfolio": [
+      "Norm Monitor",
+      "Modbus ↔ MQTT/REST bridge (planowany)"
+    ],
     "service_3_title": "Systemy przemysłowe",
     "service_3_tag": "systemy",
     "service_3_desc": "Sprzęt działa, ale brak oprogramowania do obsługi? Piszę aplikacje komunikujące się przez Modbus, RS-485, port COM — od odczytu danych po sterowanie.",
@@ -222,7 +238,11 @@
       "Konstrukcja sprzętowa, kable, przejściówki"
     ],
     "service_3_status": "present",
-    "service_3_portfolio": ["RADWAG WLC X2", "F&F MB-TC-1", "Bronkhorst MFC/MFM"],
+    "service_3_portfolio": [
+      "RADWAG WLC X2",
+      "F&F MB-TC-1",
+      "Bronkhorst MFC/MFM"
+    ],
     "service_4_title": "Narzędzia wewnętrzne",
     "service_4_tag": "narzędzia",
     "service_4_desc": "Zamówienia w Excelu, statusy w głowie szefa, raporty robione w piątek. Buduję proste systemy do zarządzania zamówieniami, statusami i raportowaniem — bez korporacyjnego ERP.",
@@ -263,7 +283,11 @@
       "Gwarancja działania na nietypowych konfiguracjach"
     ],
     "service_5_status": "community",
-    "service_5_portfolio": ["RADWAG WLC X2 v1.0.1", "F&F MB-TC-1 v1.0.2"]
+    "service_5_portfolio": [
+      "RADWAG WLC X2 v1.0.1",
+      "F&F MB-TC-1 v1.0.2"
+    ],
+    "seo_description": "Co naprawiam i co buduję: automatyzacja powtarzalnej roboty, odczyt danych z aparatury, integracje protokołów przemysłowych."
   },
   "home": {
     "stats_projects": "projektów",
@@ -287,5 +311,20 @@
     "cta_title": "Masz projekt lub pytanie?",
     "cta_subtitle": "Chętnie porozmawiam o tym, co można zautomatyzować, zoptymalizować lub po prostu zbudować.",
     "cta_button": "Napisz do mnie"
+  },
+  "notFound": {
+    "title": "Tej strony tu nie ma",
+    "description": "Adres jest zły albo strona zmieniła miejsce. Poniżej dwa miejsca, w których najpewniej znajdziesz to, czego szukasz.",
+    "link_knowledge": "Baza wiedzy",
+    "link_projects": "Projekty",
+    "link_home": "Strona główna"
+  },
+  "error": {
+    "label": "Błąd",
+    "title": "Coś się wyłożyło po drodze",
+    "description": "Strona nie doczytała się do końca. Zwykle wystarczy spróbować jeszcze raz — jeśli wraca, daj znać przez kontakt.",
+    "retry": "Spróbuj ponownie",
+    "home": "Strona główna",
+    "reference": "Numer zgłoszenia"
   }
 }

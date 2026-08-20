@@ -7,12 +7,14 @@ interface ComingSoonProps {
 
 export default function ComingSoon({ section, etap }: ComingSoonProps) {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 flex items-center justify-center min-h-[60vh]">
+    <div className="mx-auto flex min-h-[60vh] max-w-7xl items-center justify-center px-4 py-24 sm:px-6 lg:px-8">
       <div className="text-center">
-        <Terminal size={40} className="text-accent-primary mx-auto mb-6 opacity-60" />
-        <p className="font-mono text-text-muted text-sm mb-2">$ ./build {section}</p>
-        <h1 className="font-bold text-3xl tracking-tight text-text-primary mb-4">{section}</h1>
-        <p className="font-mono text-text-muted text-sm">
+        <Terminal size={40} className="mx-auto mb-6 text-accent-primary opacity-60" />
+        <p className="mb-2 font-mono text-sm text-text-muted">$ ./build {section}</p>
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-text-primary">
+          {section}
+        </h1>
+        <p className="font-mono text-sm text-text-muted">
           <span className="text-accent-primary">{"// "}</span>
           implementacja w {etap}
         </p>

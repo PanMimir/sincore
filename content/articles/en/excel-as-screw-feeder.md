@@ -1,7 +1,8 @@
 ---
 id: screw-feeder-pyrolysis-calculator
 title: "Excel as a screw feeder, or: how to calculate pyrolyser settings without leaving your desk"
-description: "The plan was simple — a day off from code, hands on the pyrolyser. It ended in a thousand lines of Python, a fitted biomass decomposition kinetic model and a settings calculator covering 16 fuels. On mass balance, why screw fill ratio isn't a property of the equipment, and why nobody will reply to your email about feeder settings this week."
+titleSeo: "Pyrolyser settings calculator — Excel to Python"
+description: "A day off from code ended in a biomass decomposition model and a settings calculator for 16 fuels. On mass balance and what screw fill ratio really is."
 date: "2026-06-09"
 tags: ["pyrolysis", "biomass", "process-engineering", "Excel", "calculator"]
 featured: true
@@ -27,7 +28,7 @@ It starts innocently enough. You want two things:
 
 Sounds reasonable. You enter some Hz on the inverter, 5 seconds on / 5 seconds off on the feeder controller. You look at the biochar — it either looks like wood pellet lightly singed with a lighter, or like activated carbon straight from a lab. Somewhere in between. You change the Hz. The biochar changes a bit. You change the off-time. The biochar looks different. How are you supposed to know?
 
-And all of this is because those two parameters — throughput and residence time — **cannot be set independently**. They are tied together by a small detail from technical high school, which nobody remembers is called the *mass balance*:
+And all of this is because those two parameters — throughput and residence time — **cannot be set independently**. They are tied together by a small detail from technical high school, which nobody remembers is called the _mass balance_:
 
 > **Holdup = throughput × residence time**
 
@@ -63,14 +64,14 @@ A better solution comes from thermal decomposition chemistry — the Y(T) curve 
 
 Three parameters per fuel — and since the symbols don't speak for themselves:
 
-| Symbol | What it is | Unit |
-|---|---|---|
-| **Y(T)** | mass yield at temperature T: what fraction of the feed comes out as biochar | % |
-| **T** | temperature in the heated zone | °C |
-| **Y∞** | the asymptote — how much char always remains, however long you heat it | % |
-| **A** | how much mass is "available to decompose" above the asymptote | % |
-| **k** | how fast the yield falls with temperature | 1/°C |
-| **300** | not a physical constant, just where the curve is anchored: the bottom of the range | °C |
+| Symbol   | What it is                                                                         | Unit |
+| -------- | ---------------------------------------------------------------------------------- | ---- |
+| **Y(T)** | mass yield at temperature T: what fraction of the feed comes out as biochar        | %    |
+| **T**    | temperature in the heated zone                                                     | °C   |
+| **Y∞**   | the asymptote — how much char always remains, however long you heat it             | %    |
+| **A**    | how much mass is "available to decompose" above the asymptote                      | %    |
+| **k**    | how fast the yield falls with temperature                                          | 1/°C |
+| **300**  | not a physical constant, just where the curve is anchored: the bottom of the range | °C   |
 
 Everything fitted to measurements from the literature (where they exist) or to your own (where they don't). The curve appears in the spreadsheet in thirty seconds.
 
@@ -110,4 +111,4 @@ Or two, if they also want to throw in coffee.
 
 ---
 
-*Part two: [Pyrolyser calculator V2](/en/knowledge/pyrolyser-calculator-v2-validation) — six weeks later the spreadsheet collided with sixteen days of commissioning trials. The fill ratio I described above as "usually 0.20–0.30" turned out to be 0.49.*
+_Part two: [Pyrolyser calculator V2](/en/knowledge/pyrolyser-calculator-v2-validation) — six weeks later the spreadsheet collided with sixteen days of commissioning trials. The fill ratio I described above as "usually 0.20–0.30" turned out to be 0.49._

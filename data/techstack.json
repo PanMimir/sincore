@@ -1,47 +1,225 @@
 [
   {
-    "category": "backend",
-    "label": { "pl": "Backend (Java)", "en": "Backend (Java)" },
-    "items": [
-      { "name": "Java",                    "level": "advanced" },
-      { "name": "Spring",                  "level": "advanced" },
-      { "name": "OOP / wzorce projektowe", "level": "advanced" },
-      { "name": "Git",                     "level": "advanced" },
-      { "name": "SQL",                     "level": "intermediate" },
-      { "name": "JUnit / testowanie",      "level": "intermediate" }
-    ]
-  },
-  {
-    "category": "frontend",
-    "label": { "pl": "Frontend", "en": "Frontend" },
-    "items": [
-      { "name": "HTML",       "level": "advanced" },
-      { "name": "CSS",        "level": "intermediate" },
-      { "name": "JavaScript", "level": "intermediate" }
-    ]
-  },
-  {
     "category": "domain",
+    "featured": true,
     "label": { "pl": "Wiedza domenowa", "en": "Domain expertise" },
+    "note": {
+      "pl": "Dziesięć lat w laboratorium badawczym. To jest ta część, której nie da się nadrobić kursem.",
+      "en": "Ten years in a research laboratory. This is the part you cannot pick up from a course."
+    },
     "items": [
-      { "name": "Badania energetyczno-emisyjne urządzeń grzewczych", "level": "expert" },
-      { "name": "Normy PN-EN 303-5, 13240, 14785, 16510, 16647",     "level": "advanced" },
-      { "name": "Analiza spalin i gazów odlotowych",                 "level": "advanced" },
-      { "name": "Aparatura pomiarowa — obsługa i serwis",            "level": "advanced" },
-      { "name": "Piroliza metanu / karbonizacja biomasy",            "level": "basic" }
+      {
+        "name": {
+          "pl": "Badania energetyczno-emisyjne urządzeń grzewczych",
+          "en": "Energy and emissions testing of heating appliances"
+        },
+        "evidence": [
+          {
+            "kind": "note",
+            "label": { "pl": "10 lat pracy w ITPE", "en": "10 years at ITPE" }
+          }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Normy PN-EN 303-5, 13240, 14785, 16510, 16647",
+          "en": "PN-EN 303-5, 13240, 14785, 16510, 16647 standards"
+        },
+        "evidence": [
+          { "kind": "project", "slug": "norm-monitor" },
+          { "kind": "article", "id": "monitoring-pkn-standards-law" }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Analiza spalin i gazów odlotowych",
+          "en": "Flue gas and exhaust analysis"
+        },
+        "evidence": [
+          {
+            "kind": "note",
+            "label": {
+              "pl": "pomiary na stanowiskach badawczych",
+              "en": "measurements on test rigs"
+            }
+          }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Aparatura pomiarowa — obsługa, serwis, odczyt danych",
+          "en": "Measurement instruments — operation, servicing, data capture"
+        },
+        "evidence": [
+          { "kind": "project", "slug": "radwag-rejestrator" },
+          { "kind": "project", "slug": "mb-tc-configurator" },
+          { "kind": "article", "id": "thermocouple-modules" }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Piroliza metanu i karbonizacja biomasy",
+          "en": "Methane pyrolysis and biomass carbonisation"
+        },
+        "evidence": [
+          { "kind": "article", "id": "screw-feeder-pyrolysis-calculator" },
+          { "kind": "article", "id": "screw-feeder-calculator-validation" }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "protocols",
+    "label": {
+      "pl": "Protokoły i komunikacja przemysłowa",
+      "en": "Industrial protocols and communication"
+    },
+    "items": [
+      {
+        "name": { "pl": "Modbus RTU / TCP", "en": "Modbus RTU / TCP" },
+        "evidence": [
+          { "kind": "project", "slug": "mb-tc-configurator" },
+          { "kind": "project", "slug": "radwag-rejestrator" },
+          { "kind": "article", "id": "modbus-tcp" },
+          { "kind": "article", "id": "modbus-rtu" },
+          { "kind": "article", "id": "thermocouple-disconnect-detection" }
+        ]
+      },
+      {
+        "name": { "pl": "RS-485 — warstwa fizyczna", "en": "RS-485 — physical layer" },
+        "evidence": [
+          { "kind": "article", "id": "rs485-physical" },
+          { "kind": "article", "id": "serial-troubleshooting" },
+          { "kind": "project", "slug": "bronkhorst-controller" }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Porty szeregowe — diagnostyka i testowanie",
+          "en": "Serial ports — diagnostics and testing"
+        },
+        "evidence": [{ "kind": "article", "id": "com-port-testing" }]
+      },
+      {
+        "name": { "pl": "FLOW-BUS (Bronkhorst)", "en": "FLOW-BUS (Bronkhorst)" },
+        "evidence": [
+          { "kind": "project", "slug": "bronkhorst-controller" },
+          { "kind": "article", "id": "flowbus-bronkhorst" }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Siemens LOGO! i małe sterowniki",
+          "en": "Siemens LOGO! and small controllers"
+        },
+        "evidence": [{ "kind": "article", "id": "siemens-logo" }]
+      }
+    ]
+  },
+  {
+    "category": "tooling",
+    "label": {
+      "pl": "Narzędzia, którymi to buduję",
+      "en": "Tools I build with"
+    },
+    "items": [
+      {
+        "name": { "pl": "Python", "en": "Python" },
+        "evidence": [
+          { "kind": "project", "slug": "radwag-rejestrator" },
+          { "kind": "project", "slug": "mb-tc-configurator" },
+          { "kind": "project", "slug": "bronkhorst-controller" }
+        ]
+      },
+      {
+        "name": {
+          "pl": "PySide6 — interfejsy desktopowe",
+          "en": "PySide6 — desktop interfaces"
+        },
+        "evidence": [
+          { "kind": "project", "slug": "radwag-rejestrator" },
+          { "kind": "project", "slug": "mb-tc-configurator" }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Git i wydania na GitHubie",
+          "en": "Git and GitHub releases"
+        },
+        "evidence": [
+          {
+            "kind": "note",
+            "label": { "pl": "każdy projekt na tej stronie", "en": "every project on this site" }
+          }
+        ]
+      },
+      {
+        "name": {
+          "pl": "FitSM — zarządzanie usługami IT",
+          "en": "FitSM — IT service management"
+        },
+        "evidence": [{ "kind": "article", "id": "fitsm-foundation" }]
+      }
     ]
   },
   {
     "category": "learning",
     "label": { "pl": "W trakcie nauki", "en": "Currently learning" },
+    "note": {
+      "pl": "Rzeczy, przy których jestem uczniem, nie fachowcem. Projekty przy nich powstają z pomocą AI — to nauka w praktyce, a nie deklaracja biegłości.",
+      "en": "Things I am a student of, not a practitioner. The projects here are built with AI assistance — that is learning in practice, not a claim of proficiency."
+    },
     "items": [
-      { "name": "Python",         "level": "basic" },
-      { "name": "PySide6",        "level": "basic" },
-      { "name": "Modbus RTU/TCP", "level": "basic" },
-      { "name": "RS-485",         "level": "basic" },
-      { "name": "Next.js",        "level": "basic" },
-      { "name": "React",          "level": "basic" },
-      { "name": "TypeScript",     "level": "basic" }
+      {
+        "name": { "pl": "Java", "en": "Java" },
+        "evidence": [
+          {
+            "kind": "note",
+            "label": { "pl": "rok nauki, projekt w przygotowaniu", "en": "a year of study, project in preparation" }
+          }
+        ]
+      },
+      {
+        "name": { "pl": "Spring", "en": "Spring" },
+        "evidence": [
+          {
+            "kind": "note",
+            "label": { "pl": "kurs w toku", "en": "course in progress" }
+          }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Programowanie obiektowe i wzorce projektowe",
+          "en": "Object-oriented programming and design patterns"
+        },
+        "evidence": [
+          { "kind": "note", "label": { "pl": "kurs w toku", "en": "course in progress" } }
+        ]
+      },
+      {
+        "name": { "pl": "SQL", "en": "SQL" },
+        "evidence": [
+          { "kind": "note", "label": { "pl": "podstawy", "en": "fundamentals" } }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Next.js, React, TypeScript",
+          "en": "Next.js, React, TypeScript"
+        },
+        "evidence": [
+          { "kind": "project", "slug": "sincore-portfolio" },
+          { "kind": "project", "slug": "norm-monitor" }
+        ]
+      },
+      {
+        "name": {
+          "pl": "Cyberbezpieczeństwo — wykrywanie i emulacja ataków",
+          "en": "Cybersecurity — detection and adversary emulation"
+        },
+        "evidence": [{ "kind": "article", "id": "ai-assisted-ot-intrusion" }]
+      }
     ]
   }
 ]

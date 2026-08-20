@@ -15,6 +15,7 @@ references:
 ## Czym jest moduł termoparowy
 
 Moduł termoparowy (przetwornik temperatury) to urządzenie, które:
+
 1. Podłącza termopary (czujniki temperatury)
 2. Mierzy ich napięcie (mV)
 3. Przelicza je na temperaturę z uwzględnieniem kompensacji zimnego końca
@@ -26,14 +27,14 @@ Takie moduły produkuje m.in. F&F Filipowski (seria MB-TC), ADAM (Advantech), Wa
 
 Termopara to para przewodów z różnych stopów. Styk gorący mierzy temperaturę, styk zimny (cold junction) jest w module i wymaga kompensacji.
 
-| Typ | Materiały | Zakres | Czułość |
-|-----|-----------|--------|---------|
-| K | NiCr / NiAl | −200 do +1350°C | ~41 μV/°C |
-| J | Fe / CuNi | −210 do +750°C | ~52 μV/°C |
-| T | Cu / CuNi | −250 do +400°C | ~43 μV/°C |
-| N | NiCrSi / NiSi | −270 do +1300°C | ~39 μV/°C |
-| E | NiCr / CuNi | −270 do +1000°C | ~68 μV/°C |
-| R, S, B | Pt/Rh alloys | 0 do +1700°C | ~6–13 μV/°C |
+| Typ     | Materiały     | Zakres          | Czułość     |
+| ------- | ------------- | --------------- | ----------- |
+| K       | NiCr / NiAl   | −200 do +1350°C | ~41 μV/°C   |
+| J       | Fe / CuNi     | −210 do +750°C  | ~52 μV/°C   |
+| T       | Cu / CuNi     | −250 do +400°C  | ~43 μV/°C   |
+| N       | NiCrSi / NiSi | −270 do +1300°C | ~39 μV/°C   |
+| E       | NiCr / CuNi   | −270 do +1000°C | ~68 μV/°C   |
+| R, S, B | Pt/Rh alloys  | 0 do +1700°C    | ~6–13 μV/°C |
 
 **Typ K** jest najpopularniejszy w przemyśle — szeroki zakres, dobra czułość, tani. W laboratoriach często używa się T (niskie temperatury) lub R/S (wysokie, precyzyjne).
 
@@ -52,17 +53,18 @@ Każdy kanał ma własne wejście ADC. Moduł mierzy jednocześnie napięcie ter
 
 Rejestry Input (FC 04 lub FC 03 — zależy od producenta):
 
-| Rejestr | Zawartość |
-|---------|-----------|
-| 0–1 | Temperatura kanał 1 (float 32-bit, 2 rejestry) |
-| 2–3 | Temperatura kanał 2 |
-| 4–5 | Temperatura kanał 3 |
-| ... | ... |
-| 14–15 | Temperatura kanał 8 |
-| 16 | Status — bity błędów per kanał |
-| 17 | Temperatura cold junction |
+| Rejestr | Zawartość                                      |
+| ------- | ---------------------------------------------- |
+| 0–1     | Temperatura kanał 1 (float 32-bit, 2 rejestry) |
+| 2–3     | Temperatura kanał 2                            |
+| 4–5     | Temperatura kanał 3                            |
+| ...     | ...                                            |
+| 14–15   | Temperatura kanał 8                            |
+| 16      | Status — bity błędów per kanał                 |
+| 17      | Temperatura cold junction                      |
 
 Wartości mogą być przechowywane jako:
+
 - **Float IEEE 754** — 2 rejestry, bezpośrednio stopnie Celsjusza
 - **Integer × 10** — 1 rejestr, np. `2356` = 235.6°C
 - **Integer × 100** — 1 rejestr, np. `23560` = 235.60°C
@@ -88,7 +90,7 @@ if not result.isError():
         raw = struct.pack(">HH", result.registers[i], result.registers[i+1])
         temp = struct.unpack(">f", raw)[0]
         temps.append(round(temp, 1))
-    
+
     for ch, t in enumerate(temps, 1):
         print(f"Kanał {ch}: {t}°C")
 
@@ -98,6 +100,7 @@ client.close()
 ## Błąd kanału — jak go wykryć
 
 Jeśli termopara jest odłączona, uszkodzona lub przekroczony zakres — moduł zwraca wartość błędu. Typowe sygnały:
+
 - Wartość `-32768` lub `0x7FFF` (integer) — kanał w błędzie
 - Wartość `NaN` lub `±Inf` (float) — kanał w błędzie
 - Bit w rejestrze statusu — sprawdź dokumentację

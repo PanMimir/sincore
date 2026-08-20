@@ -40,6 +40,7 @@ Wiele urządzeń ma wbudowany przełącznik terminatora (jumper lub DIP switch).
 ## Bias resistors (rezystory podciągające)
 
 Gdy magistrala jest w stanie idle (nikt nie nadaje), linie A i B mogą "pływać" w niezdefiniowanym stanie. Rezystory bias wymuszają zdefiniowany stan:
+
 - Linia A podciągnięta do +5V przez ~560–680 Ω
 - Linia B podciągnięta do GND przez ~560–680 Ω
 
@@ -55,18 +56,19 @@ W praktyce: **zawsze prowadź trzecią żyłę** jako wspólną masę sygnałow�
 
 Do podłączenia komputera do magistrali RS-485 potrzebny jest konwerter. Popularne układy:
 
-| Układ | Uwagi |
-|-------|-------|
-| CH340 | Tani, powszechny, działa w Windows bez sterowników (Win 10+) |
-| CP2102 | Stabilny, dobra obsługa w Linux |
-| FT232 | Najlepszy timing, droższy, polecany przy wysokich baudrate |
-| FTDI FT485 | Dedykowany RS-485, automatyczne przełączanie kierunku |
+| Układ      | Uwagi                                                        |
+| ---------- | ------------------------------------------------------------ |
+| CH340      | Tani, powszechny, działa w Windows bez sterowników (Win 10+) |
+| CP2102     | Stabilny, dobra obsługa w Linux                              |
+| FT232      | Najlepszy timing, droższy, polecany przy wysokich baudrate   |
+| FTDI FT485 | Dedykowany RS-485, automatyczne przełączanie kierunku        |
 
 Tanie konwertery bez oznaczenia układu mogą mieć problemy z automatycznym przełączaniem kierunku TX/RX — objawiają się urywaną pierwszą ramką lub echem.
 
 ## Prędkości transmisji
 
 Standard nie narzuca konkretnych baudrate. W praktyce przemysłowej najczęściej spotkasz:
+
 - **9600 bps** — domyślne dla wielu urządzeń Modbus
 - **19200 bps**
 - **38400 bps**

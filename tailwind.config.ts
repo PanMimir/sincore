@@ -99,7 +99,13 @@ const config: Config = {
 
       fontFamily: {
         sans: ["var(--font-manrope)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "Geist Mono", "ui-monospace", "monospace"],
+        mono: [
+          "var(--font-mono)",
+          "JetBrains Mono",
+          "Geist Mono",
+          "ui-monospace",
+          "monospace",
+        ],
       },
 
       borderRadius: {

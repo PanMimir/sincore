@@ -1,5 +1,6 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ServiceAccordion, { Service } from "@/components/common/ServiceAccordion";
@@ -10,7 +11,12 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "services" });
-  return { title: t("title") };
+  return pageMetadata({
+    locale: params.locale,
+    path: "services",
+    title: t("title"),
+    description: t("seo_description"),
+  });
 }
 
 const SERVICE_DEFS: { id: string; key: string; icon: Service["icon"] }[] = [
@@ -21,11 +27,9 @@ const SERVICE_DEFS: { id: string; key: string; icon: Service["icon"] }[] = [
   { id: "s5", key: "service_5", icon: "community" },
 ];
 
-export default async function ServicesPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default async function ServicesPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
+
   const t = await getTranslations({ locale: params.locale, namespace: "services" });
 
   const services: Service[] = SERVICE_DEFS.map(({ id, key, icon }) => ({
@@ -43,12 +47,12 @@ export default async function ServicesPage({
   }));
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div className="mx-auto max-w-5xl px-4 py-24 sm:px-6 lg:px-8">
       <div className="mb-16">
-        <h1 className="font-bold tracking-tight text-4xl text-text-primary mb-4">
+        <h1 className="mb-4 text-4xl font-bold tracking-tight text-text-primary">
           {t("title")}
         </h1>
-        <p className="text-text-muted text-lg">{t("subtitle")}</p>
+        <p className="text-lg text-text-muted">{t("subtitle")}</p>
       </div>
 
       <ServiceAccordion
@@ -70,21 +74,21 @@ export default async function ServicesPage({
         contactHref={`/${params.locale}/contact`}
       />
 
-      <div className="border-l-2 border-accent-primary/40 pl-5 py-3 mb-12 bg-neutral-900/20">
-        <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">
+      <div className="border-accent-primary/40 mb-12 border-l-2 bg-neutral-900/20 py-3 pl-5">
+        <h3 className="mb-2 font-mono text-xs uppercase tracking-wider text-text-muted">
           {t("format_label")}
         </h3>
-        <p className="text-sm text-text-secondary leading-relaxed">{t("format_text")}</p>
+        <p className="text-sm leading-relaxed text-text-secondary">{t("format_text")}</p>
       </div>
 
-      <div className="border border-accent-primary/30 rounded-sincore-xl p-8 bg-accent-primary/5 text-center">
-        <h2 className="font-bold tracking-tight text-2xl text-text-primary mb-3">
+      <div className="border-accent-primary/30 bg-accent-primary/5 rounded-sincore-xl border p-8 text-center">
+        <h2 className="mb-3 text-2xl font-bold tracking-tight text-text-primary">
           {t("cta_title")}
         </h2>
-        <p className="text-text-secondary mb-6 max-w-lg mx-auto">{t("cta_subtitle")}</p>
+        <p className="mx-auto mb-6 max-w-lg text-text-secondary">{t("cta_subtitle")}</p>
         <Link
           href={`/${params.locale}/contact`}
-          className="inline-flex items-center gap-2 h-12 px-8 bg-accent-400 hover:bg-accent-300 active:bg-accent-500 text-neutral-950 font-mono font-bold text-sm rounded-sincore-md transition-all duration-fast ease-sincore-out hover:-translate-y-px"
+          className="inline-flex h-12 items-center gap-2 rounded-sincore-md bg-accent-400 px-8 font-mono text-sm font-bold text-neutral-950 transition-all duration-fast ease-sincore-out hover:-translate-y-px hover:bg-accent-300 active:bg-accent-500"
         >
           {t("cta_button")}
           <ArrowRight size={16} />

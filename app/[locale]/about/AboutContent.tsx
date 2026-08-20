@@ -1,9 +1,8 @@
 "use client";
 
-import { useTranslations } from"next-intl";
-import { motion } from"framer-motion";
-import { Terminal, Cpu, Code2, Monitor, Database } from"lucide-react";
-import ScrollReveal from"@/components/common/ScrollReveal";
+import { useTranslations } from "next-intl";
+import { Terminal, Cpu, Code2, Monitor, Database } from "lucide-react";
+import ScrollReveal from "@/components/common/ScrollReveal";
 
 const SKILL_ICONS = [Terminal, Cpu, Database, Monitor, Code2];
 
@@ -15,47 +14,49 @@ export default function AboutContent() {
   const skills = t.raw("skills") as string[];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div className="mx-auto max-w-5xl px-4 py-24 sm:px-6 lg:px-8">
       <ScrollReveal>
-        <h1 className="font-bold text-4xl sm:text-5xl text-text-primary mb-16">
+        <h1 className="mb-16 text-4xl font-bold text-text-primary sm:text-5xl">
           {t("title")}
         </h1>
       </ScrollReveal>
 
-      <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <div className="grid items-start gap-16 lg:grid-cols-2">
         <div>
           <ScrollReveal delay={0.1} className="space-y-4">
-            <p className="text-text-primary text-lg leading-relaxed">{t("bio_1")}</p>
-            <p className="text-xs uppercase tracking-wider text-accent-primary mt-6">{t("focus_label")}</p>
-            <p className="text-text-primary">custom software · industrial systems · automation</p>
+            <p className="text-lg leading-relaxed text-text-primary">{t("bio_1")}</p>
+            <p className="mt-6 text-xs uppercase tracking-wider text-accent-primary">
+              {t("focus_label")}
+            </p>
+            <p className="text-text-primary">
+              custom software · industrial systems · automation
+            </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2} className="mt-8 space-y-4">
-            <p className="text-text-muted leading-relaxed">{t("bio_2")}</p>
-            <p className="text-text-muted leading-relaxed">{t("bio_3")}</p>
+            <p className="leading-relaxed text-text-muted">{t("bio_2")}</p>
+            <p className="leading-relaxed text-text-muted">{t("bio_3")}</p>
           </ScrollReveal>
         </div>
 
         {/* Prawa — specjalizacje + podejście */}
         <div className="space-y-10">
           <ScrollReveal delay={0.15}>
-            <h2 className="font-bold text-xl text-text-primary mb-6">
+            <h2 className="mb-6 text-xl font-bold text-text-primary">
               {t("skills_title")}
             </h2>
             <ul className="space-y-3">
               {skills.map((skill, i) => {
                 const Icon = SKILL_ICONS[i] ?? Terminal;
                 return (
-                  <motion.li
+                  <li
                     key={i}
-                    initial={{ opacity: 0, x: 16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.35, delay: 0.2 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex items-start gap-3 p-3 bg-surface border border-border-subtle rounded-sincore-md hover:border-border-strong transition-colors duration-fast"
+                    className="slide-in flex items-start gap-3 rounded-sincore-md border border-border-subtle bg-surface p-3 transition-colors duration-fast hover:border-border-strong"
+                    style={{ animationDelay: `${120 + i * 60}ms` }}
                   >
-                    <Icon size={16} className="text-accent-primary mt-0.5 shrink-0" />
-                    <span className="text-text-primary text-sm">{skill}</span>
-                  </motion.li>
+                    <Icon size={16} className="mt-0.5 shrink-0 text-accent-primary" />
+                    <span className="text-sm text-text-primary">{skill}</span>
+                  </li>
                 );
               })}
             </ul>
@@ -63,10 +64,10 @@ export default function AboutContent() {
 
           <ScrollReveal delay={0.25}>
             <div className="border-l-2 border-accent-primary pl-5">
-              <h3 className="text-xs uppercase tracking-wider text-accent-primary mb-3">
+              <h3 className="mb-3 text-xs uppercase tracking-wider text-accent-primary">
                 {t("approach_title")}
               </h3>
-              <p className="text-text-muted text-sm leading-relaxed italic">
+              <p className="text-sm italic leading-relaxed text-text-muted">
                 {t("approach")}
               </p>
             </div>

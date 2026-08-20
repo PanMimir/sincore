@@ -2,14 +2,15 @@
 
 ## Pliki
 
-| Plik | Tło | Zastosowanie |
-|---|---|---|
-| `sincore-wordmark-dark.svg` | ciemne (#0a0a0f) | Strona sincore.io, banner social na ciemnym tle, prezentacje w dark mode |
-| `sincore-wordmark-light.svg` | jasne (#ffffff) | CV, sygnatura mailowa, dokumenty PDF, papier |
+| Plik                         | Tło              | Zastosowanie                                                             |
+| ---------------------------- | ---------------- | ------------------------------------------------------------------------ |
+| `sincore-wordmark-dark.svg`  | ciemne (#0a0a0f) | Strona sincore.io, banner social na ciemnym tle, prezentacje w dark mode |
+| `sincore-wordmark-light.svg` | jasne (#ffffff)  | CV, sygnatura mailowa, dokumenty PDF, papier                             |
 
 ## Koncepcja
 
 Wordmark `sincore` z kontrastem wagi fontu:
+
 - **`sin`** — weight 300 (Light) — wizualnie "to co naprawiamy"
 - **`core`** — weight 800 (ExtraBold) — wizualnie "rdzeń który działa"
 

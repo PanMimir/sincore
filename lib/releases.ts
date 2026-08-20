@@ -27,18 +27,30 @@ export function parseRepo(githubUrl: string | null): string | null {
 // na stronie w ciągu godziny od publikacji na GitHubie, bez redeployu.
 // Powtórne wywołania dla tego samego repo trafiają w cache fetch Next.js.
 export async function fetchLatestRelease(
-  githubUrl: string | null,
+  githubUrl: string | null
 ): Promise<GithubRelease | null> {
   const repo = parseRepo(githubUrl);
   if (!repo) return null;
   try {
-    const res = await fetch(
-      `https://api.github.com/repos/${repo}/releases/latest`,
-      {
-        headers: { Accept: "application/vnd.github+json" },
-        next: { revalidate: 3600 },
+    // Bez tokenu GitHub przepuszcza 60 zapytań na godzinę z jednego adresu IP —
+    // dzielonego z innymi projektami na tej samej infrastrukturze. Po przekroczeniu
+    // limitu funkcja cicho zwracała false i przyciski pobierania znikały bez śladu.
+    // GITHUB_TOKEN (uprawnienie: publiczny odczyt) podnosi limit do 5000/h.
+    const token = process.env.GITHUB_TOKEN;
+    const res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
+      headers: {
+        Accept: "application/vnd.github+json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
-    );
+      next: { revalidate: 3600 },
+    });
+
+    if (res.status === 403 || res.status === 429) {
+      console.warn(
+        `[releases] GitHub odrzucił zapytanie o ${repo} (${res.status}) — prawdopodobnie limit zapytań. Ustaw GITHUB_TOKEN.`
+      );
+      return null;
+    }
     if (!res.ok) return null;
     return (await res.json()) as GithubRelease;
   } catch {

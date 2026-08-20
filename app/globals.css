@@ -3,33 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --neutral-950: #0B0D10;
+  --neutral-950: #0b0d10;
   --neutral-900: #121418;
-  --neutral-800: #1F2328;
-  --neutral-700: #2D3138;
-  --neutral-600: #444B55;
-  --neutral-500: #68707A;
-  --neutral-400: #AEB4BA;
-  --neutral-300: #C9CED3;
-  --neutral-200: #DCE1E6;
-  --neutral-100: #F2F4F7;
-  --neutral-50: #FAFBFC;
+  --neutral-800: #1f2328;
+  --neutral-700: #2d3138;
+  --neutral-600: #444b55;
+  --neutral-500: #68707a;
+  --neutral-400: #aeb4ba;
+  --neutral-300: #c9ced3;
+  --neutral-200: #dce1e6;
+  --neutral-100: #f2f4f7;
+  --neutral-50: #fafbfc;
 
-  --accent-50: #E8FCFF;
-  --accent-100: #C8F7FF;
-  --accent-200: #95EEFF;
-  --accent-300: #5EE0FF;
-  --accent-400: #29D1FF;
-  --accent-500: #00BFEF;
-  --accent-600: #0098BF;
-  --accent-700: #00708C;
-  --accent-800: #004B5E;
+  --accent-50: #e8fcff;
+  --accent-100: #c8f7ff;
+  --accent-200: #95eeff;
+  --accent-300: #5ee0ff;
+  --accent-400: #29d1ff;
+  --accent-500: #00bfef;
+  --accent-600: #0098bf;
+  --accent-700: #00708c;
+  --accent-800: #004b5e;
   --accent-900: #002831;
 
-  --success-500: #18B777;
-  --warning-500: #D9A441;
-  --error-500: #D14B5A;
-  --info-500: #3E7BFA;
+  --success-500: #18b777;
+  --warning-500: #d9a441;
+  --error-500: #d14b5a;
+  --info-500: #3e7bfa;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -60,7 +60,7 @@
   /* Jaśniejszy niż neutral-500 z palety: ten na ciemnym tle dawał 3,7:1, czyli poniżej
      progu WCAG AA (4,5:1) dla zwykłego tekstu. Ta wartość daje 4,9:1 na powierzchni kart
      i 5,2:1 na tle strony, zachowując różnicę wobec --text-secondary. */
-  --text-muted: #7D858F;
+  --text-muted: #7d858f;
   --accent-primary: var(--accent-500);
   --accent-hover: var(--accent-400);
   --accent-active: var(--accent-600);
@@ -71,7 +71,7 @@
 [data-theme="light"] {
   --background: var(--neutral-50);
   --foreground: var(--neutral-950);
-  --surface: #FFFFFF;
+  --surface: #ffffff;
   --surface-elevated: var(--neutral-100);
   --border-subtle: var(--neutral-200);
   --border-strong: var(--neutral-300);
@@ -82,7 +82,7 @@
   --accent-hover: var(--accent-500);
   --accent-active: var(--accent-700);
   --button-primary-bg: var(--accent-700);
-  --button-primary-text: #FFFFFF;
+  --button-primary-text: #ffffff;
 }
 
 @layer base {
@@ -201,6 +201,76 @@
       transparent 70%
     );
   }
+
+  /* Wejście elementów — animacje CSS, nie JavaScript.
+     Wcześniej robiło to framer-motion i treść startowała z opacity: 0, więc nagłówek
+     strony głównej był przezroczysty aż do uruchomienia Reacta. Google mierzy moment
+     pojawienia się największego elementu (LCP), a element o zerowej przezroczystości
+     nie liczy się jako narysowany — animacja opóźniała więc sam wynik pomiaru.
+
+     .rise  — samo przesunięcie, bez przygaszania. Element jest widoczny od pierwszej
+              klatki, więc TYLKO tego wolno używać nad zgięciem strony.
+     .fade-rise — przygasza start, dopuszczalne poniżej pierwszego ekranu.
+     Opóźnienie kaskady podaje się przez style={{ animationDelay: "120ms" }}. */
+  .rise {
+    animation: rise var(--duration-slow) var(--ease-out) both;
+  }
+
+  .fade-rise {
+    animation: fadeRise var(--duration-slow) var(--ease-out) both;
+  }
+
+  .slide-in {
+    animation: slideIn var(--duration-normal) var(--ease-out) both;
+  }
+
+  .press:active {
+    transform: scale(0.94);
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Kto poprosił system o ograniczenie ruchu, dostaje stronę bez ruchu.
+   Zera nie da się tu użyć — część przeglądarek pomija wtedy zdarzenie animationend. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .article-content {
@@ -252,8 +322,12 @@
   color: var(--text-secondary);
 }
 
-.article-content ul { list-style-type: disc; }
-.article-content ol { list-style-type: decimal; }
+.article-content ul {
+  list-style-type: disc;
+}
+.article-content ol {
+  list-style-type: decimal;
+}
 
 .article-content li {
   margin-bottom: 0.4rem;

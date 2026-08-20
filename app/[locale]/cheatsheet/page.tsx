@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { pageMetadata } from "@/lib/metadata";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getCheatsheet } from "@/services/cheatsheetService";
 import CheatsheetClient from "./CheatsheetClient";
 
@@ -9,17 +10,17 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "cheatsheet" });
-  return {
+  return pageMetadata({
+    locale: params.locale,
+    path: "cheatsheet",
     title: t("title"),
-    description: t("subtitle"),
-  };
+    description: t("seo_description"),
+  });
 }
 
-export default async function CheatsheetPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default async function CheatsheetPage({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
+
   const cheatsheet = await getCheatsheet(params.locale);
   return <CheatsheetClient cheatsheet={cheatsheet} />;
 }

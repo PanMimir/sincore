@@ -15,6 +15,7 @@ references:
 Before you start writing Python code or configuring a library — it's worth checking whether the COM port works at all and whether the device responds. PowerShell has a built-in `System.IO.Ports.SerialPort` class that gives direct access to the serial port with no additional installs.
 
 Useful when:
+
 - You're not sure which COM port is your device
 - You want a quick "is this device alive?" check before writing code
 - You're debugging a communication problem and want to rule out the software layer

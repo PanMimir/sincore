@@ -15,12 +15,25 @@ export default function AnimatedBackground() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
+    // Kolor cząstek z tokenu motywu, nie wpisany na sztywno — inaczej w jasnym
+    // motywie (globals.css ma dla niego komplet zmiennych) tło byłoby niewidoczne.
+    const particleColor =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent-700")
+        .trim() || "#00708C";
+
+    // Kanwa ma tyle pikseli, ile ich naprawdę ma ekran. Bez tego na monitorach
+    // o podwyższonej gęstości cząstki są rozmyte.
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     resize();
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize, { passive: true });
 
     const particles: {
       x: number;
@@ -49,22 +62,26 @@ export default function AnimatedBackground() {
 
     const animate = () => {
       if (!running) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const viewWidth = window.innerWidth;
+      const viewHeight = window.innerHeight;
+      ctx.clearRect(0, 0, viewWidth, viewHeight);
 
       particles.forEach((p) => {
         p.x += p.speedX;
         p.y += p.speedY;
 
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
+        if (p.x < 0) p.x = viewWidth;
+        if (p.x > viewWidth) p.x = 0;
+        if (p.y < 0) p.y = viewHeight;
+        if (p.y > viewHeight) p.y = 0;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 112, 140, ${p.opacity})`;
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = particleColor;
         ctx.fill();
       });
+      ctx.globalAlpha = 1;
 
       animationId = requestAnimationFrame(animate);
     };
@@ -92,11 +109,12 @@ export default function AnimatedBackground() {
 
   return (
     <>
-      <div className="fixed inset-0 bg-dot-grid pointer-events-none z-0 opacity-50" />
-      <div className="fixed inset-x-0 top-0 h-[60vh] bg-hero-ambient pointer-events-none z-0" />
+      <div className="bg-dot-grid pointer-events-none fixed inset-0 z-0 opacity-50" />
+      <div className="bg-hero-ambient pointer-events-none fixed inset-x-0 top-0 z-0 h-[60vh]" />
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-0"
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{ opacity: 0.8 }}
       />
     </>

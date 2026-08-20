@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Tag } from "lucide-react";
 import type { Article } from "@/services/articleService";
 
@@ -24,36 +23,39 @@ export default function KnowledgeCard({ article, index = 0 }: KnowledgeCardProps
     : null;
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      className="group flex flex-col bg-surface border border-border-subtle rounded-sincore-xl p-6 hover:border-border-strong transition-colors duration-normal"
+    <article
+      // Kaskada zatrzymuje się na piątej karcie. Wcześniej opóźnienie rosło bez końca
+      // i przy czternastu artykułach ostatnia karta pojawiała się po ~1,1 s.
+      className="fade-rise group relative flex flex-col rounded-sincore-xl border border-border-subtle bg-surface p-6 transition-colors duration-normal hover:border-border-strong"
+      style={{ animationDelay: `${Math.min(index, 4) * 60}ms` }}
     >
       {formattedDate && (
-        <div className="flex items-center gap-1.5 text-text-muted font-mono text-xs mb-3">
+        <div className="mb-3 flex items-center gap-1.5 font-mono text-xs text-text-muted">
           <Calendar size={12} />
           {formattedDate}
         </div>
       )}
 
+      {/* Jeden link na całą kartę: ::after rozciąga obszar klikalny na cały kafelek,
+          więc czytnik ekranu widzi jedno odniesienie zamiast dwóch prowadzących w to
+          samo miejsce, a mysz trafia w kartę, nie w sam tytuł. */}
       <Link
         href={`/${locale}/knowledge/${article.slug}`}
-        className="font-bold text-lg tracking-tight text-text-primary hover:text-accent-primary transition-colors duration-fast leading-snug mb-2"
+        className="mb-2 text-lg font-bold leading-snug tracking-tight text-text-primary transition-colors duration-fast after:absolute after:inset-0 after:content-[''] hover:text-accent-primary"
       >
         {article.title}
       </Link>
 
-      <p className="text-text-secondary text-sm leading-relaxed mb-4 flex-1">
+      <p className="mb-4 flex-1 text-sm leading-relaxed text-text-secondary">
         {article.description}
       </p>
 
       {article.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="mb-4 flex flex-wrap gap-1.5">
           {article.tags.map((tag) => (
             <span
               key={tag}
-              className="flex items-center gap-1 font-mono text-xs px-2 py-0.5 bg-surface-elevated text-text-muted rounded"
+              className="flex items-center gap-1 rounded bg-surface-elevated px-2 py-0.5 font-mono text-xs text-text-muted"
             >
               <Tag size={10} />
               {tag}
@@ -62,13 +64,11 @@ export default function KnowledgeCard({ article, index = 0 }: KnowledgeCardProps
         </div>
       )}
 
-      <Link
-        href={`/${locale}/knowledge/${article.slug}`}
-        className="inline-flex items-center gap-1.5 text-xs font-medium text-accent-primary hover:text-accent-hover transition-colors duration-fast mt-auto"
-      >
+      {/* Element wizualny, nie drugi odnośnik — klika się cała karta. */}
+      <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-medium text-accent-primary transition-colors duration-fast group-hover:text-accent-hover">
         {t("read_more")}
         <ArrowRight size={12} />
-      </Link>
-    </motion.article>
+      </span>
+    </article>
   );
 }

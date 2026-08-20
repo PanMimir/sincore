@@ -40,6 +40,7 @@ Many devices have a built-in termination switch (jumper or DIP). Enable terminat
 ## Bias resistors
 
 When the bus is idle (no one is transmitting), lines A and B can float in an undefined state. Bias resistors force a defined state:
+
 - Line A pulled to +5V through ~560–680 Ω
 - Line B pulled to GND through ~560–680 Ω
 
@@ -55,18 +56,19 @@ In practice: **always run a third wire** as a common signal ground (not to be co
 
 To connect a computer to an RS-485 bus, you need a converter. Popular chips:
 
-| Chip | Notes |
-|------|-------|
-| CH340 | Cheap, common, works on Windows without drivers (Win 10+) |
-| CP2102 | Stable, good Linux support |
-| FT232 | Best timing, more expensive, recommended at high baud rates |
-| FTDI FT485 | Dedicated RS-485, automatic direction switching |
+| Chip       | Notes                                                       |
+| ---------- | ----------------------------------------------------------- |
+| CH340      | Cheap, common, works on Windows without drivers (Win 10+)   |
+| CP2102     | Stable, good Linux support                                  |
+| FT232      | Best timing, more expensive, recommended at high baud rates |
+| FTDI FT485 | Dedicated RS-485, automatic direction switching             |
 
 Cheap converters with no chip markings can have problems with automatic TX/RX direction switching — they show up as a chopped first frame or echo.
 
 ## Transmission speeds
 
 The standard doesn't mandate specific baud rates. In industrial practice you'll most often see:
+
 - **9600 bps** — default for many Modbus devices
 - **19200 bps**
 - **38400 bps**

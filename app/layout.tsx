@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, JetBrains_Mono } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import JsonLd from "@/components/common/JsonLd";
 import "./globals.css";
 
@@ -19,12 +20,14 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://sincore.io";
 
 export const metadata: Metadata = {
   title: { template: "%s | sincore", default: "sincore" },
-  description: "Naprawiam procesy i buduję oprogramowanie które działa. Dedykowane narzędzia, automatyzacja, systemy przemysłowe.",
+  description:
+    "Naprawiam procesy i buduję oprogramowanie które działa. Dedykowane narzędzia, automatyzacja, systemy przemysłowe.",
   metadataBase: new URL(BASE_URL),
   openGraph: {
     type: "website",
     siteName: "sincore",
-    images: [{ url: "/og-default.png", width: 1200, height: 630 }],
+    // Bez images — obrazek generuje trasa app/[locale]/opengraph-image.tsx.
+    // Wcześniej stał tu /og-default.png, plik, którego nigdy nie było w repo.
   },
   twitter: {
     card: "summary_large_image",
@@ -32,9 +35,14 @@ export const metadata: Metadata = {
   robots: process.env.NODE_ENV === "production" ? "index, follow" : "noindex, nofollow",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Język musi być w HTML wychodzącym z serwera: czytnik ekranu wybiera wymowę
+  // zanim uruchomi się JavaScript, a wyszukiwarka czyta źródło, nie stan po hydracji.
+  const locale = await getLocale();
+
   return (
     <html
+      lang={locale}
       suppressHydrationWarning
       data-theme="dark"
       className={`${manrope.variable} ${jetbrainsMono.variable}`}
@@ -42,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <JsonLd />
       </head>
-      <body className="bg-background text-text-primary antialiased flex flex-col min-h-screen">
+      <body className="flex min-h-screen flex-col bg-background text-text-primary antialiased">
         {children}
       </body>
     </html>

@@ -50,7 +50,9 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
     if (hash && services.some((s) => s.id === hash)) {
       setExpanded(hash);
       requestAnimationFrame(() => {
-        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        document
+          .getElementById(hash)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
   }, [services]);
@@ -76,7 +78,7 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
   };
 
   return (
-    <div className="space-y-4 mb-20">
+    <div className="mb-20 space-y-4">
       {services.map((s) => {
         const isOpen = expanded === s.id;
         const isCommunity = s.status === "community";
@@ -84,7 +86,7 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
           <article
             key={s.id}
             id={s.id}
-            className={`scroll-mt-24 border rounded-sincore-xl bg-surface transition-colors duration-normal ${
+            className={`scroll-mt-24 rounded-sincore-xl border bg-surface transition-colors duration-normal ${
               isCommunity
                 ? "border-accent-primary/40 hover:border-accent-primary/60"
                 : "border-border-subtle hover:border-border-strong"
@@ -96,10 +98,10 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
               aria-expanded={isOpen}
               aria-controls={`${s.id}-panel`}
               aria-label={isOpen ? labels.collapseAria : labels.expandAria}
-              className="w-full flex items-start gap-4 p-6 text-left"
+              className="flex w-full items-start gap-4 p-6 text-left"
             >
               <div
-                className={`shrink-0 p-2.5 border rounded-sincore-md ${
+                className={`shrink-0 rounded-sincore-md border p-2.5 ${
                   isCommunity
                     ? "bg-accent-primary/10 border-accent-primary/30"
                     : "bg-accent-primary/10 border-accent-primary/20"
@@ -107,23 +109,23 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
               >
                 <BrandIcon name={s.icon} className="text-accent-primary" />
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-2 flex-wrap">
-                  <span className="font-mono text-xs text-accent-primary border border-accent-primary/30 px-2 py-0.5 rounded bg-accent-primary/5">
+              <div className="min-w-0 flex-1">
+                <div className="mb-2 flex flex-wrap items-center gap-2">
+                  <span className="border-accent-primary/30 bg-accent-primary/5 rounded border px-2 py-0.5 font-mono text-xs text-accent-primary">
                     {s.tag}
                   </span>
                   <span className="font-mono text-[10px] uppercase tracking-wider text-text-muted">
                     {labels.status}: {statusLabel(s.status)}
                   </span>
                 </div>
-                <h2 className="font-bold tracking-tight text-xl text-text-primary mb-2">
+                <h2 className="mb-2 text-xl font-bold tracking-tight text-text-primary">
                   {s.title}
                 </h2>
-                <p className="text-sm text-text-secondary leading-relaxed">{s.desc}</p>
+                <p className="text-sm leading-relaxed text-text-secondary">{s.desc}</p>
               </div>
               <ChevronDown
                 size={20}
-                className={`shrink-0 mt-2 text-text-muted transition-transform duration-normal ${
+                className={`mt-2 shrink-0 text-text-muted transition-transform duration-normal ${
                   isOpen ? "rotate-180" : ""
                 }`}
               />
@@ -132,10 +134,10 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
             {isOpen && (
               <div
                 id={`${s.id}-panel`}
-                className="px-6 pb-6 pt-2 border-t border-border-subtle space-y-6"
+                className="space-y-6 border-t border-border-subtle px-6 pb-6 pt-2"
               >
                 <Section title={labels.user}>
-                  <p className="text-sm text-text-secondary leading-relaxed">{s.user}</p>
+                  <p className="text-sm leading-relaxed text-text-secondary">{s.user}</p>
                 </Section>
 
                 <Section title={labels.value}>
@@ -158,7 +160,7 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
                       {s.portfolio.map((item) => (
                         <span
                           key={item}
-                          className="font-mono text-xs text-text-secondary border border-border-subtle px-2.5 py-1 rounded bg-neutral-900/30"
+                          className="rounded border border-border-subtle bg-neutral-900/30 px-2.5 py-1 font-mono text-xs text-text-secondary"
                         >
                           {item}
                         </span>
@@ -170,7 +172,7 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
                 <div className="pt-2">
                   <Link
                     href={contactHref}
-                    className="inline-flex items-center gap-2 h-11 px-6 bg-accent-400 hover:bg-accent-300 active:bg-accent-500 text-neutral-950 font-mono font-bold text-sm rounded-sincore-md transition-all duration-fast ease-sincore-out hover:-translate-y-px"
+                    className="inline-flex h-11 items-center gap-2 rounded-sincore-md bg-accent-400 px-6 font-mono text-sm font-bold text-neutral-950 transition-all duration-fast ease-sincore-out hover:-translate-y-px hover:bg-accent-300 active:bg-accent-500"
                   >
                     {labels.cardCta}
                     <ArrowRight size={14} />
@@ -188,7 +190,9 @@ export default function ServiceAccordion({ services, labels, contactHref }: Prop
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="font-mono text-xs uppercase tracking-wider text-text-muted mb-2">{title}</h3>
+      <h3 className="mb-2 font-mono text-xs uppercase tracking-wider text-text-muted">
+        {title}
+      </h3>
       {children}
     </div>
   );
@@ -200,11 +204,11 @@ function BulletList({ items, muted = false }: { items: string[]; muted?: boolean
       {items.map((item, i) => (
         <li
           key={i}
-          className={`text-sm leading-relaxed flex gap-2 ${
+          className={`flex gap-2 text-sm leading-relaxed ${
             muted ? "text-text-muted" : "text-text-secondary"
           }`}
         >
-          <span className="text-accent-primary mt-1.5 shrink-0">·</span>
+          <span className="mt-1.5 shrink-0 text-accent-primary">·</span>
           <span>{item}</span>
         </li>
       ))}

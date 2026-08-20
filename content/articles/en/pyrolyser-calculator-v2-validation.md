@@ -1,7 +1,8 @@
 ---
 id: screw-feeder-calculator-validation
 title: "Pyrolyser calculator V2, or: what happens when a model meets sixteen days of commissioning trials"
-description: "In June I shipped a spreadsheet that calculates pyrolyser settings. Then the plant ran for six weeks without me and came back with a log from 16 days of trials. The collision was instructive: the structure of the model held, one coefficient was off by a factor of two, and the OK ✓ gate turned out to be mathematically incapable of ever going green."
+titleSeo: "Validating a pyrolyser calculator against trials"
+description: "The model came back after 16 days of plant trials. The structure held, one coefficient was off by a factor of two, and the OK gate could never go green."
 date: "2026-07-27"
 tags: ["pyrolysis", "biomass", "process-engineering", "validation", "calculator"]
 featured: true
@@ -28,20 +29,20 @@ Density times fill ratio times annulus area times flight pitch times revolutions
 
 Since these symbols recur throughout the text, here is what each one is:
 
-| Symbol | What it is | Unit |
-|---|---|---|
-| **ṁ** | how much fuel enters the reactor per hour | kg/h |
-| **ρ** | bulk density of the fuel — what a cubic metre weighs **loose**, air between the grains included | kg/m³ |
-| **ψ** | fill ratio: what fraction of the free cross-section of the tube is actually occupied by material | 0–1 |
-| **A** | the cross-section the material travels through — tube interior minus the screw shaft | m² |
-| **S** | flight pitch: how far the material advances along the tube per one revolution of the screw | m |
-| **n** | revolutions of the **screw**, i.e. after the gearbox — not of the motor | rpm |
-| **DC** | duty cycle: what percentage of the time the feeder is actually running rather than sitting in a pause | 0–1 |
-| **L** | length of the heated zone (here, 1550 mm of insulated section) | m |
-| **V_zone** | volume of the heated zone, i.e. A × L (here, 14.7 litres) | m³ |
-| **t_res** (shortened to **t** in some formulas) | residence time: how many minutes the material spends in the heated zone | min |
-| **feed** | how much fuel must go in per hour to get the amount of biochar you want at the outlet | kg/h |
-| **Y** | mass yield: what fraction of the feed survives the process and comes out as biochar | % |
+| Symbol                                          | What it is                                                                                            | Unit  |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----- |
+| **ṁ**                                           | how much fuel enters the reactor per hour                                                             | kg/h  |
+| **ρ**                                           | bulk density of the fuel — what a cubic metre weighs **loose**, air between the grains included       | kg/m³ |
+| **ψ**                                           | fill ratio: what fraction of the free cross-section of the tube is actually occupied by material      | 0–1   |
+| **A**                                           | the cross-section the material travels through — tube interior minus the screw shaft                  | m²    |
+| **S**                                           | flight pitch: how far the material advances along the tube per one revolution of the screw            | m     |
+| **n**                                           | revolutions of the **screw**, i.e. after the gearbox — not of the motor                               | rpm   |
+| **DC**                                          | duty cycle: what percentage of the time the feeder is actually running rather than sitting in a pause | 0–1   |
+| **L**                                           | length of the heated zone (here, 1550 mm of insulated section)                                        | m     |
+| **V_zone**                                      | volume of the heated zone, i.e. A × L (here, 14.7 litres)                                             | m³    |
+| **t_res** (shortened to **t** in some formulas) | residence time: how many minutes the material spends in the heated zone                               | min   |
+| **feed**                                        | how much fuel must go in per hour to get the amount of biochar you want at the outlet                 | kg/h  |
+| **Y**                                           | mass yield: what fraction of the feed survives the process and comes out as biochar                   | %     |
 
 The 60 floating around these formulas carries no deeper meaning — it converts minutes to hours.
 
@@ -75,7 +76,7 @@ So either a Ø90 screw is turning inside a Ø117 tube and those 13.5 mm of radia
 
 This is where it gets unpleasant.
 
-The instruction in the spreadsheet, at STEP 3, read: *"pick the row with OK = ✓"*. The table has one hundred and one rows, from 0 to 50 Hz, and the "OK?" column was supposed to indicate which settings make sense. I checked how many rows show ✓ under the settings the file was saved with.
+The instruction in the spreadsheet, at STEP 3, read: _"pick the row with OK = ✓"_. The table has one hundred and one rows, from 0 to 50 Hz, and the "OK?" column was supposed to indicate which settings make sense. I checked how many rows show ✓ under the settings the file was saved with.
 
 Zero.
 
@@ -149,8 +150,8 @@ And the defaults the file opens with are no longer an invented beech run at one 
 
 What stayed with me out of all this is not that ψ was off by a factor of two. A coefficient is a coefficient; that is what calibration is for, and the sheet had a dedicated tab for it.
 
-What stayed with me is the gate that could not light up. Because there was no error in any formula — each one computed exactly what it was supposed to. The error was that composing two correct formulas produced an identity, and the interface asked the user for three numbers when two were sufficient. No amount of reviewing formulas catches that. What catches it is one question I never asked myself: *with the settings this file will reach somebody in, is the instruction I wrote even executable?*
+What stayed with me is the gate that could not light up. Because there was no error in any formula — each one computed exactly what it was supposed to. The error was that composing two correct formulas produced an identity, and the interface asked the user for three numbers when two were sufficient. No amount of reviewing formulas catches that. What catches it is one question I never asked myself: _with the settings this file will reach somebody in, is the instruction I wrote even executable?_
 
 Sixteen days of somebody else's patience at a control panel to find that out. Worth it — but next time I would rather it took five minutes before sending the file.
 
-*Part one: [Excel as a screw feeder](/en/knowledge/excel-as-screw-feeder) — where this spreadsheet came from, and why screw fill ratio is not a property of the equipment.*
+_Part one: [Excel as a screw feeder](/en/knowledge/excel-as-screw-feeder) — where this spreadsheet came from, and why screw fill ratio is not a property of the equipment._

@@ -21,12 +21,14 @@ The current generation is **LOGO! 8** — Ethernet (RJ-45 port) was added, along
 ## Programming — LOGO! Soft Comfort
 
 The programming tool for LOGO! is **LOGO! Soft Comfort** (Windows/Linux/Mac). Programming in:
+
 - **FBD** (Function Block Diagram) — logic blocks with graphical connections
 - **LAD** (Ladder Diagram) — ladder logic
 
 You build the program on a computer, then transfer it over Ethernet or a programming cable (older models). LOGO! 8 also lets you transfer programs via microSD.
 
 Available function blocks:
+
 - Logic: AND, OR, NOT, XOR, NAND, NOR
 - Timing: on/off delay, weekly clock, hours counter
 - Counting: up/down counter
@@ -39,14 +41,14 @@ LOGO! 8 supports Modbus TCP as a slave. A client (Python, SCADA, another PLC) ca
 
 ### Register mapping
 
-| LOGO! area | Modbus | FC | Note |
-|------------|--------|----|------|
-| Digital inputs I1–I24 | Coils 1–24 | 01 (R) | |
-| Digital outputs Q1–Q20 | Coils 8193–8212 | 01/05 (R/W) | |
-| Markers M1–M64 | Coils 8257–8320 | 01/05 (R/W) | |
-| Analog inputs AI1–AI8 | Holding Reg 1–8 | 03 (R) | 0–10V → 0–27648 |
-| Analog outputs AQ1–AQ8 | Holding Reg 513–520 | 03/06 (R/W) | |
-| Analog markers AM1–AM64 | Holding Reg 529–592 | 03/06 (R/W) | |
+| LOGO! area              | Modbus              | FC          | Note            |
+| ----------------------- | ------------------- | ----------- | --------------- |
+| Digital inputs I1–I24   | Coils 1–24          | 01 (R)      |                 |
+| Digital outputs Q1–Q20  | Coils 8193–8212     | 01/05 (R/W) |                 |
+| Markers M1–M64          | Coils 8257–8320     | 01/05 (R/W) |                 |
+| Analog inputs AI1–AI8   | Holding Reg 1–8     | 03 (R)      | 0–10V → 0–27648 |
+| Analog outputs AQ1–AQ8  | Holding Reg 513–520 | 03/06 (R/W) |                 |
+| Analog markers AM1–AM64 | Holding Reg 529–592 | 03/06 (R/W) |                 |
 
 ### Reading outputs in Python
 
@@ -73,6 +75,7 @@ client.close()
 ## Web server
 
 LOGO! 8 has a built-in HTTP server on port 80. After logging in (default admin/admin — change it!) you can:
+
 - Monitor inputs and outputs in a browser
 - Create custom HMI pages in LOGO! Soft Comfort and upload them to the controller
 - Remotely change parameters (if the HMI page allows it)
@@ -81,13 +84,13 @@ HMI pages are simple HTML projects with graphical elements bound to LOGO! resour
 
 ## When LOGO! instead of S7
 
-| | LOGO! 8 | S7-1200 |
-|--|---------|---------|
-| Price | ~70–120 EUR | ~350–700 EUR |
-| Languages | FBD, LAD | FBD, LAD, STL, SCL |
-| Communication | Modbus TCP, Ethernet | PROFINET, Modbus, AS-i, ... |
-| Expansion | Limited | Signal and communication modules |
-| Use case | Simple control, ≤20 I/O | Complex automation, networks |
+|               | LOGO! 8                 | S7-1200                          |
+| ------------- | ----------------------- | -------------------------------- |
+| Price         | ~70–120 EUR             | ~350–700 EUR                     |
+| Languages     | FBD, LAD                | FBD, LAD, STL, SCL               |
+| Communication | Modbus TCP, Ethernet    | PROFINET, Modbus, AS-i, ...      |
+| Expansion     | Limited                 | Signal and communication modules |
+| Use case      | Simple control, ≤20 I/O | Complex automation, networks     |
 
 LOGO! is a good choice when: the task is simple, the budget is tight, you don't need an industrial network.
 

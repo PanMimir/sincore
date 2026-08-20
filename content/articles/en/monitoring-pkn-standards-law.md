@@ -1,7 +1,8 @@
 ---
 id: monitoring-pkn-standards-law
 title: "Monitoring PKN standards — what you can scrape and where infringement starts"
-description: "Polish Standards are protected by copyright, but facts about them are not. A field study of legal decisions when building a tool that alerts on changes to PN-EN standards: metadata scraping, fair use for PDF diff, and the database sui generis trap."
+titleSeo: "Monitoring PKN standards and copyright law"
+description: "Polish Standards are under copyright, facts about them are not. Legal decisions behind a tool that alerts on PN-EN changes: metadata, fair use, database rights."
 date: "2026-05-24"
 tags: ["compliance", "scraping", "legal", "standards"]
 featured: true
@@ -33,23 +34,23 @@ Which raises the question: **what can you actually do with that data?**
 
 Three layers need to be separated:
 
-| Layer | Example | Legal status |
-|---|---|---|
-| Standard content | "Point 5.3.2. The safety coefficient shall be…" | Copyright-protected, PKN monopoly |
-| Title and scope | "Heating boilers — Part 5: Solid fuel boilers up to 500 kW" | Borderline: titles rarely meet the originality threshold; scope/abstract may qualify as a work |
-| Metadata / facts | number, publication date, withdrawal date, ICS, technical committee, page count, status | **Not subject to copyright** |
+| Layer            | Example                                                                                 | Legal status                                                                                   |
+| ---------------- | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Standard content | "Point 5.3.2. The safety coefficient shall be…"                                         | Copyright-protected, PKN monopoly                                                              |
+| Title and scope  | "Heating boilers — Part 5: Solid fuel boilers up to 500 kW"                             | Borderline: titles rarely meet the originality threshold; scope/abstract may qualify as a work |
+| Metadata / facts | number, publication date, withdrawal date, ICS, technical committee, page count, status | **Not subject to copyright**                                                                   |
 
-The legal basis: **Polish Standardisation Act (Dz.U. 2002 nr 169 poz. 1386), art. 5 sec. 5** states explicitly that *"Polish Standards are protected by copyright as literary works, and economic copyright belongs to the Polish Committee for Standardisation"* — i.e. the content yes, but protection only extends as far as the work itself. Facts about the work (that it exists, when it was issued, what number it has) are outside that scope.
+The legal basis: **Polish Standardisation Act (Dz.U. 2002 nr 169 poz. 1386), art. 5 sec. 5** states explicitly that _"Polish Standards are protected by copyright as literary works, and economic copyright belongs to the Polish Committee for Standardisation"_ — i.e. the content yes, but protection only extends as far as the work itself. Facts about the work (that it exists, when it was issued, what number it has) are outside that scope.
 
 Despite the common argument that "standards are law, so they should be free" — **art. 4 of the Copyright Act** (which excludes statutory and official documents) **does not apply here**. Polish Standards are voluntary; doctrine and case law treat them as protected works. The "free access" argument doesn't fly in PL — at least not yet.
 
-**Practical conclusion:** alerts like *"PN-EN 303-5:2021-09 was withdrawn on 2023-05-04 and replaced by PN-EN 303-5+A1:2023-05"* are operations on facts. Anyone can publish them, not just PKN.
+**Practical conclusion:** alerts like _"PN-EN 303-5:2021-09 was withdrawn on 2023-05-04 and replaced by PN-EN 303-5+A1:2023-05"_ are operations on facts. Anyone can publish them, not just PKN.
 
 ## The trap that's easy to miss: database sui generis
 
-This is where most projects could derail. Independent of content copyright, **Directive 96/9/EC** (implemented in Poland by the 2001 Database Protection Act) introduces a separate protection for the database *itself* — regardless of whether the individual records are protected.
+This is where most projects could derail. Independent of content copyright, **Directive 96/9/EC** (implemented in Poland by the 2001 Database Protection Act) introduces a separate protection for the database _itself_ — regardless of whether the individual records are protected.
 
-The construction: if someone has made a *"substantial investment in obtaining, verifying or presenting"* data, they have the right to forbid *"extraction and re-utilisation of all or a substantial part"* of the database's contents. This is **sui generis** — a database's own right, not copyright.
+The construction: if someone has made a _"substantial investment in obtaining, verifying or presenting"_ data, they have the right to forbid _"extraction and re-utilisation of all or a substantial part"_ of the database's contents. This is **sui generis** — a database's own right, not copyright.
 
 What that means in practice for a standards monitor:
 
@@ -61,11 +62,11 @@ The architectural rule that follows: **the backend stores only the standards tha
 
 ## BYO-PDF: why local diff isn't infringement
 
-The second feature users naturally want: *"compare the old and new PDF of this standard — show me what changed"*. PDFs from `sklep.pkn.pl` are sold single-user, perpetual, with a dynamic watermark (*"PKN License for [company name], date"*).
+The second feature users naturally want: _"compare the old and new PDF of this standard — show me what changed"_. PDFs from `sklep.pkn.pl` are sold single-user, perpetual, with a dynamic watermark (_"PKN License for [company name], date"_).
 
 The natural question: is uploading that PDF to a cloud tool a license breach?
 
-Yes — if the tool hosts the file, indexes it, exposes it to others, or uses it for model training. All of that is *"placing on the market"* and *"sublicensing"* under the PKN license.
+Yes — if the tool hosts the file, indexes it, exposes it to others, or uses it for model training. All of that is _"placing on the market"_ and _"sublicensing"_ under the PKN license.
 
 No — under the **BYO-PDF** (Bring Your Own PDF) model:
 
@@ -97,23 +98,23 @@ Practical effects, as of May 2026:
 
 - The Commission and CEN-CENELEC launched a read-only portal for 34 national bodies.
 - The portal exposes... **exactly the 4 standards the ruling concerned** (toy safety: EN 71-4, EN 71-5, EN 71-12, EN 12472+A1).
-- *"without any right to especially download, print, commercialize, reproduce, make available or distribute the documents"* — text mining excluded.
+- _"without any right to especially download, print, commercialize, reproduce, make available or distribute the documents"_ — text mining excluded.
 - **PKN still sells harmonised standards unchanged** — no policy statement of any kind.
 
-What that means for monitoring tools: the legal trend leans toward openness, but in practice nothing has changed. The model *"PKN sells + we monitor facts + diff is BYO"* is not threatened by free alternatives. **If that day ever comes — it'll be good news, not bad** (lower barriers for users).
+What that means for monitoring tools: the legal trend leans toward openness, but in practice nothing has changed. The model _"PKN sells + we monitor facts + diff is BYO"_ is not threatened by free alternatives. **If that day ever comes — it'll be good news, not bad** (lower barriers for users).
 
 ## Practice: what's OK, what isn't
 
-| Operation | OK? | Reason |
-|---|---|---|
-| Scraping number, date, status of a single standard from `sklep.pkn.pl` | YES | Facts aren't subject to copyright |
-| Daily scrape of 60-day listings | YES | Public information service |
-| Full crawl of the PKN catalogue into your own copy | NO | Database sui generis (Dir. 96/9/EC) |
-| Publishing full scopes of standards 1:1 | NO | Scope may qualify as a protected work |
-| Summary of a scope in your own words + link to `sklep.pkn.pl` | YES | No reproduction of the work |
-| Uploading your own PDF for cloud diff (ephemeral) | YES | BYO-PDF model, no hosting, single-user analysis |
-| Hosting a standards PDF library for many customers | NO | Single-user license breach, "placing on the market" |
-| Training an LLM on full standard texts | NO | Reproduction of the whole work |
+| Operation                                                              | OK? | Reason                                              |
+| ---------------------------------------------------------------------- | --- | --------------------------------------------------- |
+| Scraping number, date, status of a single standard from `sklep.pkn.pl` | YES | Facts aren't subject to copyright                   |
+| Daily scrape of 60-day listings                                        | YES | Public information service                          |
+| Full crawl of the PKN catalogue into your own copy                     | NO  | Database sui generis (Dir. 96/9/EC)                 |
+| Publishing full scopes of standards 1:1                                | NO  | Scope may qualify as a protected work               |
+| Summary of a scope in your own words + link to `sklep.pkn.pl`          | YES | No reproduction of the work                         |
+| Uploading your own PDF for cloud diff (ephemeral)                      | YES | BYO-PDF model, no hosting, single-user analysis     |
+| Hosting a standards PDF library for many customers                     | NO  | Single-user license breach, "placing on the market" |
+| Training an LLM on full standard texts                                 | NO  | Reproduction of the whole work                      |
 
 ## Operational rules for the scraper
 

@@ -7,7 +7,9 @@
     "cheatsheet": "AI cheatsheet",
     "stack": "Stack",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu_open": "Open menu",
+    "menu_close": "Close menu"
   },
   "hero": {
     "greeting": "Hey, I'm",
@@ -26,7 +28,8 @@
     "terminal_line5": "open for projects",
     "terminal_line6": "$ ./contact.sh",
     "terminal_line7": "→ contact@sincore.io",
-    "motto": "It works. That's the point."
+    "motto": "It works. That's the point.",
+    "seo_home_title": "sincore — industrial automation and custom software"
   },
   "projects": {
     "title": "Projects",
@@ -60,7 +63,9 @@
     "tags": "Tags",
     "stack_label": "Stack",
     "screenshots_label": "Screenshots",
-    "private_repo": "private repo"
+    "private_repo": "private repo",
+    "seo_description": "Tools I wrote for specific problems from the lab and the plant floor: data loggers, module configurators, standards monitoring.",
+    "apk_rate_limited": "Too many attempts. Wait a minute and try again."
   },
   "knowledge": {
     "title": "Knowledge Base",
@@ -69,7 +74,9 @@
     "no_articles": "No articles yet.",
     "all": "All",
     "search_placeholder": "Search articles...",
-    "sources": "References"
+    "sources": "References",
+    "search_label": "Search the knowledge base",
+    "seo_description": "Field notes on Modbus, RS-485, measurement instruments and PN-EN standards. How it actually works and what breaks on site."
   },
   "cheatsheet": {
     "title": "AI cheatsheet",
@@ -87,15 +94,14 @@
     "no_results": "Nothing like that here. Try another term.",
     "disclaimer_label": "Caveat",
     "disclaimer": "Claude Code changes weekly — commands get added, shortcuts occasionally move. This cheatsheet reflects {date}. The always-current list is one keystroke away: type /help in a session.",
-    "docs_link": "Official Claude Code documentation"
+    "docs_link": "Official Claude Code documentation",
+    "seo_description": "A plain-language Claude Code cheatsheet — commands, shortcuts, and what people around the world actually do with language models."
   },
   "stack": {
     "title": "Tech Stack",
-    "subtitle": "What I know, what I'm learning",
-    "level_expert": "expert",
-    "level_advanced": "advanced",
-    "level_intermediate": "intermediate",
-    "level_basic": "basic"
+    "subtitle": "No percentages, no progress bars. Each entry carries what backs it up: a shipped project or a written article.",
+    "seo_description": "What I work on and what I work with — every entry links to the project or article that backs it up.",
+    "evidence_note": "The order is deliberate. Domain expertise comes first because it is the one part you cannot pick up from a course. The things I am still a student of sit at the bottom and say so."
   },
   "about": {
     "title": "About",
@@ -113,7 +119,8 @@
     ],
     "approach_title": "Approach",
     "approach": "I understand the system before I write code. I don't sell solutions I know — I find solutions that work for the specific problem.",
-    "focus_label": "Focus"
+    "focus_label": "Focus",
+    "seo_description": "Michał Pańczyk — ten years of energy and emissions research in a laboratory, now writing tools for problems I ran into myself."
   },
   "contact": {
     "title": "Contact",
@@ -124,13 +131,16 @@
     "copy_email": "Copy address",
     "copied": "Copied!",
     "response_time_label": "Response time",
-    "languages_label": "Languages"
+    "languages_label": "Languages",
+    "seo_description": "Struggling to get data out of an instrument, or stuck with repetitive work worth automating? Get in touch — I reply within a day.",
+    "copy_failed": "The browser denied clipboard access. Address:"
   },
   "common": {
     "loading": "Loading...",
     "error": "Something went wrong.",
     "back": "Back",
-    "all": "All"
+    "all": "All",
+    "skip_to_content": "Skip to content"
   },
   "footer": {
     "built_with": "Built with",
@@ -178,7 +188,10 @@
       "Large-scale training (1-2 person walk-through — yes)"
     ],
     "service_1_status": "present",
-    "service_1_portfolio": ["sincore.io", "Wzorzec (in build)"],
+    "service_1_portfolio": [
+      "sincore.io",
+      "Wzorzec (in build)"
+    ],
     "service_2_title": "Process automation",
     "service_2_tag": "automation",
     "service_2_desc": "Reports made manually, data copied between systems, repetitive tasks eating hours every week. It can be automated.",
@@ -200,7 +213,10 @@
       "Historical data migration (separate project)"
     ],
     "service_2_status": "present",
-    "service_2_portfolio": ["Norm Monitor", "Modbus ↔ MQTT/REST bridge (planned)"],
+    "service_2_portfolio": [
+      "Norm Monitor",
+      "Modbus ↔ MQTT/REST bridge (planned)"
+    ],
     "service_3_title": "Industrial systems",
     "service_3_tag": "industrial",
     "service_3_desc": "Hardware works but no software to operate it? I write applications communicating via Modbus, RS-485, COM port — from data reading to control.",
@@ -222,7 +238,11 @@
       "Hardware construction, cables, adapters"
     ],
     "service_3_status": "present",
-    "service_3_portfolio": ["RADWAG WLC X2", "F&F MB-TC-1", "Bronkhorst MFC/MFM"],
+    "service_3_portfolio": [
+      "RADWAG WLC X2",
+      "F&F MB-TC-1",
+      "Bronkhorst MFC/MFM"
+    ],
     "service_4_title": "Internal tools",
     "service_4_tag": "internal tools",
     "service_4_desc": "Orders in Excel, statuses in the boss's head, reports made on Fridays. I build simple systems for order management, status tracking and reporting — without a corporate ERP.",
@@ -263,7 +283,11 @@
       "Guarantee of operation on unusual hardware configurations"
     ],
     "service_5_status": "community",
-    "service_5_portfolio": ["RADWAG WLC X2 v1.0.1", "F&F MB-TC-1 v1.0.2"]
+    "service_5_portfolio": [
+      "RADWAG WLC X2 v1.0.1",
+      "F&F MB-TC-1 v1.0.2"
+    ],
+    "seo_description": "What I fix and what I build: automating repetitive work, reading data out of instruments, industrial protocol integrations."
   },
   "home": {
     "stats_projects": "projects",
@@ -287,5 +311,20 @@
     "cta_title": "Have a project or a question?",
     "cta_subtitle": "Let's talk about what can be automated, optimized, or simply built.",
     "cta_button": "Write to me"
+  },
+  "notFound": {
+    "title": "This page is not here",
+    "description": "Either the address is wrong or the page moved. Below are the two places most likely to hold what you were after.",
+    "link_knowledge": "Knowledge base",
+    "link_projects": "Projects",
+    "link_home": "Home"
+  },
+  "error": {
+    "label": "Error",
+    "title": "Something broke on the way here",
+    "description": "The page did not finish loading. Trying again usually does it — if it keeps happening, let me know through the contact page.",
+    "retry": "Try again",
+    "home": "Home",
+    "reference": "Reference"
   }
 }

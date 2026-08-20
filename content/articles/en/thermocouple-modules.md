@@ -15,6 +15,7 @@ references:
 ## What is a thermocouple module
 
 A thermocouple module (temperature transmitter) is a device that:
+
 1. Accepts thermocouple inputs (temperature sensors)
 2. Measures their voltage (mV)
 3. Converts it to temperature with cold-junction compensation
@@ -26,14 +27,14 @@ Such modules are made by F&F Filipowski (MB-TC series), ADAM (Advantech), Wago, 
 
 A thermocouple is a pair of wires made from different alloys. The hot junction measures the temperature; the cold junction sits inside the module and requires compensation.
 
-| Type | Materials | Range | Sensitivity |
-|------|-----------|-------|-------------|
-| K | NiCr / NiAl | −200 to +1350°C | ~41 μV/°C |
-| J | Fe / CuNi | −210 to +750°C | ~52 μV/°C |
-| T | Cu / CuNi | −250 to +400°C | ~43 μV/°C |
-| N | NiCrSi / NiSi | −270 to +1300°C | ~39 μV/°C |
-| E | NiCr / CuNi | −270 to +1000°C | ~68 μV/°C |
-| R, S, B | Pt/Rh alloys | 0 to +1700°C | ~6–13 μV/°C |
+| Type    | Materials     | Range           | Sensitivity |
+| ------- | ------------- | --------------- | ----------- |
+| K       | NiCr / NiAl   | −200 to +1350°C | ~41 μV/°C   |
+| J       | Fe / CuNi     | −210 to +750°C  | ~52 μV/°C   |
+| T       | Cu / CuNi     | −250 to +400°C  | ~43 μV/°C   |
+| N       | NiCrSi / NiSi | −270 to +1300°C | ~39 μV/°C   |
+| E       | NiCr / CuNi   | −270 to +1000°C | ~68 μV/°C   |
+| R, S, B | Pt/Rh alloys  | 0 to +1700°C    | ~6–13 μV/°C |
 
 **Type K** is the most popular in industry — wide range, decent sensitivity, cheap. Laboratories often use T (low temperatures) or R/S (high, precise).
 
@@ -52,17 +53,18 @@ Each channel has its own ADC input. The module simultaneously measures the therm
 
 Input registers (FC 04 or FC 03 — depends on the manufacturer):
 
-| Register | Content |
-|----------|---------|
-| 0–1 | Channel 1 temperature (float 32-bit, 2 registers) |
-| 2–3 | Channel 2 temperature |
-| 4–5 | Channel 3 temperature |
-| ... | ... |
-| 14–15 | Channel 8 temperature |
-| 16 | Status — error bits per channel |
-| 17 | Cold-junction temperature |
+| Register | Content                                           |
+| -------- | ------------------------------------------------- |
+| 0–1      | Channel 1 temperature (float 32-bit, 2 registers) |
+| 2–3      | Channel 2 temperature                             |
+| 4–5      | Channel 3 temperature                             |
+| ...      | ...                                               |
+| 14–15    | Channel 8 temperature                             |
+| 16       | Status — error bits per channel                   |
+| 17       | Cold-junction temperature                         |
 
 Values may be stored as:
+
 - **IEEE 754 float** — 2 registers, directly in degrees Celsius
 - **Integer × 10** — 1 register, e.g. `2356` = 235.6°C
 - **Integer × 100** — 1 register, e.g. `23560` = 235.60°C
@@ -98,6 +100,7 @@ client.close()
 ## Channel error — how to detect it
 
 If a thermocouple is disconnected, damaged or out of range — the module returns an error value. Typical signals:
+
 - Value `-32768` or `0x7FFF` (integer) — channel in error
 - Value `NaN` or `±Inf` (float) — channel in error
 - Bit in the status register — check the documentation

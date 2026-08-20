@@ -17,6 +17,7 @@ references:
 Modbus to protokół komunikacyjny opracowany w 1979 roku przez firmę Modicon. Mimo swojego wieku jest nadal **najszerzej stosowanym protokołem w automatyce przemysłowej** — znajdziesz go w PLC, falownikach, licznikach energii, czujnikach temperatury i dziesiątkach innych urządzeń.
 
 Istnieją dwie główne wersje:
+
 - **Modbus RTU** — komunikacja szeregowa (RS-485), bajty przesyłane binarnie
 - **Modbus TCP** — Modbus opakowany w TCP/IP, port 502
 
@@ -25,27 +26,30 @@ Istnieją dwie główne wersje:
 Każda ramka Modbus TCP składa się z dwóch części:
 
 ### MBAP Header (7 bajtów)
+
 ```
 [Transaction ID: 2B] [Protocol ID: 2B] [Length: 2B] [Unit ID: 1B]
 ```
+
 - **Transaction ID** — para żądanie/odpowiedź, klient sam ustala
 - **Protocol ID** — zawsze `0x0000` dla Modbus
 - **Length** — liczba kolejnych bajtów
 - **Unit ID** — adres urządzenia (jak adres w RTU)
 
 ### PDU — Protocol Data Unit
+
 ```
 [Function Code: 1B] [Data: N bajtów]
 ```
 
 ## Typy rejestrów
 
-| Typ | Adres | Rozmiar | Dostęp |
-|-----|-------|---------|--------|
-| Coil | 00001–09999 | 1 bit | R/W |
-| Discrete Input | 10001–19999 | 1 bit | R |
-| Input Register | 30001–39999 | 16 bit | R |
-| Holding Register | 40001–49999 | 16 bit | R/W |
+| Typ              | Adres       | Rozmiar | Dostęp |
+| ---------------- | ----------- | ------- | ------ |
+| Coil             | 00001–09999 | 1 bit   | R/W    |
+| Discrete Input   | 10001–19999 | 1 bit   | R      |
+| Input Register   | 30001–39999 | 16 bit  | R      |
+| Holding Register | 40001–49999 | 16 bit  | R/W    |
 
 Holding Registers (FC 03) to najczęściej używany typ — tam urządzenia trzymają wartości procesowe.
 

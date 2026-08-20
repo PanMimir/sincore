@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from"react";
-import { useTranslations } from"next-intl";
-import { cn } from"@/lib/utils";
-import ProjectCard from"@/components/common/ProjectCard";
-import type { Project } from"@/services/projectService";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
+import ProjectCard from "@/components/common/ProjectCard";
+import type { Project } from "@/services/projectService";
 
-const STATUS_FILTERS = ["all","active","wip","paused","archived"] as const;
+const STATUS_FILTERS = ["all", "active", "wip", "paused", "archived"] as const;
 type StatusFilter = (typeof STATUS_FILTERS)[number];
 
 const STATUS_LABEL_KEYS: Record<Exclude<StatusFilter, "all">, string> = {
@@ -27,38 +27,40 @@ export default function ProjectsClient({
   const [activeFilter, setActiveFilter] = useState<StatusFilter>("all");
 
   const filtered =
-    activeFilter ==="all"
-      ? projects
-      : projects.filter((p) => p.status === activeFilter);
+    activeFilter === "all" ? projects : projects.filter((p) => p.status === activeFilter);
 
   // Zbiera wszystkie unikalne tagi ze wszystkich projektów
   const allTags = Array.from(new Set(projects.flatMap((p) => p.tags)));
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <div className="mb-12">
-        <h1 className="font-bold text-4xl sm:text-5xl text-text-primary mb-4">
+        <h1 className="mb-4 text-4xl font-bold text-text-primary sm:text-5xl">
           {t("title")}
         </h1>
-        <p className="text-text-muted text-base">{t("subtitle")}</p>
+        <p className="text-base text-text-muted">{t("subtitle")}</p>
       </div>
 
       {/* Filtry statusu */}
-      <div className="flex flex-wrap gap-2 mb-10">
+      <div className="mb-10 flex flex-wrap gap-2">
         {STATUS_FILTERS.map((filter) => (
           <button
             key={filter}
             onClick={() => setActiveFilter(filter)}
             className={cn(
-"font-mono text-sm px-4 py-2 rounded border transition-all duration-fast",
+              "rounded border px-4 py-2 font-mono text-sm transition-all duration-fast",
               activeFilter === filter
-                ?"bg-accent-primary/20 border-accent-primary text-accent-primary"
-                :"border-border-subtle text-text-muted hover:border-accent-primary/50 hover:text-text-primary"
+                ? "bg-accent-primary/20 border-accent-primary text-accent-primary"
+                : "hover:border-accent-primary/50 border-border-subtle text-text-muted hover:text-text-primary"
             )}
           >
-            {filter ==="all" ? t("all") : t(STATUS_LABEL_KEYS[filter])}
+            {filter === "all" ? t("all") : t(STATUS_LABEL_KEYS[filter])}
             <span className="ml-2 text-xs opacity-60">
-              ({filter ==="all" ? projects.length : projects.filter((p) => p.status === filter).length})
+              (
+              {filter === "all"
+                ? projects.length
+                : projects.filter((p) => p.status === filter).length}
+              )
             </span>
           </button>
         ))}
@@ -66,9 +68,9 @@ export default function ProjectsClient({
 
       {/* Siatka kart projektów */}
       {filtered.length === 0 ? (
-        <p className="font-mono text-text-muted text-center py-16">{t("no_projects")}</p>
+        <p className="py-16 text-center font-mono text-text-muted">{t("no_projects")}</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((project, i) => (
             <ProjectCard
               key={project.slug}
@@ -81,13 +83,15 @@ export default function ProjectsClient({
       )}
 
       {allTags.length > 0 && (
-        <div className="mt-16 pt-8 border-t border-border-subtle">
-          <p className="text-xs uppercase tracking-wider text-text-muted mb-3">{t("tags")}</p>
+        <div className="mt-16 border-t border-border-subtle pt-8">
+          <p className="mb-3 text-xs uppercase tracking-wider text-text-muted">
+            {t("tags")}
+          </p>
           <div className="flex flex-wrap gap-2">
             {allTags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-xs px-2 py-1 border border-border-subtle text-text-muted rounded"
+                className="rounded border border-border-subtle px-2 py-1 font-mono text-xs text-text-muted"
               >
                 #{tag}
               </span>

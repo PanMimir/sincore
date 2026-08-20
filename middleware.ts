@@ -6,6 +6,8 @@ import { routing } from "./lib/routing";
  * Jeśli wchodzisz na "/" → przekierowuje na "/pl/"
  * Jeśli wchodzisz na "/en/projects" → zostaje "/en/projects"
  */
+// Zachowanie middleware (ciasteczko języka, wykrywanie języka, nagłówek Link
+// z hreflangami) konfiguruje się w lib/routing.ts — tam są komentarze, co i czemu.
 export default createMiddleware(routing);
 
 export const config = {

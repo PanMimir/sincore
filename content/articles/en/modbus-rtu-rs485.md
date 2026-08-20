@@ -32,6 +32,7 @@ Unlike TCP, the RTU frame has no MBAP header. Frame start and end are identified
 ### Frame example — read 2 registers from address 0, slave 1
 
 Request:
+
 ```
 01 03 00 00 00 02 C4 0B
 │  │  │     │     └─ CRC (little-endian: C4, 0B)
@@ -41,6 +42,7 @@ Request:
 ```
 
 Response (2 registers = 4 bytes of data):
+
 ```
 01 03 04 01 F4 00 00 F3 B0
 │  │  │  └──────────┘  └─ CRC
@@ -54,6 +56,7 @@ Response (2 registers = 4 bytes of data):
 RS-485 is a differential standard: two lines, A and B. Logic state "1" when A > B by at least 200 mV, "0" when B > A.
 
 Key characteristics:
+
 - Half-duplex — cannot transmit and receive at the same time
 - Up to 32 devices on one bus (more with repeaters)
 - Maximum 1200 m at 100 kbps (shorter at higher speeds)

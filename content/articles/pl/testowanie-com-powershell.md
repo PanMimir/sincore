@@ -1,7 +1,7 @@
 ---
 id: com-port-testing
 title: "Testowanie portów COM i RS-485 z PowerShell"
-description: "Jak sprawdzić dostępne porty COM, wysłać i odebrać surowe bajty przez port szeregowy oraz przetestować komunikację z urządzeniem przemysłowym bez żadnych dodatkowych narzędzi."
+description: "Jak wylistować porty COM, wysłać i odebrać surowe bajty przez port szeregowy i przetestować urządzenie przemysłowe bez żadnych dodatkowych narzędzi."
 date: "2026-05-14"
 tags: ["powershell", "rs485"]
 featured: true
@@ -15,6 +15,7 @@ references:
 Zanim zaczniesz pisać kod w Pythonie albo konfigurować bibliotekę — warto sprawdzić, czy port COM w ogóle działa i czy urządzenie odpowiada. PowerShell ma wbudowaną klasę `System.IO.Ports.SerialPort`, która daje bezpośredni dostęp do portu szeregowego bez żadnych dodatkowych instalacji.
 
 Przydatne gdy:
+
 - Nie masz pewności który port COM to twoje urządzenie
 - Chcesz szybko sprawdzić czy urządzenie "żyje" zanim napiszesz kod
 - Debugujesz problem z komunikacją i chcesz wyeliminować warstwę oprogramowania

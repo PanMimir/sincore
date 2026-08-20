@@ -32,6 +32,7 @@ W odróżnieniu od TCP, ramka RTU nie ma nagłówka MBAP. Identyfikacja początk
 ### Przykład ramki — odczyt 2 rejestrów od adresu 0, slave 1
 
 Żądanie:
+
 ```
 01 03 00 00 00 02 C4 0B
 │  │  │     │     └─ CRC (little-endian: C4, 0B)
@@ -41,6 +42,7 @@ W odróżnieniu od TCP, ramka RTU nie ma nagłówka MBAP. Identyfikacja początk
 ```
 
 Odpowiedź (2 rejestry = 4 bajty danych):
+
 ```
 01 03 04 01 F4 00 00 F3 B0
 │  │  │  └──────────┘  └─ CRC
@@ -54,6 +56,7 @@ Odpowiedź (2 rejestry = 4 bajty danych):
 RS-485 to standard różnicowy: dwie linie A i B. Stan logiczny "1" gdy A > B o co najmniej 200 mV, "0" gdy B > A.
 
 Kluczowe cechy:
+
 - Półdupleks — nadawanie i odbieranie nie jednocześnie
 - Do 32 urządzeń na jednej magistrali (ze wzmacniaczami więcej)
 - Maksymalnie 1200 m przy 100 kb/s (krócej przy wyższych prędkościach)

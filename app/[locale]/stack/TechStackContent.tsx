@@ -1,96 +1,142 @@
-"use client";
+import Link from "next/link";
+import { getTranslations, getLocale } from "next-intl/server";
+import { BookOpen, Boxes, Circle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import ScrollReveal from "@/components/common/ScrollReveal";
 
-import { useTranslations } from"next-intl";
-import { motion } from"framer-motion";
-import { cn } from"@/lib/utils";
-import ScrollReveal from"@/components/common/ScrollReveal";
+export interface ResolvedEvidence {
+  kind: "project" | "article" | "note";
+  label: string;
+  href?: string;
+}
 
-export interface TechItem {
+export interface ResolvedItem {
   name: string;
-  level:"expert" |"advanced" |"intermediate" |"basic";
+  evidence: ResolvedEvidence[];
 }
 
-export interface TechCategory {
+export interface ResolvedCategory {
   category: string;
-  label: Record<string, string>;
-  items: TechItem[];
+  featured: boolean;
+  label: string;
+  note?: string;
+  items: ResolvedItem[];
 }
 
-// Kolor paska poziomu zależy od wartości level
-const LEVEL_COLORS = {
-  expert:"bg-accent-primary border-accent-primary/50",
-  advanced:"bg-accent-500 border-accent-500/50",
-  intermediate:"bg-text-muted border-text-muted/30",
-  basic:"bg-text-muted/50 border-text-muted/20",
+const EVIDENCE_ICON = {
+  project: Boxes,
+  article: BookOpen,
+  note: Circle,
 } as const;
 
-export default function TechStackContent({
-  locale,
-  data,
-}: {
-  locale: string;
-  data: TechCategory[];
-}) {
-  const t = useTranslations("stack");
+/**
+ * Stos technologiczny jako lista dowodów, nie deklaracji.
+ *
+ * Poprzednia wersja pokazywała paski poziomu w procentach. Zniknęły z dwóch powodów.
+ * Praktyczny: nie działały — kolor paska brał się z `.split("")[0]`, co zwracało
+ * literę "b" zamiast nazwy klasy, a `animate={{ width: undefined }}` kasowało
+ * wyliczoną szerokość, więc każdy pasek miał 0 px i był przezroczysty. Ważniejszy:
+ * "Java 75%" nie znaczy nic, bo to ocena wystawiona sobie samemu. Odnośnik do
+ * wydanego projektu albo napisanego artykułu da się sprawdzić — i sam się
+ * aktualizuje razem z portfolio.
+ */
+export default async function TechStackContent({ data }: { data: ResolvedCategory[] }) {
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "stack" });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <ScrollReveal>
-        <h1 className="font-bold text-4xl sm:text-5xl text-text-primary mb-4">
+        <h1 className="mb-4 text-4xl font-bold text-text-primary sm:text-5xl">
           {t("title")}
         </h1>
-        <p className="text-text-muted text-base mb-16">{t("subtitle")}</p>
+        <p className="mb-16 max-w-2xl text-base text-text-muted">{t("subtitle")}</p>
       </ScrollReveal>
 
-      {/* Kategorie */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         {data.map((category, catIndex) => (
-          <ScrollReveal key={category.category} delay={catIndex * 0.08}>
-            <div className="bg-surface border border-border-subtle rounded-lg p-6 h-full">
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border-subtle">
-                <h2 className="font-bold text-lg text-text-primary">
-                  {category.label[locale] ?? category.label["en"]}
+          <ScrollReveal
+            key={category.category}
+            delay={catIndex * 0.06}
+            // Wiedza domenowa idzie pierwsza i na całą szerokość. To jedyna kategoria,
+            // której nie da się nadrobić kursem, więc nie powinna wyglądać jak reszta.
+            className={cn(category.featured && "lg:col-span-2")}
+          >
+            <div
+              className={cn(
+                "h-full rounded-sincore-xl border bg-surface p-6",
+                category.featured ? "border-accent-primary/40" : "border-border-subtle"
+              )}
+            >
+              <div className="mb-6 border-b border-border-subtle pb-4">
+                <h2
+                  className={cn(
+                    "text-lg font-bold",
+                    category.featured ? "text-accent-primary" : "text-text-primary"
+                  )}
+                >
+                  {category.label}
                 </h2>
+                {category.note && (
+                  <p className="mt-2 text-sm leading-relaxed text-text-muted">
+                    {category.note}
+                  </p>
+                )}
               </div>
 
-              {/* Lista technologii */}
-              <div className="space-y-4">
-                {category.items.map((item, itemIndex) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: catIndex * 0.05 + itemIndex * 0.05 }}
-                  >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono text-sm text-text-primary">{item.name}</span>
-                      <span className="font-mono text-xs text-text-muted">
-                        {t(`level_${item.level}`)}
-                      </span>
+              <ul
+                className={cn(
+                  "space-y-5",
+                  category.featured &&
+                    "sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-5 sm:space-y-0"
+                )}
+              >
+                {category.items.map((item) => (
+                  <li key={item.name}>
+                    <p className="mb-2 font-mono text-sm text-text-primary">
+                      {item.name}
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                      {item.evidence.map((ev) => {
+                        const Icon = EVIDENCE_ICON[ev.kind];
+                        const content = (
+                          <>
+                            <Icon size={11} className="shrink-0" />
+                            <span className="truncate">{ev.label}</span>
+                          </>
+                        );
+
+                        // Notatka nie jest odnośnikiem — nie ma dokąd prowadzić.
+                        return ev.href ? (
+                          <Link
+                            key={`${ev.kind}-${ev.label}`}
+                            href={ev.href}
+                            className="hover:border-accent-primary/50 inline-flex max-w-full items-center gap-1.5 rounded border border-border-subtle px-2 py-1 font-mono text-xs text-text-secondary transition-colors duration-fast hover:text-accent-primary"
+                          >
+                            {content}
+                          </Link>
+                        ) : (
+                          <span
+                            key={`${ev.kind}-${ev.label}`}
+                            className="inline-flex max-w-full items-center gap-1.5 rounded border border-dashed border-border-subtle px-2 py-1 font-mono text-xs text-text-muted"
+                          >
+                            {content}
+                          </span>
+                        );
+                      })}
                     </div>
-                    {/* Pasek postępu */}
-                    <div className="h-1 bg-surface-elevated rounded-full overflow-hidden">
-                      <motion.div
-                        className={cn("h-full rounded-full", LEVEL_COLORS[item.level].split("")[0])}
-                        initial={{ width: 0 }}
-                        animate={{ width: undefined }}
-                        transition={{ duration: 0.8, delay: catIndex * 0.05 + itemIndex * 0.06, ease:"easeOut" }}
-                        style={{
-                          width:
-                            item.level ==="expert" ?"100%"
-                            : item.level ==="advanced" ?"75%"
-                            : item.level ==="intermediate" ?"50%"
-                            :"25%",
-                        }}
-                      />
-                    </div>
-                  </motion.div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </ScrollReveal>
         ))}
       </div>
+
+      <p className="mt-12 max-w-2xl font-mono text-xs leading-relaxed text-text-muted">
+        {t("evidence_note")}
+      </p>
     </div>
   );
 }

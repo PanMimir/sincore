@@ -36,13 +36,23 @@ export default function Navbar({ articleSlugMap }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  // Escape zamyka menu — standardowe zachowanie każdego rozwijanego panelu.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
 
   const isActive = (href: string) => {
     const fullPath = `/${locale}${href === "/" ? "" : href}`;
@@ -52,32 +62,33 @@ export default function Navbar({ articleSlugMap }: NavbarProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-normal",
+        "fixed left-0 right-0 top-0 z-50 transition-all duration-normal",
         scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border-subtle"
+          ? "bg-background/90 border-b border-border-subtle backdrop-blur-md"
           : "bg-transparent"
       )}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[72px]">
-
-          <Link
-            href={`/${locale}`}
-            className="flex items-center gap-2.5 group"
-          >
-            <SincoreSignet pulse className="w-7 h-8 text-text-primary group-hover:text-accent-primary transition-colors duration-fast" />
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-[72px] items-center justify-between">
+          <Link href={`/${locale}`} className="group flex items-center gap-2.5">
+            <SincoreSignet
+              pulse
+              className="h-8 w-7 text-text-primary transition-colors duration-fast group-hover:text-accent-primary"
+            />
             <span className="text-lg tracking-tight text-text-primary">
-              <span className="font-light">sin</span><span className="font-extrabold">core</span>
+              <span className="font-light">sin</span>
+              <span className="font-extrabold">core</span>
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.key}
                 href={`/${locale}${link.href === "/" ? "" : link.href}`}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
-                  "px-3 py-2 rounded-sincore-sm text-sm font-medium transition-colors duration-fast",
+                  "rounded-sincore-sm px-3 py-2 text-sm font-medium transition-colors duration-fast",
                   isActive(link.href)
                     ? "text-accent-primary"
                     : "text-text-secondary hover:text-text-primary"
@@ -93,8 +104,10 @@ export default function Navbar({ articleSlugMap }: NavbarProps) {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-text-secondary hover:text-text-primary transition-colors"
-              aria-label="Toggle menu"
+              className="p-2 text-text-secondary transition-colors hover:text-text-primary lg:hidden"
+              aria-label={isOpen ? t("menu_close") : t("menu_open")}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -102,11 +115,15 @@ export default function Navbar({ articleSlugMap }: NavbarProps) {
         </div>
 
         {isOpen && (
-          <div className="md:hidden border-t border-border-subtle py-3 bg-background/95 backdrop-blur-md">
+          <div
+            id="mobile-nav"
+            className="bg-background/95 border-t border-border-subtle py-3 backdrop-blur-md lg:hidden"
+          >
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.key}
                 href={`/${locale}${link.href === "/" ? "" : link.href}`}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 className={cn(
                   "block px-4 py-3 text-base transition-colors",
                   isActive(link.href)

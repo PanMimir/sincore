@@ -16,6 +16,12 @@ export interface Article {
   id: string;
   slug: string;
   title: string;
+  /**
+   * Skrócony tytuł na potrzeby wyniku wyszukiwania. Opcjonalny — używany tylko tam,
+   * gdzie pełny tytuł (często z podtytułem po "albo:") nie zmieściłby się w ~60
+   * znakach, jakie pokazuje Google. Nagłówek artykułu zawsze bierze `title`.
+   */
+  titleSeo?: string;
   description: string;
   date: string;
   tags: string[];
@@ -47,6 +53,7 @@ export async function getAllArticles(locale: string): Promise<Article[]> {
       id: data.id ?? slug,
       slug,
       title: data.title ?? slug,
+      titleSeo: data.titleSeo ?? undefined,
       description: data.description ?? "",
       date: data.date ?? "",
       tags: data.tags ?? [],
@@ -55,8 +62,11 @@ export async function getAllArticles(locale: string): Promise<Article[]> {
     } satisfies Article;
   });
 
-  // Sortowanie po dacie malejąco (najnowszy na górze)
-  return articles.sort((a, b) => (a.date > b.date ? -1 : 1));
+  // Sortowanie po dacie malejąco (najnowszy na górze). localeCompare zwraca 0 przy
+  // równych datach, więc kolejność takich artykułów jest powtarzalna między buildami.
+  return articles.sort(
+    (a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug)
+  );
 }
 
 export async function getFeaturedArticles(locale: string): Promise<Article[]> {
@@ -86,19 +96,20 @@ export async function getArticleBySlug(
   const { data, content: markdown } = matter(raw);
 
   const processed = await remark()
-    .use(remarkGfm)      // GitHub Flavored Markdown: tabele, strikethrough, checkboxes
-    .use(remarkHtml)     // sanitize domyślnie ON (hast-util-sanitize, schema GitHub) — surowy HTML/<script> w md jest usuwany
+    .use(remarkGfm) // GitHub Flavored Markdown: tabele, strikethrough, checkboxes
+    .use(remarkHtml) // sanitize domyślnie ON (hast-util-sanitize, schema GitHub) — surowy HTML/<script> w md jest usuwany
     .process(markdown);
 
   // Owijamy tabele żeby na mobile dostały overflow-x zamiast wypychać layout
-  const html = processed.toString().replace(
-    /<table>/g,
-    '<div class="table-wrapper"><table>'
-  ).replace(/<\/table>/g, "</table></div>");
+  const html = processed
+    .toString()
+    .replace(/<table>/g, '<div class="table-wrapper"><table>')
+    .replace(/<\/table>/g, "</table></div>");
 
   return {
     id: data.id ?? slug,
     slug,
+    titleSeo: data.titleSeo ?? undefined,
     title: data.title ?? slug,
     description: data.description ?? "",
     date: data.date ?? "",
@@ -113,7 +124,9 @@ export async function getArticleBySlug(
  * Buduje mapę id → { pl?: slug, en?: slug } skanując oba foldery.
  * Używane przez LanguageSwitcher do znalezienia ekwiwalentu artykułu w drugim języku.
  */
-export async function getArticleSlugMap(): Promise<Record<string, Record<string, string>>> {
+export async function getArticleSlugMap(): Promise<
+  Record<string, Record<string, string>>
+> {
   const locales = ["pl", "en"];
   const map: Record<string, Record<string, string>> = {};
 

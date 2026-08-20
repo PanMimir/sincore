@@ -35,9 +35,7 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   return all.filter((p) => p.featured);
 }
 
-export async function getProjectBySlug(
-  slug: string
-): Promise<Project | undefined> {
+export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
   const all = await getAllProjects();
   return all.find((p) => p.slug === slug);
 }

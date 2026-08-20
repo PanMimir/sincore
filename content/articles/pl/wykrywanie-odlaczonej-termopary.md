@@ -1,7 +1,8 @@
 ---
 id: thermocouple-disconnect-detection
 title: "Wykrywanie odłączonej termopary, gdy urządzenie jej nie zgłasza"
-description: "Nie każdy przetwornik temperatury sygnalizuje odłączoną termoparę. Studium przypadku F&F MB-TC-1: realne dane z rejestrów Modbus, trzy stany czujnika i granica tego, co da się wykryć programowo."
+titleSeo: "Wykrywanie odłączonej termopary z rejestrów Modbus"
+description: "Nie każdy przetwornik zgłasza odłączoną termoparę. Studium F&F MB-TC-1: dane z rejestrów Modbus, trzy stany czujnika i granica wykrywania programowego."
 date: "2026-05-21"
 tags: ["temperature", "modbus"]
 featured: false
@@ -24,12 +25,12 @@ Ten artykuł to studium tego przypadku — z realnymi danymi z rejestrów Modbus
 
 Jednokanałowy przetwornik na termopary (K, J, T, N, S, E, B, R), Modbus RTU po RS-485. Istotne rejestry:
 
-| Rejestr | Zawartość |
-|---|---|
-| `0x00` | temperatura bezwzględna — złącze gorące (×10) |
-| `0x01` | temperatura względna — gorące minus zimne (×10) |
-| `0x02` | temperatura złącza zimnego — wnętrze urządzenia (×10) |
-| `0x05` | status — bity 0–3: alarmy, bit 4: pomiar poza zakresem |
+| Rejestr | Zawartość                                              |
+| ------- | ------------------------------------------------------ |
+| `0x00`  | temperatura bezwzględna — złącze gorące (×10)          |
+| `0x01`  | temperatura względna — gorące minus zimne (×10)        |
+| `0x02`  | temperatura złącza zimnego — wnętrze urządzenia (×10)  |
+| `0x05`  | status — bity 0–3: alarmy, bit 4: pomiar poza zakresem |
 
 Zależność jest prosta: `temp. bezwzględna = temp. złącza zimnego + napięcie termopary przeliczone na °C`. Gdy wejście jest otwarte, napięcie termopary znika — i zostaje samo złącze zimne.
 
@@ -43,11 +44,11 @@ Z punktu widzenia Modbusa wszystko jest w porządku. Z punktu widzenia rzeczywis
 
 Żeby zobaczyć, co się naprawdę dzieje, zrzuciliśmy rejestry w serii ~30 odczytów dla każdego stanu czujnika. Stany okazały się **trzy**, nie dwa:
 
-| Stan | temp. bezwzględna | rejestr `0x05` | charakter |
-|---|---|---|---|
-| Termopara podłączona | realny pomiar | `0x000F` | stabilny, gładki |
-| **Czyste rozłączenie** | stabilne ~temp. otoczenia | `0x000F` | stabilny, gładki |
-| **Luźny / przerywany styk** | rozrzut kilka °C | `0x000F` | chaotyczny szum |
+| Stan                        | temp. bezwzględna         | rejestr `0x05` | charakter        |
+| --------------------------- | ------------------------- | -------------- | ---------------- |
+| Termopara podłączona        | realny pomiar             | `0x000F`       | stabilny, gładki |
+| **Czyste rozłączenie**      | stabilne ~temp. otoczenia | `0x000F`       | stabilny, gładki |
+| **Luźny / przerywany styk** | rozrzut kilka °C          | `0x000F`       | chaotyczny szum  |
 
 Rejestr statusu `0x05` ma **identyczną wartość `0x000F`** we wszystkich trzech przypadkach. Prześledziliśmy każdy bit — żaden, udokumentowany czy nie, nie reaguje na odłączenie. Flagi po prostu nie ma.
 

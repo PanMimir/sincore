@@ -10,18 +10,18 @@ export default function CtaSection() {
   const locale = useLocale();
 
   return (
-    <section className="py-24 border-t border-border-subtle">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="border-t border-border-subtle py-24">
+      <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         <ScrollReveal>
-          <h2 className="font-bold text-3xl sm:text-4xl tracking-tight text-text-primary mb-4">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
             {t("cta_title")}
           </h2>
-          <p className="text-text-secondary mb-10 max-w-lg mx-auto leading-relaxed">
+          <p className="mx-auto mb-10 max-w-lg leading-relaxed text-text-secondary">
             {t("cta_subtitle")}
           </p>
           <Link
             href={`/${locale}/contact`}
-            className="inline-flex items-center gap-2 h-12 px-8 bg-accent-400 hover:bg-accent-300 active:bg-accent-500 text-neutral-950 font-bold text-sm rounded-sincore-md transition-all duration-fast ease-sincore-out hover:-translate-y-px"
+            className="inline-flex h-12 items-center gap-2 rounded-sincore-md bg-accent-400 px-8 text-sm font-bold text-neutral-950 transition-all duration-fast ease-sincore-out hover:-translate-y-px hover:bg-accent-300 active:bg-accent-500"
           >
             <Mail size={16} />
             {t("cta_button")}

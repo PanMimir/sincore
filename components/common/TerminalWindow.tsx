@@ -37,15 +37,15 @@ export default function TerminalWindow({
   }, []);
 
   return (
-    <div className="rounded-sincore-lg border border-border-subtle bg-surface overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-3 bg-surface-elevated border-b border-border-subtle">
-        <div className="w-2.5 h-2.5 rounded-full bg-error-500/70" />
-        <div className="w-2.5 h-2.5 rounded-full bg-warning-500/70" />
-        <div className="w-2.5 h-2.5 rounded-full bg-success-500/70" />
+    <div className="overflow-hidden rounded-sincore-lg border border-border-subtle bg-surface">
+      <div className="flex items-center gap-2 border-b border-border-subtle bg-surface-elevated px-4 py-3">
+        <div className="h-2.5 w-2.5 rounded-full bg-error-500/70" />
+        <div className="h-2.5 w-2.5 rounded-full bg-warning-500/70" />
+        <div className="h-2.5 w-2.5 rounded-full bg-success-500/70" />
         <span className="ml-2 font-mono text-xs text-text-muted">{title}</span>
       </div>
 
-      <div className="p-5 font-mono text-sm space-y-2 min-h-[180px]">
+      <div className="min-h-[180px] space-y-2 p-5 font-mono text-sm">
         {lines.slice(0, visibleLines).map((line, i) => (
           <div key={i}>
             {line.type === "command" ? (
@@ -54,12 +54,17 @@ export default function TerminalWindow({
                 {line.text}
               </p>
             ) : (
-              <p className={cn("text-text-secondary pl-4", !line.text && "h-2")}>
+              <p className={cn("pl-4 text-text-secondary", !line.text && "h-2")}>
                 {line.href ? (
-                  <a href={line.href} className="text-accent-primary hover:text-accent-hover hover:underline transition-colors duration-fast">
+                  <a
+                    href={line.href}
+                    className="text-accent-primary transition-colors duration-fast hover:text-accent-hover hover:underline"
+                  >
                     {line.text}
                   </a>
-                ) : line.text}
+                ) : (
+                  line.text
+                )}
               </p>
             )}
           </div>
@@ -70,7 +75,7 @@ export default function TerminalWindow({
             <span className="text-text-muted">❯ </span>
             <span
               className={cn(
-                "inline-block w-2 h-4 bg-accent-primary align-middle transition-opacity duration-instant",
+                "inline-block h-4 w-2 bg-accent-primary align-middle transition-opacity duration-instant",
                 showCursor ? "opacity-100" : "opacity-0"
               )}
             />

@@ -22,21 +22,26 @@ export default function JsonLd() {
         inLanguage: ["pl", "en"],
       },
       // Person — info o autorze
+      // Person — te dane czyta Google i modele językowe, i biorą je za deklarację
+      // wprost. Dlatego stoi tu wyłącznie to, co ma pokrycie w portfolio: wcześniej
+      // było "Java Developer" i Java na czele knowsAbout, przy zerowej liczbie
+      // wydanych projektów w Javie. Java i Spring są w trakcie nauki i tam zostają.
       {
         "@type": "Person",
         "@id": `${baseUrl}/#author`,
-        name: "sincore",
+        name: "Michał Pańczyk",
+        alternateName: "sincore",
         url: baseUrl,
-        jobTitle: "Java Developer",
+        jobTitle: "Specjalista ds. badań energetyczno-emisyjnych",
         knowsAbout: [
-          "Java",
-          "Spring Framework",
-          "Object-Oriented Programming",
-          "SQL",
-          "Git",
           "Energy and Emission Research",
           "Industrial Heating Systems",
           "PN-EN Standards",
+          "Flue Gas Analysis",
+          "Modbus RTU/TCP",
+          "RS-485",
+          "Industrial Measurement Instrumentation",
+          "Python",
         ],
         sameAs: [
           "https://github.com/PanMimir",
@@ -50,7 +55,9 @@ export default function JsonLd() {
     <script
       type="application/ld+json"
       // Escapujemy "<" → "<", żeby dane nie mogły wyjść z <script> przez "</script>"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }

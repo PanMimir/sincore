@@ -1,7 +1,8 @@
 ---
 id: ai-assisted-ot-intrusion
 title: "An attacker who knew nothing about automation — and found the industrial gateway anyway"
-description: "Dragos documented an intrusion at a Mexican water utility where language models served as the working tool throughout. What the machine actually did, what it failed to do, and what follows for anyone responsible for an installation."
+titleSeo: "An AI-assisted intrusion at a water utility"
+description: "Dragos documented an intrusion at a Mexican water utility where a language model was the working tool. What the machine did, what it failed to do, what follows."
 date: "2026-08-19"
 tags: ["security", "ot", "ai"]
 featured: true

@@ -13,6 +13,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+# Włącza output: "standalone" w next.config.mjs — poza Dockerem ten tryb jest zbędny.
+ENV DOCKER_BUILD 1
 # Wyłącza telemetrię Next.js
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN npm run build

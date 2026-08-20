@@ -7,7 +7,11 @@ interface SincoreSignetProps {
   pulse?: boolean;
 }
 
-export default function SincoreSignet({ className, ariaLabel = "sincore", pulse = false }: SincoreSignetProps) {
+export default function SincoreSignet({
+  className,
+  ariaLabel = "sincore",
+  pulse = false,
+}: SincoreSignetProps) {
   return (
     <svg
       viewBox="0 0 200 240"

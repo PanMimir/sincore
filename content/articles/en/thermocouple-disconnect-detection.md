@@ -1,7 +1,8 @@
 ---
 id: thermocouple-disconnect-detection
 title: "Detecting a Disconnected Thermocouple When the Device Won't Tell You"
-description: "Not every temperature transmitter flags a disconnected thermocouple. An F&F MB-TC-1 case study: real Modbus register data, three sensor states, and the limit of what software can actually detect."
+titleSeo: "Detecting a disconnected thermocouple over Modbus"
+description: "Not every transmitter flags a disconnected thermocouple. An F&F MB-TC-1 case study: real Modbus register data, three sensor states, and the limit of software."
 date: "2026-05-21"
 tags: ["temperature", "modbus"]
 featured: false
@@ -24,12 +25,12 @@ This article is a study of that case — with real Modbus register data, and an 
 
 A single-channel thermocouple transmitter (K, J, T, N, S, E, B, R), Modbus RTU over RS-485. The relevant registers:
 
-| Register | Content |
-|---|---|
-| `0x00` | absolute temperature — hot junction (×10) |
-| `0x01` | relative temperature — hot minus cold (×10) |
-| `0x02` | cold-junction temperature — inside the device (×10) |
-| `0x05` | status — bits 0–3: alarms, bit 4: measurement out of range |
+| Register | Content                                                    |
+| -------- | ---------------------------------------------------------- |
+| `0x00`   | absolute temperature — hot junction (×10)                  |
+| `0x01`   | relative temperature — hot minus cold (×10)                |
+| `0x02`   | cold-junction temperature — inside the device (×10)        |
+| `0x05`   | status — bits 0–3: alarms, bit 4: measurement out of range |
 
 The relationship is simple: `absolute temp = cold-junction temp + thermocouple voltage converted to °C`. When the input is open, the thermocouple voltage vanishes — and only the cold junction is left.
 
@@ -43,11 +44,11 @@ From Modbus's point of view everything is fine. From reality's point of view —
 
 To see what actually happens, we dumped the registers across a series of ~30 reads for each sensor state. The states turned out to be **three**, not two:
 
-| State | absolute temp | register `0x05` | character |
-|---|---|---|---|
-| Thermocouple connected | real measurement | `0x000F` | stable, smooth |
-| **Clean disconnect** | stable ~ambient temp | `0x000F` | stable, smooth |
-| **Loose / intermittent contact** | several °C of scatter | `0x000F` | chaotic noise |
+| State                            | absolute temp         | register `0x05` | character      |
+| -------------------------------- | --------------------- | --------------- | -------------- |
+| Thermocouple connected           | real measurement      | `0x000F`        | stable, smooth |
+| **Clean disconnect**             | stable ~ambient temp  | `0x000F`        | stable, smooth |
+| **Loose / intermittent contact** | several °C of scatter | `0x000F`        | chaotic noise  |
 
 Status register `0x05` holds the **identical value `0x000F`** in all three cases. We traced every bit — none, documented or not, reacts to a disconnection. There simply is no flag.
 

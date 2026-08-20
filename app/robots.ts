@@ -8,8 +8,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // Blokuj Next.js internale przed indeksowaniem
-      disallow: ["/api/", "/_next/"],
+      // Tylko API. /_next/ było tu wcześniej i blokowało robotom pobieranie CSS
+      // i JavaScriptu — Google renderuje stronę jak przeglądarka i bez tych plików
+      // ocenia układ, którego użytkownik nigdy nie zobaczy.
+      disallow: ["/api/"],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };

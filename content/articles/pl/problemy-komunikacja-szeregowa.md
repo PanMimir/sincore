@@ -25,6 +25,7 @@ Zebrałem tutaj problemy, które faktycznie napotkałem przy pracy z urządzenia
 **Przyczyna:** Windows przypisuje numery COM dynamicznie. Przy każdym podłączeniu do innego portu USB lub po pewnych aktualizacjach numer może się zmienić.
 
 **Rozwiązanie:**
+
 1. Menedżer urządzeń → Porty (COM i LPT) → prawy klik na urządzenie → Właściwości → Ustawienia portu → Zaawansowane
 2. Zmień "Numer portu COM" na stały (np. COM8) i zaznacz "Użyj tego portu COM, nawet jeśli jest zajęty"
 3. Alternatywnie: w kodzie nie hardcoduj numeru portu — daj użytkownikowi wybór z listy dostępnych portów
@@ -58,6 +59,7 @@ Zebrałem tutaj problemy, które faktycznie napotkałem przy pracy z urządzenia
 **Przyczyny i rozwiązania:**
 
 **Zbyt krótki timeout read:**
+
 ```python
 # Za mało — przy wolnych urządzeniach może nie zdążyć
 client = ModbusSerialClient(port="COM8", baudrate=9600, timeout=0.5)
@@ -67,6 +69,7 @@ client = ModbusSerialClient(port="COM8", baudrate=9600, timeout=2)
 ```
 
 **Garbage na początku bufora (echo konwertera):**
+
 ```python
 # Przed wysłaniem żądania wyczyść bufor
 serial_port.reset_input_buffer()
@@ -103,7 +106,7 @@ serial_port.reset_output_buffer()
    - Big-endian: rejestr 0 = MSW, rejestr 1 = LSW
    - Little-endian: rejestr 0 = LSW, rejestr 1 = MSW
    - Byte-swap: bajty wewnątrz każdego rejestru zamienione
-   
+
    ```python
    import struct
    r = result.registers
@@ -138,6 +141,7 @@ handle.exe -a Serial
 Najczęstsi sprawcy: Modbus Poll, inne instancje Python, LOGO! Soft Comfort, sterowniki drukarek z wbudowanym portem COM.
 
 **Linux:**
+
 ```bash
 fuser /dev/ttyUSB0    # pokaże PID procesu
 lsof /dev/ttyUSB0     # więcej szczegółów

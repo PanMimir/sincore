@@ -87,13 +87,13 @@
   },
   {
     "slug": "norm-monitor",
-    "title": "Norm Monitor — alerty zmian norm PN-EN i diff PDF",
+    "title": "Norm Monitor — alerty o zmianach norm PN-EN i porównywanie wersji",
     "description": {
       "pl": "Audytorzy, laboratoria i działy R&D muszą pracować na aktualnych normach, a w Polsce nie ma do tego żadnego narzędzia — PKN nie udostępnia ani API, ani RSS-a, ani newslettera. Norm Monitor to apka desktopowa (Windows) sprzężona z lekkim cloud feedem: aplikacja trzyma lokalnie listę norm, które cię interesują, a backend codziennie skanuje PKN i informuje, gdy jakaś została zaktualizowana lub wycofana. Druga funkcja — porównanie dwóch wersji PDF normy — działa wyłącznie lokalnie, bo to twój legalnie kupiony plik. Porównanie działa na PDF-ach, które aplikacja potrafi odczytać — skany (głównie starsze wydania norm PKN) odpadają, bo to obrazy stron. Część PDF-ów z tekstem ma też nietypowy układ, którego aplikacja jeszcze nie rozpoznaje. Projekt w trakcie budowy.",
       "en": "Auditors, labs and R&D teams need to work on current standards, but in Poland there's no tooling for it — PKN provides no API, no RSS, no newsletter. Norm Monitor is a desktop app (Windows) paired with a thin cloud feed: the app keeps your list of standards locally, and the backend scans PKN daily to notify you when something gets updated or withdrawn. The second feature — comparing two PDF versions of a standard — runs purely locally, because that's your legally purchased file. Comparison works on PDFs the app can actually read — scans (mostly older PKN editions) drop out because they're page images. Some text-based PDFs also use an unusual layout the app doesn't yet recognise. Project currently in active development."
     },
     "stack": ["Python", "PySide6", "Java", "Spring Boot", "PostgreSQL", "PyMuPDF"],
-    "tags": ["desktop", "saas", "scraping", "compliance", "standards"],
+    "tags": ["desktop", "saas", "monitoring", "compliance", "standards"],
     "status": "wip",
     "githubUrl": null,
     "docsUrl": null,

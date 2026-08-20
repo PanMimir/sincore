@@ -21,12 +21,14 @@ Aktualna generacja to **LOGO! 8** — dodano Ethernet (port RJ-45), serwer webow
 ## Programowanie — LOGO! Soft Comfort
 
 Narzędzie do programowania LOGO! to **LOGO! Soft Comfort** (Windows/Linux/Mac). Programowanie w:
+
 - **FBD** (Function Block Diagram) — bloki logiczne, połączenia graficzne
 - **LAD** (Ladder Diagram) — schemat drabinkowy
 
 Program tworzysz na komputerze, transferujesz przez Ethernet lub kabel programujący (starsze wersje). LOGO! 8 pozwala też transferować program przez kartę microSD.
 
 Dostępne bloki funkcyjne:
+
 - Logika: AND, OR, NOT, XOR, NAND, NOR
 - Czasowe: opóźnienie załączenia/wyłączenia, zegar tygodniowy, licznik godzin
 - Zliczanie: licznik w górę/dół
@@ -39,14 +41,14 @@ LOGO! 8 obsługuje Modbus TCP jako slave. Klient (np. Python, SCADA, inny PLC) m
 
 ### Mapowanie rejestrów
 
-| Obszar LOGO! | Modbus | FC | Uwaga |
-|-------------|--------|----|-------|
-| Wejścia cyfrowe I1–I24 | Coils 1–24 | 01 (R) | |
-| Wyjścia cyfrowe Q1–Q20 | Coils 8193–8212 | 01/05 (R/W) | |
-| Znaczniki M1–M64 | Coils 8257–8320 | 01/05 (R/W) | |
-| Wejścia analogowe AI1–AI8 | Holding Reg 1–8 | 03 (R) | 0–10V → 0–27648 |
-| Wyjścia analogowe AQ1–AQ8 | Holding Reg 513–520 | 03/06 (R/W) | |
-| Znaczniki analogowe AM1–AM64 | Holding Reg 529–592 | 03/06 (R/W) | |
+| Obszar LOGO!                 | Modbus              | FC          | Uwaga           |
+| ---------------------------- | ------------------- | ----------- | --------------- |
+| Wejścia cyfrowe I1–I24       | Coils 1–24          | 01 (R)      |                 |
+| Wyjścia cyfrowe Q1–Q20       | Coils 8193–8212     | 01/05 (R/W) |                 |
+| Znaczniki M1–M64             | Coils 8257–8320     | 01/05 (R/W) |                 |
+| Wejścia analogowe AI1–AI8    | Holding Reg 1–8     | 03 (R)      | 0–10V → 0–27648 |
+| Wyjścia analogowe AQ1–AQ8    | Holding Reg 513–520 | 03/06 (R/W) |                 |
+| Znaczniki analogowe AM1–AM64 | Holding Reg 529–592 | 03/06 (R/W) |                 |
 
 ### Odczyt wyjść w Pythonie
 
@@ -73,6 +75,7 @@ client.close()
 ## Serwer webowy
 
 LOGO! 8 ma wbudowany serwer HTTP dostępny na porcie 80. Po zalogowaniu (domyślnie admin/admin — zmień!) możesz:
+
 - Monitorować wejścia i wyjścia w przeglądarce
 - Tworzyć własne strony HMI w LOGO! Soft Comfort i uploadować je do sterownika
 - Zdalnie zmieniać parametry (jeśli strona HMI to umożliwia)
@@ -81,13 +84,13 @@ Strony HMI to proste projekty HTML z elementami graficznymi powiązanymi z zasob
 
 ## Kiedy LOGO! zamiast S7
 
-| | LOGO! 8 | S7-1200 |
-|--|---------|---------|
-| Cena | ~300–500 PLN | ~1500–3000 PLN |
-| Języki | FBD, LAD | FBD, LAD, STL, SCL |
-| Komunikacja | Modbus TCP, Ethernet | PROFINET, Modbus, AS-i, ... |
-| Rozbudowa | Ograniczona | Moduły sygnałowe, komunikacyjne |
-| Zastosowanie | Proste sterowania, ≤20 I/O | Złożona automatyka, sieci |
+|              | LOGO! 8                    | S7-1200                         |
+| ------------ | -------------------------- | ------------------------------- |
+| Cena         | ~300–500 PLN               | ~1500–3000 PLN                  |
+| Języki       | FBD, LAD                   | FBD, LAD, STL, SCL              |
+| Komunikacja  | Modbus TCP, Ethernet       | PROFINET, Modbus, AS-i, ...     |
+| Rozbudowa    | Ograniczona                | Moduły sygnałowe, komunikacyjne |
+| Zastosowanie | Proste sterowania, ≤20 I/O | Złożona automatyka, sieci       |
 
 LOGO! to dobry wybór gdy: masz proste zadanie, budżet jest napięty, nie potrzebujesz sieci przemysłowej.
 

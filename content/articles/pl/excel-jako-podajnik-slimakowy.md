@@ -1,7 +1,8 @@
 ---
 id: screw-feeder-pyrolysis-calculator
 title: "Excel jako podajnik ślimakowy, albo: jak liczyć nastawy pirolizera nie wstając od biurka"
-description: "Plan był prosty — wolne od kodu, dzień przy pirolizerze. Skończyło się tysiącem linii Pythona, dopasowanym modelem kinetyki rozkładu biomasy i kalkulatorem nastaw na 16 paliw. O bilansie masy, dlaczego napełnienie ślimaka nie jest cechą sprzętu, i dlaczego nikt nie odpowie ci na maila o nastawy w tym tygodniu."
+titleSeo: "Kalkulator nastaw pirolizera — od Excela do Pythona"
+description: "Dzień bez kodu skończył się modelem kinetyki rozkładu biomasy i kalkulatorem nastaw na 16 paliw. O bilansie masy i o tym, czym jest napełnienie ślimaka."
 date: "2026-06-09"
 tags: ["piroliza", "biomasa", "inżynieria-procesowa", "Excel", "kalkulator"]
 featured: true
@@ -27,7 +28,7 @@ Zaczyna się niewinnie. Chcesz dwie rzeczy:
 
 Brzmi rozsądnie. Wpisujesz na falowniku trochę Hz, na sterowniku podajnika 5 sekund pracy, 5 sekund przerwy. Patrzysz na karbonizat — albo wygląda jak pellet drzewny lekko opalony zapalniczką, albo jak węgiel aktywny prosto z laboratorium. Coś jest pomiędzy. Zmieniasz Hz. Karbonizat zmienia się troszkę. Zmieniasz przerwę. Karbonizat wygląda inaczej. Skąd to wiedzieć?
 
-A wszystko dlatego, że tych dwóch parametrów — przerobu i czasu grzania — **nie da się ustawić niezależnie**. Wiąże je drobny szczegół z liceum technicznego, którego nikt nie pamięta o nazwie *bilans masy*:
+A wszystko dlatego, że tych dwóch parametrów — przerobu i czasu grzania — **nie da się ustawić niezależnie**. Wiąże je drobny szczegół z liceum technicznego, którego nikt nie pamięta o nazwie _bilans masy_:
 
 > **Holdup = przepływ × czas przebywania**
 
@@ -63,14 +64,14 @@ Lepsze rozwiązanie pochodzi z chemii rozkładu termicznego — krzywa Y(T) ma k
 
 Trzy parametry na paliwo — a że symbole nie mówią same za siebie:
 
-| Symbol | Co to jest | Jednostka |
-|---|---|---|
-| **Y(T)** | uzysk masowy w temperaturze T: jaki ułamek wsadu wychodzi jako karbonizat | % |
-| **T** | temperatura w strefie grzanej | °C |
-| **Y∞** | asymptota — ile char zostanie zawsze, choćbyś grzał w nieskończoność | % |
-| **A** | ile masy jest „do rozłożenia" ponad asymptotą | % |
-| **k** | jak szybko uzysk spada wraz z temperaturą | 1/°C |
-| **300** | nie stała fizyczna, tylko punkt zaczepienia krzywej: dolny kraniec zakresu | °C |
+| Symbol   | Co to jest                                                                 | Jednostka |
+| -------- | -------------------------------------------------------------------------- | --------- |
+| **Y(T)** | uzysk masowy w temperaturze T: jaki ułamek wsadu wychodzi jako karbonizat  | %         |
+| **T**    | temperatura w strefie grzanej                                              | °C        |
+| **Y∞**   | asymptota — ile char zostanie zawsze, choćbyś grzał w nieskończoność       | %         |
+| **A**    | ile masy jest „do rozłożenia" ponad asymptotą                              | %         |
+| **k**    | jak szybko uzysk spada wraz z temperaturą                                  | 1/°C      |
+| **300**  | nie stała fizyczna, tylko punkt zaczepienia krzywej: dolny kraniec zakresu | °C        |
 
 Wszystko zafitowane do pomiarów z literatury (jak są) albo własnych (jak nie ma). Krzywa wychodzi w ciągu trzydziestu sekund w arkuszu.
 
@@ -110,4 +111,4 @@ Albo i dwa, jeśli też zechce dorzucić kawę.
 
 ---
 
-*Ciąg dalszy: [Kalkulator pirolizera V2](/pl/knowledge/kalkulator-pirolizera-v2-walidacja) — sześć tygodni później arkusz zderzył się z szesnastoma dniami prób ruchowych. Napełnienie, o którym pisałem wyżej, że wynosi zwykle 0,20–0,30, okazało się wynosić 0,49.*
+_Ciąg dalszy: [Kalkulator pirolizera V2](/pl/knowledge/kalkulator-pirolizera-v2-walidacja) — sześć tygodni później arkusz zderzył się z szesnastoma dniami prób ruchowych. Napełnienie, o którym pisałem wyżej, że wynosi zwykle 0,20–0,30, okazało się wynosić 0,49._

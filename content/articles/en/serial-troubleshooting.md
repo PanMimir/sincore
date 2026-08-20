@@ -25,6 +25,7 @@ These are problems I actually ran into while working with industrial devices ove
 **Cause:** Windows assigns COM numbers dynamically. With each connection to a different USB port, or after certain updates, the number can change.
 
 **Fix:**
+
 1. Device Manager → Ports (COM and LPT) → right-click the device → Properties → Port Settings → Advanced
 2. Change "COM Port Number" to a fixed value (e.g. COM8) and tick "Use this COM port even if it's in use"
 3. Alternatively: don't hardcode the port number in code — give the user a list of available ports to choose from
@@ -58,6 +59,7 @@ These are problems I actually ran into while working with industrial devices ove
 **Causes and fixes:**
 
 **Too short a read timeout:**
+
 ```python
 # Too little — slow devices may not finish in time
 client = ModbusSerialClient(port="COM8", baudrate=9600, timeout=0.5)
@@ -67,6 +69,7 @@ client = ModbusSerialClient(port="COM8", baudrate=9600, timeout=2)
 ```
 
 **Garbage at the start of the buffer (converter echo):**
+
 ```python
 # Clear the buffer before sending the request
 serial_port.reset_input_buffer()
@@ -138,6 +141,7 @@ handle.exe -a Serial
 The usual suspects: Modbus Poll, other Python instances, LOGO! Soft Comfort, printer drivers with a built-in COM port.
 
 **Linux:**
+
 ```bash
 fuser /dev/ttyUSB0    # shows the PID
 lsof /dev/ttyUSB0     # more detail

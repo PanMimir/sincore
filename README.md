@@ -69,9 +69,11 @@ translations/
 ## Dodawanie treści
 
 ### Nowy projekt
+
 Edytuj `data/projects.json` — dodaj obiekt z polami `slug`, `title`, `description` (per język), `stack`, `tags`, `status`, linki, `featured`.
 
 ### Nowy artykuł
+
 Utwórz plik `.md` w `content/articles/pl/` z frontmatterem:
 
 ```markdown
@@ -93,18 +95,21 @@ Plik pojawi się automatycznie na `/pl/knowledge` — zero zmian w kodzie.
 ## Deployment
 
 ### Vercel (zalecane)
+
 1. Push repozytorium na GitHub
 2. Połącz z [vercel.com](https://vercel.com)
 3. Ustaw `NEXT_PUBLIC_BASE_URL` na swoją domenę
 4. Deploy automatyczny przy każdym push do `main`
 
 ### Docker
+
 ```bash
 docker build -t sincore .
 docker run -p 3000:3000 -e NEXT_PUBLIC_BASE_URL=https://sincore.io sincore
 ```
 
 ### VPS bez Dockera
+
 ```bash
 npm run build
 npm run start
@@ -114,11 +119,11 @@ npm run start
 
 ## Skrypty
 
-| Komenda | Opis |
-|---------|------|
-| `npm run dev` | Serwer deweloperski |
-| `npm run build` | Build produkcyjny |
-| `npm run start` | Uruchom build produkcyjny |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier — formatowanie |
+| Komenda             | Opis                         |
+| ------------------- | ---------------------------- |
+| `npm run dev`       | Serwer deweloperski          |
+| `npm run build`     | Build produkcyjny            |
+| `npm run start`     | Uruchom build produkcyjny    |
+| `npm run lint`      | ESLint                       |
+| `npm run format`    | Prettier — formatowanie      |
 | `npm run typecheck` | Sprawdzenie typów TypeScript |

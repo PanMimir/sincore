@@ -1,7 +1,8 @@
 ---
 id: ai-assisted-ot-intrusion
 title: "Napastnik bez wiedzy o automatyce, który i tak znalazł bramkę przemysłową"
-description: "Dragos opisał włamanie do meksykańskich wodociągów, w którym modele językowe pełniły rolę narzędzia roboczego. Co dokładnie zrobiła maszyna, czego nie zdołała, i co z tego wynika dla kogoś, kto odpowiada za instalację."
+titleSeo: "Włamanie do wodociągów z pomocą modeli językowych"
+description: "Dragos opisał włamanie do meksykańskich wodociągów, w którym model językowy był narzędziem roboczym. Co maszyna zrobiła, czego nie zdołała i co z tego wynika."
 date: "2026-08-19"
 tags: ["security", "ot", "ai"]
 featured: true

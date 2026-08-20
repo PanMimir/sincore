@@ -34,14 +34,14 @@ Node : Process : Parameter
 
 Full parameter list in the Bronkhorst document "RS232 interface and Flowbus commands". Key parameters for an MFC:
 
-| Process | Parameter | Description | Type |
-|---------|-----------|-------------|------|
-| 1 | 0 | Measure — current flow | float |
-| 1 | 1 | Setpoint | float |
-| 1 | 3 | Valve output | float |
-| 1 | 8 | Capacity 100% — full range | float |
-| 0 | 0 | Device type | string |
-| 0 | 1 | Serial number | string |
+| Process | Parameter | Description                | Type   |
+| ------- | --------- | -------------------------- | ------ |
+| 1       | 0         | Measure — current flow     | float  |
+| 1       | 1         | Setpoint                   | float  |
+| 1       | 3         | Valve output               | float  |
+| 1       | 8         | Capacity 100% — full range | float  |
+| 0       | 0         | Device type                | string |
+| 0       | 1         | Serial number              | string |
 
 Flow values in Flowbus are expressed as a percentage (0–32000 = 0–100%). Conversion to physical units requires knowing the full range (Capacity 100%).
 
@@ -88,6 +88,7 @@ instrument.writeParameter(1, 50.0)
 ```
 
 Library available via pip:
+
 ```
 pip install bronkhorst-propar
 ```

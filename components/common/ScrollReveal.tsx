@@ -1,39 +1,35 @@
-"use client";
-
-import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
+  /** Opóźnienie kaskady w sekundach — zgodne ze starym API opartym o framer-motion. */
   delay?: number;
   className?: string;
 }
 
+/**
+ * Delikatne wejście treści.
+ *
+ * Nazwa została ze starej wersji, ale komponent nie śledzi już przewijania i nie
+ * potrzebuje JavaScriptu. Poprzednia implementacja renderowała treść z opacity: 0
+ * i pokazywała ją dopiero po uruchomieniu Reacta — z bezpiecznikiem na 600 ms, który
+ * i tak odpalał się dla wszystkiego naraz, więc efekt "przy przewijaniu" nie działał,
+ * a koszt (niewidoczna treść do czasu hydracji) zostawał.
+ *
+ * Teraz to czysty CSS: animacja startuje przy pierwszym renderze, a osoby, które
+ * poprosiły system o ograniczenie ruchu, dostają treść bez animacji (globals.css).
+ */
 export default function ScrollReveal({
   children,
   delay = 0,
   className,
 }: ScrollRevealProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
-  const [fallbackShow, setFallbackShow] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setFallbackShow(true), 600);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const visible = isInView || fallbackShow;
-
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={visible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={className}
+    <div
+      className={cn("fade-rise", className)}
+      style={delay ? { animationDelay: `${Math.round(delay * 1000)}ms` } : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

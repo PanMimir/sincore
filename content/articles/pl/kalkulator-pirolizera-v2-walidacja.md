@@ -1,7 +1,8 @@
 ---
 id: screw-feeder-calculator-validation
 title: "Kalkulator pirolizera V2, albo: co się dzieje, gdy model spotyka szesnaście dni prób ruchowych"
-description: "W czerwcu wypuściłem arkusz liczący nastawy pirolizera. Potem instalacja jechała sześć tygodni bez mojego udziału i wróciła z logiem z 16 dni prób. Zderzenie było pouczające: struktura modelu przetrwała, jeden współczynnik był dwa razy za mały, a bramka OK ✓ okazała się matematycznie niezdolna do zapalenia się na zielono."
+titleSeo: "Walidacja kalkulatora pirolizera na 16 dniach prób"
+description: "Model wrócił z instalacji po 16 dniach prób ruchowych. Struktura przetrwała, jeden współczynnik był dwa razy za mały, a bramka OK nie zapalała się nigdy."
 date: "2026-07-27"
 tags: ["piroliza", "biomasa", "inżynieria-procesowa", "walidacja", "kalkulator"]
 featured: true
@@ -28,20 +29,20 @@ Gęstość razy napełnienie razy pole pierścienia razy skok zwoju razy obroty 
 
 Skoro te oznaczenia wracają w całym tekście, to od razu co jest czym:
 
-| Symbol | Co to jest | Jednostka |
-|---|---|---|
-| **ṁ** | ile paliwa wjeżdża do reaktora w ciągu godziny | kg/h |
-| **ρ** | gęstość nasypowa paliwa — ile waży metr sześcienny **luzem**, razem z powietrzem między ziarnami | kg/m³ |
-| **ψ** | napełnienie: jaka część wolnego przekroju rury jest faktycznie zajęta materiałem | 0–1 |
-| **A** | pole przekroju, którym materiał jedzie — wnętrze rury minus trzpień ślimaka | m² |
-| **S** | skok zwoju: o ile materiał przesunie się wzdłuż rury na jeden obrót ślimaka | m |
-| **n** | obroty **ślimaka**, czyli już za przekładnią — nie obroty silnika | obr/min |
-| **DC** | duty cycle: jaki procent czasu podajnik faktycznie pracuje, a nie stoi w przerwie | 0–1 |
-| **L** | długość strefy grzanej (tutaj 1550 mm izolowanego odcinka) | m |
-| **V_strefy** | objętość strefy grzanej, czyli A × L (tutaj 14,7 litra) | m³ |
-| **t_res** (w części wzorów skrótowo **t**) | czas przebywania: ile minut materiał siedzi w strefie grzanej | min |
-| **wsad** | ile paliwa trzeba podać na godzinę, żeby na wyjściu wypadło tyle karbonizatu, ile chcesz | kg/h |
-| **Y** | uzysk masowy: jaki ułamek wsadu przeżywa proces i wychodzi jako karbonizat | % |
+| Symbol                                     | Co to jest                                                                                       | Jednostka |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------ | --------- |
+| **ṁ**                                      | ile paliwa wjeżdża do reaktora w ciągu godziny                                                   | kg/h      |
+| **ρ**                                      | gęstość nasypowa paliwa — ile waży metr sześcienny **luzem**, razem z powietrzem między ziarnami | kg/m³     |
+| **ψ**                                      | napełnienie: jaka część wolnego przekroju rury jest faktycznie zajęta materiałem                 | 0–1       |
+| **A**                                      | pole przekroju, którym materiał jedzie — wnętrze rury minus trzpień ślimaka                      | m²        |
+| **S**                                      | skok zwoju: o ile materiał przesunie się wzdłuż rury na jeden obrót ślimaka                      | m         |
+| **n**                                      | obroty **ślimaka**, czyli już za przekładnią — nie obroty silnika                                | obr/min   |
+| **DC**                                     | duty cycle: jaki procent czasu podajnik faktycznie pracuje, a nie stoi w przerwie                | 0–1       |
+| **L**                                      | długość strefy grzanej (tutaj 1550 mm izolowanego odcinka)                                       | m         |
+| **V_strefy**                               | objętość strefy grzanej, czyli A × L (tutaj 14,7 litra)                                          | m³        |
+| **t_res** (w części wzorów skrótowo **t**) | czas przebywania: ile minut materiał siedzi w strefie grzanej                                    | min       |
+| **wsad**                                   | ile paliwa trzeba podać na godzinę, żeby na wyjściu wypadło tyle karbonizatu, ile chcesz         | kg/h      |
+| **Y**                                      | uzysk masowy: jaki ułamek wsadu przeżywa proces i wychodzi jako karbonizat                       | %         |
 
 Sześćdziesiątka, która krąży po tych wzorach, nie ma głębszego sensu — to przeliczenie minut na godziny.
 
@@ -75,7 +76,7 @@ Czyli albo ślimak Ø90 kręci się w rurze Ø117 i te 13,5 mm luzu promienioweg
 
 Tu robi się nieprzyjemnie.
 
-Instrukcja w arkuszu, w KROKU 3, brzmiała: *„wybierz wiersz z OK = ✓"*. Tabela ma sto jeden wierszy, od 0 do 50 Hz, a kolumna „OK?" miała podpowiadać, które nastawy mają sens. Sprawdziłem, ile wierszy pokazuje ✓ na ustawieniach, z którymi plik był zapisany.
+Instrukcja w arkuszu, w KROKU 3, brzmiała: _„wybierz wiersz z OK = ✓"_. Tabela ma sto jeden wierszy, od 0 do 50 Hz, a kolumna „OK?" miała podpowiadać, które nastawy mają sens. Sprawdziłem, ile wierszy pokazuje ✓ na ustawieniach, z którymi plik był zapisany.
 
 Zero.
 
@@ -149,8 +150,8 @@ I domyślne wartości, z którymi plik się otwiera, to teraz nie wymyślony buk
 
 Z całej tej historii najbardziej zapadło mi w pamięć nie to, że ψ było dwa razy za małe. Współczynnik to współczynnik, od tego jest kalibracja i sam arkusz miał na nią osobną zakładkę.
 
-Zapadła mi bramka, która nie mogła się zapalić. Bo tam nie było błędu w żadnej formule — każda z osobna liczyła dokładnie to, co miała liczyć. Błąd polegał na tym, że złożenie dwóch poprawnych formuł dawało tożsamość, a interfejs prosił użytkownika o trzy liczby, z których wystarczały dwie. Żaden przegląd wzorów tego nie łapie. Łapie to jedno pytanie, którego sobie nie zadałem: *czy przy ustawieniach, z jakimi ten plik komuś wyjdzie, da się w ogóle wykonać instrukcję, którą sam napisałem?*
+Zapadła mi bramka, która nie mogła się zapalić. Bo tam nie było błędu w żadnej formule — każda z osobna liczyła dokładnie to, co miała liczyć. Błąd polegał na tym, że złożenie dwóch poprawnych formuł dawało tożsamość, a interfejs prosił użytkownika o trzy liczby, z których wystarczały dwie. Żaden przegląd wzorów tego nie łapie. Łapie to jedno pytanie, którego sobie nie zadałem: _czy przy ustawieniach, z jakimi ten plik komuś wyjdzie, da się w ogóle wykonać instrukcję, którą sam napisałem?_
 
 Szesnaście dni czyjejś cierpliwości przy panelu, żeby się tego dowiedzieć. Warto było — ale wolę, żeby następnym razem wystarczyło pięć minut przed wysłaniem pliku.
 
-*Poprzednia część: [Excel jako podajnik ślimakowy](/pl/knowledge/excel-jako-podajnik-slimakowy) — o tym, skąd się ten arkusz wziął i dlaczego napełnienie ślimaka nie jest cechą sprzętu.*
+_Poprzednia część: [Excel jako podajnik ślimakowy](/pl/knowledge/excel-jako-podajnik-slimakowy) — o tym, skąd się ten arkusz wziął i dlaczego napełnienie ślimaka nie jest cechą sprzętu._
