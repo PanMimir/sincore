@@ -119,8 +119,9 @@
     ],
     "approach_title": "Podejście",
     "approach": "Rozumiem system, zanim napiszę kod. Nie sprzedaję rozwiązań, które znam — szukam rozwiązań, które działają dla konkretnego problemu.",
-    "focus_label": "Fokus",
-    "seo_description": "Michał Pańczyk — dziesięć lat badań energetyczno-emisyjnych w laboratorium, dziś piszę narzędzia do problemów, które sam napotkałem."
+    "focus_label": "Focus",
+    "seo_description": "Michał Pańczyk — dziesięć lat badań energetyczno-emisyjnych w laboratorium, dziś piszę narzędzia do problemów, które sam napotkałem.",
+    "focus_value": "oprogramowanie na zamówienie · systemy przemysłowe · automatyzacja"
   },
   "contact": {
     "title": "Kontakt",

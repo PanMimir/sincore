@@ -2,10 +2,13 @@
   {
     "category": "domain",
     "featured": true,
-    "label": { "pl": "Wiedza domenowa", "en": "Domain expertise" },
+    "label": {
+      "pl": "Wiedza domenowa",
+      "en": "Domain expertise"
+    },
     "note": {
-      "pl": "Dziesięć lat w laboratorium badawczym. To jest ta część, której nie da się nadrobić kursem.",
-      "en": "Ten years in a research laboratory. This is the part you cannot pick up from a course."
+      "pl": "Od 2015 roku w instytucie badawczym. To jest ta część, której nie da się nadrobić kursem.",
+      "en": "In a research institute since 2015. This is the part you cannot pick up from a course."
     },
     "items": [
       {
@@ -16,7 +19,10 @@
         "evidence": [
           {
             "kind": "note",
-            "label": { "pl": "10 lat pracy w ITPE", "en": "10 years at ITPE" }
+            "label": {
+              "pl": "ITPE, od 2015 — badania urządzeń na paliwa stałe",
+              "en": "ITPE, since 2015 — testing of solid-fuel appliances"
+            }
           }
         ]
       },
@@ -26,8 +32,17 @@
           "en": "PN-EN 303-5, 13240, 14785, 16510, 16647 standards"
         },
         "evidence": [
-          { "kind": "project", "slug": "norm-monitor" },
-          { "kind": "article", "id": "monitoring-pkn-standards-law" }
+          {
+            "kind": "note",
+            "label": {
+              "pl": "badania i dokumentacja wg tych norm — zakres obowiązków w ITPE",
+              "en": "testing and documentation to these standards — ITPE job scope"
+            }
+          },
+          {
+            "kind": "article",
+            "id": "monitoring-pkn-standards-law"
+          }
         ]
       },
       {
@@ -39,8 +54,8 @@
           {
             "kind": "note",
             "label": {
-              "pl": "pomiary na stanowiskach badawczych",
-              "en": "measurements on test rigs"
+              "pl": "analiza składu spalin — zakres obowiązków w ITPE",
+              "en": "flue gas composition analysis — ITPE job scope"
             }
           }
         ]
@@ -51,19 +66,48 @@
           "en": "Measurement instruments — operation, servicing, data capture"
         },
         "evidence": [
-          { "kind": "project", "slug": "radwag-rejestrator" },
-          { "kind": "project", "slug": "mb-tc-configurator" },
-          { "kind": "article", "id": "thermocouple-modules" }
+          {
+            "kind": "note",
+            "label": {
+              "pl": "obsługa i serwis aparatury — zakres obowiązków w ITPE",
+              "en": "instrument operation and servicing — ITPE job scope"
+            }
+          },
+          {
+            "kind": "project",
+            "slug": "radwag-rejestrator"
+          },
+          {
+            "kind": "project",
+            "slug": "mb-tc-configurator"
+          },
+          {
+            "kind": "article",
+            "id": "thermocouple-modules"
+          }
         ]
       },
       {
         "name": {
-          "pl": "Piroliza metanu i karbonizacja biomasy",
-          "en": "Methane pyrolysis and biomass carbonisation"
+          "pl": "Karbonizacja biomasy",
+          "en": "Biomass carbonisation"
         },
         "evidence": [
-          { "kind": "article", "id": "screw-feeder-pyrolysis-calculator" },
-          { "kind": "article", "id": "screw-feeder-calculator-validation" }
+          {
+            "kind": "note",
+            "label": {
+              "pl": "budowa, montaż reaktora i rozruch instalacji — ITPE",
+              "en": "reactor assembly and plant commissioning — ITPE"
+            }
+          },
+          {
+            "kind": "article",
+            "id": "screw-feeder-pyrolysis-calculator"
+          },
+          {
+            "kind": "article",
+            "id": "screw-feeder-calculator-validation"
+          }
         ]
       }
     ]
@@ -76,21 +120,51 @@
     },
     "items": [
       {
-        "name": { "pl": "Modbus RTU / TCP", "en": "Modbus RTU / TCP" },
+        "name": {
+          "pl": "Modbus RTU / TCP",
+          "en": "Modbus RTU / TCP"
+        },
         "evidence": [
-          { "kind": "project", "slug": "mb-tc-configurator" },
-          { "kind": "project", "slug": "radwag-rejestrator" },
-          { "kind": "article", "id": "modbus-tcp" },
-          { "kind": "article", "id": "modbus-rtu" },
-          { "kind": "article", "id": "thermocouple-disconnect-detection" }
+          {
+            "kind": "project",
+            "slug": "mb-tc-configurator"
+          },
+          {
+            "kind": "project",
+            "slug": "radwag-rejestrator"
+          },
+          {
+            "kind": "article",
+            "id": "modbus-tcp"
+          },
+          {
+            "kind": "article",
+            "id": "modbus-rtu"
+          },
+          {
+            "kind": "article",
+            "id": "thermocouple-disconnect-detection"
+          }
         ]
       },
       {
-        "name": { "pl": "RS-485 — warstwa fizyczna", "en": "RS-485 — physical layer" },
+        "name": {
+          "pl": "RS-485 — warstwa fizyczna",
+          "en": "RS-485 — physical layer"
+        },
         "evidence": [
-          { "kind": "article", "id": "rs485-physical" },
-          { "kind": "article", "id": "serial-troubleshooting" },
-          { "kind": "project", "slug": "bronkhorst-controller" }
+          {
+            "kind": "article",
+            "id": "rs485-physical"
+          },
+          {
+            "kind": "article",
+            "id": "serial-troubleshooting"
+          },
+          {
+            "kind": "project",
+            "slug": "bronkhorst-controller"
+          }
         ]
       },
       {
@@ -98,13 +172,27 @@
           "pl": "Porty szeregowe — diagnostyka i testowanie",
           "en": "Serial ports — diagnostics and testing"
         },
-        "evidence": [{ "kind": "article", "id": "com-port-testing" }]
+        "evidence": [
+          {
+            "kind": "article",
+            "id": "com-port-testing"
+          }
+        ]
       },
       {
-        "name": { "pl": "FLOW-BUS (Bronkhorst)", "en": "FLOW-BUS (Bronkhorst)" },
+        "name": {
+          "pl": "FLOW-BUS (Bronkhorst)",
+          "en": "FLOW-BUS (Bronkhorst)"
+        },
         "evidence": [
-          { "kind": "project", "slug": "bronkhorst-controller" },
-          { "kind": "article", "id": "flowbus-bronkhorst" }
+          {
+            "kind": "project",
+            "slug": "bronkhorst-controller"
+          },
+          {
+            "kind": "article",
+            "id": "flowbus-bronkhorst"
+          }
         ]
       },
       {
@@ -112,7 +200,12 @@
           "pl": "Siemens LOGO! i małe sterowniki",
           "en": "Siemens LOGO! and small controllers"
         },
-        "evidence": [{ "kind": "article", "id": "siemens-logo" }]
+        "evidence": [
+          {
+            "kind": "article",
+            "id": "siemens-logo"
+          }
+        ]
       }
     ]
   },
@@ -124,11 +217,23 @@
     },
     "items": [
       {
-        "name": { "pl": "Python", "en": "Python" },
+        "name": {
+          "pl": "Python",
+          "en": "Python"
+        },
         "evidence": [
-          { "kind": "project", "slug": "radwag-rejestrator" },
-          { "kind": "project", "slug": "mb-tc-configurator" },
-          { "kind": "project", "slug": "bronkhorst-controller" }
+          {
+            "kind": "project",
+            "slug": "radwag-rejestrator"
+          },
+          {
+            "kind": "project",
+            "slug": "mb-tc-configurator"
+          },
+          {
+            "kind": "project",
+            "slug": "bronkhorst-controller"
+          }
         ]
       },
       {
@@ -137,8 +242,14 @@
           "en": "PySide6 — desktop interfaces"
         },
         "evidence": [
-          { "kind": "project", "slug": "radwag-rejestrator" },
-          { "kind": "project", "slug": "mb-tc-configurator" }
+          {
+            "kind": "project",
+            "slug": "radwag-rejestrator"
+          },
+          {
+            "kind": "project",
+            "slug": "mb-tc-configurator"
+          }
         ]
       },
       {
@@ -149,7 +260,10 @@
         "evidence": [
           {
             "kind": "note",
-            "label": { "pl": "każdy projekt na tej stronie", "en": "every project on this site" }
+            "label": {
+              "pl": "każdy projekt na tej stronie",
+              "en": "every project on this site"
+            }
           }
         ]
       },
@@ -158,33 +272,53 @@
           "pl": "FitSM — zarządzanie usługami IT",
           "en": "FitSM — IT service management"
         },
-        "evidence": [{ "kind": "article", "id": "fitsm-foundation" }]
+        "evidence": [
+          {
+            "kind": "article",
+            "id": "fitsm-foundation"
+          }
+        ]
       }
     ]
   },
   {
     "category": "learning",
-    "label": { "pl": "W trakcie nauki", "en": "Currently learning" },
+    "label": {
+      "pl": "W trakcie nauki",
+      "en": "Currently learning"
+    },
     "note": {
       "pl": "Rzeczy, przy których jestem uczniem, nie fachowcem. Projekty przy nich powstają z pomocą AI — to nauka w praktyce, a nie deklaracja biegłości.",
       "en": "Things I am a student of, not a practitioner. The projects here are built with AI assistance — that is learning in practice, not a claim of proficiency."
     },
     "items": [
       {
-        "name": { "pl": "Java", "en": "Java" },
+        "name": {
+          "pl": "Java",
+          "en": "Java"
+        },
         "evidence": [
           {
             "kind": "note",
-            "label": { "pl": "rok nauki, projekt w przygotowaniu", "en": "a year of study, project in preparation" }
+            "label": {
+              "pl": "rok nauki, projekt w przygotowaniu",
+              "en": "a year of study, project in preparation"
+            }
           }
         ]
       },
       {
-        "name": { "pl": "Spring", "en": "Spring" },
+        "name": {
+          "pl": "Spring",
+          "en": "Spring"
+        },
         "evidence": [
           {
             "kind": "note",
-            "label": { "pl": "kurs w toku", "en": "course in progress" }
+            "label": {
+              "pl": "kurs w toku",
+              "en": "course in progress"
+            }
           }
         ]
       },
@@ -194,13 +328,28 @@
           "en": "Object-oriented programming and design patterns"
         },
         "evidence": [
-          { "kind": "note", "label": { "pl": "kurs w toku", "en": "course in progress" } }
+          {
+            "kind": "note",
+            "label": {
+              "pl": "kurs w toku",
+              "en": "course in progress"
+            }
+          }
         ]
       },
       {
-        "name": { "pl": "SQL", "en": "SQL" },
+        "name": {
+          "pl": "SQL",
+          "en": "SQL"
+        },
         "evidence": [
-          { "kind": "note", "label": { "pl": "podstawy", "en": "fundamentals" } }
+          {
+            "kind": "note",
+            "label": {
+              "pl": "podstawy",
+              "en": "fundamentals"
+            }
+          }
         ]
       },
       {
@@ -209,8 +358,14 @@
           "en": "Next.js, React, TypeScript"
         },
         "evidence": [
-          { "kind": "project", "slug": "sincore-portfolio" },
-          { "kind": "project", "slug": "norm-monitor" }
+          {
+            "kind": "project",
+            "slug": "sincore-portfolio"
+          },
+          {
+            "kind": "project",
+            "slug": "norm-monitor"
+          }
         ]
       },
       {
@@ -218,7 +373,15 @@
           "pl": "Cyberbezpieczeństwo — wykrywanie i emulacja ataków",
           "en": "Cybersecurity — detection and adversary emulation"
         },
-        "evidence": [{ "kind": "article", "id": "ai-assisted-ot-intrusion" }]
+        "evidence": [
+          {
+            "kind": "note",
+            "label": {
+              "pl": "w trakcie nauki",
+              "en": "currently learning"
+            }
+          }
+        ]
       }
     ]
   }

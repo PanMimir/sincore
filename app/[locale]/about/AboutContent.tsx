@@ -28,9 +28,7 @@ export default function AboutContent() {
             <p className="mt-6 text-xs uppercase tracking-wider text-accent-primary">
               {t("focus_label")}
             </p>
-            <p className="text-text-primary">
-              custom software · industrial systems · automation
-            </p>
+            <p className="text-text-primary">{t("focus_value")}</p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2} className="mt-8 space-y-4">
