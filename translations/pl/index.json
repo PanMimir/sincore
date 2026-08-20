@@ -106,7 +106,7 @@
   "about": {
     "title": "O mnie",
     "subtitle": "Kim jestem",
-    "bio_1": "10 lat w środowisku przemysłowym. Zaczynałem od badań energetycznych urządzeń grzewczych w ITPE Zabrze. Skończyłem na pisaniu softu bo zauważyłem, że większość problemów to brak narzędzi — nie brak wiedzy.",
+    "bio_1": "Od 2015 roku w środowisku przemysłowym. Zaczynałem od badań energetycznych urządzeń grzewczych w ITPE Zabrze. Skończyłem na pisaniu softu bo zauważyłem, że większość problemów to brak narzędzi — nie brak wiedzy.",
     "bio_2": "Znam sprzęt od strony elektrycznej i od strony kodu. Rzadko która z tych stron wystarcza sama.",
     "bio_3": "sincore to nie startup. To imię pod którym robię konkretne rzeczy dla konkretnych ludzi. Jeśli masz problem który da się rozwiązać softem — napisz.",
     "skills_title": "Co potrafię",
@@ -115,12 +115,12 @@
       "Systemy przemysłowe i protokoły (Modbus, RS-485, PLC Siemens)",
       "Backend i integracje (Python, FastAPI, SQLite, REST)",
       "Frontend i aplikacje webowe (Next.js, TypeScript, React)",
-      "10 lat badań w środowisku energetycznym i przemysłowym"
+      "Badania w środowisku energetycznym i przemysłowym — od 2015 roku"
     ],
     "approach_title": "Podejście",
     "approach": "Rozumiem system, zanim napiszę kod. Nie sprzedaję rozwiązań, które znam — szukam rozwiązań, które działają dla konkretnego problemu.",
     "focus_label": "Focus",
-    "seo_description": "Michał Pańczyk — dziesięć lat badań energetyczno-emisyjnych w laboratorium, dziś piszę narzędzia do problemów, które sam napotkałem.",
+    "seo_description": "Michał Pańczyk — od 2015 roku badania energetyczno-emisyjne w laboratorium, dziś piszę narzędzia do problemów, które sam napotkałem.",
     "focus_value": "oprogramowanie na zamówienie · systemy przemysłowe · automatyzacja"
   },
   "contact": {
@@ -292,7 +292,7 @@
   },
   "home": {
     "stats_projects": "projektów",
-    "stats_experience": "lat w środowisku technicznym",
+    "stats_experience": "{years, plural, one{rok} few{lata} many{lat} other{lat}} w środowisku technicznym",
     "stats_articles": "artykułów w bazie wiedzy",
     "featured_label": "Wybrane",
     "featured_title": "Wybrane projekty",

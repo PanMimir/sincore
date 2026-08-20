@@ -106,7 +106,7 @@
   "about": {
     "title": "About",
     "subtitle": "Who I am",
-    "bio_1": "10 years in an industrial environment. Started with energy research on heating devices at ITPE Zabrze. Ended up writing software because I noticed most problems come from missing tools — not missing knowledge.",
+    "bio_1": "In an industrial environment since 2015. Started with energy research on heating devices at ITPE Zabrze. Ended up writing software because I noticed most problems come from missing tools — not missing knowledge.",
     "bio_2": "I know hardware from both the electrical and code side. Neither side alone is usually enough.",
     "bio_3": "sincore is not a startup. It's a name under which I do concrete things for concrete people. If you have a problem that can be solved with software — write.",
     "skills_title": "What I do",
@@ -115,12 +115,12 @@
       "Industrial systems and protocols (Modbus, RS-485, Siemens PLC)",
       "Backend and integrations (Python, FastAPI, SQLite, REST)",
       "Frontend and web applications (Next.js, TypeScript, React)",
-      "10 years of research in energy and industrial environments"
+      "Research in energy and industrial environments — since 2015"
     ],
     "approach_title": "Approach",
     "approach": "I understand the system before I write code. I don't sell solutions I know — I find solutions that work for the specific problem.",
     "focus_label": "Focus",
-    "seo_description": "Michał Pańczyk — ten years of energy and emissions research in a laboratory, now writing tools for problems I ran into myself.",
+    "seo_description": "Michał Pańczyk — energy and emissions research in a laboratory since 2015, now writing tools for problems I ran into myself.",
     "focus_value": "custom software · industrial systems · automation"
   },
   "contact": {
@@ -292,7 +292,7 @@
   },
   "home": {
     "stats_projects": "projects",
-    "stats_experience": "years in technical field",
+    "stats_experience": "{years, plural, one{year} other{years}} in technical field",
     "stats_articles": "articles in the knowledge base",
     "featured_label": "Featured",
     "featured_title": "Featured projects",

@@ -14,6 +14,16 @@ import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+// Zatrudnienie w Instytucie Technologii Paliw i Energii — lipiec 2015.
+// Liczba lat liczy sie sama, zeby nie trzeba bylo raz w roku poprawiac jej w kodzie.
+const CAREER_START = { year: 2015, month: 7 };
+
+function yearsSince({ year, month }: { year: number; month: number }): number {
+  const now = new Date();
+  const elapsed = (now.getFullYear() - year) * 12 + (now.getMonth() + 1 - month);
+  return Math.floor(elapsed / 12);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -51,7 +61,11 @@ export default async function HomePage({ params }: { params: { locale: string } 
   return (
     <>
       <HeroSection />
-      <StatsSection projectCount={allProjects.length} articleCount={allArticles.length} />
+      <StatsSection
+        projectCount={allProjects.length}
+        articleCount={allArticles.length}
+        experienceYears={yearsSince(CAREER_START)}
+      />
       <FeaturedProjectsSection
         projects={featuredProjects}
         downloadableSlugs={downloadableSlugs}

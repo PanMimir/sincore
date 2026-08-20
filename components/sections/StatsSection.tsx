@@ -5,14 +5,23 @@ import { useTranslations } from "next-intl";
 interface StatsSectionProps {
   projectCount: number;
   articleCount: number;
+  /** Liczony od zatrudnienia w ITPE (07.2015) w app/[locale]/page.tsx. */
+  experienceYears: number;
 }
 
-export default function StatsSection({ projectCount, articleCount }: StatsSectionProps) {
+export default function StatsSection({
+  projectCount,
+  articleCount,
+  experienceYears,
+}: StatsSectionProps) {
   const t = useTranslations("home");
 
   const stats = [
     { value: String(projectCount), label: t("stats_projects") },
-    { value: "10", label: t("stats_experience") },
+    {
+      value: String(experienceYears),
+      label: t("stats_experience", { years: experienceYears }),
+    },
     { value: String(articleCount), label: t("stats_articles") },
   ];
 
