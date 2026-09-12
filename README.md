@@ -127,3 +127,9 @@ npm run start
 | `npm run lint`      | ESLint                       |
 | `npm run format`    | Prettier — formatowanie      |
 | `npm run typecheck` | Sprawdzenie typów TypeScript |
+
+---
+
+## Licencja
+
+Kod — [MIT](LICENSE). Treść (artykuły, opisy projektów), logo i marka sincore — wszystkie prawa zastrzeżone. Szczegóły w [LICENSE](LICENSE).

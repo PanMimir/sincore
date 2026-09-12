@@ -1,0 +1,49 @@
+# Licencja / License
+
+## Kod źródłowy — MIT
+
+Kod źródłowy tego repozytorium (pliki `.ts`, `.tsx`, `.mjs`, `.css`, konfiguracja
+i skrypty) jest udostępniony na licencji MIT — treść poniżej.
+
+The source code of this repository is licensed under the MIT License (see below).
+
+## Treść i marka — wszystkie prawa zastrzeżone
+
+Licencja MIT **NIE obejmuje**:
+
+- treści redakcyjnych: artykułów w `content/`, opisów projektów w `data/`,
+  tłumaczeń w `translations/`,
+- identyfikacji wizualnej: logotypu, sygnetu, ikon i grafik w `public/`,
+- nazwy „sincore", domeny sincore.io i wszelkich elementów marki.
+
+Te elementy pozostają wyłączną własnością autora — Copyright (c) 2026 Michał Pańczyk.
+Ich kopiowanie, publikowanie lub wykorzystanie bez pisemnej zgody jest zabronione.
+
+The MIT License does NOT cover editorial content (`content/`, `data/`,
+`translations/`), visual identity (logo, signet, icons and graphics in `public/`),
+nor the "sincore" name, the sincore.io domain and any brand elements.
+All rights reserved — Copyright (c) 2026 Michał Pańczyk.
+
+---
+
+MIT License
+
+Copyright (c) 2026 Michał Pańczyk (sincore.io)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
